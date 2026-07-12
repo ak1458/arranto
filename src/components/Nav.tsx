@@ -33,6 +33,7 @@ function LocaleSwitch() {
 export function Nav() {
   const bar = useRef<HTMLElement>(null);
   const [open, setOpen] = useState(false);
+  const t = useTranslations("nav");
 
   useGSAP(
     () => {
@@ -55,11 +56,9 @@ export function Nav() {
   );
 
   const links = [
-    { label: "Work", href: "#work" },
-    { label: "Services", href: "#services" },
-    { label: "Approach", href: "#approach" },
-    { label: "About", href: "#about" },
-    { label: "Insights", href: "#insights" },
+    { label: t("work"), href: "/work" },
+    { label: t("studio"), href: "/studio" },
+    { label: t("contact"), href: "/contact" },
   ];
 
   return (
@@ -80,28 +79,28 @@ export function Nav() {
           {/* Center Navigation Links matching hero.png */}
           <nav className="hidden items-center gap-8 text-sm font-normal text-paper/80 md:flex">
             {links.map((item) => (
-              <a
-                key={item.label}
+              <Link
+                key={item.href}
                 href={item.href}
                 className="transition-colors duration-200 hover:text-[#FF6B00]"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
-          {/* Right CTA Button ("Let's Build ->") */}
+          {/* Right CTA Button ("Contact") */}
           <div className="hidden items-center gap-6 md:flex">
             <LocaleSwitch />
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               className="group relative inline-flex items-center gap-3 rounded-full border border-paper/20 bg-ink-raised/60 px-5 py-2 text-xs font-medium uppercase tracking-wider text-paper transition-all duration-300 hover:border-[#FF6B00] hover:bg-[#FF6B00]/10 hover:shadow-[0_0_20px_rgba(255,107,0,0.3)]"
             >
-              <span>Let&apos;s Build</span>
+              <span>{t("contact")}</span>
               <span className="grid size-5 place-items-center rounded-full bg-[#FF6B00] text-ink transition-transform duration-300 group-hover:translate-x-0.5">
                 →
               </span>
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Trigger */}
@@ -111,7 +110,7 @@ export function Nav() {
             aria-expanded={open}
             className="flex items-center gap-2 font-mono text-xs text-fog md:hidden"
           >
-            <span>MENU</span>
+            <span>{t("menu")}</span>
             <span className="text-lg">≡</span>
           </button>
         </div>
@@ -140,28 +139,28 @@ export function Nav() {
               onClick={() => setOpen(false)}
               className="font-mono text-sm text-fog"
             >
-              CLOSE ✕
+              {t("close")} ✕
             </button>
           </div>
           <nav className="mt-16 flex flex-col gap-6 text-2xl font-light">
             {links.map((item) => (
-              <a
-                key={item.label}
+              <Link
+                key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className="text-paper transition-colors hover:text-[#FF6B00]"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               onClick={() => setOpen(false)}
               className="mt-4 inline-flex w-fit items-center gap-4 rounded-full border border-[#FF6B00] bg-[#FF6B00]/10 px-6 py-3 text-base text-[#FF6B00]"
             >
-              <span>Let&apos;s Build</span>
+              <span>{t("contact")}</span>
               <span>→</span>
-            </a>
+            </Link>
           </nav>
           <div className="mt-auto">
             <LocaleSwitch />
