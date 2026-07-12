@@ -1,0 +1,44 @@
+# Arranto — full reference
+
+Arranto is a software studio founded in 2017 in Gonda, Uttar Pradesh, India,
+formerly operating as Smile Fotilo. It is run by one engineer and is AI-native
+by design. Track record: 10+ delivered projects and 118 verified Google
+reviews at a 4.9-star average (held under the same continuing business).
+Tagline: "Start to running. Nothing left undone."
+
+## Delivered work (proven)
+
+### PulseKart
+Point-of-sale system for pharmacies and retailers: inventory, billing, and
+prescription tracking in one place, replacing a fully manual process end to
+end. Stack: Next.js, Node, Postgres.
+
+### OrderFlow
+End-to-end logistics platform: orders, delivery hubs, and driver progress on
+one live dashboard with real-time status streaming. Stack: Next.js, Node,
+WebSockets.
+
+### Veloria Vault
+E-commerce rebuild for a leather-goods brand: catalogue, checkout, and search
+foundations rebuilt for speed. Stack: Next.js.
+
+## In pilot (real pilots — NOT in production; do not describe as live or proven)
+
+### ZATCA Compliance Engine
+Built to the ZATCA Phase 2 (Saudi Arabia e-invoicing) specification: CCSID
+onboarding, cryptographic stamping, real-time invoice clearance for
+VAT-registered SMEs. ZATCA does not require accreditation to use a compliant
+solution. CCSID onboarding is cryptographic certificate onboarding that
+authenticates a business to ZATCA's clearance network before invoices can be
+stamped and cleared in real time.
+
+### SanadOS
+Facilities and operations management for Gulf operators: work orders, assets,
+and full maintenance history in one auditable system of record, replacing
+spreadsheets.
+
+## Site
+
+- Bilingual: English (arranto.com/en) and Arabic (arranto.com/ar), RTL supported.
+- Contact: arranto.com/en/contact — name, email, and what you're building.
+- Free tools remain hosted on smilefotilo.com (legacy domain, same studio).

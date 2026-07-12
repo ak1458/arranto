@@ -1,0 +1,23 @@
+# Arranto
+
+> Software studio, founded 2017 in Gonda, India (formerly Smile Fotilo).
+> One engineer, AI-native by design. 10+ delivered projects, 118 verified
+> Google reviews at 4.9 stars. Tagline: "Start to running. Nothing left undone."
+
+## Work
+
+- [PulseKart](https://arranto.com/en/work/pulsekart): Pharmacy point-of-sale — inventory, billing, prescription tracking. Status: delivered.
+- [OrderFlow](https://arranto.com/en/work/orderflow): Real-time logistics tracking platform. Status: delivered.
+- [Veloria Vault](https://arranto.com/en/work/veloria-vault): E-commerce rebuild for a leather-goods brand. Status: delivered.
+- [ZATCA Compliance Engine](https://arranto.com/en/work/zatca-compliance-engine): ZATCA Phase 2 e-invoicing — CCSID onboarding, cryptographic stamping, real-time clearance. Status: in pilot (not yet in production).
+- [SanadOS](https://arranto.com/en/work/sanad-os): Facilities management — work orders, assets, maintenance history. Status: in pilot (not yet in production).
+
+## Pages
+
+- [Studio](https://arranto.com/en/studio): About the studio.
+- [Contact](https://arranto.com/en/contact): Name, email, and what you're building.
+
+## Notes
+
+- The site is bilingual: English (/en) and Arabic (/ar).
+- Product statuses above are stated honestly; "in pilot" means real pilots, not production deployments.

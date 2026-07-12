@@ -1,0 +1,84 @@
+{
+  "meta": {
+    "title": "Arranto — Software Studio",
+    "description": "Start to running. Nothing left undone. Software studio, est. 2017.",
+    "workTitle": "Work — Arranto",
+    "workDescription": "Systems shipped, end to end.",
+    "studioTitle": "Studio — Arranto",
+    "studioDescription": "One engineer. AI-native by design.",
+    "contactTitle": "Contact — Arranto",
+    "contactDescription": "Tell us what you're building."
+  },
+  "nav": {
+    "home": "Home",
+    "work": "Work",
+    "studio": "Studio",
+    "contact": "Contact",
+    "tools": "Tools",
+    "menu": "Menu",
+    "close": "Close",
+    "language": "Language",
+    "skip": "Skip to content"
+  },
+  "hero": {
+    "boot": "$ arranto run — ok",
+    "line1": "Start to running.",
+    "line2Pre": "Nothing left ",
+    "line2Em": "undone.",
+    "fragment": "Software studio. Est. 2017.",
+    "ctaWork": "Work",
+    "ctaContact": "Contact"
+  },
+  "home": {
+    "workEyebrow": "// proof",
+    "workHeading": "Work",
+    "allWork": "All work",
+    "studioEyebrow": "// studio",
+    "studioHeading": "Studio",
+    "studioBody": "One engineer. AI-native by design. 10+ delivered projects. 118 verified reviews.",
+    "studioCta": "About",
+    "contactHeading": "Let's talk.",
+    "contactCta": "Contact"
+  },
+  "work": {
+    "eyebrow": "// proof",
+    "heading": "Work",
+    "details": "Details",
+    "status": { "proven": "proven", "in-pilot": "in pilot" }
+  },
+  "studio": {
+    "heading": "Arranto.",
+    "line1": "Founded 2017, Gonda, as Smile Fotilo.",
+    "line2": "One engineer. AI-native by design.",
+    "line3": "10+ delivered projects. 118 verified reviews."
+  },
+  "contact": {
+    "heading": "Let's talk.",
+    "terminalTitle": "arranto ~ /new-project",
+    "name": "name",
+    "email": "email",
+    "message": "building",
+    "submit": "transmit ↵",
+    "sending": "transmitting…",
+    "success": "✓ message queued — expect a reply within 48 hours.",
+    "error": "✗ transmission failed — email hello@arranto.com instead.",
+    "invalid": "✗ name, valid email, and a message are required."
+  },
+  "footer": {
+    "address": "Arranto, Gonda. Est. 2017.",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "tools": "Tools"
+  },
+  "legal": {
+    "privacyTitle": "Privacy",
+    "privacyBody": "The contact form collects your name, email, and message — used only to reply to you. No ad pixels, no data brokers, no tracking beyond aggregate traffic counts.",
+    "termsTitle": "Terms",
+    "termsBody": "Content on this site describes work delivered by Arranto. Product statuses are stated honestly — anything marked “in pilot” is not yet in production. All content © Arranto."
+  },
+  "notFound": {
+    "code": "404 — not found",
+    "body": "This route doesn't exist.",
+    "cta": "Home"
+  }
+}
