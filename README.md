@@ -2,7 +2,7 @@
 
 Founder-led software studio site. Next.js 16 App Router, bilingual EN/AR (RTL), dark-only, hosted on Vercel.
 
-- **Build state + task list:** [`../MASTER-CONTEXT.md`](../MASTER-CONTEXT.md)
+- **Build state + task list:** [`docs/MASTER-CONTEXT.md`](docs/MASTER-CONTEXT.md)
 - **Service setup (all keys, direct links):** [`docs/SETUP.md`](docs/SETUP.md)
 - **Self-improvement agent:** [`docs/AGENT.md`](docs/AGENT.md)
 

@@ -2,7 +2,7 @@ import { sorted } from "@/content/work";
 
 // The chatbot's entire knowledge base, built from the same content the pages
 // render — status claims always come from the `status` field, never hand-typed.
-// Full-context injection instead of RAG: see MASTER-CONTEXT.md D2.
+// Full-context injection instead of RAG: see docs/MASTER-CONTEXT.md D2.
 const STATUS_LINE = {
   proven: "Status: delivered and proven in production.",
   "in-pilot": "Status: in pilot — NOT live, NOT in production, NOT proven yet.",
