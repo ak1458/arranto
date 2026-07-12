@@ -48,9 +48,21 @@
   },
   "studio": {
     "heading": "Arranto.",
-    "line1": "Founded 2017, Gonda, as Smile Fotilo.",
-    "line2": "One engineer. AI-native by design.",
-    "line3": "10+ delivered projects. 118 verified reviews."
+    "eyebrow": "ABOUT THE STUDIO",
+    "tagline": "One engineer. AI-native by design.",
+    "statEst": "2017",
+    "statEstLabel": "Founded in Gonda, India (originally Smile Fotilo)",
+    "statSize": "1 Engineer",
+    "statSizeLabel": "Founder-led, highly focused execution",
+    "statShipped": "10+ Shipped",
+    "statShippedLabel": "Enterprise and global production systems",
+    "statReviews": "118 Reviews",
+    "statReviewsLabel": "4.9-star average verified Google reviews",
+    "storyHeading": "Our Story",
+    "storyBody1": "Founded in 2017 in Gonda, India (as Smile Fotilo), we have evolved into a premium, founder-led, AI-native software studio. We believe in absolute focus — one engineer building systems that scale globally. Our roots lie deep, but our products power critical systems in the Gulf, US, and Europe.",
+    "storyBody2": "Every line of code is written with a simple guarantee: start to running, with nothing left undone. We build boring, reliable infrastructure chosen for uptime and resilience, not novelty.",
+    "ctaText": "Ready to build something that lasts?",
+    "ctaBtn": "Initiate Engagement"
   },
   "contact": {
     "heading": "Let's talk.",

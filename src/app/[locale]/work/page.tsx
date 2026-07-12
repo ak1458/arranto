@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { sorted, type Locale } from "@/content/work";
-import { Reveal } from "@/components/Reveal";
 import { WorkGrid } from "@/components/WorkGrid";
 import { alternatesFor } from "@/lib/seo";
 
@@ -20,17 +19,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function WorkIndex({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations("work");
 
   return (
-    <div className="mx-auto max-w-6xl px-6 pt-32 pb-24">
-      <Reveal>
-        <p className="font-mono text-sm text-muted">{t("eyebrow")}</p>
-        <h1 className="mt-2 font-display text-5xl">{t("heading")}</h1>
-      </Reveal>
-      <div className="mt-12">
-        <WorkGrid items={sorted} locale={locale as Locale} />
-      </div>
+    <div className="pt-20">
+      <WorkGrid items={sorted} locale={locale as Locale} />
     </div>
   );
 }
