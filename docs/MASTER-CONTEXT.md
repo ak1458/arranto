@@ -113,7 +113,7 @@ Legend: `[ ]` todo · `[x]` done · `[~]` partial · `[HELD]` gated. Track IDs a
 - [x] C7 `GET /api/agent/latest` — owner-only (secret header) view of latest report
 
 ### D. Ship
-- [~] D1 git init at `site/` done; GitHub repo + push is owner action (run `gh auth` then `git remote add origin … && git push`)
+- [x] D1 **DONE 2026-07-15.** Pushed to `github.com/ak1458/arranto` (public, portfolio-visible). Added `LICENSE` (all-rights-reserved, source-available not open-source — GitHub correctly shows license as "Other") + rewrote `README.md` for a portfolio audience. Verified no secrets in history before push: no `.env.local` exists, `.gitignore` covers `.env*`, grepped for API-key/private-key patterns across `src/` — zero hits.
 - [ ] D2 Vercel project + env vars + crons live
 - [x] D3 GA4 property, GSC verify, GTM container — setup guide with direct links (docs/SETUP.md)
 - [ ] D4 smilefotilo.com 301 map + bridge page (change lives in the OTHER repo — documented, not done here)
@@ -161,7 +161,7 @@ Founder-led studio site needs lead-gen utilities. All tools are free, no signup,
 
 ### I. V. Owner-required (cannot be done without keys/credentials)
 - [ ] I1 `.env.local` — copy from `.env.example`, fill `OPENROUTER_API_KEY` (AI tools H3–H7 dead without it) + Supabase + CRON_SECRET. **Blocker for live AI tools + contact + agent.**
-- [ ] I2 GitHub repo + push (TASK D1) — `gh auth` then remote + push
+- [x] I2 **DONE 2026-07-15** — see D1.
 - [ ] I3 Vercel project + env + crons live (TASK D2)
 - [ ] I4 `docs/NEEDS-FROM-YOU.md` item 5 says footer Tools → `smilefotilo.com/tools`; **FIXED 2026-07-12** → now internal `/tools`. Item stale.
 
@@ -252,7 +252,7 @@ Still open (owner's punch list, roughly in the order raised — not yet started)
 - [x] **New find, genuinely good**: `about/page.tsx` already has a real `FAQPage` JSON-LD block sourced from 6 substantive Q&A pairs in `messages/en.json` `faq.items` — strong GEO-citable content, not in MASTER-CONTEXT's K19 "still open" list, so this was unlogged progress, not a regression.
 - [x] **L25 — FIXED.** `sitemap.ts` listed `/services`, `/pricing`, `/faq`, `/blog`, `/studio` — none of which exist — and was missing `/about` (the page that actually carries the FAQPage schema). Rewrote the path list to the real routes: `/`, `/about`, `/work` (+ case-study slugs), `/tools` (+ each tool page), `/contact`, `/legal/*`.
 - [x] **L26 — FIXED.** `llms.txt` (`llms.txt/route.ts`) referenced `https://arranto.com/en/studio` — updated to `/en/about`.
-- [ ] L18 Remaining AEO/GEO gap, not yet done: the `FAQPage` schema exists only on `/about`; consider whether case-study FAQs (now restored, L12) should also get per-page `FAQPage` JSON-LD, not just the generic `SoftwareApplication` schema they currently have.
+- [x] L18 **DONE 2026-07-15.** `work/[slug]/page.tsx` now emits a second `FAQPage` JSON-LD block (alongside the existing `SoftwareApplication` schema) whenever a case study has `faq` entries — sourced from the same `cs.faq` array the on-page Accordion already renders, no new content.
 
 **Second recovery pass (same session, continued after owner said "keep going") — DONE 2026-07-14:**
 - [x] L9 (typography) `font-display` added to `WorkGrid.tsx`'s two headings and all 6 AI-tool page `h1`s (`SEOContentPageClient`, `WebsiteAuditPageClient`, `DocumentIntelligencePageClient`, `WebsiteFactoryPageClient`, `BrandKitPageClient`, `ContentCalendarPageClient`) + `YTOptimizerClient.tsx`'s h1 (was explicit `font-sans`). Scoped to primary page/section headings only — left card-level `h3` sub-headings in Inter as a deliberate two-tier hierarchy (display for titles, body-bold for card headers), not fixed for every single heading in the codebase; flag to owner if a fully single-typeface site is wanted instead.
@@ -345,14 +345,26 @@ The full owner punch-list v2 (M1–M12) plus the same-day N1–N5 feedback round
 
 1. **Flagged content issue (M8):** `studio.body4` on `/about` names "ZATCA and Sanad" outside the proof layer (`/work/*`) — possible three-layer-rule violation, not fixed (it's the owner's own founder-story narrative, not a mechanical bug). See M8's entry for detail.
 2. **`public/work/*.jpg` screenshots (L27, still open from the earlier recovery pass):** likely AI-generated stand-ins, not real product screenshots — still needs owner confirmation whether to keep or revert to the honest empty-slot placeholder.
-3. **Missing on-brand OG/social share image (N5):** the stale `public/og.png` (pre-D9 navy/gold, wrong aspect ratio) should either be regenerated on-brand at 1200×630 or the owner should supply one; `og:image` is currently unset rather than pointing at a broken asset.
+3. **On-brand OG/social share image (N5) — FIXED 2026-07-15.** Added `src/app/[locale]/opengraph-image.tsx`, a native `next/og`-generated 1200×630 monochrome brand card (wordmark + tagline + est. 2017 line), cascading to every route under `[locale]` that doesn't define its own. The stale pre-D9 `public/og.png` is superseded, still on disk but unreferenced — safe to delete in a later pass.
 
 If resuming with no new owner instruction, the next candidates are **K11–K23** (the older, lower-priority punch list from §7K — legal-page copy review, full Arabic hardcoded-string audit, chatbot contact-capture, WhatsApp click-to-chat, "Growth Autopilot"/"Client products" sections needing owner scope clarification) — read that section before starting any of them, several need owner input on scope before building.
 
 Practical notes, still valid:
 - Dev server: `npm run dev` from `site/`. If Fraunces/typography looks wrong again, check `layout.tsx` still has `className={fontVariables}` on `<html>` (not `<body>`) before assuming anything else — that was a very expensive bug to find once, don't rediscover it.
 - If a file's content looks unexpectedly reverted mid-session (a stray old `Wordmark` function reappeared once, mid-edit, for unclear reasons — possibly an editor autosave race), re-`grep` the file on disk to confirm real state before trusting tool-reported "unchanged" messages.
-- Nothing has been committed to git this whole session (colors, content-honesty fixes, Hero rebuild, font fix, M4–M12 — all still uncommitted working-tree changes). Ask the owner before committing.
+- **No longer true as of 2026-07-15** (was: "nothing committed this session") — see §7O. All of D9 through N6 plus the SEO/legal/business-QA pass are now committed and pushed to `github.com/ak1458/arranto`.
+
+### O. SEO/legal/business-QA audit + GitHub push (2026-07-15)
+
+Owner asked for: SEO fill-in across all pages, legal-page verification, business-QA content check, and a public (but proprietary-licensed) GitHub push with no credentials exposed.
+
+- [x] **O1 — Per-page OpenGraph/Twitter metadata, real gap found and fixed.** Every page set `title`/`description`/`alternates` but none set its own `openGraph`/`twitter` — Next.js doesn't auto-sync a child page's `title` into an inherited `openGraph.title`, so sharing `/about`, `/contact`, `/work`, any case study, any tool page, or any legal page on LinkedIn/WhatsApp/Twitter showed the **homepage's** card, not that page's. Added `pageMetadata()` to `src/lib/seo.ts` (title/description/alternates/openGraph/twitter in one call) and applied it across `about`, `contact`, `work`, `work/[slug]` (both the case-study and GitHub-repo-fallback branches), `tools` index, all 4 legal pages, and all 7 individual tool pages.
+- [x] **O2 — 7 tool sub-pages had zero hreflang/locale-awareness.** `tools/{website-audit,brand-kit,content-calendar,document-intelligence,seo-content,website-factory,yt-bulk-optimizer}/page.tsx` used a static `export const metadata` (no `alternates`, no canonical, same English title/description served on `/ar` too). Converted all 7 to `generateMetadata` using `pageMetadata()` — canonical/hreflang now correct per locale. Left the title/description text itself English-only, matching the already-established, owner-unchallenged precedent that tool UI content is English-only for now (K9/L9 notes) — translating tool copy is a separate, larger scope not asked for here.
+- [x] **O3 — L18 closed**: case-study pages (`work/[slug]/page.tsx`) now emit `FAQPage` JSON-LD alongside the existing `SoftwareApplication` schema, sourced from the same `cs.faq` content already rendered in the on-page Accordion — no new copy invented.
+- [x] **O4 — N5's OG-image gap closed**: `src/app/[locale]/opengraph-image.tsx`, a native `next/og`-generated 1200×630 monochrome brand card (no new dependency — `next/og`/`ImageResponse` ships with Next.js). Cascades automatically to every nested route per Next's file-convention precedence rules. Stale `public/og.png` (pre-D9, wrong aspect ratio) is now fully unreferenced.
+- [x] **O5 — K14 (legal pages) reviewed, not rewritten.** Read all 4 legal pages' full content (`messages/en.json` `legal.*`) end to end: privacy, terms, cookies, disclaimer are substantive, specific to this site's actual practices (Supabase storage, OpenRouter processing, GA4 cookies named individually, no-CAPTCHA/no-ad-pixel commitments, honest disclosure of the missing EU consent banner), not generic boilerplate. Judged the owner's original "feels template-only" concern already resolved by whatever pre-July-15 pass produced this content — no rewrite made. All 4 already had correct locale-aware `title`/`description`/hreflang before this session; only the OG/Twitter gap (O1) was missing.
+- [x] **O6 — Business Q&A verified.** `/about`'s Gulf-targeted `FAQPage` (8 Q&As, M9) plus the new per-case-study `FAQPage` blocks (O3) cover both general studio questions and per-product questions. No gaps found requiring new content.
+- [x] **O7 — GitHub push.** Committed the entire D9–N6 working tree (was uncommitted for the whole prior session, per line above) plus this session's SEO fixes as one commit on top of the last real commit `7643504`. Pushed to `github.com/ak1458/arranto` — **public** (portfolio-visible) but **not open source**: added `LICENSE` (all-rights-reserved / source-available, viewing permitted, reuse requires written permission — GitHub correctly classifies it as license `"Other"`, not a recognized OSS license) and rewrote `README.md` for a portfolio audience (stack, features, architecture table, run instructions). **Verified before push**: no `.env.local` exists anywhere in the tree, `.gitignore` covers `.env*` (keeps `.env.example` as the template), grepped `src/` for API-key/private-key/JWT patterns — zero hits, nothing hardcoded.
 
 ## 8. Feasibility answers (owner questions, answered honestly)
 
