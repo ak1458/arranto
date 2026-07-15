@@ -70,6 +70,20 @@ Mirrors the tracks in `arranto-implementation-plan.md`. Status values: `BACKLOG`
 | TSK-705 | Content/brand QA | No repeated claims, zero region/product names on brand-layer pages | Medium | TSK-202–206 | `BACKLOG` |
 | TSK-706 | Launch | Production deploy | Low | All above | `BACKLOG` |
 
+## Track 8 — Free AI Tools Suite (added 2026-07-12)
+
+| Task ID | Module | Requirement Detail | Complexity | Dependency | Status |
+|---|---|---|---|---|---|
+| TSK-801 | Tools index | `/[locale]/tools` grid, 7 tools, en/ar | Low | TSK-103 | `DONE` |
+| TSK-802 | Website Audit | `/api/audit` non-AI heuristic (SEO/Perf/Mobile/Security/Structure → A–F), SSRF block | Medium | None | `DONE` |
+| TSK-803 | SEO Content Engine | `/api/seo-content` OpenRouter AI (titles/meta/keywords/outline) | Medium | I1 | `DONE` |
+| TSK-804 | AI Brand Kit | `/api/brand-kit` OpenRouter AI + local palette presets | Medium | I1 | `DONE` |
+| TSK-805 | Content Calendar | `/api/content-calendar` OpenRouter AI 7-day plan | Medium | I1 | `DONE` |
+| TSK-806 | Document Intelligence | `/api/documents` OpenRouter AI summary/extract/actions | Medium | I1 | `DONE` |
+| TSK-807 | Website Factory | `/api/website-factory` OpenRouter AI + fallback blueprint | Medium | I1 | `DONE` |
+| TSK-808 | GitHub portfolio sync | `src/lib/github.ts` fetch ak1458 repos → `/work`; wired | Medium | None | `DONE` |
+| TSK-809 | YT Bulk Optimizer | OAuth + channel/video READ real; publish/playlist-sync mock (no `videos.update` server call) | High | I1, YouTube OAuth creds | `IN PROGRESS` |
+
 ## Held (not scheduled — scope-blocked)
 
 | Task ID | Module | Requirement Detail | Blocked On |

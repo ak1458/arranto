@@ -12,7 +12,7 @@ export function GET() {
   return new Response(
     `# Arranto
 
-> Founder-led, AI-native software studio. Founded 2017 in Gonda, India, as Smile Fotilo. One engineer. 10+ delivered projects. 118 verified Google reviews.
+> Founder-led, AI-native software studio. Founded 2017 as Smile Fotilo. One engineer. 10+ delivered projects. 118 verified Google reviews.
 
 ## Work
 ${work}
@@ -20,11 +20,11 @@ ${work}
 ## Pages
 - https://arranto.com/en — home
 - https://arranto.com/en/work — case studies
-- https://arranto.com/en/studio — about the studio
+- https://arranto.com/en/about — about the studio
 - https://arranto.com/en/contact — contact the founder
 - Arabic versions at /ar/*
 
-Free legacy tools remain at https://smilefotilo.com.
+Free tools live on this site at /tools.
 `,
     { headers: { "Content-Type": "text/plain; charset=utf-8" } },
   );

@@ -16,5 +16,7 @@
 6. **Chatbot (Track 4)**: skipped for now — it needs an Anthropic API key and a
    vector store (Supabase), and you said no database yet. When ready, provide
    both and it slots in without touching the current pages.
-7. **hello@arranto.com**: the contact-form error fallback mentions it — confirm
-   that inbox exists (or give me the right address).
+7. ~~**hello@arranto.com**: the contact-form error fallback mentions it — confirm
+   that inbox exists (or give me the right address).~~ **RESOLVED 2026-07-14** —
+   owner confirmed the real inbox is `help@arranto.com`; replaced site-wide
+   (messages, contact page, legal pages).

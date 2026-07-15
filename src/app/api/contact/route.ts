@@ -33,11 +33,16 @@ export async function POST(req: Request) {
   const { botcheck, ...inquiry } = parsed.data;
   if (botcheck) return Response.json({ ok: true }); // silent discard, bot sees success
 
-  const { error } = await db().from("inquiries").insert(inquiry);
-  if (error) {
-    console.error("inquiries insert:", error.message);
+  // db() throws when Supabase env is missing — same generic response as an insert
+  // failure, so a misconfigured deploy can't return a stack trace or a config hint.
+  try {
+    const { error } = await db().from("inquiries").insert(inquiry);
+    if (error) throw new Error(error.message);
+  } catch (e) {
+    console.error("inquiries insert:", e instanceof Error ? e.message : e);
     return Response.json({ error: "Something went wrong" }, { status: 500 });
   }
+
   await notify(inquiry);
   return Response.json({ ok: true });
 }

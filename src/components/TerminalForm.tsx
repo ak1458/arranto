@@ -1,193 +1,191 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useLocale } from "next-intl";
+import React, { useState } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
 
-type State = "idle" | "sending" | "sent" | "error" | "invalid";
+export function TerminalForm({ initialMessage }: { initialMessage?: string }) {
+  const locale = useLocale() as 'en' | 'ar';
+  const t = useTranslations('contact');
 
-export function TerminalForm() {
-  const [state, setState] = useState<State>("idle");
-  const locale = useLocale();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState(initialMessage ?? '');
+  const [botcheck, setBotcheck] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [notice, setNotice] = useState<{ text: string; ok: boolean } | null>(null);
 
-  async function submit(e: React.FormEvent<HTMLFormElement>) {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const form = e.currentTarget;
-    const data = new FormData(form);
-
-    const email = String(data.get("email") ?? "");
-    if (!data.get("name") || !data.get("message") || !/^\S+@\S+\.\S+$/.test(email)) {
-      setState("invalid");
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      setNotice({ text: t('invalid'), ok: false });
       return;
     }
 
-    setState("sending");
+    setBusy(true);
+    setNotice(null);
+
     try {
-      // Honeypot travels to the server, which silently discards bot hits —
-      // the bot still sees a success response (docs/arranto-app-flow.md).
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: data.get("name"),
-          email,
-          message: data.get("message"),
+          name: name.trim(),
+          email: email.trim(),
+          message: message.trim(),
           locale,
-          botcheck: data.get("botcheck") ? "1" : undefined,
+          botcheck,
         }),
       });
-      setState(res.ok ? "sent" : "error");
-      if (res.ok) form.reset();
+
+      if (res.ok) {
+        setNotice({ text: t('success'), ok: true });
+        setName('');
+        setEmail('');
+        setMessage('');
+      } else {
+        setNotice({ text: t('error'), ok: false });
+      }
     } catch {
-      setState("error");
+      setNotice({ text: t('error'), ok: false });
+    } finally {
+      setBusy(false);
     }
-  }
+  };
 
   return (
-    <section
-      id="contact"
-      className="relative min-h-svh w-full overflow-hidden bg-[#050505] py-28"
-    >
-      {/* Background glow accent */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-[#FF6B00]/10 blur-[140px] pointer-events-none" />
+    <section id="contact" className="relative min-h-svh w-full overflow-hidden bg-[#050505] py-28 text-white border-t border-white/10 select-none">
+    <div className="absolute top-1/3 start-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 bg-[#d8d9dc]/5 blur-[140px] pointer-events-none"/>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
-        {/* Top Header matching 6th.png */}
-        <div className="max-w-2xl">
-          <p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-[#FF6B00]">
-            INITIATE ENGAGEMENT
+        <div className="max-w-3xl mb-16">
+          <p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-[#d8d9dc]">
+            {t('eyebrow')}
           </p>
-          <h2 className="mt-6 font-sans text-[clamp(2.8rem,5.2vw,5.5rem)] font-light leading-[1.04] tracking-[-0.04em] text-paper">
-            Ready to build<br />
-            <em className="font-display font-normal italic text-[#FF6B00]">
-              something that lasts?
-            </em>
+          <h2 className="mt-6 font-display text-[clamp(2.2rem,5vw,4.5rem)] font-bold uppercase leading-none tracking-tight text-white">
+            {t('heading')}
           </h2>
-          <p className="mt-8 text-base leading-relaxed text-paper/75 md:text-lg">
-            Let’s engineer the systems that power your next decade of growth.
+          <p className="mt-6 text-base leading-relaxed text-[#8e8f94] max-w-2xl font-light">
+            {t('subline')}
           </p>
         </div>
 
-        {/* Form + Contact Details Grid */}
-        <div className="mt-16 grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
-          {/* Terminal Box */}
-          <div className="overflow-hidden rounded-2xl border border-paper/15 bg-[#0D0D0D]/95 font-mono text-sm shadow-[0_25px_60px_rgba(0,0,0,0.8)]">
-            <div className="flex items-center justify-between border-b border-paper/10 bg-[#121212] px-6 py-4">
-              <div className="flex items-center gap-2">
-                <span className="size-3 rounded-full bg-red-500/80" />
-                <span className="size-3 rounded-full bg-yellow-500/80" />
-                <span className="size-3 rounded-full bg-green-500/80" />
-                <span className="ml-3 text-xs text-muted">
-                  arranto@core-terminal:~ $ initiate --contact
-                </span>
-              </div>
-              <span className="text-[11px] text-[#FF6B00]">SECURE TLS v1.3</span>
+        {/* Retro terminal window */}
+        <div className="relative mx-auto max-w-3xl border border-[#d8d9dc]/35 bg-[#050505] shadow-[0_30px_90px_rgba(0,0,0,0.9)] overflow-hidden font-mono text-xs sm:text-sm">
+          {/* CRT scanline overlay */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 z-10 opacity-[0.05]"
+            style={{
+              backgroundImage:
+                'repeating-linear-gradient(to bottom, #fff 0px, #fff 1px, transparent 1px, transparent 3px)',
+            }}
+          />
+
+          {/* Title bar */}
+          <div className="relative flex items-center justify-between border-b border-[#d8d9dc]/25 bg-[#0A0A0C] px-5 py-3">
+            <span className="text-[10px] text-[#8e8f94] tracking-wider uppercase">
+              arranto@core-terminal:~ $ initiate --contact
+            </span>
+            <span className="text-[10px] text-[#d8d9dc] font-semibold tracking-wider">
+              SECURE // TLS 1.3
+            </span>
+          </div>
+
+          <form onSubmit={handleSubmit} className="relative p-6 sm:p-10 bg-[#050505]">
+            {/* honeypot — hidden from real visitors, only bots fill it */}
+            <input
+              type="text"
+              name="botcheck"
+              value={botcheck}
+              onChange={(e) => setBotcheck(e.target.value)}
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden
+              className="absolute -start-[9999px] h-0 w-0 opacity-0"
+            />
+
+            <div className="mb-8 flex flex-wrap items-center gap-2 text-xs text-[#8e8f94] sm:text-sm">
+              <span className="font-bold text-[#d8d9dc]">visitor@arranto-core:~$</span>
+              <span className="text-white">compose --message</span>
+              <span className="inline-block h-4 w-2 animate-pulse bg-[#d8d9dc]" />
             </div>
 
-            {state === "sent" ? (
-              <div className="p-12 text-center">
-                <p className="text-lg font-semibold text-[#FF6B00]">
-                  TRANSACTION SUCCESSFUL
-                </p>
-                <p className="mt-2 text-sm text-fog">
-                  Your transmission has been encrypted and dispatched to Arranto lead engineers.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={submit} className="flex flex-col gap-6 p-8">
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <label className="flex flex-col gap-2">
-                    <span className="text-xs text-muted">$ enter_name:</span>
-                    <input
-                      name="name"
-                      type="text"
-                      required
-                      placeholder="Alan Turing"
-                      className="rounded-lg border border-paper/15 bg-[#050505] px-4 py-3 text-paper placeholder-muted/40 transition-colors focus:border-[#FF6B00] focus:outline-none"
-                    />
-                  </label>
-                  <label className="flex flex-col gap-2">
-                    <span className="text-xs text-muted">$ enter_email:</span>
-                    <input
-                      name="email"
-                      type="email"
-                      required
-                      placeholder="alan@turing.org"
-                      className="rounded-lg border border-paper/15 bg-[#050505] px-4 py-3 text-paper placeholder-muted/40 transition-colors focus:border-[#FF6B00] focus:outline-none"
-                    />
-                  </label>
+            <div className="space-y-6">
+              <div className="space-y-2">
+                <span className="block text-[10px] uppercase tracking-wider text-[#8e8f94]">
+                  $ {t('name')}:
+                </span>
+                <div className="flex items-center border border-white/15 bg-black px-4 py-3">
+                  <span className="me-2 shrink-0 text-[#d8d9dc]">&gt;</span>
+                  <input
+                    type="text"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="w-full bg-transparent font-mono text-white placeholder-white/20 focus:outline-none"
+                  />
                 </div>
+              </div>
 
-                <label className="flex flex-col gap-2">
-                  <span className="text-xs text-muted">$ enter_specifications:</span>
+              <div className="space-y-2">
+                <span className="block text-[10px] uppercase tracking-wider text-[#8e8f94]">
+                  $ {t('email')}:
+                </span>
+                <div className="flex items-center border border-white/15 bg-black px-4 py-3">
+                  <span className="me-2 shrink-0 text-[#d8d9dc]">&gt;</span>
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full bg-transparent font-mono text-white placeholder-white/20 focus:outline-none"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <span className="block text-[10px] uppercase tracking-wider text-[#8e8f94]">
+                  $ {t('message')}:
+                </span>
+                <div className="flex border border-white/15 bg-black px-4 py-3">
+                  <span className="me-2 shrink-0 pt-0.5 text-[#d8d9dc]">&gt;</span>
                   <textarea
-                    name="message"
                     rows={5}
                     required
-                    placeholder="Describe your system requirements, objectives, and timeline..."
-                    className="rounded-lg border border-paper/15 bg-[#050505] px-4 py-3 text-paper placeholder-muted/40 transition-colors focus:border-[#FF6B00] focus:outline-none"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    className="w-full resize-none bg-transparent font-mono text-white placeholder-white/20 focus:outline-none"
                   />
-                </label>
+                </div>
+              </div>
+            </div>
 
-                <input
-                  type="checkbox"
-                  name="botcheck"
-                  tabIndex={-1}
-                  aria-hidden="true"
-                  className="absolute -z-10 h-0 w-0 opacity-0"
-                />
-
-                {(state === "error" || state === "invalid") && (
-                  <p className="text-xs text-red-400">
-                    ERROR: Invalid transmission protocol. Please verify fields and re-try.
-                  </p>
-                )}
-
-                <button
-                  type="submit"
-                  disabled={state === "sending"}
-                  className="group relative inline-flex w-fit items-center gap-3 rounded-full border border-[#FF6B00] bg-[#FF6B00]/15 px-8 py-3.5 text-xs font-semibold uppercase tracking-wider text-paper transition-all duration-300 hover:bg-[#FF6B00] hover:text-ink hover:shadow-[0_0_30px_rgba(255,107,0,0.4)] disabled:opacity-50"
-                >
-                  <span>
-                    {state === "sending" ? "TRANSMITTING..." : "EXECUTE ENGAGEMENT"}
-                  </span>
-                  <span>→</span>
-                </button>
-              </form>
-            )}
-          </div>
-
-          {/* Side Direct Contact Info */}
-          <div className="flex flex-col gap-8 rounded-2xl border border-paper/15 bg-[#0D0D0D]/60 p-8">
-            <div>
-              <p className="font-mono text-xs uppercase tracking-widest text-[#FF6B00]">
-                DIRECT PROTOCOL
-              </p>
-              <a
-                href="mailto:contact@arranto.com"
-                className="mt-2 block font-sans text-2xl font-light text-paper hover:text-[#FF6B00] transition-colors"
+            {notice && (
+              <div
+                className={`mt-6 border p-3 text-xs ${
+                  notice.ok
+                    ? 'border-[#d8d9dc]/30 bg-[#d8d9dc]/10 text-[#d8d9dc]'
+                    : 'border-dashed border-white/30 bg-white/[0.03] text-[#8e8f94]'
+                }`}
               >
-                contact@arranto.com
-              </a>
-            </div>
+                {notice.text}
+              </div>
+            )}
 
-            <div className="border-t border-paper/10 pt-6">
-              <p className="font-mono text-xs uppercase tracking-widest text-muted">
-                OPERATIONAL NODES
-              </p>
-              <p className="mt-2 text-base text-paper">
-                Dubai • Riyadh • London • Singapore
-              </p>
+            <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+              <button
+                type="submit"
+                disabled={busy}
+                className="border border-[#d8d9dc] bg-[#d8d9dc] px-8 py-3 text-xs font-extrabold uppercase tracking-widest text-black transition-all hover:bg-transparent hover:text-[#d8d9dc] disabled:opacity-50"
+              >
+                {busy ? `> ${t('sending')}` : `> ${t('submit')}`}
+              </button>
+              <span className="flex items-center gap-2 text-[10px] text-[#8e8f94]">
+                <span className="size-2 animate-pulse bg-[#d8d9dc]" />
+                CORE // SYSTEM_ONLINE
+              </span>
             </div>
-
-            <div className="border-t border-paper/10 pt-6">
-              <p className="font-mono text-xs uppercase tracking-widest text-muted">
-                RESPONSE GUARANTEE
-              </p>
-              <p className="mt-2 text-base text-paper/80">
-                Direct lead engineer response within <strong className="text-[#FF951D]">4 hours</strong>.
-              </p>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </section>

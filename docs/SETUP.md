@@ -97,6 +97,7 @@ Security headers check: https://securityheaders.com/?q=arranto.com
 
 ## Manual/business tasks (not code)
 
-- **smilefotilo.com bridge + 301s** — done in the smile-fotilo repo (`next.config.ts` redirect map there): root stays live as bridge page; deep URLs 301 to Arranto equivalents (`/pricing`→`/contact`, `/locations/*`→`/studio`).
+- **smilefotilo.com bridge + 301s** — done in the smile-fotilo repo (`next.config.ts` redirect map there): root stays live as bridge page; deep URLs 301 to Arranto equivalents (`/pricing`→`/contact`, `/locations/*`→`/about`, `/products/*`→`/work`).
+  **`/studio` no longer exists** — the page was renamed to `/about`. Any old 301 still pointing at `/studio` now lands on a redirect rather than the page itself; update the smile-fotilo map to target `/about` directly. Arranto's own `next.config.ts` 301s the legacy paths (`/studio`, `/pricing`, `/products`, `/locations`, incl. locale-prefixed and deep variants) as a safety net for inbound links, but a redirect chain leaks a little link equity — fix it at the source.
 - **Google Business Profile**: EDIT the existing profile name to "Arranto" (https://business.google.com) — never create a new profile; this preserves the 118 reviews.
 - **Known audit exception**: `npm audit` reports 2 moderate advisories in `postcss` bundled inside Next.js itself; the proposed "fix" downgrades Next to v9 (nonsense). Build-time-only exposure. Re-check after each `next` upgrade.

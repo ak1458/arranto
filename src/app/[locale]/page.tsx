@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
+import { Loader } from "@/components/Loader";
+import { Dock } from "@/components/Dock";
 import { Hero } from "@/components/Hero";
-import { TechnicalScene } from "@/components/TechnicalScene";
-import { ExecutionScene } from "@/components/ExecutionScene";
 import { WorkGrid } from "@/components/WorkGrid";
+import { TickerSection } from "@/components/TickerSection";
+import { ProcessSection } from "@/components/ProcessSection";
 import { TerminalForm } from "@/components/TerminalForm";
-import { alternatesFor, ORG_JSONLD } from "@/lib/seo";
+import { alternatesFor, orgJsonLd } from "@/lib/seo";
 import { sorted, type Locale } from "@/content/work";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -21,26 +23,27 @@ export default async function Home({ params }: Props) {
 
   return (
     <>
+      <Loader />
+      <Dock />
       <Hero />
-      <TechnicalScene
-        mode="systems"
-        index="01"
-        eyebrow="SYSTEMS EVERYWHERE."
-        lines={["Disconnected.", "Inefficient.", "Holding you back."]}
+      {/* Brand layer: tiles carry the name and the region-free outcome only. The proof-layer
+          detail (`body`, FAQ) is one click deeper, on /work — MASTER-CONTEXT §1. */}
+      <WorkGrid
+        items={sorted.map((c) => ({
+          slug: c.slug,
+          title: c.title,
+          status: c.status,
+          stack: c.stack,
+          outcome: c.outcome[locale as Locale],
+        }))}
       />
-      <TechnicalScene
-        mode="core"
-        index="02"
-        eyebrow="ONE INTELLIGENT CORE."
-        lines={["We connect", "everything that", "matters."]}
-      />
-      <ExecutionScene />
-      <WorkGrid items={sorted} locale={locale as Locale} />
+      <TickerSection />
+      <ProcessSection />
       <TerminalForm />
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_JSONLD) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd(locale)) }}
       />
     </>
   );

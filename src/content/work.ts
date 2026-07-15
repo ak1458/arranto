@@ -1,35 +1,26 @@
+import { caseStudiesSchema, type CaseStudy } from "./work.schema";
+
 export type Locale = "en" | "ar";
-export type Status = "proven" | "in-pilot";
+export type Status = CaseStudy["status"];
+export type { CaseStudy };
 
-type Localized = Record<Locale, string>;
-
-export type CaseStudy = {
-  slug: string;
-  title: string;
-  outcome: Localized;
-  status: Status;
-  stack: string[];
-  order: number;
-  body: Localized;
-  faq: { q: Localized; a: Localized }[];
-};
-
-// Content contract mirrors docs/arranto-schema.md. Held products (TehsilOS)
-// must not be added here until scope is confirmed — hard gate, see Rule 017.
-export const caseStudies: CaseStudy[] = [
+// Content follows arranto-website-content-v3.md. Held products (TehsilOS)
+// must not be added here until scope is confirmed — hard gate.
+const content: CaseStudy[] = [
   {
     slug: "pulsekart",
     title: "PulseKart",
     outcome: {
-      en: "Pharmacy, without the paperwork.",
-      ar: "صيدلية، بلا أوراق.",
+      en: "Point-of-sale software for pharmacies.",
+      ar: "برمجيات نقاط البيع للصيدليات.",
     },
     status: "proven",
     stack: ["Next.js", "Node", "Postgres"],
-    order: 1,
+    order: 3,
+    repo: "pulsekart-web-nextjs",
     body: {
-      en: "A point-of-sale system for pharmacies and retailers — inventory, billing, and prescription tracking in one place, replacing a fully manual process end to end.",
-      ar: "نظام نقاط بيع للصيدليات وتجار التجزئة — المخزون والفوترة وتتبع الوصفات في مكان واحد، بديلًا كاملًا عن عملية يدوية بالكامل.",
+      en: "Point-of-sale software for pharmacies — billing, inventory, and expiry tracking in one screen. Replaced manual billing registers and paper stock logs.",
+      ar: "برمجيات نقاط البيع للصيدليات — الفوترة والمخزون وتتبع الصلاحية في شاشة واحدة. استبدلت سجلات الفوترة اليدوية ودفاتر المخزون الورقية.",
     },
     faq: [
       {
@@ -49,18 +40,121 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
   {
+    slug: "veloria-vault",
+    title: "Veloria Vault",
+    outcome: {
+      en: "Headless commerce, migrated to Next.js.",
+      ar: "تجارة بلا واجهة، مهاجرة إلى Next.js.",
+    },
+    status: "proven",
+    stack: ["Next.js", "Headless"],
+    order: 4,
+    body: {
+      en: "Headless commerce, migrated to Next.js. Site, ads, and product creatives — managed end-to-end.",
+      ar: "تجارة بلا واجهة، مهاجرة إلى Next.js. الموقع والإعلانات والإبداعات المنتجية — مُدارة بالكامل.",
+    },
+    faq: [
+      {
+        q: { en: "What did the migration involve?", ar: "ماذا تضمّنت عملية الترحيل؟" },
+        a: {
+          en: "The storefront was rebuilt headless on Next.js for speed, with site, ad creatives, and product content managed end-to-end — not just a repaint.",
+          ar: "أُعيد بناء المتجر بلا واجهة على Next.js من أجل السرعة، مع إدارة الموقع والإبداعات الإعلانية والمحتوى المنتجي بالكامل — لا مجرد إعادة طلاء.",
+        },
+      },
+      {
+        q: { en: "Is it still running?", ar: "هل ما زال يعمل؟" },
+        a: {
+          en: "Yes — proven, live in production.",
+          ar: "نعم — مُثبت، ويعمل فعليًا في الإنتاج.",
+        },
+      },
+    ],
+  },
+  {
+    slug: "fatura-lite-pro",
+    title: "Fatura Lite Pro",
+    // Region-free by contract (arranto-schema.md): `outcome` is the tile line and tiles
+    // render on the home page, which is brand layer — no region names. The Saudi/ZATCA
+    // detail lives in `body` and the FAQ, which render only on the /work proof pages.
+    outcome: {
+      en: "Real-time e-invoice clearance.",
+      ar: "تخليص فواتير إلكترونية لحظي.",
+    },
+    status: "in-pilot",
+    stack: ["Next.js", "Node", "XML/Crypto"],
+    order: 1,
+    repo: "fatooralite",
+    body: {
+      en: "Real-time e-invoice clearance for Saudi Arabia — CCSID onboarding, cryptographic stamping, live clearance.",
+      ar: "تخليص فواتير إلكترونية لحظي للسعودية — تسجيل CCSID، وختم تشفيري، وتخليص مباشر.",
+    },
+    faq: [
+      {
+        q: {
+          en: "Does this need ZATCA accreditation?",
+          ar: "هل يتطلب هذا اعتمادًا من زاتكا؟",
+        },
+        a: {
+          en: "No. ZATCA doesn't require it — the choice is who builds and maintains the system.",
+          ar: "لا. زاتكا لا تشترط ذلك — الخيار هو من يبني النظام ويصونه.",
+        },
+      },
+      {
+        q: {
+          en: "What does CCSID onboarding involve?",
+          ar: "ماذا يتضمن تسجيل CCSID؟",
+        },
+        a: {
+          en: "A cryptographic certificate that authenticates the business to ZATCA's network before invoices can be stamped and cleared in real time.",
+          ar: "شهادة تشفيرية توثّق المنشأة لدى شبكة زاتكا قبل أن تُختم الفواتير وتُخلَّص لحظيًا.",
+        },
+      },
+    ],
+  },
+  {
+    slug: "sanad-os",
+    title: "SanadOS",
+    outcome: {
+      en: "Facilities operations, in one system.",
+      ar: "عمليات المرافق، في نظام واحد.",
+    },
+    status: "in-pilot",
+    stack: ["React", "Supabase", "AI"],
+    order: 2,
+    body: {
+      en: "Facilities operations — work orders, assets, maintenance history — in one system.",
+      ar: "عمليات المرافق — أوامر العمل والأصول وسجل الصيانة — في نظام واحد.",
+    },
+    faq: [
+      {
+        q: { en: "What replaces the spreadsheets, concretely?", ar: "ما الذي يحل محل جداول البيانات تحديدًا؟" },
+        a: {
+          en: "One system of record: every asset, every work order, and its full maintenance history — searchable, assignable, and auditable.",
+          ar: "نظام سجل واحد: كل أصل، وكل أمر عمل، وسجل صيانته الكامل — قابل للبحث والإسناد والتدقيق.",
+        },
+      },
+      {
+        q: { en: "Is it in production?", ar: "هل هو في الإنتاج؟" },
+        a: {
+          en: "No — it is in pilot with real operators. Status here is stated exactly as it is.",
+          ar: "لا — إنه قيد التجربة مع مشغّلين فعليين. الحالة هنا مذكورة كما هي تمامًا.",
+        },
+      },
+    ],
+  },
+  {
     slug: "orderflow",
     title: "OrderFlow",
     outcome: {
       en: "Logistics, tracked in real time.",
-      ar: "لوجستيات، تُتتبع لحظيًا.",
+      ar: "الخدمات اللوجستية، متتبَّعة في الوقت الحقيقي.",
     },
     status: "proven",
-    stack: ["Next.js", "Node", "WebSockets"],
-    order: 2,
+    stack: ["Next.js", "Node", "Postgres"],
+    order: 5,
     body: {
-      en: "An end-to-end logistics platform — orders, delivery hubs, and driver progress on one live dashboard, so dispatch decisions happen on data instead of phone calls.",
-      ar: "منصة لوجستية متكاملة — الطلبات ومراكز التوزيع وتقدّم السائقين في لوحة حية واحدة، لتُتخذ قرارات الإرسال بالبيانات لا بالمكالمات.",
+      en: "Logistics, tracked in real time — orders, dispatch, and delivery state on one live board instead of phone calls and spreadsheets.",
+      ar: "الخدمات اللوجستية، متتبَّعة في الوقت الحقيقي — الطلبات والإرسال وحالة التسليم على لوحة واحدة مباشرة بدلًا من المكالمات وجداول البيانات.",
     },
     faq: [
       {
@@ -79,109 +173,9 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
   },
-  {
-    slug: "veloria-vault",
-    title: "Veloria Vault",
-    outcome: {
-      en: "Commerce, rebuilt.",
-      ar: "تجارة، أُعيد بناؤها.",
-    },
-    status: "proven",
-    stack: ["Next.js", "Commerce", "SEO"],
-    order: 3,
-    body: {
-      en: "A leather-goods e-commerce build — catalogue, checkout, and search foundations rebuilt for speed, turning a slow storefront into one that sells.",
-      ar: "بناء متجر إلكتروني للمنتجات الجلدية — الكتالوج والدفع وأساسات البحث أُعيد بناؤها للسرعة، ليتحول متجر بطيء إلى متجر يبيع.",
-    },
-    faq: [
-      {
-        q: { en: "What changed for the business?", ar: "ما الذي تغيّر للنشاط التجاري؟" },
-        a: {
-          en: "Faster pages, cleaner product structure, and a checkout that works the first time — the fundamentals that decide whether a store converts.",
-          ar: "صفحات أسرع، وهيكلة أنظف للمنتجات، ودفع يعمل من المرة الأولى — الأساسيات التي تقرر إن كان المتجر يبيع.",
-        },
-      },
-      {
-        q: { en: "Was this a redesign or a rebuild?", ar: "هل كان إعادة تصميم أم إعادة بناء؟" },
-        a: {
-          en: "A rebuild — the storefront was replaced, not repainted.",
-          ar: "إعادة بناء — استُبدل المتجر، ولم يُعَد طلاؤه.",
-        },
-      },
-    ],
-  },
-  {
-    slug: "zatca-compliance-engine",
-    title: "ZATCA Compliance Engine",
-    outcome: {
-      en: "Real-time e-invoice clearance.",
-      ar: "تخليص فواتير إلكترونية لحظي.",
-    },
-    status: "in-pilot",
-    stack: ["Next.js", "Node", "XML/Crypto"],
-    order: 4,
-    body: {
-      en: "Built to the ZATCA Phase 2 specification — CCSID onboarding, cryptographic stamping, real-time clearance. Currently in pilot.",
-      ar: "مبني وفق مواصفات المرحلة الثانية من «زاتكا» — تسجيل CCSID، وختم تشفيري، وتخليص لحظي. حاليًا قيد التجربة.",
-    },
-    faq: [
-      {
-        q: {
-          en: "Does this require ZATCA accreditation?",
-          ar: "هل يتطلب هذا اعتمادًا من زاتكا؟",
-        },
-        a: {
-          en: "No — ZATCA does not require accreditation to use a compliant solution. The choice is who builds and maintains it.",
-          ar: "لا — زاتكا لا تشترط اعتمادًا لاستخدام حل متوافق. الخيار هو من يبنيه ويصونه.",
-        },
-      },
-      {
-        q: {
-          en: "What does CCSID onboarding involve?",
-          ar: "ماذا يتضمن تسجيل CCSID؟",
-        },
-        a: {
-          en: "Cryptographic certificate onboarding that authenticates the business to ZATCA's clearance network before invoices can be stamped and cleared in real time.",
-          ar: "تسجيل شهادات تشفيرية يوثّق المنشأة لدى شبكة التخليص التابعة لزاتكا قبل أن تُختم الفواتير وتُخلَّص لحظيًا.",
-        },
-      },
-    ],
-  },
-  {
-    slug: "sanad-os",
-    title: "SanadOS",
-    outcome: {
-      en: "Facilities, in one system.",
-      ar: "المرافق، في نظام واحد.",
-    },
-    status: "in-pilot",
-    stack: ["Next.js", "Node", "Postgres"],
-    order: 5,
-    body: {
-      en: "Work orders, assets, maintenance history — replacing spreadsheets for Gulf operators. In pilot.",
-      ar: "أوامر العمل والأصول وسجل الصيانة — بديل عن جداول البيانات لمشغّلي المرافق في الخليج. قيد التجربة.",
-    },
-    faq: [
-      {
-        q: {
-          en: "What replaces the spreadsheets, concretely?",
-          ar: "ما الذي يحل محل جداول البيانات تحديدًا؟",
-        },
-        a: {
-          en: "One system of record: every asset, every work order, and its full maintenance history — searchable, assignable, and auditable.",
-          ar: "نظام سجل واحد: كل أصل، وكل أمر عمل، وسجل صيانته الكامل — قابل للبحث والإسناد والتدقيق.",
-        },
-      },
-      {
-        q: { en: "Is it in production?", ar: "هل هو في الإنتاج؟" },
-        a: {
-          en: "No — it is in pilot with real operators. Status here is stated exactly as it is.",
-          ar: "لا — إنه قيد التجربة مع مشغّلين فعليين. الحالة هنا مذكورة كما هي تمامًا.",
-        },
-      },
-    ],
-  },
 ];
+
+export const caseStudies: CaseStudy[] = caseStudiesSchema.parse(content);
 
 export const bySlug = (slug: string) =>
   caseStudies.find((c) => c.slug === slug);

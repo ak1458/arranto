@@ -3,94 +3,632 @@
     "title": "Arranto — Software Studio",
     "description": "Start to running. Nothing left undone. Software studio, est. 2017.",
     "workTitle": "Work — Arranto",
-    "workDescription": "Systems shipped, end to end.",
-    "studioTitle": "Studio — Arranto",
-    "studioDescription": "One engineer. AI-native by design.",
+    "workDescription": "Five systems. Two still in pilot.",
+    "studioTitle": "About — Arranto",
+    "studioDescription": "Founded 2017. Still one person.",
     "contactTitle": "Contact — Arranto",
-    "contactDescription": "Tell us what you're building."
+    "contactDescription": "Tell me what you're building. Messages are read and answered by the founder within one business day.",
+    "toolsTitle": "Free Tools — Arranto",
+    "toolsDescription": "Free, production-ready developer and AI tools. No signup or email gate required."
   },
   "nav": {
     "home": "Home",
+    "services": "Services",
     "work": "Work",
-    "studio": "Studio",
-    "contact": "Contact",
+    "pricing": "Pricing",
+    "about": "About",
+    "studio": "About",
     "tools": "Tools",
+    "contact": "Contact",
     "menu": "Menu",
     "close": "Close",
     "language": "Language",
     "skip": "Skip to content"
   },
   "hero": {
-    "boot": "$ arranto run — ok",
     "line1": "Start to running.",
     "line2Pre": "Nothing left ",
     "line2Em": "undone.",
-    "fragment": "Software studio. Est. 2017.",
+    "fragment": "Est. 2017",
     "ctaWork": "Work",
-    "ctaContact": "Contact"
+    "ctaContact": "Contact",
+    "col1Title": "Systems",
+    "col1Text": "Five systems. Two still in pilot. Software that businesses run their day on — billing, operations, compliance.",
+    "col2Title": "Studio",
+    "col2Text": "Founded 2017. Still one person. 10+ projects, 118 five-star reviews, and a direct path from idea to production.",
+    "outro": "ARRANTO STUDIO — ENGINEERING HIGH-PERFORMANCE WEB ARCHITECTURES & AGENTIC SYSTEMS."
   },
   "home": {
-    "workEyebrow": "// proof",
+    "workEyebrow": "Work",
     "workHeading": "Work",
-    "allWork": "All work",
-    "studioEyebrow": "// studio",
-    "studioHeading": "Studio",
-    "studioBody": "One engineer. AI-native by design. 10+ delivered projects. 118 verified reviews.",
-    "studioCta": "About",
-    "contactHeading": "Let's talk.",
-    "contactCta": "Contact"
+    "allWork": "See the work →",
+    "workLine": "Five systems. Two still in pilot.",
+    "studioEyebrow": "About",
+    "studioHeading": "About",
+    "studioBody": "Founded 2017. Still one person.",
+    "studioCta": "About →",
+    "contactHeading": "Tell me what you're building.",
+    "contactCta": "Contact →"
   },
   "work": {
-    "eyebrow": "// proof",
+    "eyebrow": "Work",
     "heading": "Work",
+    "indexHeading": "Systems, not sites.",
+    "indexIntro": "Each one is software a business runs its day on — billing, dispatch, maintenance, invoice clearance. Status is labelled honestly: proven means live in production, in pilot means built and being tested, nothing more.",
+    "subline": "Five systems. Two still in pilot.",
     "details": "Details",
-    "status": { "proven": "proven", "in-pilot": "in pilot" }
+    "contact": "Contact",
+    "status": {
+      "proven": "Proven",
+      "in-pilot": "In pilot"
+    },
+    "stat1Label": "Delivered Systems",
+    "stat1Value": "5",
+    "stat2Label": "Active Pilots",
+    "stat2Value": "2",
+    "stat3Label": "Founder Built",
+    "stat3Value": "100%",
+    "moreComing": "More systems shipping soon.",
+    "gridIntro": "Five systems, one standard. Each card stacks as you scroll — the next slides over the last.",
+    "outcomeLabel": "Outcome",
+    "badgeProven": "Proven outcome",
+    "badgePilot": "Active pilot",
+    "caseStudyLabel": "Enterprise case study",
+    "overviewHeading": "Project overview",
+    "techStackHeading": "Technology stack",
+    "ctaHeading": "Ready to engineer your custom system?",
+    "ctaBody": "Let's build resilient, mission-critical infrastructure for your operations.",
+    "ctaSimilar": "Start a similar build →",
+    "ctaBuy": "Buy this project →",
+    "similarMessageTemplate": "I'm interested in a project similar to \"{title}\". Tell me more about what a custom build like this would involve.",
+    "buyMessageTemplate": "I'd like to inquire about acquiring \"{title}\" as-is. Please reach out with details on availability and next steps.",
+    "repoLabel": "Open-source repository",
+    "repoStatus": "Open source",
+    "starsLabel": "GitHub stars"
   },
   "studio": {
-    "heading": "Arranto.",
-    "eyebrow": "ABOUT THE STUDIO",
-    "tagline": "One engineer. AI-native by design.",
-    "statEst": "2017",
-    "statEstLabel": "Founded in Gonda, India (originally Smile Fotilo)",
-    "statSize": "1 Engineer",
-    "statSizeLabel": "Founder-led, highly focused execution",
-    "statShipped": "10+ Shipped",
-    "statShippedLabel": "Enterprise and global production systems",
-    "statReviews": "118 Reviews",
-    "statReviewsLabel": "4.9-star average verified Google reviews",
-    "storyHeading": "Our Story",
-    "storyBody1": "Founded in 2017 in Gonda, India (as Smile Fotilo), we have evolved into a premium, founder-led, AI-native software studio. We believe in absolute focus — one engineer building systems that scale globally. Our roots lie deep, but our products power critical systems in the Gulf, US, and Europe.",
-    "storyBody2": "Every line of code is written with a simple guarantee: start to running, with nothing left undone. We build boring, reliable infrastructure chosen for uptime and resilience, not novelty.",
-    "ctaText": "Ready to build something that lasts?",
-    "ctaBtn": "Initiate Engagement"
+    "eyebrow": "About",
+    "heading": "The studio is one person.",
+    "storyHeading": "Our Journey & Evolution",
+    "body1": "Arranto wasn’t born in a boardroom; it was forged in the trenches of digital transformation. Our journey began in 2017, helping over 100+ local businesses transition to the digital space. We built foundational web architectures, optimized local operations, and delivered results that earned us 118+ verified five-star reviews.",
+    "body2": "However, as our clients scaled, their problems became more complex. Traditional web platforms and legacy CMS systems could no longer keep up with the demands of modern data, compliance, and automation.",
+    "body3": "We realized that the future of business isn't just about having a website—it's about having self-sustaining digital systems. That realization led to the evolution of our team and the birth of Arranto.",
+    "body4": "Today, we operate as a highly specialized, AI-augmented product studio. We leverage cutting-edge tech stacks (React, TypeScript, Native Apps) and artificial intelligence to engineer custom SaaS products, enterprise compliance systems (like ZATCA and Sanad), and robust business automations for clients across the US, Europe, and the Middle East.",
+    "body5": "We don't just write code; we architect solutions that replace manual labor, ensure strict legal compliance, and drive measurable ROI. Arranto is the culmination of years of hands-on experience, now scaled for the global market.",
+    "statsHeading": "The record",
+    "stats": [
+      {
+        "v": "2017",
+        "k": "Established"
+      },
+      {
+        "v": "100+",
+        "k": "Systems & Projects Delivered"
+      },
+      {
+        "v": "118+",
+        "k": "Verified 5-Star Reviews"
+      }
+    ],
+    "principlesHeading": "What that means for a project",
+    "principles": [
+      {
+        "t": "No hand-offs",
+        "d": "There is no account manager, no junior taking over after the pitch, no ticket queue between you and the person building."
+      },
+      {
+        "t": "Honest status",
+        "d": "Work in pilot is called in pilot — here, in the case studies, and by the chat assistant, even when a live label would sell better."
+      },
+      {
+        "t": "Built to be handed over",
+        "d": "Type-safe code, plain SQL, documented deploys. If we part ways, another engineer can pick it up without a rewrite."
+      },
+      {
+        "t": "Scope before price",
+        "d": "No public price list. Scope and cost are agreed in writing before a line of code is written."
+      }
+    ],
+    "whatWeDoHeading": "What we build",
+    "whatWeDoSubline": "Custom software, web applications, AI-powered systems, and everything needed to get a business running.",
+    "fromLabel": "From",
+    "photoPlaceholder": "Founder photo",
+    "ctaHeading": "Tell me what you're building.",
+    "cta": "Start a project →"
+  },
+  "faq": {
+    "heading": "Frequently asked questions",
+    "subline": "Honest answers to questions we hear from clients and visitors across Saudi Arabia, the UAE, Oman, Bahrain, and beyond.",
+    "items": [
+      {
+        "q": "Do you build software for businesses in Saudi Arabia, the UAE, Oman, and Bahrain?",
+        "a": "Yes. Arranto works with Gulf clients remotely — same engineer, same process, no local office required. Current work includes a real-time e-invoicing engine built to Saudi Arabia's compliance standard."
+      },
+      {
+        "q": "Can you build ZATCA-compliant e-invoicing software?",
+        "a": "Yes — Fatura Lite Pro, one of our production case studies, is a real-time invoice clearance engine built for Saudi Arabia's ZATCA e-invoicing requirement: XML signing, cryptographic stamps, and live regulatory submission."
+      },
+      {
+        "q": "Do you support Arabic and right-to-left (RTL) layouts?",
+        "a": "Every site and system ships with full Arabic and RTL support from the first commit — logical CSS, mirrored layouts, and native Arabic typography, not an add-on."
+      },
+      {
+        "q": "How do meetings and time zones work for GCC clients?",
+        "a": "Arranto is remote-first. Calls run at a time that overlaps with Gulf Standard Time, and every scope, cost, and update is confirmed in writing — nothing depends on being in the same room or time zone."
+      },
+      {
+        "q": "How does a one-person studio handle complex projects?",
+        "a": "The same engineer handles every stage — architecture, code, deployment, and support. No hand-offs, no context lost between teams. The advantage: faster iteration, consistent quality, and a single point of accountability."
+      },
+      {
+        "q": "How long does a typical project take?",
+        "a": "Marketing websites: 3–5 weeks. Custom software: 6–14 weeks depending on scope. SaaS platforms: 10–20 weeks. Timeline is agreed before code begins."
+      },
+      {
+        "q": "What happens after launch?",
+        "a": "A self-improvement agent monitors your site's search rankings and traffic daily. You also get a direct line to the person who built it — no ticket queue, no rotating account manager."
+      },
+      {
+        "q": "How much does a project cost for a Gulf-based business?",
+        "a": "There's no public price list, for Gulf clients or anyone else — scope and cost are agreed in writing before any work starts."
+      }
+    ]
   },
   "contact": {
-    "heading": "Let's talk.",
-    "terminalTitle": "arranto ~ /new-project",
-    "name": "name",
-    "email": "email",
-    "message": "building",
-    "submit": "transmit ↵",
-    "sending": "transmitting…",
-    "success": "✓ message queued — expect a reply within 48 hours.",
-    "error": "✗ transmission failed — email hello@arranto.com instead.",
-    "invalid": "✗ name, valid email, and a message are required."
+    "eyebrow": "Contact",
+    "subline": "Tell me what you're building. The terminal echoes it back and queues your message.",
+    "heading": "Tell me what you're building.",
+    "nextHeading": "What happens after you send",
+    "next": [
+      "The message lands in one inbox — mine. There is no shared queue and no sales team.",
+      "I read it myself and reply within one business day.",
+      "If it's a fit, we agree scope and cost in writing before any work starts.",
+      "If it isn't, I'll say so plainly and point you somewhere better."
+    ],
+    "directHeading": "Prefer plain email?",
+    "directBody": "help@arranto.com — same inbox, same person, same reply time.",
+    "methodWhatsapp": "WhatsApp",
+    "methodWhatsappBody": "Direct chat for urgent questions — no bot, no queue.",
+    "methodLinkedin": "LinkedIn",
+    "methodLinkedinBody": "Connect or message me directly.",
+    "methodGithub": "GitHub",
+    "methodGithubBody": "Browse the real, public work.",
+    "methodPhone": "Direct line",
+    "name": "Name",
+    "email": "Email",
+    "message": "What are you building?",
+    "submit": "Send",
+    "sending": "Sending…",
+    "success": "Got it. I read everything myself — expect a reply within a day.",
+    "error": "Something went wrong — email help@arranto.com instead.",
+    "invalid": "Name, a valid email, and a message are required."
+  },
+  "menu": {
+    "hint": "Drag or hover to explore",
+    "copyright": "© 2026 Arranto — founder-led software studio."
+  },
+  "ticker": {
+    "phrases": [
+      "One founder.",
+      "No hand-offs.",
+      "No account managers.",
+      "No ticket queues.",
+      "Just the person who builds it."
+    ]
+  },
+  "process": {
+    "eyebrow": "How we work",
+    "heading": "Six steps. No hand-offs.",
+    "subline": "One person, start to finish — every stage below is done by the same engineer who answers your first email.",
+    "steps": [
+      {
+        "num": "01",
+        "title": "Discover",
+        "tag": "Architecture audit",
+        "desc": "Map the operational friction, isolate the bottleneck, define the technical blueprint before a line of code is written."
+      },
+      {
+        "num": "02",
+        "title": "Design",
+        "tag": "Interface & system",
+        "desc": "Interfaces and a design system built for this brief specifically — not a template stretched to fit."
+      },
+      {
+        "num": "03",
+        "title": "Build",
+        "tag": "Full-stack engineering",
+        "desc": "Type-safe systems, clean data pipelines, APIs built to scale from day one, not patched later."
+      },
+      {
+        "num": "04",
+        "title": "Deploy",
+        "tag": "Release & infrastructure",
+        "desc": "Zero-downtime releases, automated rollback, TLS by default, monitored from the first hour live."
+      },
+      {
+        "num": "05",
+        "title": "Grow",
+        "tag": "SEO, AEO & GEO",
+        "desc": "Structured data, llms.txt, and sitemaps so search engines and AI answer agents (ChatGPT, Perplexity, Google AI Overviews) can find and cite the work correctly."
+      },
+      {
+        "num": "06",
+        "title": "Support",
+        "tag": "Direct line",
+        "desc": "One direct line to the person who built it, plus a self-improvement agent watching search rankings and traffic daily — not a ticket queue or a rotating account team."
+      }
+    ]
   },
   "footer": {
-    "address": "Arranto, Gonda. Est. 2017.",
-    "privacy": "Privacy",
-    "terms": "Terms",
-    "tools": "Tools"
+    "address": "Arranto. Est. 2017.",
+    "blurb": "Founder-led software studio. Websites, custom software, and AI systems — built by one engineer, start to running.",
+    "studioHeading": "Studio",
+    "resourcesHeading": "Resources",
+    "legalHeading": "Legal",
+    "contactHeading": "Contact",
+    "cta": "Start a project →",
+    "tools": "All Tools",
+    "toolAudit": "Website Audit",
+    "toolSeo": "SEO Content",
+    "toolBrand": "Brand Kit",
+    "toolCalendar": "Content Calendar",
+    "toolDocs": "Document AI",
+    "toolFactory": "Website Factory",
+    "work": "Work",
+    "about": "About",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookie Policy",
+    "disclaimer": "Disclaimer",
+    "email": "help@arranto.com",
+    "rights": "All rights reserved."
   },
   "legal": {
-    "privacyTitle": "Privacy",
-    "privacyBody": "The contact form collects your name, email, and message — used only to reply to you. No ad pixels, no data brokers, no tracking beyond aggregate traffic counts.",
-    "termsTitle": "Terms",
-    "termsBody": "Content on this site describes work delivered by Arranto. Product statuses are stated honestly — anything marked “in pilot” is not yet in production. All content © Arranto."
+    "lastUpdated": "Last updated: 13 July 2026",
+    "backHome": "Back to home",
+    "privacyTitle": "Privacy Policy",
+    "privacySubtitle": "What Arranto collects, why, and how to request it back.",
+    "privacySections": [
+      {
+        "h": "1. What we collect",
+        "b": "Only what you give us directly: name, email, and message — submitted through the contact form or a conversation with the chat assistant. No account creation, no payment details are ever collected on this site."
+      },
+      {
+        "h": "2. How we use it",
+        "b": "To reply to your inquiry and keep a record of the conversation. It is never sold, shared with third parties for their own use, or used to build advertising profiles."
+      },
+      {
+        "h": "3. AI processing",
+        "b": "Contact messages and chat conversations are processed by AI models, routed through OpenRouter, to generate a reply and to help improve the site. Providers process this data only to return a response — not to train their own models on it beyond standard API terms."
+      },
+      {
+        "h": "4. Storage",
+        "b": "Inquiries are stored in a Supabase database behind server-side access controls. Kept only as long as needed to respond, and deleted on request."
+      },
+      {
+        "h": "5. Analytics",
+        "b": "Google Analytics 4 and Google Tag Manager run on this site to understand traffic and page performance. See the Cookie Policy for exactly what's set. No advertising or remarketing pixels run on this site — ever."
+      },
+      {
+        "h": "6. Your rights",
+        "b": "Write to help@arranto.com to request access to, or deletion of, any data tied to your email. Expect a reply within a few days."
+      },
+      {
+        "h": "7. Contact",
+        "b": "Questions about this policy: help@arranto.com."
+      }
+    ],
+    "termsTitle": "Terms of Service",
+    "termsSubtitle": "The plain-language terms for using this site and working with Arranto.",
+    "termsSections": [
+      {
+        "h": "1. Who this is",
+        "b": "Arranto is a founder-led software studio, established 2017 as Smile Fotilo. “We” or “Arranto” means the studio; “you” means anyone using this site."
+      },
+      {
+        "h": "2. Using this site",
+        "b": "Case studies and status labels (“proven” or “in pilot”) are accurate as of publish date. Systems marked “in pilot” are never represented as live, finished, or production-proven."
+      },
+      {
+        "h": "3. No public pricing",
+        "b": "Arranto works on a menu-of-services, inquiry basis. Nothing on this site is an offer of a specific price — scope and cost are agreed directly, in writing, before any work begins."
+      },
+      {
+        "h": "4. Free tools",
+        "b": "The tools under /tools (website audit, SEO content, brand kit, and others) provide automated, AI-assisted output for general guidance. They are not professional, legal, or financial advice, and results are not guaranteed."
+      },
+      {
+        "h": "5. Intellectual property",
+        "b": "Site content, brand marks, and case-study write-ups belong to Arranto. Client deliverables are governed by that project's own written agreement, not by this page."
+      },
+      {
+        "h": "6. No guaranteed outcomes",
+        "b": "Case studies describe real, delivered or in-pilot work. Results for a new engagement depend on its own scope and inputs and are never guaranteed by anything on this page."
+      },
+      {
+        "h": "7. Chat assistant",
+        "b": "The chat assistant answers only from this site's published content. It will not describe an in-pilot product as live, and it doesn't replace a direct conversation with the founder for anything that matters to a decision."
+      },
+      {
+        "h": "8. Limitation of liability",
+        "b": "Arranto is not liable for indirect or consequential damages arising from use of this website. Liability for a paid engagement is governed by that engagement's own written agreement."
+      },
+      {
+        "h": "9. Governing relationship",
+        "b": "Using this site does not create a client relationship. That starts with a direct conversation via the contact page."
+      },
+      {
+        "h": "10. Changes",
+        "b": "These terms may be updated from time to time; the version shown here at the time of your visit is the one that applies."
+      },
+      {
+        "h": "11. Contact",
+        "b": "Questions about these terms: help@arranto.com."
+      }
+    ],
+    "cookiesTitle": "Cookie Policy",
+    "cookiesSubtitle": "Every cookie this site sets, what it does, and how to opt out.",
+    "cookiesIntro": "This site uses a small number of cookies and browser-storage entries, mainly to understand traffic and keep the language switcher working. No advertising or remarketing cookies are used — ever.",
+    "cookiesTableHeaders": {
+      "name": "Name",
+      "provider": "Provider",
+      "purpose": "Purpose",
+      "duration": "Duration",
+      "type": "Type"
+    },
+    "cookiesRows": [
+      {
+        "name": "_ga, _ga_*",
+        "provider": "Google Analytics",
+        "purpose": "Distinguishes visitors and sessions to understand which pages are useful.",
+        "duration": "Up to 2 years",
+        "type": "Analytics"
+      },
+      {
+        "name": "NEXT_LOCALE",
+        "provider": "Arranto",
+        "purpose": "Remembers your chosen language (English or Arabic).",
+        "duration": "1 year",
+        "type": "Necessary"
+      }
+    ],
+    "cookiesConsentHeading": "3. Where we're honest about a gap",
+    "cookiesConsentBody": "Analytics currently loads with these cookies allowed by default — advertising signals (ad_storage, ad_user_data, ad_personalization) are permanently denied and never sent, but there is no accept/decline banner yet for EU visitors. That's on our list before wider EU launch. Until then, block analytics cookies in your browser's privacy settings at any time — the site works fully without them.",
+    "cookiesChangeHeading": "4. Changing your choice",
+    "cookiesChangeBody": "Block or clear cookies in your browser settings at any time. The site continues to function normally either way.",
+    "cookiesContactHeading": "5. Questions",
+    "cookiesContactBody": "Email help@arranto.com, or see the Privacy Policy for how personal data is handled.",
+    "disclaimerTitle": "Disclaimer",
+    "disclaimerSubtitle": "What our case studies, free tools, and third-party mentions do and don't promise.",
+    "disclaimerSections": [
+      {
+        "h": "1. Case studies and results",
+        "b": "Case studies describe real client work. Status is labeled accurately — “proven” means delivered and in production; “in pilot” means built and being tested, not yet live. Past outcomes don't guarantee similar results for a different business."
+      },
+      {
+        "h": "2. Free tools & chat assistant",
+        "b": "Automated AI output from the /tools suite and the chat assistant is a starting point, not professional, legal, tax, or compliance advice — including for e-invoicing or regulatory topics. Verify anything consequential with a qualified professional, or talk to the founder directly."
+      },
+      {
+        "h": "3. No pricing promises",
+        "b": "Nothing on this site states a specific price. Costs are confirmed in writing, per project, before work starts."
+      },
+      {
+        "h": "4. Third-party names",
+        "b": "Product and platform names mentioned on this site are trademarks of their respective owners. Mentioning them means we work with those platforms — not that those companies endorse Arranto."
+      },
+      {
+        "h": "5. Questions",
+        "b": "Email help@arranto.com."
+      }
+    ]
+  },
+  "terminal": {
+    "steps": {
+      "identity": {
+        "label": "identity",
+        "name": "your name",
+        "company": "company (optional)"
+      },
+      "contact": {
+        "label": "contact",
+        "email": "you@company.com"
+      },
+      "brief": {
+        "label": "brief",
+        "projectType": "what are we building?",
+        "message": "tell me more"
+      },
+      "review": {
+        "label": "review",
+        "confirm": "confirm & transmit"
+      }
+    },
+    "projectTypes": [
+      "Website",
+      "Custom software",
+      "AI / automation",
+      "Not sure yet"
+    ],
+    "next": "next →",
+    "back": "← back",
+    "transmit": "[ TRANSMIT ]",
+    "editStep": "edit"
   },
   "notFound": {
     "code": "404 — not found",
     "body": "This route doesn't exist.",
     "cta": "Home"
+  },
+  "tools": {
+    "eyebrow": "Free Tools",
+    "heading": "Production-ready tools, free to use.",
+    "subline": "Every tool runs live on our APIs. No email gate, no signup required.",
+    "openTool": "Open tool",
+    "toolsGrid": {
+      "audit": {
+        "title": "Website Audit",
+        "badge": "Instant A–F Grade",
+        "desc": "Full technical audit of any website across Core Web Vitals, SEO, security, and accessibility.",
+        "f1": "Core Web Vitals",
+        "f2": "SEO Check",
+        "f3": "Security Headers",
+        "f4": "Prioritized Fixes"
+      },
+      "seo": {
+        "title": "SEO Content Generator",
+        "badge": "AI Content Kit",
+        "desc": "Generate structured blog outlines, meta titles, descriptions, and semantic keywords.",
+        "f1": "Title & Meta",
+        "f2": "Blog Outline",
+        "f3": "Semantic Keywords",
+        "f4": "JSON-LD Schema"
+      },
+      "brand": {
+        "title": "Brand Kit Generator",
+        "badge": "Identity System",
+        "desc": "Create harmonious color palettes, typography pairings, brand voice rules, and SVG logos.",
+        "f1": "HSL Color Tokens",
+        "f2": "Typography Pairings",
+        "f3": "Voice & Tone",
+        "f4": "Export CSS/JSON"
+      },
+      "calendar": {
+        "title": "Content Calendar Generator",
+        "badge": "Multi-Platform Plan",
+        "desc": "Plan a full week of strategic social posts across LinkedIn, X/Twitter, and Instagram.",
+        "f1": "Week-Long Schedule",
+        "f2": "Platform Hooks",
+        "f3": "Optimal Times",
+        "f4": "Hashtag Strategy"
+      },
+      "docs": {
+        "title": "Document AI Intelligence",
+        "badge": "Automated Extraction",
+        "desc": "Extract structured key-value pairs, summaries, and actionable tasks from raw text or documents.",
+        "f1": "Executive Summary",
+        "f2": "Entity Extraction",
+        "f3": "Action Items",
+        "f4": "Multi-Lingual"
+      },
+      "factory": {
+        "title": "Website Factory Blueprint",
+        "badge": "Site Specification",
+        "desc": "Turn a one-line business idea into a complete sitemap, hero copy, and launch checklist.",
+        "f1": "Complete Sitemap",
+        "f2": "Hero Copywriting",
+        "f3": "Design Tokens",
+        "f4": "Launch Checklist"
+      },
+      "yt": {
+        "title": "YouTube Bulk Optimizer",
+        "badge": "Live OAuth API",
+        "desc": "Connect your own Google account via OAuth to bulk-optimize video titles and descriptions.",
+        "f1": "Own OAuth App",
+        "f2": "AI Metadata Drafts",
+        "f3": "Bulk Playlist Sync",
+        "f4": "Live API Update"
+      }
+    }
+  },
+  "toolsManual": {
+    "audit": {
+      "title": "Run a Website Audit in 10 seconds",
+      "subtitle": "No signup, no email gate. Paste any public URL and get an A–F grade with a prioritized fix list.",
+      "steps": [
+        "Enter the full website URL you want to check (including https://).",
+        "Press “Run Audit” and wait a few seconds while we fetch and analyze the live page.",
+        "Read your grade (A–F) and the five category scores: SEO, Performance, Mobile, Security, Structure.",
+        "Open the Issues list — each item shows severity (critical / warning / info) and what to fix.",
+        "Work through the Recommendations from top to bottom; the highest-impact fixes are listed first.",
+        "Optional: drop your email to get the audit summary sent to you."
+      ]
+    },
+    "seo": {
+      "title": "Generate SEO Content in minutes",
+      "subtitle": "Turn a business and industry into blog titles, meta descriptions, keywords, and a content outline — ready to publish.",
+      "steps": [
+        "Enter your Business Name (e.g. Sharma Dental Clinic).",
+        "Add the Location if you want local SEO baked in (e.g. your city).",
+        "Pick the Industry the business operates in.",
+        "Choose the output Language (defaults to English).",
+        "Hit “Generate” and review the blog titles, meta descriptions, keyword list, and outline.",
+        "Copy what you need into your CMS — nothing is stored on our side."
+      ]
+    },
+    "brand": {
+      "title": "Build a Brand Kit from a short brief",
+      "subtitle": "Get a colour palette, brand voice, taglines, and social bios matched to your personality.",
+      "steps": [
+        "Enter your Business Name.",
+        "Enter the Industry you operate in.",
+        "Add a Target Audience if you have one (optional but improves the result).",
+        "Pick a Brand Personality — Professional, Luxury, Fun, or Tech — this drives the palette and fonts.",
+        "If you already have brand colours, paste them (hex codes) so we keep them as your primary/secondary.",
+        "Generate and copy the palette, voice rules, taglines, and social bios."
+      ]
+    },
+    "calendar": {
+      "title": "Plan a week of social content",
+      "subtitle": "A 7-day content calendar with captions, hashtags, and best posting times — per platform.",
+      "steps": [
+        "Enter your Business Name and Industry.",
+        "Select the Platforms you post on (Instagram, etc.).",
+        "Set the Tone (Professional, Fun, etc.) and your Goals (e.g. more followers, drive sales).",
+        "Generate the calendar and review the weekly theme, content pillars, and daily posts.",
+        "Each day shows a caption, hashtags, post type, and a suggested best time.",
+        "Copy the posts into your scheduler — edit freely before publishing."
+      ]
+    },
+    "documents": {
+      "title": "Extract insight from any document",
+      "subtitle": "Paste raw text from an invoice, contract, prescription, or note — get a summary, key fields, and action items.",
+      "steps": [
+        "Paste the document text into the box (up to ~4,000 characters).",
+        "Choose the Document Type — invoice, prescription, contract, or general.",
+        "Pick the Language of the text.",
+        "Choose the Analysis Type — summary, extraction, or all.",
+        "Run analysis and read the summary, the extracted key fields, and the suggested action items.",
+        "Note: this is a reading aid, not legal/financial advice — verify important fields yourself."
+      ]
+    },
+    "factory": {
+      "title": "Generate a website blueprint",
+      "subtitle": "Describe a business in one line and get a sitemap, design direction, homepage copy, SEO terms, and a launch checklist.",
+      "steps": [
+        "Enter the Business Name.",
+        "Enter the Industry it operates in.",
+        "Add a Target Audience if relevant (optional).",
+        "Pick a Visual Style (Professional, Luxury, Fun, Tech).",
+        "Generate the blueprint and review the sitemap, colour/typography direction, homepage copy, SEO keywords, and launch checklist.",
+        "Use it as a brief for a designer or as a starting spec for a build."
+      ]
+    },
+    "yt": {
+      "title": "Connect your YouTube channel and optimize in bulk",
+      "subtitle": "You bring your own Google account — the tool reads your channel, drafts SEO metadata with AI, then publishes live when you approve.",
+      "steps": [
+        "Switch the connection toggle to “Live API” (the default “Sandbox Demo” only shows sample data).",
+        "Paste your own Google OAuth Client ID (Desktop type) and click “Authenticate with Google”. You must create this credential yourself in Google Cloud Console — we never see your keys.",
+        "Approve the YouTube scope in the Google popup. The tool reads your channel and recent videos only; it cannot see anything else.",
+        "Go to the “Bulk SEO Publisher” tab and click “AI SEO Optimize” on a video to draft a new title and description.",
+        "Review the draft, then click “Publish Drafts Live” to write the metadata to YouTube via the official API.",
+        "On the “Playlist Sync” tab, paste a target Playlist ID and click “Synchronize Playlists” to add videos in bulk.",
+        "Disconnect anytime from the connection panel — this reverts the tool to Sandbox mode."
+      ]
+    }
+  },
+  "chat": {
+    "title": "Ask Arranto",
+    "launch": "Open chat",
+    "close": "Close chat",
+    "greeting": "Ask about the work, the studio, or how a project runs. Answers come from this site only.",
+    "placeholder": "Ask a question…",
+    "inputLabel": "Your message",
+    "send": "Send",
+    "sending": "…",
+    "thinking": "Thinking",
+    "error": "Assistant unavailable. Try again shortly, or use the contact form.",
+    "rateLimited": "Too many messages. Wait a moment, then try again."
   }
 }
