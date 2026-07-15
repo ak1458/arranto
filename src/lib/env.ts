@@ -11,8 +11,6 @@ const required = (name: string): string => {
 export const env = {
   get openrouterKey() { return required("OPENROUTER_API_KEY"); },
   get model() { return process.env.OPENROUTER_MODEL ?? "anthropic/claude-sonnet-4.5"; },
-  get supabaseUrl() { return required("NEXT_PUBLIC_SUPABASE_URL"); },
-  get supabaseServiceKey() { return required("SUPABASE_SERVICE_ROLE_KEY"); },
   get cronSecret() { return required("CRON_SECRET"); },
   get googleCredentials() { return required("GOOGLE_APPLICATION_CREDENTIALS_JSON"); },
   get ga4PropertyId() { return required("GA4_PROPERTY_ID"); },

@@ -1,0 +1,1120 @@
+[
+  {
+    "route": "English Home",
+    "path": "/en",
+    "httpStatus": 200,
+    "loadTimeMs": 266,
+    "totalScore": 79,
+    "breakdown": [
+      {
+        "item": "Title Tag",
+        "status": "Pass",
+        "score": 20,
+        "max": 20,
+        "note": "Optimal length (25 chars): \"Arranto — Software Studio\""
+      },
+      {
+        "item": "Meta Description",
+        "status": "Warning",
+        "score": 12,
+        "max": 20,
+        "note": "Description length (66 chars) outside optimal 70-170 range"
+      },
+      {
+        "item": "H1 Tag Hierarchy",
+        "status": "Warning",
+        "score": 7,
+        "max": 15,
+        "note": "Multiple H1 tags (2) found. Should have exactly 1 per page."
+      },
+      {
+        "item": "Canonical & Hreflangs",
+        "status": "Pass",
+        "score": 10,
+        "max": 10,
+        "note": "Canonical URL present: https://arranto.com/en | Hreflang tags configured (3 locales)"
+      },
+      {
+        "item": "Open Graph & Social",
+        "status": "Pass",
+        "score": 10,
+        "max": 10,
+        "note": "OG Title & Description set | OG Image present"
+      },
+      {
+        "item": "Semantic Structure & Viewport",
+        "status": "Pass",
+        "score": 15,
+        "max": 15,
+        "note": "Viewport: true, <main/header/footer>: true/true/true, lang/dir: en/ltr"
+      },
+      {
+        "item": "Accessibility & Alt Text",
+        "status": "Warning",
+        "score": 5,
+        "max": 10,
+        "note": "All images have alt attributes | 5 links without text/aria-label"
+      }
+    ],
+    "data": {
+      "title": "Arranto — Software Studio",
+      "description": "Start to running. Nothing left undone. Software studio, est. 2017.",
+      "keywords": null,
+      "viewport": "width=device-width, initial-scale=1",
+      "robots": null,
+      "ogTitle": "Arranto — Software Studio",
+      "ogDesc": "Start to running. Nothing left undone. Software studio, est. 2017.",
+      "ogType": "website",
+      "ogImage": "http://localhost:3000/en/opengraph-image?76c85a97533445ac",
+      "twitterCard": "summary",
+      "canonical": "https://arranto.com/en",
+      "hreflangs": [
+        {
+          "hreflang": "en",
+          "href": "https://arranto.com/en"
+        },
+        {
+          "hreflang": "ar",
+          "href": "https://arranto.com/ar"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://arranto.com/en"
+        }
+      ],
+      "headings": {
+        "h1Count": 2,
+        "h1Texts": [
+          "ARRANTO STUDIO",
+          "START TO RUNNING."
+        ],
+        "h2Count": 3,
+        "h3Count": 12
+      },
+      "semantics": {
+        "hasMain": true,
+        "hasHeader": true,
+        "hasFooter": true,
+        "hasNav": true
+      },
+      "images": {
+        "total": 5,
+        "missingAlt": 0,
+        "emptyAlt": 5
+      },
+      "links": {
+        "total": 33,
+        "empty": 5
+      },
+      "htmlAttr": {
+        "lang": "en",
+        "dir": "ltr"
+      }
+    }
+  },
+  {
+    "route": "English About",
+    "path": "/en/about",
+    "httpStatus": 200,
+    "loadTimeMs": 7332,
+    "totalScore": 80,
+    "breakdown": [
+      {
+        "item": "Title Tag",
+        "status": "Warning",
+        "score": 12,
+        "max": 20,
+        "note": "Title length (15 chars) outside optimal 20-70 range: \"About — Arranto\""
+      },
+      {
+        "item": "Meta Description",
+        "status": "Warning",
+        "score": 12,
+        "max": 20,
+        "note": "Description length (31 chars) outside optimal 70-170 range"
+      },
+      {
+        "item": "H1 Tag Hierarchy",
+        "status": "Pass",
+        "score": 15,
+        "max": 15,
+        "note": "Exactly 1 <H1> tag found: \"The studio is one person....\""
+      },
+      {
+        "item": "Canonical & Hreflangs",
+        "status": "Pass",
+        "score": 10,
+        "max": 10,
+        "note": "Canonical URL present: https://arranto.com/en/about | Hreflang tags configured (3 locales)"
+      },
+      {
+        "item": "Open Graph & Social",
+        "status": "Warning",
+        "score": 6,
+        "max": 10,
+        "note": "OG Title & Description set | Missing OG Image"
+      },
+      {
+        "item": "Semantic Structure & Viewport",
+        "status": "Pass",
+        "score": 15,
+        "max": 15,
+        "note": "Viewport: true, <main/header/footer>: true/true/true, lang/dir: en/ltr"
+      },
+      {
+        "item": "Accessibility & Alt Text",
+        "status": "Pass",
+        "score": 10,
+        "max": 10,
+        "note": "All images have alt attributes | All links have accessible names"
+      }
+    ],
+    "data": {
+      "title": "About — Arranto",
+      "description": "Founded 2017. Still one person.",
+      "keywords": null,
+      "viewport": "width=device-width, initial-scale=1",
+      "robots": null,
+      "ogTitle": "About — Arranto",
+      "ogDesc": "Founded 2017. Still one person.",
+      "ogType": null,
+      "ogImage": null,
+      "twitterCard": "summary",
+      "canonical": "https://arranto.com/en/about",
+      "hreflangs": [
+        {
+          "hreflang": "en",
+          "href": "https://arranto.com/en/about"
+        },
+        {
+          "hreflang": "ar",
+          "href": "https://arranto.com/ar/about"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://arranto.com/en/about"
+        }
+      ],
+      "headings": {
+        "h1Count": 1,
+        "h1Texts": [
+          "The studio is one person."
+        ],
+        "h2Count": 4,
+        "h3Count": 8
+      },
+      "semantics": {
+        "hasMain": true,
+        "hasHeader": true,
+        "hasFooter": true,
+        "hasNav": true
+      },
+      "images": {
+        "total": 1,
+        "missingAlt": 0,
+        "emptyAlt": 0
+      },
+      "links": {
+        "total": 24,
+        "empty": 0
+      },
+      "htmlAttr": {
+        "lang": "en",
+        "dir": "ltr"
+      }
+    }
+  },
+  {
+    "route": "English Work",
+    "path": "/en/work",
+    "httpStatus": 200,
+    "loadTimeMs": 5156,
+    "totalScore": 75,
+    "breakdown": [
+      {
+        "item": "Title Tag",
+        "status": "Warning",
+        "score": 12,
+        "max": 20,
+        "note": "Title length (14 chars) outside optimal 20-70 range: \"Work — Arranto\""
+      },
+      {
+        "item": "Meta Description",
+        "status": "Warning",
+        "score": 12,
+        "max": 20,
+        "note": "Description length (33 chars) outside optimal 70-170 range"
+      },
+      {
+        "item": "H1 Tag Hierarchy",
+        "status": "Pass",
+        "score": 15,
+        "max": 15,
+        "note": "Exactly 1 <H1> tag found: \"Work...\""
+      },
+      {
+        "item": "Canonical & Hreflangs",
+        "status": "Pass",
+        "score": 10,
+        "max": 10,
+        "note": "Canonical URL present: https://arranto.com/en/work | Hreflang tags configured (3 locales)"
+      },
+      {
+        "item": "Open Graph & Social",
+        "status": "Warning",
+        "score": 6,
+        "max": 10,
+        "note": "OG Title & Description set | Missing OG Image"
+      },
+      {
+        "item": "Semantic Structure & Viewport",
+        "status": "Pass",
+        "score": 15,
+        "max": 15,
+        "note": "Viewport: true, <main/header/footer>: true/true/true, lang/dir: en/ltr"
+      },
+      {
+        "item": "Accessibility & Alt Text",
+        "status": "Warning",
+        "score": 5,
+        "max": 10,
+        "note": "All images have alt attributes | 5 links without text/aria-label"
+      }
+    ],
+    "data": {
+      "title": "Work — Arranto",
+      "description": "Five systems. Two still in pilot.",
+      "keywords": null,
+      "viewport": "width=device-width, initial-scale=1",
+      "robots": null,
+      "ogTitle": "Work — Arranto",
+      "ogDesc": "Five systems. Two still in pilot.",
+      "ogType": null,
+      "ogImage": null,
+      "twitterCard": "summary",
+      "canonical": "https://arranto.com/en/work",
+      "hreflangs": [
+        {
+          "hreflang": "en",
+          "href": "https://arranto.com/en/work"
+        },
+        {
+          "hreflang": "ar",
+          "href": "https://arranto.com/ar/work"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://arranto.com/en/work"
+        }
+      ],
+      "headings": {
+        "h1Count": 1,
+        "h1Texts": [
+          "Work"
+        ],
+        "h2Count": 1,
+        "h3Count": 29
+      },
+      "semantics": {
+        "hasMain": true,
+        "hasHeader": true,
+        "hasFooter": true,
+        "hasNav": true
+      },
+      "images": {
+        "total": 5,
+        "missingAlt": 0,
+        "emptyAlt": 5
+      },
+      "links": {
+        "total": 34,
+        "empty": 5
+      },
+      "htmlAttr": {
+        "lang": "en",
+        "dir": "ltr"
+      }
+    }
+  },
+  {
+    "route": "English Contact",
+    "path": "/en/contact",
+    "httpStatus": 200,
+    "loadTimeMs": 1753,
+    "totalScore": 73,
+    "breakdown": [
+      {
+        "item": "Title Tag",
+        "status": "Warning",
+        "score": 12,
+        "max": 20,
+        "note": "Title length (17 chars) outside optimal 20-70 range: \"Contact — Arranto\""
+      },
+      {
+        "item": "Meta Description",
+        "status": "Pass",
+        "score": 20,
+        "max": 20,
+        "note": "Optimal length (100 chars)"
+      },
+      {
+        "item": "H1 Tag Hierarchy",
+        "status": "Fail",
+        "score": 0,
+        "max": 15,
+        "note": "No <H1> tag found on page"
+      },
+      {
+        "item": "Canonical & Hreflangs",
+        "status": "Pass",
+        "score": 10,
+        "max": 10,
+        "note": "Canonical URL present: https://arranto.com/en/contact | Hreflang tags configured (3 locales)"
+      },
+      {
+        "item": "Open Graph & Social",
+        "status": "Warning",
+        "score": 6,
+        "max": 10,
+        "note": "OG Title & Description set | Missing OG Image"
+      },
+      {
+        "item": "Semantic Structure & Viewport",
+        "status": "Pass",
+        "score": 15,
+        "max": 15,
+        "note": "Viewport: true, <main/header/footer>: true/true/true, lang/dir: en/ltr"
+      },
+      {
+        "item": "Accessibility & Alt Text",
+        "status": "Pass",
+        "score": 10,
+        "max": 10,
+        "note": "All images have alt attributes | All links have accessible names"
+      }
+    ],
+    "data": {
+      "title": "Contact — Arranto",
+      "description": "Tell me what you're building. Messages are read and answered by the founder within one business day.",
+      "keywords": null,
+      "viewport": "width=device-width, initial-scale=1",
+      "robots": null,
+      "ogTitle": "Contact — Arranto",
+      "ogDesc": "Tell me what you're building. Messages are read and answered by the founder within one business day.",
+      "ogType": null,
+      "ogImage": null,
+      "twitterCard": "summary",
+      "canonical": "https://arranto.com/en/contact",
+      "hreflangs": [
+        {
+          "hreflang": "en",
+          "href": "https://arranto.com/en/contact"
+        },
+        {
+          "hreflang": "ar",
+          "href": "https://arranto.com/ar/contact"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://arranto.com/en/contact"
+        }
+      ],
+      "headings": {
+        "h1Count": 0,
+        "h1Texts": [],
+        "h2Count": 2,
+        "h3Count": 7
+      },
+      "semantics": {
+        "hasMain": true,
+        "hasHeader": true,
+        "hasFooter": true,
+        "hasNav": true
+      },
+      "images": {
+        "total": 0,
+        "missingAlt": 0,
+        "emptyAlt": 0
+      },
+      "links": {
+        "total": 27,
+        "empty": 0
+      },
+      "htmlAttr": {
+        "lang": "en",
+        "dir": "ltr"
+      }
+    }
+  },
+  {
+    "route": "English Tools",
+    "path": "/en/tools",
+    "httpStatus": 200,
+    "loadTimeMs": 1833,
+    "totalScore": 96,
+    "breakdown": [
+      {
+        "item": "Title Tag",
+        "status": "Pass",
+        "score": 20,
+        "max": 20,
+        "note": "Optimal length (20 chars): \"Free Tools — Arranto\""
+      },
+      {
+        "item": "Meta Description",
+        "status": "Pass",
+        "score": 20,
+        "max": 20,
+        "note": "Optimal length (80 chars)"
+      },
+      {
+        "item": "H1 Tag Hierarchy",
+        "status": "Pass",
+        "score": 15,
+        "max": 15,
+        "note": "Exactly 1 <H1> tag found: \"Production-ready tools, free to use....\""
+      },
+      {
+        "item": "Canonical & Hreflangs",
+        "status": "Pass",
+        "score": 10,
+        "max": 10,
+        "note": "Canonical URL present: https://arranto.com/en/tools | Hreflang tags configured (3 locales)"
+      },
+      {
+        "item": "Open Graph & Social",
+        "status": "Warning",
+        "score": 6,
+        "max": 10,
+        "note": "OG Title & Description set | Missing OG Image"
+      },
+      {
+        "item": "Semantic Structure & Viewport",
+        "status": "Pass",
+        "score": 15,
+        "max": 15,
+        "note": "Viewport: true, <main/header/footer>: true/true/true, lang/dir: en/ltr"
+      },
+      {
+        "item": "Accessibility & Alt Text",
+        "status": "Pass",
+        "score": 10,
+        "max": 10,
+        "note": "All images have alt attributes | All links have accessible names"
+      }
+    ],
+    "data": {
+      "title": "Free Tools — Arranto",
+      "description": "Free, production-ready developer and AI tools. No signup or email gate required.",
+      "keywords": null,
+      "viewport": "width=device-width, initial-scale=1",
+      "robots": null,
+      "ogTitle": "Free Tools — Arranto",
+      "ogDesc": "Free, production-ready developer and AI tools. No signup or email gate required.",
+      "ogType": null,
+      "ogImage": null,
+      "twitterCard": "summary",
+      "canonical": "https://arranto.com/en/tools",
+      "hreflangs": [
+        {
+          "hreflang": "en",
+          "href": "https://arranto.com/en/tools"
+        },
+        {
+          "hreflang": "ar",
+          "href": "https://arranto.com/ar/tools"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://arranto.com/en/tools"
+        }
+      ],
+      "headings": {
+        "h1Count": 1,
+        "h1Texts": [
+          "Production-ready tools, free to use."
+        ],
+        "h2Count": 7,
+        "h3Count": 3
+      },
+      "semantics": {
+        "hasMain": true,
+        "hasHeader": true,
+        "hasFooter": true,
+        "hasNav": true
+      },
+      "images": {
+        "total": 0,
+        "missingAlt": 0,
+        "emptyAlt": 0
+      },
+      "links": {
+        "total": 30,
+        "empty": 0
+      },
+      "htmlAttr": {
+        "lang": "en",
+        "dir": "ltr"
+      }
+    }
+  },
+  {
+    "route": "Arabic Home",
+    "path": "/ar",
+    "httpStatus": 200,
+    "loadTimeMs": 348,
+    "totalScore": 87,
+    "breakdown": [
+      {
+        "item": "Title Tag",
+        "status": "Pass",
+        "score": 20,
+        "max": 20,
+        "note": "Optimal length (24 chars): \"أرانتو — استوديو برمجيات\""
+      },
+      {
+        "item": "Meta Description",
+        "status": "Pass",
+        "score": 20,
+        "max": 20,
+        "note": "Optimal length (72 chars)"
+      },
+      {
+        "item": "H1 Tag Hierarchy",
+        "status": "Warning",
+        "score": 7,
+        "max": 15,
+        "note": "Multiple H1 tags (2) found. Should have exactly 1 per page."
+      },
+      {
+        "item": "Canonical & Hreflangs",
+        "status": "Pass",
+        "score": 10,
+        "max": 10,
+        "note": "Canonical URL present: https://arranto.com/ar | Hreflang tags configured (3 locales)"
+      },
+      {
+        "item": "Open Graph & Social",
+        "status": "Pass",
+        "score": 10,
+        "max": 10,
+        "note": "OG Title & Description set | OG Image present"
+      },
+      {
+        "item": "Semantic Structure & Viewport",
+        "status": "Pass",
+        "score": 15,
+        "max": 15,
+        "note": "Viewport: true, <main/header/footer>: true/true/true, lang/dir: ar/rtl"
+      },
+      {
+        "item": "Accessibility & Alt Text",
+        "status": "Warning",
+        "score": 5,
+        "max": 10,
+        "note": "All images have alt attributes | 5 links without text/aria-label"
+      }
+    ],
+    "data": {
+      "title": "أرانتو — استوديو برمجيات",
+      "description": "من البداية إلى التشغيل. لا شيء يُترك ناقصًا. استوديو برمجيات، تأسس 2017.",
+      "keywords": null,
+      "viewport": "width=device-width, initial-scale=1",
+      "robots": null,
+      "ogTitle": "أرانتو — استوديو برمجيات",
+      "ogDesc": "من البداية إلى التشغيل. لا شيء يُترك ناقصًا. استوديو برمجيات، تأسس 2017.",
+      "ogType": "website",
+      "ogImage": "http://localhost:3000/ar/opengraph-image?76c85a97533445ac",
+      "twitterCard": "summary",
+      "canonical": "https://arranto.com/ar",
+      "hreflangs": [
+        {
+          "hreflang": "en",
+          "href": "https://arranto.com/en"
+        },
+        {
+          "hreflang": "ar",
+          "href": "https://arranto.com/ar"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://arranto.com/en"
+        }
+      ],
+      "headings": {
+        "h1Count": 2,
+        "h1Texts": [
+          "ARRANTO STUDIO",
+          "من البداية إلى التشغيل."
+        ],
+        "h2Count": 3,
+        "h3Count": 12
+      },
+      "semantics": {
+        "hasMain": true,
+        "hasHeader": true,
+        "hasFooter": true,
+        "hasNav": true
+      },
+      "images": {
+        "total": 5,
+        "missingAlt": 0,
+        "emptyAlt": 5
+      },
+      "links": {
+        "total": 33,
+        "empty": 5
+      },
+      "htmlAttr": {
+        "lang": "ar",
+        "dir": "rtl"
+      }
+    }
+  },
+  {
+    "route": "Arabic About",
+    "path": "/ar/about",
+    "httpStatus": 200,
+    "loadTimeMs": 289,
+    "totalScore": 80,
+    "breakdown": [
+      {
+        "item": "Title Tag",
+        "status": "Warning",
+        "score": 12,
+        "max": 20,
+        "note": "Title length (18 chars) outside optimal 20-70 range: \"عن أرانتو — أرانتو\""
+      },
+      {
+        "item": "Meta Description",
+        "status": "Warning",
+        "score": 12,
+        "max": 20,
+        "note": "Description length (31 chars) outside optimal 70-170 range"
+      },
+      {
+        "item": "H1 Tag Hierarchy",
+        "status": "Pass",
+        "score": 15,
+        "max": 15,
+        "note": "Exactly 1 <H1> tag found: \"الاستوديو شخص واحد....\""
+      },
+      {
+        "item": "Canonical & Hreflangs",
+        "status": "Pass",
+        "score": 10,
+        "max": 10,
+        "note": "Canonical URL present: https://arranto.com/ar/about | Hreflang tags configured (3 locales)"
+      },
+      {
+        "item": "Open Graph & Social",
+        "status": "Warning",
+        "score": 6,
+        "max": 10,
+        "note": "OG Title & Description set | Missing OG Image"
+      },
+      {
+        "item": "Semantic Structure & Viewport",
+        "status": "Pass",
+        "score": 15,
+        "max": 15,
+        "note": "Viewport: true, <main/header/footer>: true/true/true, lang/dir: ar/rtl"
+      },
+      {
+        "item": "Accessibility & Alt Text",
+        "status": "Pass",
+        "score": 10,
+        "max": 10,
+        "note": "All images have alt attributes | All links have accessible names"
+      }
+    ],
+    "data": {
+      "title": "عن أرانتو — أرانتو",
+      "description": "تأسس 2017. ما زال شخصًا واحدًا.",
+      "keywords": null,
+      "viewport": "width=device-width, initial-scale=1",
+      "robots": null,
+      "ogTitle": "عن أرانتو — أرانتو",
+      "ogDesc": "تأسس 2017. ما زال شخصًا واحدًا.",
+      "ogType": null,
+      "ogImage": null,
+      "twitterCard": "summary",
+      "canonical": "https://arranto.com/ar/about",
+      "hreflangs": [
+        {
+          "hreflang": "en",
+          "href": "https://arranto.com/en/about"
+        },
+        {
+          "hreflang": "ar",
+          "href": "https://arranto.com/ar/about"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://arranto.com/en/about"
+        }
+      ],
+      "headings": {
+        "h1Count": 1,
+        "h1Texts": [
+          "الاستوديو شخص واحد."
+        ],
+        "h2Count": 4,
+        "h3Count": 8
+      },
+      "semantics": {
+        "hasMain": true,
+        "hasHeader": true,
+        "hasFooter": true,
+        "hasNav": true
+      },
+      "images": {
+        "total": 1,
+        "missingAlt": 0,
+        "emptyAlt": 0
+      },
+      "links": {
+        "total": 24,
+        "empty": 0
+      },
+      "htmlAttr": {
+        "lang": "ar",
+        "dir": "rtl"
+      }
+    }
+  },
+  {
+    "route": "Arabic Work",
+    "path": "/ar/work",
+    "httpStatus": 200,
+    "loadTimeMs": 294,
+    "totalScore": 75,
+    "breakdown": [
+      {
+        "item": "Title Tag",
+        "status": "Warning",
+        "score": 12,
+        "max": 20,
+        "note": "Title length (16 chars) outside optimal 20-70 range: \"الأعمال — أرانتو\""
+      },
+      {
+        "item": "Meta Description",
+        "status": "Warning",
+        "score": 12,
+        "max": 20,
+        "note": "Description length (40 chars) outside optimal 70-170 range"
+      },
+      {
+        "item": "H1 Tag Hierarchy",
+        "status": "Pass",
+        "score": 15,
+        "max": 15,
+        "note": "Exactly 1 <H1> tag found: \"الأعمال...\""
+      },
+      {
+        "item": "Canonical & Hreflangs",
+        "status": "Pass",
+        "score": 10,
+        "max": 10,
+        "note": "Canonical URL present: https://arranto.com/ar/work | Hreflang tags configured (3 locales)"
+      },
+      {
+        "item": "Open Graph & Social",
+        "status": "Warning",
+        "score": 6,
+        "max": 10,
+        "note": "OG Title & Description set | Missing OG Image"
+      },
+      {
+        "item": "Semantic Structure & Viewport",
+        "status": "Pass",
+        "score": 15,
+        "max": 15,
+        "note": "Viewport: true, <main/header/footer>: true/true/true, lang/dir: ar/rtl"
+      },
+      {
+        "item": "Accessibility & Alt Text",
+        "status": "Warning",
+        "score": 5,
+        "max": 10,
+        "note": "All images have alt attributes | 5 links without text/aria-label"
+      }
+    ],
+    "data": {
+      "title": "الأعمال — أرانتو",
+      "description": "خمسة أنظمة. اثنان لا يزالان قيد التجربة.",
+      "keywords": null,
+      "viewport": "width=device-width, initial-scale=1",
+      "robots": null,
+      "ogTitle": "الأعمال — أرانتو",
+      "ogDesc": "خمسة أنظمة. اثنان لا يزالان قيد التجربة.",
+      "ogType": null,
+      "ogImage": null,
+      "twitterCard": "summary",
+      "canonical": "https://arranto.com/ar/work",
+      "hreflangs": [
+        {
+          "hreflang": "en",
+          "href": "https://arranto.com/en/work"
+        },
+        {
+          "hreflang": "ar",
+          "href": "https://arranto.com/ar/work"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://arranto.com/en/work"
+        }
+      ],
+      "headings": {
+        "h1Count": 1,
+        "h1Texts": [
+          "الأعمال"
+        ],
+        "h2Count": 1,
+        "h3Count": 30
+      },
+      "semantics": {
+        "hasMain": true,
+        "hasHeader": true,
+        "hasFooter": true,
+        "hasNav": true
+      },
+      "images": {
+        "total": 5,
+        "missingAlt": 0,
+        "emptyAlt": 5
+      },
+      "links": {
+        "total": 34,
+        "empty": 5
+      },
+      "htmlAttr": {
+        "lang": "ar",
+        "dir": "rtl"
+      }
+    }
+  },
+  {
+    "route": "Arabic Contact",
+    "path": "/ar/contact",
+    "httpStatus": 200,
+    "loadTimeMs": 320,
+    "totalScore": 65,
+    "breakdown": [
+      {
+        "item": "Title Tag",
+        "status": "Warning",
+        "score": 12,
+        "max": 20,
+        "note": "Title length (14 chars) outside optimal 20-70 range: \"تواصل — أرانتو\""
+      },
+      {
+        "item": "Meta Description",
+        "status": "Warning",
+        "score": 12,
+        "max": 20,
+        "note": "Description length (69 chars) outside optimal 70-170 range"
+      },
+      {
+        "item": "H1 Tag Hierarchy",
+        "status": "Fail",
+        "score": 0,
+        "max": 15,
+        "note": "No <H1> tag found on page"
+      },
+      {
+        "item": "Canonical & Hreflangs",
+        "status": "Pass",
+        "score": 10,
+        "max": 10,
+        "note": "Canonical URL present: https://arranto.com/ar/contact | Hreflang tags configured (3 locales)"
+      },
+      {
+        "item": "Open Graph & Social",
+        "status": "Warning",
+        "score": 6,
+        "max": 10,
+        "note": "OG Title & Description set | Missing OG Image"
+      },
+      {
+        "item": "Semantic Structure & Viewport",
+        "status": "Pass",
+        "score": 15,
+        "max": 15,
+        "note": "Viewport: true, <main/header/footer>: true/true/true, lang/dir: ar/rtl"
+      },
+      {
+        "item": "Accessibility & Alt Text",
+        "status": "Pass",
+        "score": 10,
+        "max": 10,
+        "note": "All images have alt attributes | All links have accessible names"
+      }
+    ],
+    "data": {
+      "title": "تواصل — أرانتو",
+      "description": "أخبرني بما تبنيه. يقرأ المؤسس كل رسالة بنفسه ويردّ خلال يوم عمل واحد.",
+      "keywords": null,
+      "viewport": "width=device-width, initial-scale=1",
+      "robots": null,
+      "ogTitle": "تواصل — أرانتو",
+      "ogDesc": "أخبرني بما تبنيه. يقرأ المؤسس كل رسالة بنفسه ويردّ خلال يوم عمل واحد.",
+      "ogType": null,
+      "ogImage": null,
+      "twitterCard": "summary",
+      "canonical": "https://arranto.com/ar/contact",
+      "hreflangs": [
+        {
+          "hreflang": "en",
+          "href": "https://arranto.com/en/contact"
+        },
+        {
+          "hreflang": "ar",
+          "href": "https://arranto.com/ar/contact"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://arranto.com/en/contact"
+        }
+      ],
+      "headings": {
+        "h1Count": 0,
+        "h1Texts": [],
+        "h2Count": 2,
+        "h3Count": 7
+      },
+      "semantics": {
+        "hasMain": true,
+        "hasHeader": true,
+        "hasFooter": true,
+        "hasNav": true
+      },
+      "images": {
+        "total": 0,
+        "missingAlt": 0,
+        "emptyAlt": 0
+      },
+      "links": {
+        "total": 27,
+        "empty": 0
+      },
+      "htmlAttr": {
+        "lang": "ar",
+        "dir": "rtl"
+      }
+    }
+  },
+  {
+    "route": "Arabic Tools",
+    "path": "/ar/tools",
+    "httpStatus": 200,
+    "loadTimeMs": 276,
+    "totalScore": 96,
+    "breakdown": [
+      {
+        "item": "Title Tag",
+        "status": "Pass",
+        "score": 20,
+        "max": 20,
+        "note": "Optimal length (21 chars): \"أدوات مجانية — أرانتو\""
+      },
+      {
+        "item": "Meta Description",
+        "status": "Pass",
+        "score": 20,
+        "max": 20,
+        "note": "Optimal length (86 chars)"
+      },
+      {
+        "item": "H1 Tag Hierarchy",
+        "status": "Pass",
+        "score": 15,
+        "max": 15,
+        "note": "Exactly 1 <H1> tag found: \"أدوات احترافية جاهزة للاستخدام المجاني....\""
+      },
+      {
+        "item": "Canonical & Hreflangs",
+        "status": "Pass",
+        "score": 10,
+        "max": 10,
+        "note": "Canonical URL present: https://arranto.com/ar/tools | Hreflang tags configured (3 locales)"
+      },
+      {
+        "item": "Open Graph & Social",
+        "status": "Warning",
+        "score": 6,
+        "max": 10,
+        "note": "OG Title & Description set | Missing OG Image"
+      },
+      {
+        "item": "Semantic Structure & Viewport",
+        "status": "Pass",
+        "score": 15,
+        "max": 15,
+        "note": "Viewport: true, <main/header/footer>: true/true/true, lang/dir: ar/rtl"
+      },
+      {
+        "item": "Accessibility & Alt Text",
+        "status": "Pass",
+        "score": 10,
+        "max": 10,
+        "note": "All images have alt attributes | All links have accessible names"
+      }
+    ],
+    "data": {
+      "title": "أدوات مجانية — أرانتو",
+      "description": "أدوات ذكاء اصطناعي وتطوير مجانية وجاهزة للإنتاج. لا حاجة للتسجيل أو البريد الإلكتروني.",
+      "keywords": null,
+      "viewport": "width=device-width, initial-scale=1",
+      "robots": null,
+      "ogTitle": "أدوات مجانية — أرانتو",
+      "ogDesc": "أدوات ذكاء اصطناعي وتطوير مجانية وجاهزة للإنتاج. لا حاجة للتسجيل أو البريد الإلكتروني.",
+      "ogType": null,
+      "ogImage": null,
+      "twitterCard": "summary",
+      "canonical": "https://arranto.com/ar/tools",
+      "hreflangs": [
+        {
+          "hreflang": "en",
+          "href": "https://arranto.com/en/tools"
+        },
+        {
+          "hreflang": "ar",
+          "href": "https://arranto.com/ar/tools"
+        },
+        {
+          "hreflang": "x-default",
+          "href": "https://arranto.com/en/tools"
+        }
+      ],
+      "headings": {
+        "h1Count": 1,
+        "h1Texts": [
+          "أدوات احترافية جاهزة للاستخدام المجاني."
+        ],
+        "h2Count": 7,
+        "h3Count": 3
+      },
+      "semantics": {
+        "hasMain": true,
+        "hasHeader": true,
+        "hasFooter": true,
+        "hasNav": true
+      },
+      "images": {
+        "total": 0,
+        "missingAlt": 0,
+        "emptyAlt": 0
+      },
+      "links": {
+        "total": 30,
+        "empty": 0
+      },
+      "htmlAttr": {
+        "lang": "ar",
+        "dir": "rtl"
+      }
+    }
+  }
+]

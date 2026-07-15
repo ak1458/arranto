@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { db } from "@/lib/supabase";
 import { env } from "@/lib/env";
 import { rateLimit, clientKey, tooMany, LIMITS } from "@/lib/rate-limit";
 
@@ -10,17 +9,6 @@ const Inquiry = z.object({
   locale: z.enum(["en", "ar"]).default("en"),
   botcheck: z.string().optional(), // honeypot — any value means bot
 });
-
-// Optional side channel so the founder gets an email without checking Supabase.
-async function notify(i: { name: string; email: string; message: string }) {
-  if (!env.web3formsKey) return;
-  await fetch("https://api.web3forms.com/submit", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ access_key: env.web3formsKey, subject: "arranto.com — new inquiry", ...i }),
-    signal: AbortSignal.timeout(10_000),
-  }).catch((e) => console.error("web3forms notify failed:", e?.message));
-}
 
 export async function POST(req: Request) {
   const rl = rateLimit(clientKey(req, "contact"), LIMITS.contact);
@@ -33,16 +21,31 @@ export async function POST(req: Request) {
   const { botcheck, ...inquiry } = parsed.data;
   if (botcheck) return Response.json({ ok: true }); // silent discard, bot sees success
 
-  // db() throws when Supabase env is missing — same generic response as an insert
-  // failure, so a misconfigured deploy can't return a stack trace or a config hint.
-  try {
-    const { error } = await db().from("inquiries").insert(inquiry);
-    if (error) throw new Error(error.message);
-  } catch (e) {
-    console.error("inquiries insert:", e instanceof Error ? e.message : e);
-    return Response.json({ error: "Something went wrong" }, { status: 500 });
+  if (!env.web3formsKey) {
+    console.error("WEB3FORMS_KEY is not configured in environment variables.");
+    return Response.json({ error: "Contact service unconfigured" }, { status: 503 });
   }
 
-  await notify(inquiry);
+  try {
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        access_key: env.web3formsKey,
+        subject: `Arranto Studio — New Inquiry from ${inquiry.name}`,
+        ...inquiry,
+      }),
+      signal: AbortSignal.timeout(10_000),
+    });
+
+    if (!res.ok) {
+      const text = await res.text().catch(() => "");
+      throw new Error(`Web3Forms HTTP ${res.status}: ${text}`);
+    }
+  } catch (e) {
+    console.error("Web3Forms submit failed:", e instanceof Error ? e.message : e);
+    return Response.json({ error: "Could not send message" }, { status: 500 });
+  }
+
   return Response.json({ ok: true });
 }
