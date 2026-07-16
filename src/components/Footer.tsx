@@ -8,6 +8,7 @@ export function Footer() {
   const t = useTranslations();
 
   const studioLinks = [
+    { href: "/assistant", label: t("footer.assistant") },
     { href: "/work", label: t("footer.work") },
     { href: "/about", label: t("footer.about") },
     { href: "/contact", label: t("nav.contact") },

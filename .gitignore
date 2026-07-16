@@ -44,3 +44,5 @@ reports/
 
 # playwright MCP test artifacts
 .playwright-mcp/
+
+.vercel
