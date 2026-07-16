@@ -147,7 +147,7 @@ export function Chat() {
         aria-expanded={open}
         aria-controls="chat-panel"
         aria-label={open ? t('close') : t('launch')}
-        className="fixed bottom-6 end-6 z-50 grid h-14 w-14 place-items-center border border-white/15 bg-[#0a0a0a] text-[#d8d9dc] shadow-lg transition-colors hover:border-[#d8d9dc] hover:bg-[#d8d9dc] hover:text-black motion-reduce:transition-none"
+        className="fixed bottom-6 end-6 z-50 grid h-12 w-12 sm:h-14 sm:w-14 place-items-center border border-white/15 bg-[#0a0a0a] text-[#d8d9dc] shadow-lg transition-colors hover:border-[#d8d9dc] hover:bg-[#d8d9dc] hover:text-black motion-reduce:transition-none"
       >
         <span aria-hidden="true" className="font-mono text-lg leading-none">
           {open ? '×' : '✦'}

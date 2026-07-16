@@ -1,3 +1,5 @@
+'use client';
+
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Logo } from "@/components/Logo";
@@ -33,9 +35,9 @@ export function Footer() {
   return (
     <footer className="border-t border-white/10 bg-[#050505] text-[#9494a0]">
       <div className="mx-auto max-w-7xl px-6 pt-16 pb-28 md:pb-12">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand block */}
-          <div className="flex flex-col gap-5">
+          <div className="col-span-2 flex flex-col gap-5 md:col-span-1 lg:col-span-1">
             <Link href="/" aria-label="Arranto">
               <Logo variant="full" size="md" className="text-white" />
             </Link>
@@ -78,7 +80,7 @@ export function Footer() {
           </div>
 
           {/* Studio links */}
-          <div>
+          <div className="col-span-1">
             <h3 className="font-display text-xs uppercase tracking-wider text-white">{t("footer.studioHeading")}</h3>
             <ul className="mt-4 flex flex-col gap-3 text-sm">
               {studioLinks.map((link) => (
@@ -92,7 +94,7 @@ export function Footer() {
           </div>
 
           {/* Tools links */}
-          <div>
+          <div className="col-span-1">
             <h3 className="font-display text-xs uppercase tracking-wider text-white">{t("footer.resourcesHeading")}</h3>
             <ul className="mt-4 flex flex-col gap-3 text-sm">
               <li>
@@ -111,7 +113,7 @@ export function Footer() {
           </div>
 
           {/* Contact + WhatsApp */}
-          <div>
+          <div className="col-span-2 md:col-span-1 lg:col-span-1">
             <h3 className="font-display text-xs uppercase tracking-wider text-white">{t("footer.contactHeading")}</h3>
             <ul className="mt-4 flex flex-col gap-3 text-sm">
               <li>
@@ -133,9 +135,12 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <Link href="/contact" className="text-[#d8d9dc] transition-colors hover:text-white">
+                <button
+                  onClick={() => window.dispatchEvent(new Event('arranto:open-chat'))}
+                  className="text-[#d8d9dc] transition-colors hover:text-white text-left"
+                >
                   {t("footer.cta")}
-                </Link>
+                </button>
               </li>
             </ul>
           </div>

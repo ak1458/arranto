@@ -51,7 +51,7 @@
     "contactCta": "Contact →"
   },
   "work": {
-    "eyebrow": "Work",
+    "eyebrow": "Case Studies",
     "heading": "Work",
     "indexHeading": "Systems, not sites.",
     "indexIntro": "Each one is software a business runs its day on — billing, dispatch, maintenance, invoice clearance. Status is labelled honestly: proven means live in production, in pilot means built and being tested, nothing more.",
@@ -84,7 +84,9 @@
     "buyMessageTemplate": "I'd like to inquire about acquiring \"{title}\" as-is. Please reach out with details on availability and next steps.",
     "repoLabel": "Open-source repository",
     "repoStatus": "Open source",
-    "starsLabel": "GitHub stars"
+    "starsLabel": "GitHub stars",
+    "stat4Label": "Handoffs",
+    "stat4Value": "0"
   },
   "studio": {
     "eyebrow": "About",
@@ -171,6 +173,14 @@
       {
         "q": "How much does a project cost for a Gulf-based business?",
         "a": "There's no public price list, for Gulf clients or anyone else — scope and cost are agreed in writing before any work starts."
+      },
+      {
+        "q": "Do you offer maintenance and support after launch?",
+        "a": "Yes. Every project includes a 30-day hypercare period, followed by an optional long-term maintenance agreement tailored to your system."
+      },
+      {
+        "q": "How long does a typical build take?",
+        "a": "Most core systems are delivered within 4 to 8 weeks, depending on the complexity of the integrations and data pipelines required."
       }
     ]
   },
@@ -681,24 +691,60 @@
     "ctaContact": "Contact the founder",
     "domainsHeading": "What it covers",
     "domains": [
-      { "title": "AI Automation", "body": "Workflows, integrations, and agents that remove manual work from real business operations." },
-      { "title": "AI Product Development", "body": "AI-native products designed, built, and shipped by the founder — from concept to running system." },
-      { "title": "SaaS Development", "body": "Multi-tenant platforms and business systems, built to run reliably from day one." }
+      {
+        "title": "AI Automation",
+        "body": "Workflows, integrations, and agents that remove manual work from real business operations."
+      },
+      {
+        "title": "AI Product Development",
+        "body": "AI-native products designed, built, and shipped by the founder — from concept to running system."
+      },
+      {
+        "title": "SaaS Development",
+        "body": "Multi-tenant platforms and business systems, built to run reliably from day one."
+      }
     ],
     "stepsHeading": "From question to proposal",
     "steps": [
-      { "title": "Ask anything in your language", "body": "The assistant replies in the language you use — English, Arabic, or any other." },
-      { "title": "See real work and real checks", "body": "It cites the studio's actual case studies and can audit your current website live while you chat." },
-      { "title": "Run a short consultation", "body": "Planning a build? It collects your goals, timeline, and constraints in a few focused questions." },
-      { "title": "Receive a written proposal", "body": "You get a branded proposal page and PDF immediately, and the founder follows up personally." }
+      {
+        "title": "Ask anything in your language",
+        "body": "The assistant replies in the language you use — English, Arabic, or any other."
+      },
+      {
+        "title": "See real work and real checks",
+        "body": "It cites the studio's actual case studies and can audit your current website live while you chat."
+      },
+      {
+        "title": "Run a short consultation",
+        "body": "Planning a build? It collects your goals, timeline, and constraints in a few focused questions."
+      },
+      {
+        "title": "Receive a written proposal",
+        "body": "You get a branded proposal page and PDF immediately, and the founder follows up personally."
+      }
     ],
     "faqHeading": "Questions",
     "faq": [
-      { "q": "What can the Arranto assistant actually do?", "a": "It answers questions about Arranto's services and case studies, audits any public website in real time, drafts SEO content, brand starters, content calendars and website blueprints, and runs project consultations that end in a written proposal sent to the founder." },
-      { "q": "Which languages does it support?", "a": "All of them. It automatically replies in the language you write in — English, Arabic, Italian, German, French, Hindi, and more — with correct native phrasing." },
-      { "q": "Are its answers accurate?", "a": "It answers only from the studio's real, published information and live tool results. Products in pilot are always described as in pilot, never as live, and it will say so when something is outside its knowledge." },
-      { "q": "Does it give prices?", "a": "No. Arranto does not publish pricing and the assistant never invents figures. Investment is discussed directly with the founder after the proposal." },
-      { "q": "What happens after a consultation?", "a": "You immediately receive a branded proposal page with a PDF download, the founder gets the full brief by email, and he follows up with you personally." }
+      {
+        "q": "What can the Arranto assistant actually do?",
+        "a": "It answers questions about Arranto's services and case studies, audits any public website in real time, drafts SEO content, brand starters, content calendars and website blueprints, and runs project consultations that end in a written proposal sent to the founder."
+      },
+      {
+        "q": "Which languages does it support?",
+        "a": "All of them. It automatically replies in the language you write in — English, Arabic, Italian, German, French, Hindi, and more — with correct native phrasing."
+      },
+      {
+        "q": "Are its answers accurate?",
+        "a": "It answers only from the studio's real, published information and live tool results. Products in pilot are always described as in pilot, never as live, and it will say so when something is outside its knowledge."
+      },
+      {
+        "q": "Does it give prices?",
+        "a": "No. Arranto does not publish pricing and the assistant never invents figures. Investment is discussed directly with the founder after the proposal."
+      },
+      {
+        "q": "What happens after a consultation?",
+        "a": "You immediately receive a branded proposal page with a PDF download, the founder gets the full brief by email, and he follows up with you personally."
+      }
     ]
   }
 }

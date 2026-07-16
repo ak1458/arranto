@@ -37,6 +37,7 @@ export function Hero() {
   const outroImgTopRef = useRef<HTMLDivElement>(null);
   const outroImgBottomRef = useRef<HTMLDivElement>(null);
   const outroHeaderRef = useRef<HTMLHeadingElement>(null);
+  const outroContainerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
@@ -108,6 +109,9 @@ export function Hero() {
 
           // ── Reveal (REVEAL_AT → 1.0): "Nothing left undone" appears right after the flip closes ──
           const outroLines = outroHeaderRef.current?.querySelectorAll('.line');
+          if (outroContainerRef.current) {
+            gsap.set(outroContainerRef.current, { opacity: scrollProgress >= REVEAL_AT ? 1 : 0 });
+          }
           if (outroLines && outroLines.length > 0) {
             if (scrollProgress >= REVEAL_AT) {
               gsap.to(outroLines, {
@@ -171,7 +175,7 @@ export function Hero() {
       </div>
 
       {/* 2. BACKGROUND LAYER — Sliding "Systems" and "Studio" Columns */}
-      <div className="hero-bg-content absolute inset-0 z-0 flex flex-col sm:flex-row items-center justify-between p-6 sm:p-12 md:p-16 gap-8 select-none">
+      <div className="hero-bg-content absolute inset-0 z-0 flex flex-col sm:flex-row items-center justify-between px-10 sm:px-24 md:px-32 py-12 gap-8 select-none max-w-[1400px] mx-auto">
         <div className="flex-1 w-full flex justify-start items-center">
           <div
             ref={bgCopyLeftRef}
@@ -209,7 +213,7 @@ export function Hero() {
         <div ref={outroImgTopRef} className="hero-outro-img hero-outro-img-top absolute inset-x-0 top-0 h-[51%] w-full bg-[#050507]" style={{ clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)' }} />
         <div ref={outroImgBottomRef} className="hero-outro-img hero-outro-img-bottom absolute inset-x-0 bottom-0 h-[51%] w-full bg-[#050507]" style={{ clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)' }} />
 
-        <div className="absolute top-1/2 inset-x-0 mx-auto -translate-y-1/2 text-center w-full max-w-5xl px-6 sm:px-12 z-30 pointer-events-none">
+        <div ref={outroContainerRef} className="absolute top-1/2 inset-x-0 mx-auto -translate-y-1/2 text-center w-full max-w-5xl px-6 sm:px-12 z-30 pointer-events-none opacity-0">
           <SplitText
             ref={outroHeaderRef}
             className="font-display text-3xl sm:text-5xl md:text-7xl font-extrabold uppercase tracking-tight text-white leading-tight"

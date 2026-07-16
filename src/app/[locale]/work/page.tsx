@@ -46,6 +46,7 @@ export default async function WorkPage({ params }: Props) {
     { k: t("stat1Label"), v: t("stat1Value") },
     { k: t("stat2Label"), v: t("stat2Value") },
     { k: t("stat3Label"), v: t("stat3Value") },
+    { k: t("stat4Label"), v: t("stat4Value") },
   ];
 
   return (
@@ -64,7 +65,7 @@ export default async function WorkPage({ params }: Props) {
             </p>
           </Reveal>
 
-          <dl className="mt-16 grid grid-cols-1 gap-8 border-t border-white/10 pt-10 sm:grid-cols-3">
+          <dl className="mt-16 grid grid-cols-2 gap-8 border-t border-white/10 pt-10 sm:grid-cols-4">
             {stats.map((stat, idx) => (
               <Reveal key={stat.k} delay={idx * 0.1}>
                 <div>

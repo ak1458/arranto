@@ -55,9 +55,10 @@ export default async function AssistantPage({ params }: Props) {
           <Reveal delay={0.15}>
             <div className="mt-10 flex flex-wrap gap-3">
               <OpenChatButton
-                label={t("cta")}
                 className="border border-[#d8d9dc] bg-[#d8d9dc] px-6 py-3 font-mono text-xs uppercase tracking-widest text-black transition-colors hover:bg-transparent hover:text-[#d8d9dc] motion-reduce:transition-none"
-              />
+              >
+                {t("cta")}
+              </OpenChatButton>
               <Link
                 href="/contact"
                 className="border border-white/20 px-6 py-3 font-mono text-xs uppercase tracking-widest text-[#d8d9dc] transition-colors hover:border-[#d8d9dc] motion-reduce:transition-none"

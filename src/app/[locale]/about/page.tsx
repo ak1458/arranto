@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
 import { Reveal } from "@/components/Reveal";
 import { Accordion } from "@/components/Accordion";
+import { OpenChatButton } from "@/components/OpenChatButton";
 import { pageMetadata } from "@/lib/seo";
 import { services, type Locale } from "@/content/services";
 
@@ -202,13 +202,12 @@ export default async function About({ params }: Props) {
             </h2>
           </Reveal>
           <Reveal delay={0.05}>
-            <Link
-              href="/contact"
+            <OpenChatButton
               className="group relative inline-flex items-center gap-3 border border-[#d8d9dc]/40 bg-[#d8d9dc]/10 px-8 py-4 font-mono text-sm uppercase tracking-wider text-[#d8d9dc] transition-all duration-300 hover:bg-[#d8d9dc] hover:text-[#050505] hover:shadow-[0_0_30px_rgba(216,217,220,0.3)]"
             >
               <span>{t("cta")}</span>
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </Link>
+            </OpenChatButton>
           </Reveal>
         </div>
       </section>

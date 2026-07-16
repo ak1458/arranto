@@ -144,14 +144,26 @@ export function WorkPortfolioModal({ repos, eyebrow, heading }: Props) {
                   ))}
                 </div>
 
-                <a
-                  href={selectedRepo.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 border border-white bg-white px-5 py-2.5 font-mono text-xs font-bold uppercase tracking-wider text-black transition-colors hover:bg-[#d8d9dc]"
-                >
-                  View GitHub Architecture &rarr;
-                </a>
+                <div className="flex flex-wrap items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSelectedRepo(null);
+                      window.dispatchEvent(new Event('arranto:open-chat'));
+                    }}
+                    className="inline-flex items-center gap-2 border border-white bg-white px-5 py-2.5 font-mono text-xs font-bold uppercase tracking-wider text-black transition-colors hover:bg-[#d8d9dc]"
+                  >
+                    Consult on Architecture
+                  </button>
+                  <a
+                    href={selectedRepo.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 border border-white/20 bg-transparent px-5 py-2.5 font-mono text-xs font-bold uppercase tracking-wider text-white transition-colors hover:border-[#d8d9dc] hover:text-[#d8d9dc]"
+                  >
+                    View GitHub &rarr;
+                  </a>
+                </div>
               </div>
             </div>
           </div>

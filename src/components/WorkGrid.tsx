@@ -57,9 +57,12 @@ export function WorkGrid({
           return (
             <article
               key={project.slug}
-              className="stack-card card-hover group"
+              className="stack-card card-hover group relative"
               style={{ '--stack-top': `${16 + idx * 3}vh` } as React.CSSProperties}
             >
+              <Link href={`/work/${project.slug}`} className="absolute inset-0 z-10">
+                <span className="sr-only">View {project.title}</span>
+              </Link>
               <div>
                 <div className="flex items-center justify-between pb-4 mb-6 border-b border-white/10">
                   <span className="font-mono text-xs tracking-[0.2em] uppercase text-[#9494a0]">

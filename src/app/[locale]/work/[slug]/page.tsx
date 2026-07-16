@@ -7,6 +7,7 @@ import { githubProjects } from "@/lib/github";
 import { Accordion } from "@/components/Accordion";
 import { Reveal } from "@/components/Reveal";
 import { NanobannerCard } from "@/components/NanobannerCard";
+import { OpenChatButton } from "@/components/OpenChatButton";
 import { pageMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
@@ -366,12 +367,11 @@ function ProjectCta({ title, l, t }: ProjectCtaProps) {
       </div>
       <Reveal delay={0.1}>
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Link
-            href={`/contact?message=${encodeURIComponent(similarMessage)}`}
+          <OpenChatButton
             className="group relative inline-flex items-center justify-center gap-3 border border-[#d8d9dc] bg-[#d8d9dc]/15 px-8 py-4 text-sm font-semibold uppercase tracking-wider text-paper transition-all duration-300 hover:bg-[#d8d9dc] hover:text-ink"
           >
             {t("ctaSimilar")}
-          </Link>
+          </OpenChatButton>
 
         </div>
       </Reveal>
