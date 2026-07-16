@@ -10,7 +10,9 @@ const required = (name: string): string => {
 
 export const env = {
   get openrouterKey() { return required("OPENROUTER_API_KEY"); },
-  get model() { return process.env.OPENROUTER_MODEL ?? "anthropic/claude-sonnet-4.5"; },
+  // Free-phase default (owner decision 2026-07-16): OpenRouter's free-model router,
+  // which filters for tool-calling support per request. Swap via OPENROUTER_MODEL.
+  get model() { return process.env.OPENROUTER_MODEL ?? "openrouter/free"; },
   get cronSecret() { return required("CRON_SECRET"); },
   get googleCredentials() { return required("GOOGLE_APPLICATION_CREDENTIALS_JSON"); },
   get ga4PropertyId() { return required("GA4_PROPERTY_ID"); },

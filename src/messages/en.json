@@ -90,7 +90,7 @@
     "eyebrow": "About",
     "heading": "The studio is one person.",
     "storyHeading": "Our Journey & Evolution",
-    "body1": "Arranto wasn’t born in a boardroom; it was forged in the trenches of digital transformation. Our journey began in 2017, helping over 100+ local businesses transition to the digital space. We built foundational web architectures, optimized local operations, and delivered results that earned us 118+ verified five-star reviews.",
+    "body1": "Arranto wasn’t born in a boardroom; it was forged in the trenches of digital transformation. Our journey began in 2017, helping over 10+ local businesses transition to the digital space. We built foundational web architectures, optimized local operations, and delivered results that earned us 118+ verified five-star reviews.",
     "body2": "However, as our clients scaled, their problems became more complex. Traditional web platforms and legacy CMS systems could no longer keep up with the demands of modern data, compliance, and automation.",
     "body3": "We realized that the future of business isn't just about having a website—it's about having self-sustaining digital systems. That realization led to the evolution of our team and the birth of Arranto.",
     "body4": "Today, we operate as a highly specialized, AI-augmented product studio. We leverage cutting-edge tech stacks (React, TypeScript, Native Apps) and artificial intelligence to engineer custom SaaS products, enterprise compliance systems (like ZATCA and Sanad), and robust business automations for clients across the US, Europe, and the Middle East.",
@@ -102,7 +102,7 @@
         "k": "Established"
       },
       {
-        "v": "100+",
+        "v": "10+",
         "k": "Systems & Projects Delivered"
       },
       {
@@ -146,7 +146,7 @@
       },
       {
         "q": "Can you build ZATCA-compliant e-invoicing software?",
-        "a": "Yes — Fatura Lite Pro, one of our production case studies, is a real-time invoice clearance engine built for Saudi Arabia's ZATCA e-invoicing requirement: XML signing, cryptographic stamps, and live regulatory submission."
+        "a": "Yes — Fatura Lite Pro, one of our active pilots, is a real-time invoice clearance engine built for Saudi Arabia's ZATCA e-invoicing requirement: XML signing, cryptographic stamps, and live regulatory submission."
       },
       {
         "q": "Do you support Arabic and right-to-left (RTL) layouts?",
@@ -622,13 +622,82 @@
     "title": "Ask Arranto",
     "launch": "Open chat",
     "close": "Close chat",
-    "greeting": "Ask about the work, the studio, or how a project runs. Answers come from this site only.",
+    "greeting": "Ask about the work, the studio, or your own project. I can audit your website, and if you are planning a build, put together a written proposal for you.",
     "placeholder": "Ask a question…",
     "inputLabel": "Your message",
     "send": "Send",
     "sending": "…",
     "thinking": "Thinking",
     "error": "Assistant unavailable. Try again shortly, or use the contact form.",
-    "rateLimited": "Too many messages. Wait a moment, then try again."
+    "rateLimited": "Too many messages. Wait a moment, then try again.",
+    "s1": "What do you build for companies like mine?",
+    "s2": "Audit my website",
+    "s3": "How does a project start?",
+    "linkProposal": "View your proposal",
+    "linkPdf": "Download proposal (PDF)",
+    "status": {
+      "default": "Working…",
+      "audit_website": "Auditing the website…",
+      "fetch_url": "Reading the page…",
+      "seo_content": "Drafting SEO content…",
+      "brand_kit": "Drafting the brand starter…",
+      "content_calendar": "Drafting the content plan…",
+      "document_intelligence": "Analyzing the document…",
+      "website_factory": "Drafting the blueprint…",
+      "submit_inquiry": "Sending your message…",
+      "submit_consultation": "Preparing your proposal…"
+    }
+  },
+  "proposal": {
+    "metaTitle": "Project Proposal — Arranto",
+    "title": "Project Proposal",
+    "preparedFor": "Prepared for",
+    "overview": "Overview",
+    "overviewBody": "{who} is exploring an engagement with Arranto — a founder-led software studio (est. 2017, 10+ delivered projects, 118 verified Google reviews) — for {type}. This proposal summarizes what was discussed with the studio assistant.",
+    "goals": "Goals",
+    "scope": "Proposed scope",
+    "timeline": "Indicative timeline",
+    "budget": "Your stated budget range",
+    "next": "Next steps",
+    "next1": "The founder reviews this proposal and contacts you directly.",
+    "next2": "A short call to confirm scope, constraints, and priorities.",
+    "next3": "You receive a concrete plan with milestones before any commitment.",
+    "investment": "This document outlines scope and approach. Investment is discussed directly with the founder — no automated pricing.",
+    "download": "Download PDF",
+    "types": {
+      "ai-automation": "AI Automation",
+      "ai-product": "AI Product Development",
+      "saas": "SaaS Development"
+    }
+  },
+  "assistantPage": {
+    "metaTitle": "AI Assistant — Arranto",
+    "metaDescription": "Talk to the Arranto AI assistant: ask about AI automation, AI product development, and SaaS builds, get your website audited live, and receive a written project proposal — in your language.",
+    "eyebrow": "Arranto Assistant",
+    "heading": "A real assistant, not a chatbot.",
+    "intro": "The Arranto assistant answers questions about the studio and its work, audits your website live, drafts SEO and brand starters with the free tools on this site, and can run a full project consultation that ends in a written proposal — in whatever language you speak to it.",
+    "cta": "Talk to the assistant",
+    "ctaContact": "Contact the founder",
+    "domainsHeading": "What it covers",
+    "domains": [
+      { "title": "AI Automation", "body": "Workflows, integrations, and agents that remove manual work from real business operations." },
+      { "title": "AI Product Development", "body": "AI-native products designed, built, and shipped by the founder — from concept to running system." },
+      { "title": "SaaS Development", "body": "Multi-tenant platforms and business systems, built to run reliably from day one." }
+    ],
+    "stepsHeading": "From question to proposal",
+    "steps": [
+      { "title": "Ask anything in your language", "body": "The assistant replies in the language you use — English, Arabic, or any other." },
+      { "title": "See real work and real checks", "body": "It cites the studio's actual case studies and can audit your current website live while you chat." },
+      { "title": "Run a short consultation", "body": "Planning a build? It collects your goals, timeline, and constraints in a few focused questions." },
+      { "title": "Receive a written proposal", "body": "You get a branded proposal page and PDF immediately, and the founder follows up personally." }
+    ],
+    "faqHeading": "Questions",
+    "faq": [
+      { "q": "What can the Arranto assistant actually do?", "a": "It answers questions about Arranto's services and case studies, audits any public website in real time, drafts SEO content, brand starters, content calendars and website blueprints, and runs project consultations that end in a written proposal sent to the founder." },
+      { "q": "Which languages does it support?", "a": "All of them. It automatically replies in the language you write in — English, Arabic, Italian, German, French, Hindi, and more — with correct native phrasing." },
+      { "q": "Are its answers accurate?", "a": "It answers only from the studio's real, published information and live tool results. Products in pilot are always described as in pilot, never as live, and it will say so when something is outside its knowledge." },
+      { "q": "Does it give prices?", "a": "No. Arranto does not publish pricing and the assistant never invents figures. Investment is discussed directly with the founder after the proposal." },
+      { "q": "What happens after a consultation?", "a": "You immediately receive a branded proposal page with a PDF download, the founder gets the full brief by email, and he follows up with you personally." }
+    ]
   }
 }

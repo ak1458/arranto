@@ -1,21 +1,37 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
-type Msg = { role: 'user' | 'assistant'; content: string };
+type Msg =
+  | { role: 'user' | 'assistant'; content: string }
+  | { role: 'link'; href: string; kind: 'proposal' | 'pdf' };
 
 export function Chat() {
   const t = useTranslations('chat');
+  const locale = useLocale();
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
+  const [status, setStatus] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const launcherRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const logRef = useRef<HTMLDivElement>(null);
+
+  // Deep link (?chat=open, used by /assistant SEO entries) + programmatic open
+  // (OpenChatButton dispatches 'arranto:open-chat' — survives soft navigation).
+  useEffect(() => {
+    const onOpen = () => setOpen(true);
+    window.addEventListener('arranto:open-chat', onOpen);
+    // Deep link funnels through the same event so open-state changes have one path.
+    if (new URLSearchParams(window.location.search).get('chat') === 'open') {
+      window.dispatchEvent(new Event('arranto:open-chat'));
+    }
+    return () => window.removeEventListener('arranto:open-chat', onOpen);
+  }, []);
 
   // Esc closes and returns focus to the launcher, per WCAG 2.1.1/2.4.3.
   useEffect(() => {
@@ -34,7 +50,12 @@ export function Chat() {
   // Pin to the newest token as the reply streams in.
   useEffect(() => {
     logRef.current?.scrollTo({ top: logRef.current.scrollHeight });
-  }, [messages]);
+  }, [messages, status]);
+
+  // Localized label for a tool-status event; unknown tools get the generic one.
+  function statusLabel(tool: string): string {
+    return t.has(`status.${tool}`) ? t(`status.${tool}`) : t('status.default');
+  }
 
   async function send() {
     const text = input.trim();
@@ -50,8 +71,13 @@ export function Chat() {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        // The route caps history at 30 messages — send the most recent window.
-        body: JSON.stringify({ messages: history.slice(-30) }),
+        body: JSON.stringify({
+          // Link cards are UI-only — the route caps history at 30 text messages.
+          messages: history
+            .filter((m): m is { role: 'user' | 'assistant'; content: string } => m.role !== 'link')
+            .slice(-30),
+          locale,
+        }),
       });
 
       if (!res.ok || !res.body) {
@@ -59,23 +85,53 @@ export function Chat() {
         return;
       }
 
-      setMessages([...history, { role: 'assistant', content: '' }]);
+      let current = [...history];
+      let reply = '';
+      let gotAnything = false;
+      const render = () =>
+        setMessages(reply ? [...current, { role: 'assistant', content: reply }] : [...current]);
 
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
-      let reply = '';
+      let buffer = '';
       for (;;) {
         const { done, value } = await reader.read();
         if (done) break;
-        reply += decoder.decode(value, { stream: true });
-        setMessages([...history, { role: 'assistant', content: reply }]);
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() ?? '';
+        for (const line of lines) {
+          if (!line.trim()) continue;
+          let ev: { t: string; text?: string; tool?: string; href?: string; kind?: string };
+          try { ev = JSON.parse(line); } catch { continue; }
+          if (ev.t === 'delta' && ev.text) {
+            reply += ev.text;
+            gotAnything = true;
+            setStatus(null);
+            render();
+          } else if (ev.t === 'status' && ev.tool) {
+            // Text before a tool round becomes its own settled message.
+            if (reply) { current = [...current, { role: 'assistant', content: reply }]; reply = ''; }
+            setStatus(statusLabel(ev.tool));
+            render();
+          } else if (ev.t === 'link' && ev.href) {
+            if (reply) { current = [...current, { role: 'assistant', content: reply }]; reply = ''; }
+            current = [...current, { role: 'link', href: ev.href, kind: ev.kind === 'pdf' ? 'pdf' : 'proposal' }];
+            gotAnything = true;
+            render();
+          } else if (ev.t === 'error') {
+            setError(t('error'));
+          }
+        }
       }
+      setStatus(null);
       // A stream that opens and closes empty is a failure, not an empty answer.
-      if (!reply.trim()) {
+      if (!gotAnything) {
         setMessages(history);
         setError(t('error'));
       }
     } catch {
+      setStatus(null);
       setError(t('error'));
     } finally {
       setBusy(false);
@@ -135,11 +191,7 @@ export function Chat() {
               <div className="space-y-4">
                 <p className="text-[#8e8f94]">{t('greeting')}</p>
                 <div className="flex flex-col gap-2 pt-2">
-                  {[
-                    "How do pricing and scope work?",
-                    "What technologies do you build with?",
-                    "How long does a typical project take?"
-                  ].map((suggestion) => (
+                  {[t('s1'), t('s2'), t('s3')].map((suggestion) => (
                     <button
                       key={suggestion}
                       type="button"
@@ -155,21 +207,37 @@ export function Chat() {
               </div>
             )}
 
-            {messages.map((m, i) => (
-              <div
-                key={i}
-                className={
-                  m.role === 'user'
-                  ? 'ms-auto w-fit max-w-[85%] bg-white/[0.07] px-3 py-2 text-[#f0efec]'
-                    : 'me-auto w-fit max-w-[95%] whitespace-pre-wrap text-[#c9cace]'
-                }
-              >
-                {m.content}
-                {m.role === 'assistant' && !m.content && busy && (
-                  <span className="terminal-caret" aria-label={t('thinking')} />
-                )}
-              </div>
-            ))}
+            {messages.map((m, i) =>
+              m.role === 'link' ? (
+                <a
+                  key={i}
+                  href={m.href}
+                  target="_blank"
+                  rel="noopener"
+                  className="me-auto block w-fit max-w-[95%] border border-[#d8d9dc]/40 bg-white/[0.04] px-4 py-3 font-mono text-xs uppercase tracking-wider text-[#d8d9dc] transition-colors hover:border-[#d8d9dc] hover:bg-white/[0.08] motion-reduce:transition-none"
+                >
+                  {m.kind === 'pdf' ? t('linkPdf') : t('linkProposal')} ↗
+                </a>
+              ) : (
+                <div
+                  key={i}
+                  className={
+                    m.role === 'user'
+                      ? 'ms-auto w-fit max-w-[85%] bg-white/[0.07] px-3 py-2 text-[#f0efec]'
+                      : 'me-auto w-fit max-w-[95%] whitespace-pre-wrap text-[#c9cace]'
+                  }
+                >
+                  {m.content}
+                </div>
+              ),
+            )}
+
+            {busy && (
+              <p className="font-mono text-xs text-[#8e8f94]">
+                {status ?? t('thinking')}
+                <span className="terminal-caret" aria-hidden="true" />
+              </p>
+            )}
 
             {error && (
               <p className="font-mono text-xs text-[#8e8f94]">[ERR] {error}</p>

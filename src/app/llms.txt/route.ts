@@ -21,6 +21,7 @@ ${work}
 - https://arranto.com/en — home
 - https://arranto.com/en/work — case studies
 - https://arranto.com/en/about — about the studio
+- https://arranto.com/en/assistant — the studio's AI assistant (answers questions, audits websites, runs project consultations)
 - https://arranto.com/en/contact — contact the founder
 - Arabic versions at /ar/*
 
