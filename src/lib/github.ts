@@ -39,8 +39,11 @@ export async function githubProjects(): Promise<Repo[]> {
       // exclude the fork/private noise plus GitHub's special profile-README repo
       // (a repo named exactly like the username) — that's a bio page, not a project.
       .filter(
-        (r: Record<string, unknown>) =>
-          !r.fork && !r.private && (r.name as string).toLowerCase() !== USER.toLowerCase()
+        (r: Record<string, unknown>) => {
+          const name = (r.name as string).toLowerCase();
+          const isHobby = ["liar", "puzzle", "trivia", "game", "sudoku", "test", "experiment"].some((kw) => name.includes(kw));
+          return !r.fork && !r.private && name !== USER.toLowerCase() && !isHobby;
+        }
       )
       .map((r: Record<string, unknown>) => {
         const name = r.name as string;

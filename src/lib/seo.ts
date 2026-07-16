@@ -80,11 +80,7 @@ export function orgJsonLd(locale: string) {
     founder: { "@type": "Person", name: "Ashraf Kamal", sameAs: "https://github.com/ak1458" },
     areaServed: ["SA", "AE", "OM", "US", "GB", "DE", "FR", "IN"],
     knowsAbout: ORG_KNOWS_ABOUT[l],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "118",
-    },
+
     sameAs: [
       "https://www.linkedin.com/in/ashrafkamal14/",
       "https://github.com/ak1458",

@@ -164,9 +164,7 @@ export default async function About({ params }: Props) {
                     ))}
                   </ul>
                 </div>
-                <div className="mt-8 pt-6 border-t border-white/10">
-                  <span className="font-mono text-xs text-[#d8d9dc]">{t("fromLabel")} {service.from}</span>
-                </div>
+
               </article>
             ))}
           </Reveal>

@@ -61,9 +61,9 @@ export function TerminalForm({ initialMessage }: { initialMessage?: string }) {
           <p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-[#d8d9dc]">
             {t('eyebrow')}
           </p>
-          <h2 className="mt-6 font-display text-[clamp(2.2rem,5vw,4.5rem)] font-bold uppercase leading-none tracking-tight text-white">
+          <h1 className="mt-6 font-display text-[clamp(2.2rem,5vw,4.5rem)] font-bold uppercase leading-none tracking-tight text-white">
             {t('heading')}
-          </h2>
+          </h1>
           <p className="mt-6 text-base leading-relaxed text-[#8e8f94] max-w-2xl font-light">
             {t('subline')}
           </p>

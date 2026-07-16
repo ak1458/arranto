@@ -372,12 +372,7 @@ function ProjectCta({ title, l, t }: ProjectCtaProps) {
           >
             {t("ctaSimilar")}
           </Link>
-          <Link
-            href={`/contact?message=${encodeURIComponent(buyMessage)}`}
-            className="group relative inline-flex items-center justify-center gap-3 border border-white/20 bg-transparent px-8 py-4 text-sm font-semibold uppercase tracking-wider text-paper/85 transition-all duration-300 hover:border-[#d8d9dc] hover:text-[#d8d9dc]"
-          >
-            {t("ctaBuy")}
-          </Link>
+
         </div>
       </Reveal>
     </div>
