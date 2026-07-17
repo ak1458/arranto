@@ -9,7 +9,9 @@
     "contactTitle": "Contact — Arranto",
     "contactDescription": "Tell me what you're building. Messages are read and answered by the founder within one business day.",
     "toolsTitle": "Free Tools — Arranto",
-    "toolsDescription": "Free, production-ready developer and AI tools. No signup or email gate required."
+    "toolsDescription": "Free, production-ready developer and AI tools. No signup or email gate required.",
+    "blogTitle": "Blog — Arranto",
+    "blogDescription": "Insights on AI Automation and SaaS Development."
   },
   "nav": {
     "home": "Home",
@@ -824,5 +826,10 @@
       }
     ],
     "cta": "Start your project"
+  },
+  "blog": {
+    "eyebrow": "ARRANTO // INSIGHTS",
+    "heading": "The Blog",
+    "subline": "Deep dives into AI Automation, Custom SaaS, and business efficiency."
   }
 }

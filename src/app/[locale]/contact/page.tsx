@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { TerminalForm } from "@/components/TerminalForm";
+import { EmbeddedChat } from "@/components/EmbeddedChat";
 import { Reveal } from "@/components/Reveal";
 import { pageMetadata } from "@/lib/seo";
 
@@ -29,7 +29,70 @@ export default async function Contact({ params, searchParams }: Props) {
 
   return (
     <div className="min-h-screen bg-[#050505] pt-12 pb-24 text-white">
-      <TerminalForm initialMessage={message} />
+      <section className="relative w-full overflow-hidden pt-12 pb-16">
+        <div className="absolute top-1/3 start-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 bg-[#d8d9dc]/5 blur-[140px] pointer-events-none"/>
+
+        <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
+          <div className="max-w-3xl mb-16">
+            <p className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-[#d8d9dc]">
+              {t("eyebrow")}
+            </p>
+            <h1 className="mt-6 font-display text-[clamp(2.2rem,5vw,4.5rem)] font-bold uppercase leading-none tracking-tight text-white">
+              {t("heading")}
+            </h1>
+            <p className="mt-6 text-base leading-relaxed text-[#8e8f94] max-w-2xl font-light">
+              We've replaced traditional forms with our proactive AI Assistant. It will gather your requirements, answer your questions, and can even draft a full proposal. Start chatting below.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
+            {/* Quick Contact Info */}
+            <div className="lg:col-span-4 flex flex-col gap-8">
+              <div>
+                <h3 className="font-mono text-xs uppercase tracking-[0.22em] text-[#d8d9dc] mb-3">
+                  {t("methodWhatsapp")}
+                </h3>
+                <p className="text-sm text-[#8e8f94] font-light mb-2">{t("methodWhatsappBody")}</p>
+                <a href="https://wa.me/919453878422" target="_blank" rel="noopener noreferrer" className="font-mono text-xs text-white hover:underline">
+                  +91 94538 78422 →
+                </a>
+              </div>
+              
+              <div>
+                <h3 className="font-mono text-xs uppercase tracking-[0.22em] text-[#d8d9dc] mb-3">
+                  {t("methodPhone")}
+                </h3>
+                <p className="text-sm text-[#8e8f94] font-light mb-2">Direct call for immediate assistance.</p>
+                <a href="tel:+919453878422" className="font-mono text-xs text-white hover:underline">
+                  +91 94538 78422 →
+                </a>
+              </div>
+
+              <div>
+                <h3 className="font-mono text-xs uppercase tracking-[0.22em] text-[#d8d9dc] mb-3">
+                  {t("methodEmail")}
+                </h3>
+                <p className="text-sm text-[#8e8f94] font-light mb-2">{t("methodEmailBody")}</p>
+                <a href="mailto:help@arranto.com" className="font-mono text-xs text-white hover:underline">
+                  help@arranto.com →
+                </a>
+              </div>
+              
+              <div>
+                <h3 className="font-mono text-xs uppercase tracking-[0.22em] text-[#d8d9dc] mb-3">
+                  {t("businessHours")}
+                </h3>
+                <p className="text-sm text-[#8e8f94] font-light mb-2">{t("businessHoursBody")}</p>
+              </div>
+            </div>
+
+            {/* Embedded Chat */}
+            <div className="lg:col-span-8 relative">
+              <EmbeddedChat initialMessage={message} />
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="mt-24 px-6 md:px-12">
         <div className="mx-auto grid max-w-4xl gap-12 border-t border-white/10 pt-16 lg:grid-cols-12">
@@ -47,66 +110,6 @@ export default async function Contact({ params, searchParams }: Props) {
               </li>
             ))}
           </ol>
-        </div>
-
-        <div className="mx-auto mt-16 grid max-w-4xl gap-px border-t border-white/10 bg-white/10 pt-px sm:grid-cols-2 lg:grid-cols-4">
-          <div className="flex flex-col bg-[#050505] p-6">
-            <h3 className="font-mono text-xs uppercase tracking-[0.22em] text-[#d8d9dc]">
-              {t("directHeading")}
-            </h3>
-            <p className="mt-3 flex-1 text-sm text-[#8e8f94] font-light">{t("directBody")}</p>
-            <a
-              href="mailto:help@arranto.com"
-              className="mt-4 inline-flex items-center gap-2 font-mono text-xs text-[#d8d9dc] hover:underline"
-            >
-              help@arranto.com →
-            </a>
-          </div>
-
-          <div className="flex flex-col bg-[#050505] p-6">
-            <h3 className="font-mono text-xs uppercase tracking-[0.22em] text-[#d8d9dc]">
-              {t("methodWhatsapp")}
-            </h3>
-            <p className="mt-3 flex-1 text-sm text-[#8e8f94] font-light">{t("methodWhatsappBody")}</p>
-            <a
-              href="https://wa.me/919453878422"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-2 font-mono text-xs text-[#d8d9dc] hover:underline"
-            >
-              +91 94538 78422 →
-            </a>
-          </div>
-
-          <div className="flex flex-col bg-[#050505] p-6">
-            <h3 className="font-mono text-xs uppercase tracking-[0.22em] text-[#d8d9dc]">
-              {t("methodLinkedin")}
-            </h3>
-            <p className="mt-3 flex-1 text-sm text-[#8e8f94] font-light">{t("methodLinkedinBody")}</p>
-            <a
-              href="https://www.linkedin.com/in/ashrafkamal14/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-2 font-mono text-xs text-[#d8d9dc] hover:underline"
-            >
-              in/ashrafkamal14 →
-            </a>
-          </div>
-
-          <div className="flex flex-col bg-[#050505] p-6">
-            <h3 className="font-mono text-xs uppercase tracking-[0.22em] text-[#d8d9dc]">
-              {t("methodGithub")}
-            </h3>
-            <p className="mt-3 flex-1 text-sm text-[#8e8f94] font-light">{t("methodGithubBody")}</p>
-            <a
-              href="https://github.com/ak1458"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-2 font-mono text-xs text-[#d8d9dc] hover:underline"
-            >
-              github.com/ak1458 →
-            </a>
-          </div>
         </div>
       </section>
     </div>
