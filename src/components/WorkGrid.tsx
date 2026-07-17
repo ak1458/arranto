@@ -3,7 +3,7 @@
 import type { Status } from '@/content/work';
 import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
-import { WorkArt } from '@/components/WorkArt';
+import Image from 'next/image';
 import { Reveal } from '@/components/Reveal';
 
 /**
@@ -21,6 +21,8 @@ export type WorkCard = {
   outcome: string;
   /** Proof-layer paragraph. Supplied on /work only; omitted on the home teaser. */
   summary?: string;
+  /** Image for the project thumbnail. */
+  image?: string;
 };
 
 export function WorkGrid({
@@ -95,9 +97,13 @@ export function WorkGrid({
                   <div className="lg:col-span-5">
                     <Link
                       href={`/work/${project.slug}`}
-                      className="block overflow-hidden border border-white/10 bg-[#0a0a0e] shadow-2xl transition-transform duration-500 group-hover:scale-[1.02] group-hover:border-[#d8d9dc]/40"
+                      className="block overflow-hidden border border-white/10 bg-[#0a0a0e] shadow-2xl transition-transform duration-500 group-hover:scale-[1.02] group-hover:border-[#d8d9dc]/40 relative aspect-video"
                     >
-                      <WorkArt seed={project.slug} index={idx} className="w-full h-full" />
+                      {project.image ? (
+                        <Image src={project.image} alt={project.title} fill className="object-cover" />
+                      ) : (
+                        <div className="w-full h-full bg-[#121218]" />
+                      )}
                     </Link>
                   </div>
                 </div>

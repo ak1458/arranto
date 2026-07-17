@@ -175,7 +175,7 @@ export function Hero() {
       </div>
 
       {/* 2. BACKGROUND LAYER — Sliding "Systems" and "Studio" Columns */}
-      <div className="hero-bg-content absolute inset-0 z-0 flex flex-col sm:flex-row items-center justify-between px-10 sm:px-24 md:px-32 py-12 gap-8 select-none max-w-[1400px] mx-auto">
+      <div className="hero-bg-content absolute inset-0 z-0 flex flex-col sm:flex-row items-center justify-between px-10 sm:px-24 md:px-32 py-12 gap-8 select-none w-full">
         <div className="flex-1 w-full flex justify-start items-center">
           <div
             ref={bgCopyLeftRef}

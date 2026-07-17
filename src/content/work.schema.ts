@@ -15,8 +15,10 @@ export const caseStudySchema = z.object({
   stack: z.array(z.string().min(1)).min(1),
   order: z.number().int().positive(),
   body: localized,
+  article: localized.optional(),
   faq: z.array(z.object({ q: localized, a: localized })),
   repo: z.string().min(1).optional(),
+  image: z.string().optional(),
 });
 
 export const caseStudiesSchema = z

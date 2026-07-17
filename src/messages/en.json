@@ -148,7 +148,7 @@
       },
       {
         "q": "Can you build ZATCA-compliant e-invoicing software?",
-        "a": "Yes — Fatura Lite Pro, one of our active pilots, is a real-time invoice clearance engine built for Saudi Arabia's ZATCA e-invoicing requirement: XML signing, cryptographic stamps, and live regulatory submission."
+        "a": "Yes — FATOORA Lite, one of our active pilots, is a real-time invoice clearance engine built for Saudi Arabia's ZATCA e-invoicing requirement: XML signing, cryptographic stamps, and live regulatory submission."
       },
       {
         "q": "Do you support Arabic and right-to-left (RTL) layouts?",
@@ -211,7 +211,22 @@
     "sending": "Sending…",
     "success": "Got it. I read everything myself — expect a reply within a day.",
     "error": "Something went wrong — email help@arranto.com instead.",
-    "invalid": "Name, a valid email, and a message are required."
+    "invalid": "Name, a valid email, and a message are required.",
+    "budgets": {
+      "b1": "$1,000 - $2,500",
+      "b2": "$2,500 - $5,000",
+      "b3": "$5,000 - $10,000",
+      "b4": "$10,000 - $25,000",
+      "b5": "$25,000+"
+    },
+    "serviceInterest": "Service Interest",
+    "budgetRange": "Budget Range",
+    "projectDetails": "Project Details",
+    "privacyPolicyAgree": "I agree to the Privacy Policy",
+    "businessHours": "Business Hours",
+    "businessHoursBody": "Mon-Fri, 9:00 AM - 6:00 PM",
+    "methodEmail": "Email",
+    "methodEmailBody": "Fast response within one business day."
   },
   "menu": {
     "hint": "Drag or hover to explore",
@@ -292,7 +307,8 @@
     "cookies": "Cookie Policy",
     "disclaimer": "Disclaimer",
     "email": "help@arranto.com",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "processesHeading": "Service Guides"
   },
   "legal": {
     "lastUpdated": "Last updated: 13 July 2026",
@@ -301,85 +317,61 @@
     "privacySubtitle": "What Arranto collects, why, and how to request it back.",
     "privacySections": [
       {
-        "h": "1. What we collect",
-        "b": "Only what you give us directly: name, email, and message — submitted through the contact form or a conversation with the chat assistant. No account creation, no payment details are ever collected on this site."
+        "h": "1. Information Collection",
+        "b": "We collect information you provide directly to us through our contact forms, such as your name, email address, and project details. We do not collect payment information on this site or create user accounts."
       },
       {
-        "h": "2. How we use it",
-        "b": "To reply to your inquiry and keep a record of the conversation. It is never sold, shared with third parties for their own use, or used to build advertising profiles."
+        "h": "2. Use of Information",
+        "b": "We use the information we collect to communicate with you about your inquiries, to provide and maintain our services, and to improve our website. Your data is not sold or shared with third parties for marketing purposes."
       },
       {
-        "h": "3. AI processing",
-        "b": "Contact messages and chat conversations are processed by AI models, routed through OpenRouter, to generate a reply and to help improve the site. Providers process this data only to return a response — not to train their own models on it beyond standard API terms."
+        "h": "3. Data Sharing and Third Parties",
+        "b": "We may share data with trusted service providers who assist us in operating our website and conducting our business, strictly under confidentiality agreements. We may also disclose information when required by law."
       },
       {
-        "h": "4. Storage",
-        "b": "Inquiries are stored in a Supabase database behind server-side access controls. Kept only as long as needed to respond, and deleted on request."
+        "h": "4. Data Security",
+        "b": "We implement robust technical and organizational measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction. We utilize secure protocols for data transmission."
       },
       {
-        "h": "5. Analytics",
-        "b": "Google Analytics 4 and Google Tag Manager run on this site to understand traffic and page performance. See the Cookie Policy for exactly what's set. No advertising or remarketing pixels run on this site — ever."
-      },
-      {
-        "h": "6. Your rights",
-        "b": "Write to help@arranto.com to request access to, or deletion of, any data tied to your email. Expect a reply within a few days."
-      },
-      {
-        "h": "7. Contact",
-        "b": "Questions about this policy: help@arranto.com."
+        "h": "5. Your Privacy Rights",
+        "b": "You have the right to request access, correction, or deletion of your personal data. To exercise these rights, please contact us at help@arranto.com."
       }
     ],
     "termsTitle": "Terms of Service",
     "termsSubtitle": "The plain-language terms for using this site and working with Arranto.",
     "termsSections": [
       {
-        "h": "1. Who this is",
-        "b": "Arranto is a founder-led software studio, established 2017 as Smile Fotilo. “We” or “Arranto” means the studio; “you” means anyone using this site."
+        "h": "1. Acceptance of Terms",
+        "b": "By accessing and using the Arranto website, you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, please refrain from using our site."
       },
       {
-        "h": "2. Using this site",
-        "b": "Case studies and status labels (“proven” or “in pilot”) are accurate as of publish date. Systems marked “in pilot” are never represented as live, finished, or production-proven."
+        "h": "2. Scope of Services",
+        "b": "Arranto provides custom software, AI solutions, and digital marketing services. The information on this site outlines our general capabilities. Specific project scopes, deliverables, and costs will be defined in a separate written agreement."
       },
       {
-        "h": "3. No public pricing",
-        "b": "Arranto works on a menu-of-services, inquiry basis. Nothing on this site is an offer of a specific price — scope and cost are agreed directly, in writing, before any work begins."
+        "h": "3. Intellectual Property Rights",
+        "b": "All content, designs, code, and materials on this website are the intellectual property of Arranto. You may not reproduce, distribute, or modify any materials without our explicit written consent."
       },
       {
-        "h": "4. Free tools",
-        "b": "The tools under /tools (website audit, SEO content, brand kit, and others) provide automated, AI-assisted output for general guidance. They are not professional, legal, or financial advice, and results are not guaranteed."
+        "h": "4. Client Obligations",
+        "b": "When engaging our services, clients are expected to provide timely feedback, necessary resources, and clear communication to facilitate project success."
       },
       {
-        "h": "5. Intellectual property",
-        "b": "Site content, brand marks, and case-study write-ups belong to Arranto. Client deliverables are governed by that project's own written agreement, not by this page."
+        "h": "5. Pricing and Payments",
+        "b": "We do not offer fixed public pricing. All pricing is customized based on project requirements. Payment terms, milestones, and schedules will be mutually agreed upon in writing before work commences."
       },
       {
-        "h": "6. No guaranteed outcomes",
-        "b": "Case studies describe real, delivered or in-pilot work. Results for a new engagement depend on its own scope and inputs and are never guaranteed by anything on this page."
+        "h": "6. Limitation of Liability",
+        "b": "Arranto shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of your use of our website or services. Our maximum liability in connection with any project is limited to the fees paid under the specific project agreement."
       },
       {
-        "h": "7. Chat assistant",
-        "b": "The chat assistant answers only from this site's published content. It will not describe an in-pilot product as live, and it doesn't replace a direct conversation with the founder for anything that matters to a decision."
-      },
-      {
-        "h": "8. Limitation of liability",
-        "b": "Arranto is not liable for indirect or consequential damages arising from use of this website. Liability for a paid engagement is governed by that engagement's own written agreement."
-      },
-      {
-        "h": "9. Governing relationship",
-        "b": "Using this site does not create a client relationship. That starts with a direct conversation via the contact page."
-      },
-      {
-        "h": "10. Changes",
-        "b": "These terms may be updated from time to time; the version shown here at the time of your visit is the one that applies."
-      },
-      {
-        "h": "11. Contact",
-        "b": "Questions about these terms: help@arranto.com."
+        "h": "7. Governing Law",
+        "b": "These Terms shall be governed by and construed in accordance with applicable laws, without regard to its conflict of law provisions."
       }
     ],
     "cookiesTitle": "Cookie Policy",
     "cookiesSubtitle": "Every cookie this site sets, what it does, and how to opt out.",
-    "cookiesIntro": "This site uses a small number of cookies and browser-storage entries, mainly to understand traffic and keep the language switcher working. No advertising or remarketing cookies are used — ever.",
+    "cookiesIntro": "Arranto utilizes cookies to improve user experience, analyze site traffic, and support language preferences. We maintain a strict policy against the use of intrusive advertising cookies.",
     "cookiesTableHeaders": {
       "name": "Name",
       "provider": "Provider",
@@ -404,7 +396,7 @@
       }
     ],
     "cookiesConsentHeading": "3. Where we're honest about a gap",
-    "cookiesConsentBody": "Analytics currently loads with these cookies allowed by default — advertising signals (ad_storage, ad_user_data, ad_personalization) are permanently denied and never sent, but there is no accept/decline banner yet for EU visitors. That's on our list before wider EU launch. Until then, block analytics cookies in your browser's privacy settings at any time — the site works fully without them.",
+    "cookiesConsentBody": "By continuing to use our website, you consent to our use of essential and analytics cookies. We do not use third-party marketing or tracking cookies. You can manage your cookie preferences through your browser settings.",
     "cookiesChangeHeading": "4. Changing your choice",
     "cookiesChangeBody": "Block or clear cookies in your browser settings at any time. The site continues to function normally either way.",
     "cookiesContactHeading": "5. Questions",
@@ -413,24 +405,20 @@
     "disclaimerSubtitle": "What our case studies, free tools, and third-party mentions do and don't promise.",
     "disclaimerSections": [
       {
-        "h": "1. Case studies and results",
-        "b": "Case studies describe real client work. Status is labeled accurately — “proven” means delivered and in production; “in pilot” means built and being tested, not yet live. Past outcomes don't guarantee similar results for a different business."
+        "h": "1. Accuracy of Information",
+        "b": "While we strive to ensure that the information on our website is accurate and up to date, Arranto makes no warranties or representations regarding the completeness, accuracy, or reliability of any content."
       },
       {
-        "h": "2. Free tools & chat assistant",
-        "b": "Automated AI output from the /tools suite and the chat assistant is a starting point, not professional, legal, tax, or compliance advice — including for e-invoicing or regulatory topics. Verify anything consequential with a qualified professional, or talk to the founder directly."
+        "h": "2. No Professional Advice",
+        "b": "The content, case studies, and tools provided on this website are for informational purposes only and do not constitute professional, legal, financial, or compliance advice."
       },
       {
-        "h": "3. No pricing promises",
-        "b": "Nothing on this site states a specific price. Costs are confirmed in writing, per project, before work starts."
+        "h": "3. Results Not Guaranteed",
+        "b": "Past performance and outcomes detailed in our case studies are specific to those individual projects. They do not guarantee identical or similar results for future engagements."
       },
       {
-        "h": "4. Third-party names",
-        "b": "Product and platform names mentioned on this site are trademarks of their respective owners. Mentioning them means we work with those platforms — not that those companies endorse Arranto."
-      },
-      {
-        "h": "5. Questions",
-        "b": "Email help@arranto.com."
+        "h": "4. External Links",
+        "b": "Our website may contain links to external sites. We are not responsible for the content, privacy policies, or practices of any third-party websites."
       }
     ]
   },
@@ -746,5 +734,95 @@
         "a": "You immediately receive a branded proposal page with a PDF download, the founder gets the full brief by email, and he follows up with you personally."
       }
     ]
+  },
+  "servicesList": {
+    "ai-automation": {
+      "title": "AI Automation",
+      "slug": "ai-automation"
+    },
+    "custom-ai-solutions": {
+      "title": "Custom AI Solutions",
+      "slug": "custom-ai-solutions"
+    },
+    "ai-saas-development": {
+      "title": "AI SaaS Development",
+      "slug": "ai-saas-development"
+    },
+    "crm-development": {
+      "title": "CRM Development",
+      "slug": "crm-development"
+    },
+    "website-development": {
+      "title": "Website Development",
+      "slug": "website-development"
+    },
+    "digital-marketing": {
+      "title": "Digital Marketing",
+      "slug": "digital-marketing"
+    },
+    "seo": {
+      "title": "SEO",
+      "slug": "seo"
+    },
+    "growth-package": {
+      "title": "Complete Growth Package (Website + Branding + Ads)",
+      "slug": "growth-package"
+    },
+    "branding": {
+      "title": "Branding",
+      "slug": "branding"
+    },
+    "saas-development": {
+      "title": "SaaS Development",
+      "slug": "saas-development"
+    },
+    "compliance-solutions": {
+      "title": "Compliance Solutions",
+      "slug": "compliance-solutions"
+    },
+    "custom-project": {
+      "title": "Custom Project",
+      "slug": "custom-project"
+    }
+  },
+  "blueprint": {
+    "heading": "Service Blueprint",
+    "pricingHeading": "Pricing Strategy",
+    "pricingBody": "Our pricing is customized based on your specific project requirements, research depth, scope, complexity, and the resources involved. We do not offer fixed prices, ensuring you receive a tailored solution that matches your business goals realistically and professionally.",
+    "steps": [
+      {
+        "num": "01",
+        "title": "Initial client consultation and project brief."
+      },
+      {
+        "num": "02",
+        "title": "Requirement analysis."
+      },
+      {
+        "num": "03",
+        "title": "Research and planning."
+      },
+      {
+        "num": "04",
+        "title": "Resource identification."
+      },
+      {
+        "num": "05",
+        "title": "Cost estimation based on project requirements."
+      },
+      {
+        "num": "06",
+        "title": "Development process."
+      },
+      {
+        "num": "07",
+        "title": "Delivery."
+      },
+      {
+        "num": "08",
+        "title": "Ongoing maintenance and support."
+      }
+    ],
+    "cta": "Start your project"
   }
 }

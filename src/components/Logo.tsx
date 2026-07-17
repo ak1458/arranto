@@ -39,17 +39,58 @@ export function LogoMark({ className = "", node = NODE }: { className?: string; 
       className={className}
       aria-hidden="true"
     >
-      {rows.map((y) =>
-        cols.map((x, ci) => (
-          <circle
-            key={`${x}-${y}`}
-            cx={x}
-            cy={y}
-            r={1.6}
-            fill="currentColor"
-            opacity={0.35 + ci * 0.14}
-          />
-        ))
+      <style>{`
+        @keyframes logoDotFade {
+          0% { opacity: 0; transform: scale(0.5); }
+          100% { opacity: var(--dot-op); transform: scale(1); }
+        }
+        @keyframes logoPathReveal {
+          0% { opacity: 0; transform: translateX(-5px); }
+          100% { opacity: 0.5; transform: translateX(0); }
+        }
+        @keyframes logoNodePulse {
+          0% { opacity: 0; transform: scale(0.8); }
+          50% { opacity: 1; transform: scale(1.1); }
+          100% { opacity: 1; transform: scale(1); }
+        }
+        .logo-dot {
+          opacity: 0;
+          animation: logoDotFade 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          transform-origin: center;
+        }
+        .logo-path {
+          opacity: 0;
+          animation: logoPathReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .logo-node {
+          opacity: 0;
+          animation: logoNodePulse 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          transform-origin: center;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .logo-dot { animation: none; opacity: var(--dot-op); }
+          .logo-path { animation: none; opacity: 0.5; }
+          .logo-node { animation: none; opacity: 1; }
+        }
+      `}</style>
+      {rows.map((y, rowIdx) =>
+        cols.map((x, ci) => {
+          const op = 0.35 + ci * 0.14;
+          return (
+            <circle
+              key={`${x}-${y}`}
+              cx={x}
+              cy={y}
+              r={1.6}
+              fill="currentColor"
+              className="logo-dot"
+              style={{
+                "--dot-op": op,
+                animationDelay: ((rowIdx + ci) * 0.05) + "s"
+              } as React.CSSProperties}
+            />
+          );
+        })
       )}
       {rows.map((y, i) => {
         const startX = 66;
@@ -61,13 +102,14 @@ export function LogoMark({ className = "", node = NODE }: { className?: string; 
             d={`M ${startX} ${y} C ${c1x} ${y}, ${c2x} ${nodeY}, ${nodeX - 6} ${nodeY}`}
             stroke="currentColor"
             strokeWidth={1.1}
-            strokeOpacity={0.5}
             strokeLinecap="round"
             strokeDasharray={i % 2 === 0 ? "0" : "3 4"}
+            className="logo-path"
+            style={{ animationDelay: (0.3 + i * 0.1) + "s" }}
           />
         );
       })}
-      <circle cx={nodeX} cy={nodeY} r={7} fill={node} />
+      <circle cx={nodeX} cy={nodeY} r={7} fill={node} className="logo-node" style={{ animationDelay: "1s" }} />
     </svg>
   );
 }

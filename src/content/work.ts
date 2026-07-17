@@ -18,6 +18,7 @@ const content: CaseStudy[] = [
     stack: ["Next.js", "Node", "Postgres"],
     order: 3,
     repo: "pulsekart-web-nextjs",
+    image: "/projects/pulsekart.jpg",
     body: {
       en: "Point-of-sale software for pharmacies — billing, inventory, and expiry tracking in one screen. Replaced manual billing registers and paper stock logs.",
       ar: "برمجيات نقاط البيع للصيدليات — الفوترة والمخزون وتتبع الصلاحية في شاشة واحدة. استبدلت سجلات الفوترة اليدوية ودفاتر المخزون الورقية.",
@@ -49,6 +50,7 @@ const content: CaseStudy[] = [
     status: "proven",
     stack: ["Next.js", "Headless"],
     order: 4,
+    image: "/projects/veloria-vault.jpg",
     body: {
       en: "Headless commerce, migrated to Next.js. Site, ads, and product creatives — managed end-to-end.",
       ar: "تجارة بلا واجهة، مهاجرة إلى Next.js. الموقع والإعلانات والإبداعات المنتجية — مُدارة بالكامل.",
@@ -71,8 +73,8 @@ const content: CaseStudy[] = [
     ],
   },
   {
-    slug: "fatura-lite-pro",
-    title: "Fatura Lite Pro",
+    slug: "fatoora-lite",
+    title: "FATOORA Lite",
     // Region-free by contract (arranto-schema.md): `outcome` is the tile line and tiles
     // render on the home page, which is brand layer — no region names. The Saudi/ZATCA
     // detail lives in `body` and the FAQ, which render only on the /work proof pages.
@@ -84,9 +86,45 @@ const content: CaseStudy[] = [
     stack: ["Next.js", "Node", "XML/Crypto"],
     order: 1,
     repo: "fatooralite",
+    image: "/projects/fatoora-lite.jpg",
     body: {
       en: "Real-time e-invoice clearance for Saudi Arabia — CCSID onboarding, cryptographic stamping, live clearance.",
       ar: "تخليص فواتير إلكترونية لحظي للسعودية — تسجيل CCSID، وختم تشفيري، وتخليص مباشر.",
+    },
+    article: {
+      en: [
+        "### Introduction",
+        "FATOORA Lite is a mission-critical, ZATCA-compliant e-invoicing and real-time clearance engine designed for businesses operating in Saudi Arabia. It eliminates the complexity of adhering to stringent national tax regulations, enabling seamless and automated invoice reporting directly to the ZATCA portal.",
+        "",
+        "### The Problem",
+        "Saudi Arabia's ZATCA Phase 2 e-invoicing mandate requires businesses to digitally sign, cryptographically stamp, and clear B2B invoices in real time via the ZATCA API. Traditional ERPs and accounting software often lack the native cryptographic capabilities needed, leading to compliance failures, heavy manual workloads, and potential fines.",
+        "",
+        "### The Technology",
+        "Built on a high-performance stack using **Next.js**, **Node.js**, and custom **XML/Crypto** modules, FATOORA Lite is designed for speed and reliability. The system features a modern, dark-mode SaaS dashboard with an isometric view of financial data, providing users with a comprehensive overview of their compliance status.",
+        "",
+        "### Background: What is ZATCA?",
+        "The Zakat, Tax and Customs Authority (ZATCA) is the government body responsible for tax administration in Saudi Arabia. Their e-invoicing initiative aims to digitize the economy, reduce tax evasion, and increase transparency. Compliance is mandatory and requires complex technical integration.",
+        "",
+        "### Development Story",
+        "The development of FATOORA Lite started as a response to the urgent need for a lightweight, developer-friendly clearance solution. The goal was to build a system that handles the heavy lifting of XML generation and cryptographic signing without forcing businesses into clunky, outdated software ecosystems.",
+        "",
+        "### Features",
+        "*   **Real-time Clearance:** Direct integration with the ZATCA API for instant invoice clearance.",
+        "*   **Cryptographic Stamping:** Automated generation of compliant XML with required cryptographic stamps.",
+        "*   **CCSID Onboarding:** Streamlined onboarding process for acquiring Cryptographic Stamp Identifiers.",
+        "*   **Modern Dashboard:** A sleek, premium dashboard for monitoring invoice status, errors, and analytics.",
+        "",
+        "### Use Cases",
+        "*   **SMEs:** Small and medium enterprises needing an affordable, compliant invoicing tool.",
+        "*   **Enterprise Integration:** Large businesses requiring a middleware solution to connect their existing ERPs to ZATCA.",
+        "*   **E-commerce:** Online platforms needing automated clearance for B2B transactions.",
+        "",
+        "### Benefits",
+        "*   **Guaranteed Compliance:** Avoid penalties and ensure adherence to all ZATCA regulations.",
+        "*   **Automation:** Reduce manual data entry and associated errors.",
+        "*   **Peace of Mind:** Focus on business growth while the system handles the complexities of tax reporting."
+      ].join("\\n"),
+      ar: "نظام تخليص الفواتير الإلكترونية اللحظي المتوافق مع هيئة الزكاة والضريبة والجمارك (ZATCA)... (التفاصيل الكاملة متوفرة باللغة الإنجليزية)",
     },
     faq: [
       {
@@ -121,6 +159,7 @@ const content: CaseStudy[] = [
     status: "in-pilot",
     stack: ["React", "Supabase", "AI"],
     order: 2,
+    image: "/projects/sanados.jpg",
     body: {
       en: "Facilities operations — work orders, assets, maintenance history — in one system.",
       ar: "عمليات المرافق — أوامر العمل والأصول وسجل الصيانة — في نظام واحد.",
@@ -152,6 +191,7 @@ const content: CaseStudy[] = [
     status: "proven",
     stack: ["Next.js", "Node", "Postgres"],
     order: 5,
+    image: "/projects/orderflow.jpg",
     body: {
       en: "Logistics, tracked in real time — orders, dispatch, and delivery state on one live board instead of phone calls and spreadsheets.",
       ar: "الخدمات اللوجستية، متتبَّعة في الوقت الحقيقي — الطلبات والإرسال وحالة التسليم على لوحة واحدة مباشرة بدلًا من المكالمات وجداول البيانات.",

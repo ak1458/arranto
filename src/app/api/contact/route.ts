@@ -5,6 +5,8 @@ import { sendAdminEmail } from "@/lib/tools/contact-core";
 const Inquiry = z.object({
   name: z.string().trim().min(1).max(200),
   email: z.email().max(320),
+  service: z.string().trim().max(100).optional(),
+  budget: z.string().trim().max(100).optional(),
   message: z.string().trim().min(1).max(5000),
   locale: z.enum(["en", "ar"]).default("en"),
   botcheck: z.string().optional(), // honeypot — any value means bot

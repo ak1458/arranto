@@ -5,7 +5,6 @@ import { Dock } from "@/components/Dock";
 import { Hero } from "@/components/Hero";
 import { WorkGrid } from "@/components/WorkGrid";
 import { TickerSection } from "@/components/TickerSection";
-import { ProcessSection } from "@/components/ProcessSection";
 import { TerminalForm } from "@/components/TerminalForm";
 import { alternatesFor, orgJsonLd } from "@/lib/seo";
 import { sorted, type Locale } from "@/content/work";
@@ -38,7 +37,6 @@ export default async function Home({ params }: Props) {
         }))}
       />
       <TickerSection />
-      <ProcessSection />
       <TerminalForm />
 
       <script

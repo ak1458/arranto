@@ -9,6 +9,7 @@ import { Reveal } from "@/components/Reveal";
 import { NanobannerCard } from "@/components/NanobannerCard";
 import { OpenChatButton } from "@/components/OpenChatButton";
 import { pageMetadata } from "@/lib/seo";
+import Image from "next/image";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -137,13 +138,20 @@ export default async function WorkDetail({ params }: Props) {
             </Reveal>
 
             <Reveal delay={0.15}>
-              <div className="mt-8">
-                <NanobannerCard
-                  title={cs.title}
-                  category="PRODUCTION ENGINE"
-                  status={cs.status === "proven" ? "PROVEN SYSTEM" : "ACTIVE PILOT"}
-                  stack={cs.stack}
-                />
+              <div className="mt-8 flex flex-col md:flex-row gap-8">
+                <div className="flex-1">
+                  <NanobannerCard
+                    title={cs.title}
+                    category="PRODUCTION ENGINE"
+                    status={cs.status === "proven" ? "PROVEN SYSTEM" : "ACTIVE PILOT"}
+                    stack={cs.stack}
+                  />
+                </div>
+                {cs.image && (
+                  <div className="flex-1 relative aspect-video rounded overflow-hidden border border-white/10">
+                    <Image src={cs.image} alt={cs.title} fill className="object-cover" />
+                  </div>
+                )}
               </div>
             </Reveal>
           </div>
@@ -156,9 +164,31 @@ export default async function WorkDetail({ params }: Props) {
                 </h2>
               </Reveal>
               <Reveal delay={0.05}>
-                <p className="mt-6 text-lg leading-relaxed text-paper/80 font-light">
-                  {cs.body[l]}
-                </p>
+                {cs.article ? (
+                  <div className="mt-6 text-lg leading-relaxed text-paper/80 font-light flex flex-col gap-6">
+                    {cs.article[l].split('\n\n').map((paragraph, i) => {
+                      if (paragraph.startsWith('### ')) {
+                        return <h3 key={i} className="text-xl font-bold text-white mt-4">{paragraph.replace('### ', '')}</h3>;
+                      }
+                      if (paragraph.startsWith('* ')) {
+                        return (
+                          <ul key={i} className="list-disc list-inside flex flex-col gap-2">
+                            {paragraph.split('\n').map((li, j) => (
+                              <li key={j}>
+                                <span dangerouslySetInnerHTML={{ __html: li.replace('* ', '').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
+                              </li>
+                            ))}
+                          </ul>
+                        );
+                      }
+                      return <p key={i} dangerouslySetInnerHTML={{ __html: paragraph.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />;
+                    })}
+                  </div>
+                ) : (
+                  <p className="mt-6 text-lg leading-relaxed text-paper/80 font-light">
+                    {cs.body[l]}
+                  </p>
+                )}
               </Reveal>
 
               <div className="mt-16">
