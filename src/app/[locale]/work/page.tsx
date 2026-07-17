@@ -87,6 +87,7 @@ export default async function WorkPage({ params }: Props) {
           stack: c.stack,
           outcome: c.outcome[l],
           summary: c.body[l],
+          image: c.image,
         }))}
         withHeader={false}
       />

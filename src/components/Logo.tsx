@@ -41,11 +41,11 @@ export function LogoMark({ className = "", node = NODE }: { className?: string; 
     >
       <style>{`
         @keyframes logoDotFade {
-          0% { opacity: 0; transform: scale(0.5); }
-          100% { opacity: var(--dot-op); transform: scale(1); }
+          0% { opacity: 0; transform: translateX(-30px) scale(0.1); }
+          100% { opacity: var(--dot-op); transform: translateX(0) scale(1); }
         }
         @keyframes logoPathReveal {
-          0% { opacity: 0; transform: translateX(-5px); }
+          0% { opacity: 0; transform: translateX(-15px); }
           100% { opacity: 0.5; transform: translateX(0); }
         }
         @keyframes logoNodePulse {

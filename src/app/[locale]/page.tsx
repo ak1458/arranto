@@ -34,6 +34,7 @@ export default async function Home({ params }: Props) {
           status: c.status,
           stack: c.stack,
           outcome: c.outcome[locale as Locale],
+          image: c.image,
         }))}
       />
       <TickerSection />
