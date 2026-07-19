@@ -1,27 +1,39 @@
-# SANAD OS Documentation
+# SANAD OS User Guide — by arranto
 
-Arabic-first field-service and maintenance operations platform for Saudi contractors, with built-in ZATCA Phase-2 e-invoicing.
+سند (SANAD OS) is a field-service and maintenance operations platform built for Saudi contractors, with ZATCA Phase-2 e-invoicing built in. This guide walks through every real, working feature — from creating your account to submitting your first ZATCA invoice — in the order you'll actually use them.
 
-This is the product documentation — how to set it up, what actually works today, how it's built, and how to get help. For an independent, code-verified audit of the codebase (findings, security review, feature-reality matrix), see `docs/site/` in the repository instead; this guide is the maintained, current source of truth.
+This is the **customer-facing user manual**: task-by-task, "click this, then this happens." If you're looking for the technical/security audit or developer setup instead, that lives in the project's `docs/guide/` folder — different audience, different purpose.
 
 ## Contents
 
-1. [Overview](01-overview.md) — what SANAD OS is, who it's for, what makes it different
-2. [Getting Started](02-getting-started.md) — set up a new instance, sign up, onboard your company
-3. [Features](03-features.md) — what's real, what's a placeholder, honestly, tab by tab
-4. [Architecture](04-architecture.md) — stack, data model, edge functions, deployment
-5. [Security](05-security.md) — tenant isolation, RLS, auth, secrets handling
-6. [ZATCA Integration](06-zatca-integration.md) — e-invoicing engine status and roadmap
-7. [Support](07-support.md) — getting help, the ticket system, contact channels
+1. [Welcome to SANAD OS](01-welcome.md) — what it does, who it's for, Arabic/English support
+2. [Creating Your Account](02-creating-your-account.md) — sign up, confirm your email, the 6-step setup wizard
+3. [Navigating the Dashboard](03-navigating-the-dashboard.md) — sidebar, search, notifications, dark mode, language switch
+4. [Customers, Sites & Assets](04-customers-sites-assets.md) — building your customer registry, CSV bulk import
+5. [AMC Contracts & Visit Scheduling](05-amc-contracts-and-visits.md) — maintenance contracts, service lines, auto-generated visit plans
+6. [Invoicing & ZATCA E-Invoicing](06-invoicing-and-zatca.md) — connecting to ZATCA, creating and submitting invoices
+7. [Account Security & Two-Factor Authentication](07-account-security-mfa.md) — enabling 2FA on your account
+8. [Support & Getting Help](08-support-and-help.md) — FAQ, support tickets, contacting arranto
+9. [Demo Mode & What's Coming Next](09-demo-mode-and-whats-next.md) — the sales preview vs. your real data, honestly, what's still being built
+10. [FAQ & Troubleshooting](10-faq-troubleshooting.md) — common questions and fixes
 
-## Current status at a glance
+## Quick facts
 
-- **Live**: <https://sanad-os.vercel.app>
-- **Backend**: Supabase Postgres + Auth + Edge Functions, single shared project with row-level security enforcing tenant isolation
-- **Languages**: Arabic (default, RTL) and English
-- **Real, working today**: sign-up/sign-in, company onboarding wizard, Customers/Sites/Assets registry, CSV import, Contracts + AMC visit scheduling, Support ticketing
-- **Not yet real**: ZATCA e-invoicing (engine ported from a sister product, not wired in — see [ZATCA Integration](06-zatca-integration.md)), Dispatch board, Jobs, Reports, technician mobile app, AI voice-to-work-order
+- **Live product**: <https://sanad-os.vercel.app>
+- **Languages**: Arabic (default, right-to-left) and English — switch anytime from the header
+- **Who it's for**: Saudi maintenance/field-service contractors running Annual Maintenance Contracts (AMC) — HVAC, electrical, plumbing, elevators, fire safety, security, IT, cleaning, and similar trades
+- **Core workflow**: Customer → Site → Asset → Contract → Scheduled Visits → ZATCA-cleared Invoice
+
+## Publishing this guide on arranto.com
+
+This whole folder is plain, self-contained Markdown with only relative links between its own pages — copy `docs/manual/` as-is to wherever it'll actually live on the arranto website. Once it has a real URL, point the app at it:
+
+```sh
+VITE_DOCS_URL=https://arranto.com/docs/sanad-os
+```
+
+Set that in Vercel's project settings and redeploy — the "Documentation" links on the SANAD OS login page and Support tab pick it up automatically, no code change required. (This is the same mechanism used by the technical documentation in `docs/guide/`.)
 
 ---
 
-*Documentation home: this page. To publish elsewhere (e.g. on the arranto website), copy this `docs/guide/` folder as-is — every internal link is relative and self-contained.*
+*Published by arranto. To browse this guide, start with [Welcome to SANAD OS](01-welcome.md).*

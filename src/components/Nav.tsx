@@ -510,7 +510,10 @@ export function Nav() {
             <Logo variant="full" size="md" className="text-white" />
           </Link>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 sm:gap-6">
+            <Link href="/support" className="hidden sm:block text-[11px] font-mono tracking-wider uppercase text-[#9494a0] hover:text-white transition-colors">
+              Support
+            </Link>
             <LocaleSwitch />
             <button
               type="button"
