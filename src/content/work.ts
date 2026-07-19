@@ -159,6 +159,7 @@ const content: CaseStudy[] = [
     status: "in-pilot",
     stack: ["React", "Supabase", "AI"],
     order: 2,
+    docs: "/support/docs/sanad-os",
     image: "/projects/sanados.jpg",
     body: {
       en: "Facilities operations — work orders, assets, maintenance history — in one system.",

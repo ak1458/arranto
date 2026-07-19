@@ -122,6 +122,18 @@ export default async function WorkDetail({ params }: Props) {
                     </a>
                   </>
                 )}
+                {cs.docs && (
+                  <>
+                    <span className="h-3 w-px bg-paper/20" />
+                    <Link
+                      href={cs.docs}
+                      className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-paper/70 transition-colors duration-300 hover:text-[#d8d9dc]"
+                    >
+                      {l === "ar" ? "عرض الدليل" : "View Manual"}
+                      <span aria-hidden className="rtl:-scale-x-100">↗</span>
+                    </Link>
+                  </>
+                )}
               </div>
             </Reveal>
 

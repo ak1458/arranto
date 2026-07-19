@@ -18,6 +18,7 @@ export const caseStudySchema = z.object({
   article: localized.optional(),
   faq: z.array(z.object({ q: localized, a: localized })),
   repo: z.string().min(1).optional(),
+  docs: z.string().min(1).optional(),
   image: z.string().optional(),
 });
 
