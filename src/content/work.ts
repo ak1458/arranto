@@ -86,6 +86,7 @@ const content: CaseStudy[] = [
     stack: ["Next.js", "Node", "XML/Crypto"],
     order: 1,
     repo: "fatooralite",
+    docs: "/support/docs/fatoora-lite",
     image: "/projects/fatoora-lite.jpg",
     body: {
       en: "Real-time e-invoice clearance for Saudi Arabia — CCSID onboarding, cryptographic stamping, live clearance.",

@@ -11,7 +11,7 @@ export default async function DocsLayout({
 }) {
   const { product } = await params;
   
-  if (product !== 'sanad-os') {
+  if (product !== 'sanad-os' && product !== 'fatoora-lite') {
     notFound();
   }
 

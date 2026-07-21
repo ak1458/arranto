@@ -10,6 +10,15 @@ export default async function SupportPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <Link 
+          href="/support/docs/fatoora-lite/README" 
+          className="group block p-10 rounded-3xl border border-white/10 bg-[#0d0d0d] hover:border-white/20 transition-all card-hover"
+        >
+          <h2 className="text-3xl font-display font-semibold text-white mb-4 group-hover:text-[#d8d9dc] transition-colors">FATOORA Lite</h2>
+          <p className="text-[#9a9a9e] text-lg leading-relaxed">
+            Real-time e-invoice clearance for Saudi Arabia. View setup, architecture, and ZATCA integration guides.
+          </p>
+        </Link>
+        <Link 
           href="/support/docs/sanad-os/README" 
           className="group block p-10 rounded-3xl border border-white/10 bg-[#0d0d0d] hover:border-white/20 transition-all card-hover"
         >
