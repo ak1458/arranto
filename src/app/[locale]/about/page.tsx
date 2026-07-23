@@ -147,19 +147,19 @@ export default async function About({ params }: Props) {
               >
                 <div>
                   <span className="font-mono text-xs tracking-[0.2em] uppercase text-[#9494a0]">
-                    {(i + 1).toString().padStart(2, "0")} / {service.name[l]}
+                    {(i + 1).toString().padStart(2, "0")} / {service.title[l]}
                   </span>
                   <h3 className="mt-4 font-display text-2xl sm:text-4xl font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-[#d8d9dc]">
-                    {service.name[l]}
+                    {service.title[l]}
                   </h3>
                   <p className="mt-4 text-base leading-relaxed text-[#9494a0]">
-                    {service.promise[l]}
+                    {service.subtitle[l]}
                   </p>
                   <ul className="mt-6 grid gap-2 sm:grid-cols-2">
-                    {service.includes.map((item, idx) => (
+                    {service.features[l].map((feat, idx) => (
                       <li key={idx} className="flex items-start gap-2 text-sm text-[#9494a0]">
                         <span className="mt-1.5 size-1 shrink-0 bg-[#d8d9dc]" />
-                        {item[l]}
+                        {feat.title}
                       </li>
                     ))}
                   </ul>
