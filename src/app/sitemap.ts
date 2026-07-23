@@ -5,6 +5,15 @@ import { routing } from "@/i18n/routing";
 
 const BASE = "https://arranto.com";
 
+const servicesSlugs = [
+  "ai-automation",
+  "ai-saas-development",
+  "crm-development",
+  "custom-ai-solutions",
+  "digital-marketing",
+  "website-development",
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [
     "",
@@ -14,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...caseStudies.map((c) => `/work/${c.slug}`),
     "/blog",
     ...blogPosts.map((b) => `/blog/${b.slug}`),
+    ...servicesSlugs.map((s) => `/services/${s}`),
     "/support",
     "/tools",
     "/tools/website-audit",
@@ -30,13 +40,38 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/legal/disclaimer",
   ];
 
-  return paths.map((path) => ({
-    url: `${BASE}/en${path}`,
-    lastModified: new Date(),
+  const now = new Date();
+  const entries: MetadataRoute.Sitemap = [];
+
+  // Apex root entry
+  entries.push({
+    url: BASE,
+    lastModified: now,
     alternates: {
-      languages: Object.fromEntries(
-        routing.locales.map((l) => [l, `${BASE}/${l}${path}`]),
-      ),
+      languages: {
+        en: `${BASE}/en`,
+        ar: `${BASE}/ar`,
+        "x-default": `${BASE}/en`,
+      },
     },
-  }));
+  });
+
+  // Bidirectional en & ar locale entries for every route
+  for (const path of paths) {
+    for (const locale of routing.locales) {
+      entries.push({
+        url: `${BASE}/${locale}${path}`,
+        lastModified: now,
+        alternates: {
+          languages: {
+            en: `${BASE}/en${path}`,
+            ar: `${BASE}/ar${path}`,
+            "x-default": `${BASE}/en${path}`,
+          },
+        },
+      });
+    }
+  }
+
+  return entries;
 }
