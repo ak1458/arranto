@@ -68,7 +68,7 @@ export const blogPosts: BlogPost[] = [
         "",
         "### Conclusion",
         "The businesses that adopt AI automation today will be the ones that dominate tomorrow. It's not about replacing humans; it's about elevating them."
-      ].join("\\n"),
+      ].join("\n\n"),
       ar: "محتوى المقال باللغة العربية. (Dummy Arabic content).",
     },
   },

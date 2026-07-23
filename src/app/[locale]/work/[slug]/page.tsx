@@ -175,33 +175,59 @@ export default async function WorkDetail({ params }: Props) {
                   {t("overviewHeading")}
                 </h2>
               </Reveal>
-              <Reveal delay={0.05}>
                 {cs.article ? (
-                  <div className="mt-6 text-lg leading-relaxed text-paper/80 font-light flex flex-col gap-6">
-                    {cs.article[l].split('\n\n').map((paragraph, i) => {
-                      if (paragraph.startsWith('### ')) {
-                        return <h3 key={i} className="text-xl font-bold text-white mt-4">{paragraph.replace('### ', '')}</h3>;
-                      }
-                      if (paragraph.startsWith('* ')) {
+                  <div className="mt-6 text-lg leading-relaxed text-paper/80 font-light flex flex-col gap-2">
+                    {(() => {
+                      const cleanText = cs.article[l].replace(/\\n/g, "\n");
+                      const blocks = cleanText.split(/\n\s*\n/).filter(Boolean);
+                      return blocks.map((block, i) => {
+                        const trimmed = block.trim();
+                        if (trimmed.startsWith("### ")) {
+                          return (
+                            <h3 key={i} className="text-xl font-bold font-display text-white mt-8 mb-2 tracking-tight">
+                              {trimmed.replace(/^###\s+/, "")}
+                            </h3>
+                          );
+                        }
+                        if (trimmed.startsWith("## ")) {
+                          return (
+                            <h2 key={i} className="text-2xl font-bold font-display text-white mt-10 mb-3 tracking-tight">
+                              {trimmed.replace(/^##\s+/, "")}
+                            </h2>
+                          );
+                        }
+                        if (trimmed.startsWith("* ") || trimmed.startsWith("- ")) {
+                          const items = trimmed.split("\n").filter((line) => line.trim().startsWith("* ") || line.trim().startsWith("- "));
+                          return (
+                            <ul key={i} className="my-4 space-y-2 ps-5 list-disc text-paper/85">
+                              {items.map((item, j) => {
+                                const cleanItem = item.trim().replace(/^[\*\-]\s+/, "");
+                                const formatted = cleanItem.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-semibold">$1</strong>');
+                                return (
+                                  <li key={j} className="leading-relaxed">
+                                    <span dangerouslySetInnerHTML={{ __html: formatted }} />
+                                  </li>
+                                );
+                              })}
+                            </ul>
+                          );
+                        }
+                        const formattedPara = trimmed.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-semibold">$1</strong>');
                         return (
-                          <ul key={i} className="list-disc list-inside flex flex-col gap-2">
-                            {paragraph.split('\n').map((li, j) => (
-                              <li key={j}>
-                                <span dangerouslySetInnerHTML={{ __html: li.replace('* ', '').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
-                              </li>
-                            ))}
-                          </ul>
+                          <p
+                            key={i}
+                            className="my-3 text-base sm:text-lg leading-relaxed text-paper/80 font-light"
+                            dangerouslySetInnerHTML={{ __html: formattedPara }}
+                          />
                         );
-                      }
-                      return <p key={i} dangerouslySetInnerHTML={{ __html: paragraph.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />;
-                    })}
+                      });
+                    })()}
                   </div>
                 ) : (
                   <p className="mt-6 text-lg leading-relaxed text-paper/80 font-light">
                     {cs.body[l]}
                   </p>
                 )}
-              </Reveal>
 
               <div className="mt-16">
                 <Reveal>

@@ -43,14 +43,17 @@ export default async function BlogPostPage({ params }: Props) {
   const rawArticle = post.article[l];
   // Simple markdown-like parser (headers, lists, blockquotes, code blocks, paragraphs)
   const renderArticle = (text: string) => {
-    const blocks = text.split("\\n\\n").filter(Boolean);
+    const cleanText = text.replace(/\\n/g, "\n");
+    const blocks = cleanText.split(/\n\s*\n/).filter(Boolean);
     
     return blocks.map((block, idx) => {
+      const trimmed = block.trim();
+
       // Code block
-      if (block.startsWith("\`\`\`") && block.endsWith("\`\`\`")) {
-        const lines = block.split("\\n");
-        const code = lines.slice(1, -1).join("\\n");
-        const lang = lines[0].replace("\`\`\`", "").trim();
+      if (trimmed.startsWith("```") && trimmed.endsWith("```")) {
+        const lines = trimmed.split("\n");
+        const code = lines.slice(1, -1).join("\n");
+        const lang = lines[0].replace("```", "").trim();
         return (
           <div key={idx} className="my-8 rounded-md bg-[#0a0a0c] border border-white/10 overflow-hidden">
             {lang && (
@@ -65,32 +68,32 @@ export default async function BlogPostPage({ params }: Props) {
         );
       }
       // H3
-      if (block.startsWith("### ")) {
+      if (trimmed.startsWith("### ")) {
         return (
           <h3 key={idx} className="mt-12 mb-6 text-2xl font-display font-bold text-white tracking-tight">
-            {block.replace("### ", "")}
+            {trimmed.replace("### ", "")}
           </h3>
         );
       }
       // Blockquote
-      if (block.startsWith("> ")) {
+      if (trimmed.startsWith("> ")) {
         return (
           <blockquote key={idx} className="my-8 border-s-2 border-[#d8d9dc] bg-[#d8d9dc]/5 p-6 text-lg font-light italic leading-relaxed text-[#d8d9dc]">
-            {block.replace(/> /g, "").replace(/\\[!IMPORTANT\\]/g, "").trim()}
+            {trimmed.replace(/^>\s+/gm, "").replace(/\[!IMPORTANT\]/g, "").trim()}
           </blockquote>
         );
       }
       // Unordered list
-      if (block.startsWith("* ")) {
-        const items = block.split("\\n").filter(line => line.startsWith("* "));
+      if (trimmed.startsWith("* ") || trimmed.startsWith("- ")) {
+        const items = trimmed.split("\n").filter(line => line.trim().startsWith("* ") || line.trim().startsWith("- "));
         return (
           <ul key={idx} className="my-6 space-y-3 ps-5">
             {items.map((item, i) => {
-              // Basic bold matching: **text**
-              const parts = item.replace("* ", "").split(/\\*\\*(.*?)\\*\\*/g);
+              const cleanItem = item.trim().replace(/^[\*\-]\s+/, "");
+              const formatted = cleanItem.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-semibold">$1</strong>');
               return (
                 <li key={i} className="text-base text-[#9494a0] leading-relaxed relative before:absolute before:-start-5 before:top-2 before:h-1.5 before:w-1.5 before:bg-[#d8d9dc]">
-                  {parts.map((p, pidx) => pidx % 2 === 1 ? <strong key={pidx} className="text-white font-semibold">{p}</strong> : p)}
+                  <span dangerouslySetInnerHTML={{ __html: formatted }} />
                 </li>
               );
             })}
@@ -98,10 +101,9 @@ export default async function BlogPostPage({ params }: Props) {
         );
       }
       // Standard paragraph
+      const formattedPara = trimmed.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white font-semibold">$1</strong>');
       return (
-        <p key={idx} className="mb-6 text-base sm:text-lg text-[#9494a0] font-light leading-relaxed">
-          {block}
-        </p>
+        <p key={idx} className="mb-6 text-base sm:text-lg text-[#9494a0] font-light leading-relaxed" dangerouslySetInnerHTML={{ __html: formattedPara }} />
       );
     });
   };
