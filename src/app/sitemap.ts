@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { caseStudies } from "@/content/work";
+import { blogPosts } from "@/content/blog";
 import { routing } from "@/i18n/routing";
 
 const BASE = "https://arranto.com";
@@ -11,6 +12,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/assistant",
     "/work",
     ...caseStudies.map((c) => `/work/${c.slug}`),
+    "/blog",
+    ...blogPosts.map((b) => `/blog/${b.slug}`),
+    "/support",
     "/tools",
     "/tools/website-audit",
     "/tools/seo-content",
