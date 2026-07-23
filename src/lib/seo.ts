@@ -78,7 +78,7 @@ export function orgJsonLd(locale: string) {
     inLanguage: l,
     description: ORG_DESCRIPTION[l],
     founder: { "@type": "Person", name: "Ashraf Kamal", sameAs: "https://github.com/ak1458" },
-    areaServed: ["SA", "AE", "OM", "US", "GB", "DE", "FR", "IN"],
+    areaServed: ["SA", "AE", "KW", "QA", "OM", "BH", "US", "GB"],
     knowsAbout: ORG_KNOWS_ABOUT[l],
 
     sameAs: [
