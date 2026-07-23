@@ -10,7 +10,7 @@ type BlueprintStep = { num: string; title: string };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
-  const t = await getTranslations({ locale, namespace: "contact" });
+  const t = await getTranslations({ locale });
   
   const servicesMap = t.raw("servicesList") as Record<string, { title: string; slug: string }>;
   

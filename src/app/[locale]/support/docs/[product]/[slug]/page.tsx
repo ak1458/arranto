@@ -1,7 +1,26 @@
+import type { Metadata } from 'next';
 import { getDocBySlug } from '@/lib/docs';
 import { notFound } from 'next/navigation';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ product: string; slug: string }>;
+}): Promise<Metadata> {
+  const { product, slug } = await params;
+  const doc = getDocBySlug(product, slug);
+  if (!doc) return {};
+
+  return {
+    title: `${doc.title} — Arranto Support Docs`,
+    robots: {
+      index: false,
+      follow: false,
+    },
+  };
+}
 
 export default async function DocPage({
   params,
