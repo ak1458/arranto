@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
-import { Loader } from "@/components/Loader";
 import { Dock } from "@/components/Dock";
 import { Hero } from "@/components/Hero";
 import { WorkGrid } from "@/components/WorkGrid";
 import { TickerSection } from "@/components/TickerSection";
 import { TerminalForm } from "@/components/TerminalForm";
-import { alternatesFor, orgJsonLd } from "@/lib/seo";
+import { alternatesFor } from "@/lib/seo";
 import { sorted, type Locale } from "@/content/work";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -22,7 +21,6 @@ export default async function Home({ params }: Props) {
 
   return (
     <>
-      <Loader />
       <Dock />
       <Hero />
       {/* Brand layer: tiles carry the name and the region-free outcome only. The proof-layer
@@ -39,11 +37,6 @@ export default async function Home({ params }: Props) {
       />
       <TickerSection />
       <TerminalForm />
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd(locale)) }}
-      />
     </>
   );
 }

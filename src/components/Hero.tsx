@@ -6,7 +6,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from '@/components/SplitText';
-import { LogoMark } from '@/components/Logo';
+import { AnimatedHeroLogo } from '@/components/AnimatedHeroLogo';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -89,9 +89,13 @@ export function Hero() {
           // ── Rotate (ROTATE_START → ROTATE_END): foreground spins away and scales to nothing;
           // System/Studio texts are already settled by now and don't move during this. ──
           const rotateProgress = gsap.utils.clamp(0, 1, (scrollProgress - ROTATE_START) / (ROTATE_END - ROTATE_START));
-          const fgRotation = gsap.utils.interpolate(0, 90, rotateProgress);
-          const fgScale = gsap.utils.interpolate(1, 0, rotateProgress);
-          gsap.set(fgContentRef.current, { rotate: fgRotation, scale: fgScale });
+          if (rotateProgress === 0) {
+            gsap.set(fgContentRef.current, { rotate: 0, scale: 1, force3D: false, clearProps: "transform" });
+          } else {
+            const fgRotation = gsap.utils.interpolate(0, 90, rotateProgress);
+            const fgScale = gsap.utils.interpolate(1, 0, rotateProgress);
+            gsap.set(fgContentRef.current, { rotate: fgRotation, scale: fgScale, force3D: false });
+          }
 
           const fgTextOpacity = gsap.utils.interpolate(1, 0, rotateProgress);
           gsap.set(fgTextRef.current, { opacity: fgTextOpacity });
@@ -158,8 +162,10 @@ export function Hero() {
           ref={fgTextRef}
           className="relative z-10 mx-auto w-full max-w-5xl text-center px-4"
         >
-          {/* Brand mark — same LogoMark as the header, not a re-typed wordmark */}
-          <LogoMark className="h-16 sm:h-24 md:h-32 lg:h-40 w-auto mx-auto mb-6 sm:mb-8 text-white" />
+          {/* Custom Arranto Vector Animation inspired by LangChain flow */}
+          <div className="w-full max-w-xl mx-auto mb-6 sm:mb-8 text-white">
+            <AnimatedHeroLogo className="h-16 sm:h-24 md:h-32 lg:h-40 w-auto mx-auto" />
+          </div>
           <p className="font-mono text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#8e8f94] mb-4 sm:mb-6">
             {t('fragment')}
           </p>
@@ -181,9 +187,9 @@ export function Hero() {
             ref={bgCopyLeftRef}
             className="flex flex-col gap-2 sm:gap-4 max-w-md w-full will-change-transform"
           >
-            <h3 className="font-display text-2xl sm:text-3xl md:text-5xl uppercase text-ink tracking-tight">
+            <p className="font-display text-2xl sm:text-3xl md:text-5xl uppercase text-ink tracking-tight">
               {t('col1Title')}
-            </h3>
+            </p>
             <p className="font-mono text-[10px] sm:text-xs uppercase text-ink/80 leading-relaxed">
               {t('col1Text')}
             </p>
@@ -195,9 +201,9 @@ export function Hero() {
             ref={bgCopyRightRef}
             className="flex flex-col gap-2 sm:gap-4 max-w-md w-full text-start sm:text-end will-change-transform"
           >
-            <h3 className="font-display text-2xl sm:text-3xl md:text-5xl uppercase text-ink tracking-tight">
+            <p className="font-display text-2xl sm:text-3xl md:text-5xl uppercase text-ink tracking-tight">
               {t('col2Title')}
-            </h3>
+            </p>
             <p className="font-mono text-[10px] sm:text-xs uppercase text-ink/80 leading-relaxed">
               {t('col2Text')}
             </p>

@@ -11,8 +11,8 @@ const content: CaseStudy[] = [
     slug: "pulsekart",
     title: "PulseKart",
     outcome: {
-      en: "Point-of-sale software for pharmacies.",
-      ar: "برمجيات نقاط البيع للصيدليات.",
+      en: "Comprehensive point-of-sale and inventory system designed specifically for pharmacies to manage stock and billing efficiently.",
+      ar: "نظام شامل لنقاط البيع والمخزون مصمم خصيصًا للصيدليات لإدارة المخزون والفوترة بكفاءة.",
     },
     status: "proven",
     stack: ["Next.js", "Node", "Postgres"],
@@ -44,8 +44,8 @@ const content: CaseStudy[] = [
     slug: "veloria-vault",
     title: "Veloria Vault",
     outcome: {
-      en: "Headless commerce, migrated to Next.js.",
-      ar: "تجارة بلا واجهة، مهاجرة إلى Next.js.",
+      en: "Modernized digital storefront with blazing fast performance and seamless end-to-end management for products and ad creatives.",
+      ar: "واجهة متجر رقمية حديثة بأداء فائق السرعة وإدارة سلسة وشاملة للمنتجات والإبداعات الإعلانية.",
     },
     status: "proven",
     stack: ["Next.js", "Headless"],
@@ -79,8 +79,8 @@ const content: CaseStudy[] = [
     // render on the home page, which is brand layer — no region names. The Saudi/ZATCA
     // detail lives in `body` and the FAQ, which render only on the /work proof pages.
     outcome: {
-      en: "Real-time e-invoice clearance.",
-      ar: "تخليص فواتير إلكترونية لحظي.",
+      en: "Mission-critical, compliant e-invoicing engine that automates cryptographic stamping and real-time clearance for B2B transactions.",
+      ar: "محرك فواتير إلكترونية مصمم لمسارات الختم التشفيري والتخليص لمعاملات الشركات B2B.",
     },
     status: "in-pilot",
     stack: ["Next.js", "Node", "XML/Crypto"],
@@ -90,22 +90,22 @@ const content: CaseStudy[] = [
     image: "/projects/fatoora-lite.jpg",
     body: {
       en: "Real-time e-invoice clearance for Saudi Arabia — CCSID onboarding, cryptographic stamping, live clearance.",
-      ar: "تخليص فواتير إلكترونية لحظي للسعودية — تسجيل CCSID، وختم تشفيري، وتخليص مباشر.",
+      ar: "مسار تخليص فواتير إلكترونية للسعودية — تسجيل CCSID، وختم تشفيري، وتكامل تخليص قيد التجربة.",
     },
     article: {
       en: [
         "### Introduction",
-        "FATOORA Lite is a mission-critical, ZATCA-compliant e-invoicing and real-time clearance engine designed for businesses operating in Saudi Arabia. It eliminates the complexity of adhering to stringent national tax regulations, enabling seamless and automated invoice reporting directly to the ZATCA portal.",
+        "FATOORA Lite is a mission-critical e-invoicing and real-time clearance engine designed around Saudi Arabia's ZATCA Phase 2 workflows. It is intended to reduce the operational complexity of invoice reporting while the pilot continues to validate the integration and deployment model.",
         "### The Problem",
         "Saudi Arabia's ZATCA Phase 2 e-invoicing mandate requires businesses to digitally sign, cryptographically stamp, and clear B2B invoices in real time via the ZATCA API. Traditional ERPs and accounting software often lack the native cryptographic capabilities needed, leading to compliance failures, heavy manual workloads, and potential fines.",
         "### The Technology",
         "Built on a high-performance stack using **Next.js**, **Node.js**, and custom **XML/Crypto** modules, FATOORA Lite is designed for speed and reliability. The system features a modern, dark-mode SaaS dashboard with an isometric view of financial data, providing users with a comprehensive overview of their compliance status.",
         "### Background: What is ZATCA?",
-        "The Zakat, Tax and Customs Authority (ZATCA) is the government body responsible for tax administration in Saudi Arabia. Their e-invoicing initiative aims to digitize the economy, reduce tax evasion, and increase transparency. Compliance is mandatory and requires complex technical integration.",
+        "The Zakat, Tax and Customs Authority (ZATCA) is the government body responsible for tax administration in Saudi Arabia. Its e-invoicing initiative requires technical integration, but a software system alone is not a substitute for a business's own regulatory review or professional tax advice.",
         "### Development Story",
         "The development of FATOORA Lite started as a response to the urgent need for a lightweight, developer-friendly clearance solution. The goal was to build a system that handles the heavy lifting of XML generation and cryptographic signing without forcing businesses into clunky, outdated software ecosystems.",
         "### Key Features",
-        "* **Real-time Clearance:** Direct integration with the ZATCA API for instant invoice clearance.",
+        "* **Real-time Clearance Workflow:** Integration designed to support invoice clearance through the ZATCA API during the pilot.",
         "* **Cryptographic Stamping:** Automated generation of compliant XML with required cryptographic stamps.",
         "* **CCSID Onboarding:** Streamlined onboarding process for acquiring Cryptographic Stamp Identifiers.",
         "* **Modern Dashboard:** A sleek, premium dashboard for monitoring invoice status, errors, and analytics.",
@@ -114,11 +114,11 @@ const content: CaseStudy[] = [
         "* **Enterprise Integration:** Large businesses requiring a middleware solution to connect their existing ERPs to ZATCA.",
         "* **E-commerce:** Online platforms needing automated clearance for B2B transactions.",
         "### Key Benefits",
-        "* **Guaranteed Compliance:** Avoid penalties and ensure adherence to all ZATCA regulations.",
+        "* **Compliance Workflow Support:** Provide a technical foundation for the client's ZATCA review and invoice clearance workflow.",
         "* **Automation:** Reduce manual data entry and associated errors.",
         "* **Peace of Mind:** Focus on business growth while the system handles the complexities of tax reporting."
       ].join("\n\n"),
-      ar: "نظام تخليص الفواتير الإلكترونية اللحظي المتوافق مع هيئة الزكاة والضريبة والجمارك (ZATCA). يتيح النظام الربط المباشر، الختم التشفيري، وإصدار شهادات CCSID بكل سهولة وفعالية.",
+      ar: "نظام لتخطيط مسار تخليص الفواتير الإلكترونية وفق متطلبات هيئة الزكاة والضريبة والجمارك (ZATCA). يتيح النظام تصور الربط المباشر والختم التشفيري وإجراءات CCSID ضمن نطاق التجربة.",
     },
     faq: [
       {
@@ -141,14 +141,44 @@ const content: CaseStudy[] = [
           ar: "شهادة تشفيرية توثّق المنشأة لدى شبكة زاتكا قبل أن تُختم الفواتير وتُخلَّص لحظيًا.",
         },
       },
+      {
+        q: {
+          en: "Is FATOORA Lite live in production?",
+          ar: "هل يعمل FATOORA Lite في بيئة الإنتاج؟",
+        },
+        a: {
+          en: "No. FATOORA Lite is in pilot. The page describes the intended workflow and technical direction, not a claim that the product is generally available or production-proven.",
+          ar: "لا. FATOORA Lite قيد التجربة. تصف الصفحة مسار العمل المقصود والتوجه التقني، ولا تدعي أن المنتج متاح بشكل عام أو مثبت في بيئة الإنتاج.",
+        },
+      },
+      {
+        q: {
+          en: "Does the system replace our ERP or accounting software?",
+          ar: "هل يحل النظام محل برنامج ERP أو المحاسبة الحالي؟",
+        },
+        a: {
+          en: "It is designed as a possible clearance and integration layer. Whether it replaces or connects to an existing system depends on the client's invoice flow, API access, and regulatory requirements.",
+          ar: "صُمم ليكون طبقة محتملة للتخليص والتكامل. يعتمد استبداله للنظام الحالي أو ربطه به على مسار الفواتير وصلاحيات API والمتطلبات التنظيمية للعميل.",
+        },
+      },
+      {
+        q: {
+          en: "What should a Saudi business confirm before using an e-invoicing integration?",
+          ar: "ما الذي يجب على المنشأة السعودية تأكيده قبل استخدام تكامل الفوترة الإلكترونية؟",
+        },
+        a: {
+          en: "The business should confirm its ZATCA phase, invoice types, certificate and credential process, ERP responsibilities, testing plan, and who owns ongoing regulatory maintenance. Those decisions belong in the implementation scope.",
+          ar: "يجب على المنشأة تأكيد مرحلتها لدى زاتكا وأنواع الفواتير وإجراءات الشهادات وبيانات الاعتماد ومسؤوليات ERP وخطة الاختبار وملكية الصيانة التنظيمية المستمرة. يجب إدراج هذه القرارات في نطاق التنفيذ.",
+        },
+      },
     ],
   },
   {
     slug: "sanad-os",
     title: "SanadOS",
     outcome: {
-      en: "Facilities operations, in one system.",
-      ar: "عمليات المرافق، في نظام واحد.",
+      en: "Unified platform for facility operators to track assets, manage work orders, and maintain comprehensive audit logs all in one place.",
+      ar: "منصة موحدة لمشغلي المرافق لتتبع الأصول، وإدارة أوامر العمل، والاحتفاظ بسجلات تدقيق شاملة في مكان واحد.",
     },
     status: "in-pilot",
     stack: ["React", "Supabase", "AI"],
@@ -174,36 +204,25 @@ const content: CaseStudy[] = [
           ar: "لا — إنه قيد التجربة مع مشغّلين فعليين. الحالة هنا مذكورة كما هي تمامًا.",
         },
       },
-    ],
-  },
-  {
-    slug: "orderflow",
-    title: "OrderFlow",
-    outcome: {
-      en: "Logistics, tracked in real time.",
-      ar: "الخدمات اللوجستية، متتبَّعة في الوقت الحقيقي.",
-    },
-    status: "proven",
-    stack: ["Next.js", "Node", "Postgres"],
-    order: 5,
-    image: "/projects/orderflow.jpg",
-    body: {
-      en: "Logistics, tracked in real time — orders, dispatch, and delivery state on one live board instead of phone calls and spreadsheets.",
-      ar: "الخدمات اللوجستية، متتبَّعة في الوقت الحقيقي — الطلبات والإرسال وحالة التسليم على لوحة واحدة مباشرة بدلًا من المكالمات وجداول البيانات.",
-    },
-    faq: [
       {
-        q: { en: "What does “real time” mean here?", ar: "ماذا يعني «لحظيًا» هنا؟" },
+        q: { en: "Who is SanadOS designed for?", ar: "لمن صُممت SanadOS؟" },
         a: {
-          en: "Delivery status updates stream to the dashboard as they happen — no refresh, no batch delay.",
-          ar: "تحديثات حالة التوصيل تصل إلى اللوحة فور حدوثها — بلا تحديث يدوي ولا تأخير.",
+          en: "It is designed for facility and operations teams that need one place for assets, work orders, maintenance history, assignments, and audit records. The exact workflows are shaped with the pilot operators.",
+          ar: "صُممت لفرق تشغيل وإدارة المرافق التي تحتاج إلى مكان واحد للأصول وأوامر العمل وسجل الصيانة والإسناد وسجلات التدقيق. يتم تشكيل مسارات العمل الدقيقة مع المشغلين في التجربة.",
         },
       },
       {
-        q: { en: "Who uses it?", ar: "من يستخدمه؟" },
+        q: { en: "Can technicians use it from the field?", ar: "هل يمكن للفنيين استخدامها في الميدان؟" },
         a: {
-          en: "Dispatch teams and hub managers — the people who need to know where every order is right now.",
-          ar: "فرق الإرسال ومديرو المراكز — من يحتاجون معرفة مكان كل طلب في هذه اللحظة.",
+          en: "The workflow can support mobile-friendly work orders, status updates, asset details, and maintenance notes. Device and offline requirements should be confirmed before finalizing the pilot scope.",
+          ar: "يمكن لمسار العمل دعم أوامر عمل مناسبة للهاتف وتحديثات الحالة وتفاصيل الأصول وملاحظات الصيانة. يجب تأكيد متطلبات الأجهزة والعمل دون اتصال قبل اعتماد نطاق التجربة النهائي.",
+        },
+      },
+      {
+        q: { en: "What does the pilot validate?", ar: "ماذا تتحقق منه مرحلة التجربة؟" },
+        a: {
+          en: "The pilot validates whether the asset model, work-order flow, permissions, reporting, and day-to-day adoption fit the operator's real process. It is not presented as proof that every facility will need the same configuration.",
+          ar: "تتحقق التجربة من ملاءمة نموذج الأصول ومسار أوامر العمل والصلاحيات والتقارير والاستخدام اليومي لعملية المشغل الحقيقية. ولا تقدم دليلاً على أن كل مرفق سيحتاج إلى الإعداد نفسه.",
         },
       },
     ],

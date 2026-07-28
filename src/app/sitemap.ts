@@ -18,7 +18,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [
     "",
     "/about",
-    "/pricing",
     "/assistant",
     "/work",
     ...caseStudies.map((c) => `/work/${c.slug}`),
@@ -41,7 +40,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/legal/disclaimer",
   ];
 
-  const now = new Date();
+  // Fix build date for a stable lastmod
+  const now = new Date("2026-07-27T00:00:00Z");
   const entries: MetadataRoute.Sitemap = [];
 
   // Apex root entry

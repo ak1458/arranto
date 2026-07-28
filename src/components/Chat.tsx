@@ -21,16 +21,27 @@ export function Chat() {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const logRef = useRef<HTMLDivElement>(null);
 
+  const sendRef = useRef<(prompt?: string) => void>(() => {});
+
   // Deep link (?chat=open, used by /assistant SEO entries) + programmatic open
-  // (OpenChatButton dispatches 'arranto:open-chat' — survives soft navigation).
+  // (OpenChatButton or WorkPortfolioModal dispatches 'arranto:open-chat' — survives soft navigation).
   useEffect(() => {
-    const onOpen = () => setOpen(true);
-    window.addEventListener('arranto:open-chat', onOpen);
+    const onOpen = (e: Event) => {
+      setOpen(true);
+      const customEv = e as CustomEvent<{ prompt?: string }>;
+      if (customEv.detail?.prompt) {
+        const promptText = customEv.detail.prompt;
+        setTimeout(() => {
+          sendRef.current(promptText);
+        }, 100);
+      }
+    };
+    window.addEventListener('arranto:open-chat', onOpen as EventListener);
     // Deep link funnels through the same event so open-state changes have one path.
     if (new URLSearchParams(window.location.search).get('chat') === 'open') {
       window.dispatchEvent(new Event('arranto:open-chat'));
     }
-    return () => window.removeEventListener('arranto:open-chat', onOpen);
+    return () => window.removeEventListener('arranto:open-chat', onOpen as EventListener);
   }, []);
 
   // Esc closes and returns focus to the launcher, per WCAG 2.1.1/2.4.3.
@@ -57,16 +68,8 @@ export function Chat() {
     return t.has(`status.${tool}`) ? t(`status.${tool}`) : t('status.default');
   }
 
-  async function send() {
-    const text = input.trim();
-    if (!text || busy) return;
-
-    const history: Msg[] = [...messages, { role: 'user', content: text }];
-    setMessages(history);
-    setInput('');
-    setError(null);
+  async function executeChatStream(history: Msg[]) {
     setBusy(true);
-
     try {
       const res = await fetch('/api/chat', {
         method: 'POST',
@@ -137,6 +140,21 @@ export function Chat() {
       setBusy(false);
     }
   }
+
+  function send(customText?: string) {
+    const text = (customText ?? input).trim();
+    if (!text || busy) return;
+
+    setMessages((prev) => {
+      const history: Msg[] = [...prev, { role: 'user', content: text }];
+      void executeChatStream(history);
+      return history;
+    });
+    setInput('');
+    setError(null);
+  }
+
+  sendRef.current = send;
 
   return (
     <>

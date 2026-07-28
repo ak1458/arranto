@@ -52,28 +52,42 @@ export default async function ServicePage({ params }: Props) {
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Service",
-    name: serviceDetail.title[l],
-    description: serviceDetail.citablePassage[l],
-    provider: {
-      "@type": "Organization",
-      name: "Arranto",
-      url: "https://arranto.com",
-      founder: {
-        "@type": "Person",
-        name: "Ashraf Kamal",
-        url: "https://github.com/ak1458",
+    "@graph": [
+      {
+        "@type": "Service",
+        name: serviceDetail.title[l],
+        description: serviceDetail.citablePassage[l],
+        provider: {
+          "@type": "Organization",
+          name: "Arranto",
+          url: "https://arranto.com",
+          founder: {
+            "@type": "Person",
+            name: "Ashraf Kamal",
+            url: "https://github.com/ak1458",
+          },
+        },
+        areaServed: ["SA", "AE", "KW", "QA", "OM", "BH", "US", "IN"],
       },
-    },
-    areaServed: ["SA", "AE", "KW", "QA", "OM", "BH"],
-    offers: {
-      "@type": "Offer",
-      priceSpecification: {
-        "@type": "PriceSpecification",
-        priceCurrency: "USD",
-        minPrice: serviceDetail.startingTier.replace(/[^0-9]/g, ""),
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `https://arranto.com/${locale}` },
+          { "@type": "ListItem", position: 2, name: "Services", item: `https://arranto.com/${locale}/services` },
+          { "@type": "ListItem", position: 3, name: serviceDetail.title[l], item: `https://arranto.com/${locale}/services/${slug}` },
+        ],
       },
-    },
+      ...(serviceDetail.faq.length > 0
+        ? [{
+            "@type": "FAQPage",
+            mainEntity: serviceDetail.faq.map(({ q, a }) => ({
+              "@type": "Question",
+              name: q[l],
+              acceptedAnswer: { "@type": "Answer", text: a[l] },
+            })),
+          }]
+        : []),
+    ],
   };
 
   return (
@@ -211,19 +225,6 @@ export default async function ServicePage({ params }: Props) {
 
           {/* Sidebar / Pricing & Compliance */}
           <div className="lg:col-span-5 flex flex-col gap-8 sticky top-32">
-            {/* Starting Tier */}
-            <div className="border border-white/10 bg-[#0A0A0C] p-8 shadow-2xl">
-              <div className="font-mono text-[10px] uppercase tracking-widest text-[#8e8f94] mb-2">
-                {locale === "ar" ? "يبدأ من" : "ESTIMATED STARTING INVESTMENT"}
-              </div>
-              <div className="font-mono text-3xl font-bold text-white mb-4">
-                {serviceDetail.startingTier}
-              </div>
-              <p className="text-xs text-[#8e8f94] leading-relaxed border-t border-white/10 pt-4">
-                {blueprint.pricingBody}
-              </p>
-            </div>
-
             {/* GCC Compliance Badge */}
             <div className="border border-emerald-500/20 bg-emerald-950/10 p-6">
               <div className="font-mono text-[10px] uppercase tracking-widest text-emerald-400 mb-2 flex items-center gap-2">
@@ -253,4 +254,3 @@ export default async function ServicePage({ params }: Props) {
     </div>
   );
 }
-

@@ -72,6 +72,15 @@ export default async function WorkDetail({ params }: Props) {
         acceptedAnswer: { "@type": "Answer", text: a[l] },
       })),
     } : null;
+    const breadcrumbJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: l === "ar" ? "الرئيسية" : "Home", item: `https://arranto.com/${locale}` },
+        { "@type": "ListItem", position: 2, name: l === "ar" ? "الأعمال" : "Work", item: `https://arranto.com/${locale}/work` },
+        { "@type": "ListItem", position: 3, name: cs.title, item: `https://arranto.com/${locale}/work/${slug}` },
+      ],
+    };
 
     return (
       <div className="relative min-h-screen overflow-hidden bg-[#050505] text-paper">
@@ -273,6 +282,10 @@ export default async function WorkDetail({ params }: Props) {
             dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
           />
         )}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
       </div>
     );
   }
@@ -436,6 +449,7 @@ function ProjectCta({ title, l, t }: ProjectCtaProps) {
       <Reveal delay={0.1}>
         <div className="flex flex-col gap-3 sm:flex-row">
           <OpenChatButton
+            prompt={similarMessage}
             className="group relative inline-flex items-center justify-center gap-3 border border-[#d8d9dc] bg-[#d8d9dc]/15 px-8 py-4 text-sm font-semibold uppercase tracking-wider text-paper transition-all duration-300 hover:bg-[#d8d9dc] hover:text-ink"
           >
             {t("ctaSimilar")}

@@ -8,8 +8,10 @@ import { Footer } from "@/components/Footer";
 import { Analytics } from "@/components/Analytics";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { Chat } from "@/components/Chat";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { PageTransition } from "@/components/PageTransition";
 import { CardRepetitionClickEffect } from "@/components/CardRepetitionClickEffect";
+import { siteJsonLd } from "@/lib/seo";
 import { fontVariables } from "@/lib/fonts";
 import "../globals.css";
 
@@ -41,7 +43,7 @@ export async function generateMetadata({
       type: "website",
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: t("title"),
       description: t("description"),
     },
@@ -81,9 +83,14 @@ export default async function LocaleLayout({
             <Footer />
           </SmoothScroll>
           <Chat />
+          <ScrollToTop />
         </NextIntlClientProvider>
         <Analytics />
         <CardRepetitionClickEffect />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd(locale)) }}
+        />
       </body>
     </html>
   );

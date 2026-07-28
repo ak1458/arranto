@@ -6,6 +6,8 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import { FlowAnimation } from '@/components/FlowAnimation';
+
 gsap.registerPlugin(ScrollTrigger);
 
 type ProcessStep = { num: string; title: string; tag: string; desc: string };
@@ -132,6 +134,11 @@ export function ProcessSection() {
           <p className="mt-4 text-base sm:text-lg text-[#9494a0] leading-relaxed">
             {t('subline')}
           </p>
+        </div>
+
+        {/* LangChain-style interactive vector flow animation */}
+        <div className="my-12">
+          <FlowAnimation />
         </div>
 
         {/* Interactive Studio Timeline & Architecture Inspector */}

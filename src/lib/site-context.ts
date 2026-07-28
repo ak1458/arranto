@@ -1,4 +1,6 @@
 import { sorted, type Status } from "@/content/work";
+import { serviceDetails } from "@/content/services";
+import { blogPosts } from "@/content/blog";
 
 // The chatbot's entire knowledge base, built from the same content the pages
 // render — status claims always come from the `status` field, never hand-typed.
@@ -27,13 +29,30 @@ export function siteContext(): string {
     })
     .join("\n\n");
 
+  const services = serviceDetails
+    .map((service) => {
+      const faq = service.faq.map((f) => `Q: ${f.q.en}\nA: ${f.a.en}`).join("\n");
+      return `### ${service.title.en}\n${service.subtitle.en}\n${service.citablePassage.en}\n${service.overview.en.join(" ")}\nCapabilities: ${service.features.en.map((f) => f.title).join(", ")}\n${faq}`;
+    })
+    .join("\n\n");
+
+  const blog = blogPosts
+    .map((post) => `### ${post.title.en}\nCategory: ${post.category}\n${post.excerpt.en}\nURL: /blog/${post.slug}`)
+    .join("\n\n");
+
   return `## Studio
-Arranto is a founder-led, AI-native software studio. Founded 2017 as Smile Fotilo; rebranded to Arranto. One engineer. 10+ delivered projects. 118 verified Google reviews. Tagline: "Start to running. Nothing left undone."
-Pages: / (home), /work (case studies), /about (the studio and founder), /contact.
+Arranto is an AI software company building enterprise AI platforms, custom software solutions, localized compliance technology (ZATCA / PDPL), and developer tools.
+Pages: / (home), /work (case studies), /about (the studio and founder), /services, /blog, /contact.
 Free tools live on this site at /tools.
 
+## Services
+${services}
+
 ## Work
-${work}`;
+${work}
+
+## Blog
+${blog}`;
 }
 
 // The chat system prompt moved to src/lib/ai/prompt.ts (agentic rewrite, 2026-07-16).

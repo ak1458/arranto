@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
 import { getPostBySlug, type Locale } from "@/content/blog";
@@ -67,12 +67,12 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         );
       }
-      // H3
+      // Markdown section headings become semantic article H2s.
       if (trimmed.startsWith("### ")) {
         return (
-          <h3 key={idx} className="mt-12 mb-6 text-2xl font-display font-bold text-white tracking-tight">
+          <h2 key={idx} className="mt-12 mb-6 text-2xl font-display font-bold text-white tracking-tight">
             {trimmed.replace("### ", "")}
-          </h3>
+          </h2>
         );
       }
       // Blockquote
@@ -108,8 +108,43 @@ export default async function BlogPostPage({ params }: Props) {
     });
   };
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        headline: post.title[l],
+        description: post.excerpt[l],
+        datePublished: post.date,
+        dateModified: post.date,
+        inLanguage: locale,
+        articleSection: post.category,
+        author: {
+          "@type": "Person",
+          name: "Ashraf Kamal",
+          url: `https://arranto.com/${locale}/about`,
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "Arranto",
+          url: "https://arranto.com",
+        },
+        mainEntityOfPage: `https://arranto.com/${locale}/blog/${slug}`,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: locale === "ar" ? "الرئيسية" : "Home", item: `https://arranto.com/${locale}` },
+          { "@type": "ListItem", position: 2, name: locale === "ar" ? "المدونة" : "Blog", item: `https://arranto.com/${locale}/blog` },
+          { "@type": "ListItem", position: 3, name: post.title[l], item: `https://arranto.com/${locale}/blog/${slug}` },
+        ],
+      },
+    ],
+  };
+
   return (
     <div className="relative min-h-svh w-full bg-[#050505] text-white overflow-hidden py-32">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="absolute top-0 start-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 bg-[#d8d9dc]/5 blur-[140px] pointer-events-none"/>
       
       <div className="relative z-10 mx-auto max-w-3xl px-6 md:px-12">

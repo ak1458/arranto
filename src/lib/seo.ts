@@ -72,13 +72,12 @@ export function orgJsonLd(locale: string) {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Arranto",
-    alternateName: "Smile Fotilo",
     foundingDate: "2017",
     url: BASE,
     inLanguage: l,
     description: ORG_DESCRIPTION[l],
     founder: { "@type": "Person", name: "Ashraf Kamal", sameAs: "https://github.com/ak1458" },
-    areaServed: ["SA", "AE", "KW", "QA", "OM", "BH", "US", "GB"],
+    areaServed: ["SA", "AE", "KW", "QA", "OM", "BH", "US", "IN", "GB"],
     knowsAbout: ORG_KNOWS_ABOUT[l],
 
     sameAs: [
@@ -86,4 +85,20 @@ export function orgJsonLd(locale: string) {
       "https://github.com/ak1458",
     ],
   };
+}
+
+/** Sitewide JSON-LD: WebSite (with potential SearchAction) + Organization.
+ * Injected once in the root layout so every page carries the entity signals. */
+export function siteJsonLd(locale: string) {
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "Arranto",
+      url: BASE,
+      inLanguage: ["en", "ar"],
+      publisher: { "@type": "Organization", name: "Arranto" },
+    },
+    orgJsonLd(locale),
+  ];
 }

@@ -12,7 +12,6 @@ type WorkArtProps = {
 // empty slot — never a generated stand-in that could read as a product screenshot.
 const WITH_MEDIA = new Set([
   'fatura-lite-pro',
-  'orderflow',
   'pulsekart',
   'sanad-os',
   'veloria-vault',

@@ -84,7 +84,7 @@ html.lenis body {
 .hero-fg-content {
   background-color: var(--color-ink);
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-  will-change: clip-path, transform;
+  will-change: clip-path;
 }
 
 .hero-bg-content {
@@ -145,10 +145,9 @@ html.lenis body {
 .stack-card {
   position: sticky;
   top: var(--stack-top, 12vh);
-  height: 80vh;
-  max-height: 640px;
+  min-height: 0;
   overflow-y: auto;
-  padding: clamp(20px, 5vw, 48px);
+  padding: clamp(20px, 5vw, 40px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -178,7 +177,6 @@ html.lenis body {
     background: var(--bg-2);
   }
   .ticker-track {
-    display: flex;
     align-items: center;
     flex-wrap: nowrap;
     white-space: nowrap;
@@ -187,26 +185,19 @@ html.lenis body {
     letter-spacing: -0.02em;
     will-change: transform;
   }
+  .ticker-section-loading {
+    min-height: 180px;
+  }
   @media (max-width: 1023px) {
     .ticker-section {
       height: auto;
       overflow: hidden;
     }
-    /* CSS-only (not JS/RAF): touch-scroll gestures throttle main-thread JS on mobile,
-       which froze the old gsap.set()-driven marquee mid-scroll. A compositor-driven
-       transform animation keeps running regardless of scroll thread activity. */
-    .ticker-track-mobile {
-      animation: ticker-scroll-mobile 18s linear infinite;
+  }
+  @media (min-width: 1024px) {
+    .ticker-section-loading {
+      min-height: 100vh;
     }
-  }
-}
-
-@keyframes ticker-scroll-mobile {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
   }
 }
 
@@ -224,6 +215,7 @@ html.lenis body {
   .card-hover:hover {
     transform: none;
   }
+
 }
 .terminal-caret {
   display: inline-block;
@@ -236,4 +228,3 @@ html.lenis body {
 @keyframes blink {
   50% { opacity: 0; }
 }
-

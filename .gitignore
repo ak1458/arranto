@@ -45,4 +45,9 @@ reports/
 # playwright MCP test artifacts
 .playwright-mcp/
 
+# credentials (service accounts, API keys)
+credentials/*.json
+credentials/*.pem
+service-account*.json
+
 .vercel

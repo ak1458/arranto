@@ -43,7 +43,7 @@ const L = {
     investment: "This document outlines scope and approach. Investment is discussed directly with the founder — no automated pricing.",
     types: { "ai-automation": "AI Automation", "ai-product": "AI Product Development", saas: "SaaS Development" },
     overviewBody: (t: string, who: string) =>
-      `${who} is exploring an engagement with Arranto — a founder-led software studio (est. 2017, 10+ delivered projects, 118 verified Google reviews) — for ${t}. This proposal summarizes what was discussed with the studio assistant.`,
+      `${who} is exploring an engagement with Arranto — a founder-led software studio (est. 2017, 20+ delivered projects, 118 verified Google reviews) — for ${t}. This proposal summarizes what was discussed with the studio assistant.`,
     footer: "Arranto — founder-led software studio · est. 2017 · arranto.com · help@arranto.com",
   },
   // Arabic PDF strings are deliberately Latin-free (except the LTR-only footer

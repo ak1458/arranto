@@ -506,7 +506,7 @@ export function Nav() {
     <>
       <header className="fixed inset-x-0 top-0 z-50 bg-ink/65 backdrop-blur-md border-b border-white/10">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-          <Link href="/" aria-label="Arranto" className="flex items-center text-white hover:opacity-90 transition-opacity">
+          <Link href="/" aria-label="Arranto" className="flex items-center text-white hover:opacity-90 transition-opacity" style={{ isolation: 'isolate', willChange: 'transform' }}>
             <Logo variant="full" size="md" className="text-white" />
           </Link>
 

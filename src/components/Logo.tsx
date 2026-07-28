@@ -38,6 +38,10 @@ export function LogoMark({ className = "", node = NODE }: { className?: string; 
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       aria-hidden="true"
+      shapeRendering="geometricPrecision"
+      textRendering="geometricPrecision"
+      imageRendering="optimizeQuality"
+      style={{ transform: "translateZ(0)", backfaceVisibility: "hidden", WebkitFontSmoothing: "antialiased" }}
     >
       <style>{`
         @keyframes logoDotFade {
@@ -104,6 +108,7 @@ export function LogoMark({ className = "", node = NODE }: { className?: string; 
             strokeWidth={1.1}
             strokeLinecap="round"
             strokeDasharray={i % 2 === 0 ? "0" : "3 4"}
+            vectorEffect="non-scaling-stroke"
             className="logo-path"
             style={{ animationDelay: (0.3 + i * 0.1) + "s" }}
           />

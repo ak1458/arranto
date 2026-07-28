@@ -23,9 +23,53 @@ type Tool = {
 const gen = (prompt: string, maxTokens = 600) =>
   chat([{ role: "user", content: prompt }], { maxTokens, timeoutMs: 45_000 });
 
+import { queryKnowledgeBase } from "@/lib/ai/rag";
+import { triggerLeadCall } from "@/lib/ai/lead-call-engine";
+
 const ConsultationInput = Proposal.omit({ locale: true, date: true });
 
 const TOOLS: Tool[] = [
+  {
+    name: "rag_search",
+    description:
+      "Perform a LangChain-style RAG vector search over Arrento's products, case studies, ZATCA/PDPL compliance regulations, and technical knowledge base.",
+    schema: z.object({
+      query: z.string().min(1).max(500).describe("Semantic query string to search"),
+      topK: z.number().optional().default(3),
+    }),
+    run: async (args) => {
+      const { query, topK } = z.object({ query: z.string().min(1).max(500), topK: z.number().optional().default(3) }).parse(args);
+      const results = queryKnowledgeBase(query, topK);
+      return { query, count: results.length, matches: results };
+    },
+  },
+  {
+    name: "schedule_lead_call",
+    description:
+      "Collect lead contact info, business requirements, and trigger an automated AI lead follow-up call / instant founder phone alert.",
+    schema: z.object({
+      name: z.string().min(1).max(200),
+      phone: z.string().min(5).max(40).describe("Lead's direct phone number with country code"),
+      email: z.string().max(320).describe("Lead's email address"),
+      company: z.string().max(200).optional(),
+      projectType: z.string().max(120),
+      preferredCallTime: z.string().max(100).optional(),
+      notes: z.string().max(1000).optional(),
+    }),
+    run: async (args, ctx) => {
+      const parsed = z.object({
+        name: z.string().min(1).max(200),
+        phone: z.string().min(5).max(40),
+        email: z.string().email().max(320),
+        company: z.string().max(200).optional(),
+        projectType: z.string().max(120),
+        preferredCallTime: z.string().max(100).optional(),
+        notes: z.string().max(1000).optional(),
+      }).parse(args);
+
+      return triggerLeadCall(parsed, ctx.locale);
+    },
+  },
   {
     name: "audit_website",
     description:
@@ -176,6 +220,7 @@ export function toolSchemas(): AiTool[] {
   return TOOLS.map((t) => {
     const params = z.toJSONSchema(t.schema) as Record<string, unknown>;
     delete params.$schema;
+    delete params.additionalProperties; // Fix NVIDIA NIM bug: 'bool' object has no attribute 'get'
     return { name: t.name, description: t.description, parameters: params };
   });
 }

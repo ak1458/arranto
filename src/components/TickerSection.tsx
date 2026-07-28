@@ -1,12 +1,20 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
+
+type TickerVariant = 'desktop' | 'tablet' | 'mobile';
+
+function getTickerVariant(): TickerVariant {
+  if (window.innerWidth >= 1024) return 'desktop';
+  if (window.innerWidth >= 640) return 'tablet';
+  return 'mobile';
+}
 
 function ArrowGlyph() {
   return (
@@ -29,38 +37,61 @@ export function TickerSection() {
   const phrases = t.raw('phrases') as string[];
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const [variant, setVariant] = useState<TickerVariant | null>(null);
+
+  useEffect(() => {
+    const updateVariant = () => setVariant(getTickerVariant());
+    const queries = [
+      window.matchMedia('(min-width: 1024px)'),
+      window.matchMedia('(min-width: 640px)'),
+    ];
+
+    updateVariant();
+    queries.forEach((query) => query.addEventListener('change', updateVariant));
+
+    return () => {
+      queries.forEach((query) => query.removeEventListener('change', updateVariant));
+    };
+  }, []);
 
   useGSAP(
     () => {
+      if (!variant) return;
       if (!sectionRef.current) return;
 
-      const mm = gsap.matchMedia();
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (!trackRef.current) return;
 
-      // Desktop (>= 1024px): exact untouched 100vh pinned horizontal reel
-      mm.add('(min-width: 1024px)', () => {
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        if (!trackRef.current) return;
-        const track = trackRef.current;
-        const section = sectionRef.current!;
-        const getDist = () => Math.max(0, track.scrollWidth - window.innerWidth);
+      const track = trackRef.current;
+      const section = sectionRef.current;
+      const getDist = () => Math.max(0, track.scrollWidth - window.innerWidth);
+      const getPinDistance = () => {
+        const distance = getDist();
+        const minimum = variant === 'desktop' ? window.innerHeight * 1.5 : window.innerHeight * 1.25;
+        return Math.max(distance, minimum);
+      };
 
-        gsap.to(track, {
-          x: () => -getDist(),
-          ease: 'none',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top top',
-            end: () => `+=${getDist()}`,
-            scrub: 1,
-            pin: true,
-            invalidateOnRefresh: true,
-          },
-        });
+      const tween = gsap.to(track, {
+        x: () => -getDist(),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: () => `+=${getPinDistance()}`,
+          scrub: variant === 'desktop' ? 1 : 0.6,
+          pin: true,
+          invalidateOnRefresh: true,
+        },
       });
 
-      return () => mm.revert();
+      ScrollTrigger.refresh();
+
+      return () => {
+        tween.scrollTrigger?.kill();
+        tween.kill();
+      };
     },
-    { scope: sectionRef }
+    { scope: sectionRef, dependencies: [variant] }
   );
 
   const renderPhrase = (phrase: string, i: number) => (
@@ -72,22 +103,39 @@ export function TickerSection() {
     </React.Fragment>
   );
 
-  return (
-    <section ref={sectionRef} className="ticker-section select-none">
-      {/* Desktop (>= 1024px): exactly unchanged, 100vh pinned horizontal reel */}
-      <div ref={trackRef} className="ticker-track hidden lg:flex">
-        {phrases.map((p, i) => renderPhrase(p, i))}
-      </div>
+  if (!variant) {
+    return (
+      <section
+        ref={sectionRef}
+        className="ticker-section ticker-section-loading select-none"
+        aria-hidden="true"
+      />
+    );
+  }
 
-      {/* Mobile (< 1024px): continuous infinite auto-scrolling track (`pin: false`), zero blank space */}
-      <div className="lg:hidden w-full overflow-hidden py-14 bg-[var(--bg-2)]">
-        <div
-          className="ticker-track-mobile flex items-center flex-nowrap whitespace-nowrap font-display text-[32px] sm:text-[42px] font-bold tracking-tight text-white will-change-transform"
-        >
+  return (
+    <section ref={sectionRef} className="ticker-section select-none" data-ticker-variant={variant}>
+      {variant === 'desktop' && (
+        <div ref={trackRef} className="ticker-track flex w-max text-white">
           {phrases.map((p, i) => renderPhrase(p, i))}
-          {phrases.map((p, i) => renderPhrase(p, i + phrases.length))}
         </div>
-      </div>
+      )}
+
+      {variant === 'tablet' && (
+        <div className="w-full overflow-hidden py-16 bg-[var(--bg-2)]">
+          <div ref={trackRef} className="ticker-track-mobile flex w-max items-center flex-nowrap whitespace-nowrap font-display text-[42px] font-bold tracking-tight text-white will-change-transform">
+            {phrases.map((p, i) => renderPhrase(p, i))}
+          </div>
+        </div>
+      )}
+
+      {variant === 'mobile' && (
+        <div className="w-full overflow-hidden py-14 bg-[var(--bg-2)]">
+          <div ref={trackRef} className="ticker-track-mobile flex w-max items-center flex-nowrap whitespace-nowrap font-display text-[32px] font-bold tracking-tight text-white will-change-transform">
+            {phrases.map((p, i) => renderPhrase(p, i))}
+          </div>
+        </div>
+      )}
     </section>
   );
 }

@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useLocale } from 'next-intl';
 import type { Repo } from '@/lib/github';
 import { caseStudies } from '@/content/work';
 import { NanobannerCard } from '@/components/NanobannerCard';
+import { getRepoDetail } from '@/lib/repo-details';
 
 type Props = {
   repos: Repo[];
@@ -22,8 +24,25 @@ function statusFor(repoName: string): string {
 
 export function WorkPortfolioModal({ repos, eyebrow, heading }: Props) {
   const [selectedRepo, setSelectedRepo] = useState<Repo | null>(null);
+  const locale = useLocale();
+  const lang = locale === 'ar' ? 'ar' : 'en';
+
+  React.useEffect(() => {
+    if (selectedRepo) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [selectedRepo]);
 
   if (repos.length === 0) return null;
+
+  const repoDetail = selectedRepo
+    ? getRepoDetail(selectedRepo.name, selectedRepo.description, selectedRepo.language, selectedRepo.topics)
+    : null;
 
   return (
     <section className="bg-[#050505] pb-28 border-t border-white/10 pt-20 select-none">
@@ -85,7 +104,7 @@ export function WorkPortfolioModal({ repos, eyebrow, heading }: Props) {
       </div>
 
       {/* Interactive Nanobanner Architecture Modal (Clean, No Huge Images) */}
-      {selectedRepo && (
+      {selectedRepo && repoDetail && (
         <div
           role="dialog"
           aria-modal="true"
@@ -93,10 +112,11 @@ export function WorkPortfolioModal({ repos, eyebrow, heading }: Props) {
           onClick={() => setSelectedRepo(null)}
         >
           <div
-          className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto border border-white/20 bg-[#0a0a0a] p-6 sm:p-8 text-white shadow-2xl"
+            data-lenis-prevent
+            className="relative w-full max-w-3xl max-h-[85vh] overflow-y-auto overscroll-contain border border-white/20 bg-[#0a0a0a] p-6 sm:p-8 text-white shadow-2xl space-y-6"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-start justify-between border-b border-white/10 pb-4 mb-6">
+            <div className="flex items-start justify-between border-b border-white/10 pb-4">
               <div>
                 <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#d8d9dc]">
                   SYSTEM ARCHITECTURE // TECHNICAL BRIEFING
@@ -122,13 +142,37 @@ export function WorkPortfolioModal({ repos, eyebrow, heading }: Props) {
               stack={selectedRepo.topics.slice(0, 4)}
             />
 
-            <div className="mt-6 space-y-6">
+            {/* Comprehensive SEO-Friendly Architectural Overview */}
+            <div className="space-y-6 text-start">
               <div>
                 <h4 className="font-mono text-xs uppercase tracking-wider text-[#d8d9dc] mb-2">
-                  Description
+                  System Architecture Overview
                 </h4>
                 <p className="text-sm sm:text-base font-light leading-relaxed text-[#d8d9dc]">
-                  {selectedRepo.description}
+                  {repoDetail.overview[lang]}
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-mono text-xs uppercase tracking-wider text-[#d8d9dc] mb-2">
+                  Key Technical Capabilities
+                </h4>
+                <ul className="space-y-2 text-sm text-[#9494a0]">
+                  {repoDetail.features[lang].map((f, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <span className="text-[#d8d9dc] font-mono text-xs mt-0.5">✦</span>
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="border border-white/10 bg-white/[0.03] p-4 rounded-sm">
+                <h4 className="font-mono text-xs uppercase tracking-wider text-[#d8d9dc] mb-1">
+                  Business Value & Operational ROI
+                </h4>
+                <p className="text-xs sm:text-sm text-[#9494a0] leading-relaxed">
+                  {repoDetail.businessValue[lang]}
                 </p>
               </div>
 
@@ -148,8 +192,19 @@ export function WorkPortfolioModal({ repos, eyebrow, heading }: Props) {
                   <button
                     type="button"
                     onClick={() => {
+                      const repoName = selectedRepo.formattedName;
+                      const promptMsg = lang === 'ar'
+                        ? `أرغب في الاستفسار عن بناء نظام مخصص بناءً على بنية مشروع "${repoName}".`
+                        : `I'm interested in consulting on the technical architecture of ${repoName} (${selectedRepo.language || 'TypeScript'}). Can we build a custom system like this?`;
                       setSelectedRepo(null);
-                      window.dispatchEvent(new Event('arranto:open-chat'));
+                      window.dispatchEvent(
+                        new CustomEvent('arranto:open-chat', {
+                          detail: {
+                            repoName,
+                            prompt: promptMsg,
+                          },
+                        })
+                      );
                     }}
                     className="inline-flex items-center gap-2 border border-white bg-white px-5 py-2.5 font-mono text-xs font-bold uppercase tracking-wider text-black transition-colors hover:bg-[#d8d9dc]"
                   >

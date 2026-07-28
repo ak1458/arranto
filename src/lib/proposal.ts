@@ -9,7 +9,7 @@ export const PROJECT_TYPES = ["ai-automation", "ai-product", "saas"] as const;
 
 export const Proposal = z.object({
   name: z.string().trim().min(1).max(120),
-  email: z.email().max(320),
+  email: z.string().max(320).describe("Contact email address"),
   company: z.string().trim().max(120).optional(),
   projectType: z.enum(PROJECT_TYPES),
   goals: z.array(z.string().trim().min(1).max(160)).min(1).max(5),

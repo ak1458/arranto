@@ -20,9 +20,27 @@ export function getDocSlugs(product: string) {
     .map((name) => name.replace(/\.md$/, ''));
 }
 
-export function getDocBySlug(product: string, slug: string): DocData | null {
-  const fullPath = path.join(docsDirectory, product, `${slug}.md`);
-  if (!fs.existsSync(fullPath)) return null;
+export function getDocBySlug(product: string, rawSlug: string): DocData | null {
+  const cleanSlug = decodeURIComponent(rawSlug).replace(/\.md$/i, '');
+  let fullPath = path.join(docsDirectory, product, `${cleanSlug}.md`);
+  
+  if (!fs.existsSync(fullPath)) {
+    // Try case-insensitive matching in productDir
+    const productDir = path.join(docsDirectory, product);
+    if (fs.existsSync(productDir)) {
+      const files = fs.readdirSync(productDir);
+      const matched = files.find(
+        (f) => f.toLowerCase() === `${cleanSlug.toLowerCase()}.md`
+      );
+      if (matched) {
+        fullPath = path.join(productDir, matched);
+      } else {
+        return null;
+      }
+    } else {
+      return null;
+    }
+  }
 
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
@@ -31,11 +49,11 @@ export function getDocBySlug(product: string, slug: string): DocData | null {
   let title = data.title;
   if (!title) {
     const titleMatch = content.match(/^#\s+(.+)$/m);
-    title = titleMatch ? titleMatch[1].trim() : slug;
+    title = titleMatch ? titleMatch[1].trim() : cleanSlug;
   }
 
   return {
-    slug,
+    slug: cleanSlug,
     product,
     title,
     content,
