@@ -57,7 +57,8 @@ export default async function WorkDetail({ params }: Props) {
       "@type": "SoftwareApplication",
       name: cs.title,
       description: cs.body[l],
-      creativeWorkStatus: cs.status === "proven" ? "Published" : "Pilot",
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
       creator: { "@type": "Organization", name: "Arranto" },
     };
 

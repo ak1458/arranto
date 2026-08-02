@@ -210,5 +210,4 @@ Dashboard UI ◄── Notification & Toast ◄── Zod Schema + RBAC Check �
 For enterprise assistance, system integration support, or compliance audit inquiries:
 
 * **Official Portal Documentation**: [https://fatoora.zatca.gov.sa](https://fatoora.zatca.gov.sa)
-* **Technical Documentation Index**: [docs/README.md](file:///d:/gravity/FatooraLite%28ZATCA%29/docs/README.md)
-* **System Production Readiness Report**: [docs/13-production-readiness-report.md](file:///d:/gravity/FatooraLite%28ZATCA%29/docs/13-production-readiness-report.md)
+* **Documentation Index**: [README](./README.md)
