@@ -147,6 +147,10 @@ export const serviceDetails: ServiceDetail[] = [
       {
         q: { en: "What happens after the first SaaS release?", ar: "ماذا يحدث بعد إطلاق الإصدار الأول من منصة SaaS؟" },
         a: { en: "The handover should include deployment access, database migrations, documentation, monitoring expectations, and a clear list of follow-up work. Ongoing support can then be scoped around the product's actual usage and roadmap.", ar: "يجب أن يشمل التسليم صلاحيات التشغيل وترحيلات قاعدة البيانات والتوثيق وتوقعات المراقبة وقائمة واضحة بالخطوات التالية. يمكن بعد ذلك تحديد الدعم المستمر بناءً على استخدام المنتج وخارطة طريقه." }
+      },
+      {
+        q: { en: "Do you handle SaaS development for products that aren't AI-first?", ar: "هل تقدمون تطوير برمجيات SaaS للمنتجات التي ليست ذكاء اصطناعي بالدرجة الأولى؟" },
+        a: { en: "Yes. Multi-tenancy, RBAC, regional billing, and code ownership are the same core SaaS-development discipline whether or not the product has an AI layer — AI is Arranto's specialization, not a requirement to start a SaaS build.", ar: "نعم. عزل المستأجرين وإدارة الصلاحيات والفوترة الإقليمية وملكية الكود هي نفس أساسيات تطوير SaaS سواء تضمن المنتج طبقة ذكاء اصطناعي أم لا — الذكاء الاصطناعي تخصص أرانطو، وليس شرطاً لبدء بناء SaaS." }
       }
     ]
   },
@@ -216,6 +220,10 @@ export const serviceDetails: ServiceDetail[] = [
       {
         q: { en: "Can the interface work for Arabic-speaking and English-speaking teams?", ar: "هل يمكن للواجهة العمل للفرق الناطقة بالعربية والإنجليزية؟" },
         a: { en: "Yes. Language support is planned across the interface, prompts, source documents, permissions, and review process. We validate both languages with examples from the team's actual vocabulary.", ar: "نعم. يتم تخطيط الدعم اللغوي في الواجهة والتعليمات والمستندات والصلاحيات ومسار المراجعة. نتحقق من اللغتين باستخدام أمثلة من مفردات الفريق الفعلية." }
+      },
+      {
+        q: { en: "Is this custom enterprise software development, or off-the-shelf AI tools?", ar: "هل هذا تطوير برمجيات مؤسسية مخصصة أم أدوات ذكاء اصطناعي جاهزة؟" },
+        a: { en: "Custom development. Every RAG pipeline, access-control layer, and search integration described here is built and owned by your company — not a configured SaaS wrapper. That's the same custom-software approach Arranto uses for CRM/ERP and full-stack builds, applied to AI-specific infrastructure.", ar: "تطوير مخصص بالكامل. كل نظام RAG وطبقة صلاحيات وتكامل بحث هنا مبني ومملوك لشركتك، وليس أداة SaaS جاهزة. هو نفس نهج البرمجيات المخصصة الذي تتبعه أرانطو في أنظمة CRM/ERP والتطوير الشامل، مطبقاً على بنية الذكاء الاصطناعي." }
       }
     ]
   },

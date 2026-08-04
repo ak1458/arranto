@@ -74,6 +74,10 @@ export function orgJsonLd(locale: string) {
     name: "Arranto",
     foundingDate: "2017",
     url: BASE,
+    // Real live asset (SVG favicon) — no raster (PNG/512x512) logo exists yet.
+    // SVG is a valid schema.org logo value but Google Knowledge Panel eligibility
+    // favors raster; swap for a real PNG once one exists.
+    logo: `${BASE}/icon.svg`,
     inLanguage: l,
     description: ORG_DESCRIPTION[l],
     founder: { "@type": "Person", name: "Ashraf Kamal", sameAs: "https://github.com/ak1458" },

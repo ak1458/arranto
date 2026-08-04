@@ -128,6 +128,7 @@ export default async function BlogPostPage({ params }: Props) {
           "@type": "Organization",
           name: "Arranto",
           url: "https://arranto.com",
+          logo: { "@type": "ImageObject", url: "https://arranto.com/icon.svg" },
         },
         mainEntityOfPage: `https://arranto.com/${locale}/blog/${slug}`,
       },

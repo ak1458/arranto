@@ -56,6 +56,8 @@ export default async function ServicePage({ params }: Props) {
       {
         "@type": "Service",
         name: serviceDetail.title[l],
+        serviceType: serviceDetail.title[l],
+        url: `https://arranto.com/${locale}/services/${slug}`,
         description: serviceDetail.citablePassage[l],
         provider: {
           "@type": "Organization",
