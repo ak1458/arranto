@@ -72,6 +72,10 @@ export function orgJsonLd(locale: string) {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Arranto",
+    // Real rebrand fact, stated in visible /about copy — schema was missing this
+    // entity-disambiguation signal (an AI/search system has no way to connect
+    // "Arranto" and "Smile Fotilo" as the same entity without it).
+    alternateName: "Smile Fotilo",
     foundingDate: "2017",
     url: BASE,
     // Real live asset (SVG favicon) — no raster (PNG/512x512) logo exists yet.
@@ -84,10 +88,11 @@ export function orgJsonLd(locale: string) {
     areaServed: ["SA", "AE", "KW", "QA", "OM", "BH", "US", "IN", "GB"],
     knowsAbout: ORG_KNOWS_ABOUT[l],
 
-    sameAs: [
-      "https://www.linkedin.com/in/ashrafkamal14/",
-      "https://github.com/ak1458",
-    ],
+    // Points at the real Arranto project (the org's own resource) rather than
+    // the founder's personal profiles — those already correctly live on
+    // `founder.sameAs` above. A personal LinkedIn/GitHub profile represents a
+    // Person, not this Organization; duplicating it here was a type mismatch.
+    sameAs: ["https://github.com/ak1458/arranto"],
   };
 }
 

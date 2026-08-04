@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
 import { pageMetadata } from "@/lib/seo";
 import { getServiceBySlug, Locale } from "@/content/services";
+import { ArticleBody } from "@/components/ArticleBody";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -161,6 +162,13 @@ export default async function ServicePage({ params }: Props) {
                 ))}
               </div>
             </div>
+
+            {/* Long-form pillar body (optional — only cluster-anchor pages carry this) */}
+            {serviceDetail.body && (
+              <div className="border-t border-white/10 pt-16">
+                <ArticleBody text={serviceDetail.body[l]} />
+              </div>
+            )}
 
             {/* Features Grid */}
             <div>

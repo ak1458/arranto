@@ -9,6 +9,10 @@ export type ServiceDetail = {
   features: Record<Locale, { title: string; desc: string }[]>;
   gulfCompliance: Record<Locale, string>;
   faq: { q: Record<Locale, string>; a: Record<Locale, string> }[];
+  /** Optional long-form pillar body (same markdown-ish format as blog posts,
+   * rendered via ArticleBody) for services that need more depth than the
+   * standard overview/features template — e.g. a cluster hub page. */
+  body?: Record<Locale, string>;
 };
 
 export const serviceDetails: ServiceDetail[] = [
@@ -23,8 +27,8 @@ export const serviceDetails: ServiceDetail[] = [
       ar: "إلغاء الاحتكاك التشغيلي اليدوي باستخدام وكلاء الذكاء الاصطناعي المستقلين، وتكاملات ERP، وأنابيب البيانات فائقة السرعة.",
     },
     citablePassage: {
-      en: "AI Automation by Arranto designs and engineers autonomous AI agents and automated workflows for businesses operating across Saudi Arabia, the UAE, and the wider Gulf region. By integrating generative AI models with existing ERPs, CRMs, and custom databases, a well-scoped workflow can reduce a meaningful share of repetitive operational tasks such as invoice processing, lead qualification, and data synchronisation. Each system is designed with explicit access controls, Arabic/English support where required, and documented data-handling boundaries.",
-      ar: "خدمة أتمتة الذكاء الاصطناعي من أرانطو تصمم وتبني وكلاء الذكاء الاصطناعي المستقلين ومسارات العمل المؤتمتة للشركات في المملكة العربية السعودية والإمارات ودول الخليج. من خلال دمج النماذج مع أنظمة ERP وCRM الحالية، يمكن لمسار العمل المصمم جيداً تقليل جزء مهم من المهام المتكررة، مع تحديد صلاحيات الوصول وحدود معالجة البيانات والدعم اللغوي المطلوب.",
+      en: "AI Automation by Arranto designs and builds autonomous AI agents and automated workflows for businesses in Saudi Arabia, the UAE, and the wider Gulf region, integrating generative AI models with existing ERPs, CRMs, and custom databases to handle tasks such as invoice processing, lead qualification, and data synchronisation. Initial production prototypes typically deliver within 2 to 4 weeks, with full production integration completed within 6 weeks. Each system is built with explicit access controls, Arabic/English support where required, and documented data-handling boundaries — customer data is never used to train public LLMs.",
+      ar: "خدمة أتمتة الذكاء الاصطناعي من أرانطو تصمم وتبني وكلاء الذكاء الاصطناعي المستقلين ومسارات العمل المؤتمتة للشركات في المملكة العربية السعودية والإمارات ودول الخليج، من خلال دمج النماذج التوليدية مع أنظمة ERP وCRM الحالية لمعالجة الفواتير وتأهيل العملاء المحتملين ومزامنة البيانات. تتوفر النماذج الأولية عادة خلال 2 إلى 4 أسابيع، ويكتمل التكامل الإنتاجي الكامل خلال 6 أسابيع. يُبنى كل نظام بصلاحيات وصول محددة ودعم لغوي عند الحاجة وحدود موثقة لمعالجة البيانات — ولا تُستخدم بيانات العميل أبدًا لتدريب نماذج عامة.",
     },
     overview: {
       en: [
@@ -92,8 +96,8 @@ export const serviceDetails: ServiceDetail[] = [
       ar: "بناء وإطلاق برمجيات AI SaaS متعددة المستأجرين مع ربط المدفوعات والبنية التحتية السحابية السريعة.",
     },
     citablePassage: {
-      en: "Custom AI SaaS Development by Arranto transforms proprietary business workflows into scalable, multi-tenant software-as-a-service products. Engineered with Next.js, TypeScript, and serverless vector search architecture, Arranto can build SaaS platforms with tenant onboarding, RBAC permissions, Arabic/English interfaces, and regional payment integrations such as HyperPay, Tap, and Stripe. Projects are planned around clear handover, source-code ownership, documented SQL schemas, and reduced vendor lock-in.",
-      ar: "خدمة تطوير برمجيات AI SaaS المخصصة من أرانطو تحول مسارات العمل إلى منتجات برمجية قابلة للتطوير. بفضل الاعتماد على Next.js والبنية التحتية السحابية، تبني أرانطو منصات كاملة تتضمن تسجيل المستخدمين، وصلاحيات الوصول، والواجهات المزدوجة، وبوابات الدفع الإقليمية مثل HyperPay وTap.",
+      en: "Custom AI SaaS Development by Arranto transforms proprietary business workflows into scalable, multi-tenant software-as-a-service products, engineered with Next.js, TypeScript, and serverless vector search architecture. Builds include tenant onboarding, RBAC permissions, Arabic/English interfaces, and native integration with five regional payment gateways — HyperPay, Tap, Moyasar, Mada, and Stripe. Every project transfers 100% of the GitHub repository, database schemas, and deployment scripts at handover, with zero recurring platform fee owed to Arranto.",
+      ar: "خدمة تطوير برمجيات AI SaaS المخصصة من أرانطو تحول مسارات العمل الخاصة إلى منتجات برمجية قابلة للتطوير ومتعددة المستأجرين، مبنية على Next.js وTypeScript وبنية بحث متجهي بلا خوادم. تشمل المشاريع تسجيل المستأجرين وصلاحيات الوصول والواجهات المزدوجة وتكاملاً مباشرًا مع خمس بوابات دفع إقليمية — HyperPay وTap وMoyasar ومدى وStripe. يُسلَّم 100٪ من مستودع GitHub وقواعد البيانات وسكريبتات التشغيل عند كل مشروع، دون أي رسوم منصة متكررة لأرانطو.",
     },
     overview: {
       en: [
@@ -165,8 +169,8 @@ export const serviceDetails: ServiceDetail[] = [
       ar: "حلول ذكاء اصطناعي توليدية مخصصة، ونماذج مدربة، وقواعد معرفة داخلية آمنة تناسب متطلبات أعمالك.",
     },
     citablePassage: {
-      en: "Custom Enterprise AI Solutions by Arranto delivers tailored artificial intelligence architectures for enterprises in Saudi Arabia and the Middle East. Arranto can build private retrieval-augmented generation (RAG) systems that query approved company documents, legal contracts, and historical records while keeping data access, retention, and external-model boundaries explicit. Engineered with type-safe TypeScript and Arabic/English workflows where required, these solutions can support document intelligence, compliance review, and executive decision support.",
-      ar: "تقدم أرانطو حلول ذكاء اصطناعي مخصصة للمنشآت في السعودية والشرق الأوسط. تبني أرانطو أنظمة استرجاع معززة (RAG) خاصة تستعلم من المستندات والعقود الداخلية مع تحديد صلاحيات الوصول والاحتفاظ وحدود مشاركة البيانات بوضوح.",
+      en: "Custom Enterprise AI Solutions by Arranto delivers tailored artificial intelligence architectures for enterprises in Saudi Arabia and the Middle East, built around private retrieval-augmented generation (RAG) systems that query approved company documents, legal contracts, and historical records with explicit access, retention, and external-model boundaries. Every AI response links directly back to its exact source document, and enterprise search can unify Google Drive, Notion, Slack, and local SQL servers into one queryable system. Engineered with type-safe TypeScript and Arabic/English workflows where required.",
+      ar: "تقدم أرانطو حلول ذكاء اصطناعي مخصصة للمنشآت في السعودية والشرق الأوسط، مبنية على أنظمة استرجاع معززة (RAG) خاصة تستعلم من المستندات والعقود والسجلات الداخلية المعتمدة مع صلاحيات وصول واحتفاظ وحدود نموذج خارجي محددة بوضوح. تُسنَد كل إجابة مباشرة إلى وثيقة المصدر الدقيقة، ويمكن للبحث الموحد للمنشأة أن يجمع Google Drive وNotion وSlack والسيرفرات المحلية في نظام واحد قابل للاستعلام. مبني بلغة TypeScript الآمنة النوع مع دعم عربي/إنجليزي عند الحاجة.",
     },
     overview: {
       en: [
@@ -238,8 +242,8 @@ export const serviceDetails: ServiceDetail[] = [
       ar: "استبدل جداول البيانات المعقدة والبرمجيات القديمة بأنظمة إدارة أعمال حديثة وفائقة السرعة.",
     },
     citablePassage: {
-      en: "Custom CRM & ERP Development by Arranto builds tailored business operating systems designed around your exact workflows. Unlike off-the-shelf platforms that force companies to alter their processes, Arranto architects responsive CRM and ERP systems using Next.js and PostgreSQL. Features can include invoice workflows, inventory expiry tracking, asset maintenance, automated client communication, multi-device usability, and Arabic/English operation where required.",
-      ar: "تبني أرانطو أنظمة إدارة علاقات العملاء (CRM) وتخطيط الموارد (ERP) المخصصة المصممة حول مسارات عملك الحقيقية. باستخدام Next.js وPostgreSQL، نبني أنظمة سريعة تتضمن الفوترة وإدارة المخزون والتتبع اللحظي.",
+      en: "Custom CRM & ERP Development by Arranto builds tailored business operating systems designed around your exact workflows, using Next.js and PostgreSQL rather than forcing companies to alter their processes to fit an off-the-shelf platform. Systems can include invoice workflows, inventory expiry tracking, asset maintenance, and custom API connectors syncing bi-directionally with QuickBooks, Xero, Zoho, and ZATCA e-invoicing compliance portals. PulseKart (pharmacy point-of-sale and expiry tracking) and SanadOS (facilities asset and work-order management) are two systems built on this same approach.",
+      ar: "تبني أرانطو أنظمة إدارة علاقات العملاء (CRM) وتخطيط الموارد (ERP) المخصصة المصممة حول مسارات عملك الحقيقية باستخدام Next.js وPostgreSQL، بدلاً من إجبار الشركات على تغيير عملياتها لتناسب منصة جاهزة. يمكن أن تشمل الأنظمة مسارات الفوترة وتتبع صلاحية المخزون وصيانة الأصول وموصلات API مخصصة تُزامن مع QuickBooks وXero وZoho ومنصات فوترة زاتكا. PulseKart (نقاط بيع وتتبع صلاحية للصيدليات) وSanadOS (إدارة أصول وأوامر عمل للمرافق) نظامان مبنيان بهذا النهج نفسه.",
     },
     overview: {
       en: [
@@ -376,8 +380,8 @@ export const serviceDetails: ServiceDetail[] = [
       ar: "نمو قاعدة عملائك من خلال تهيئة محركات البحث المتقدمة والحملات الإعلانية الموجهة.",
     },
     citablePassage: {
-      en: "Digital Marketing & Growth Engineering by Arranto provides technical SEO, content strategies, and targeted campaign optimisation for B2B brands in the Gulf region. Grounded in technical search optimisation, Schema.org graph architecture, and carefully reviewed AI-assisted workflows, Arranto helps software platforms and enterprises improve organic visibility and connect acquisition activity to qualified inquiries.",
-      ar: "تقدم أرانطو خدمات التسويق الرقمي وهندسة النمو المعتمدة على SEO المتقدم وتوليد المحتوى البرمجي واستراتيجيات النمو للعلامات التجارية في الخليج.",
+      en: "Digital Marketing & Growth Engineering by Arranto provides technical SEO, content strategy, and targeted campaign optimisation for B2B brands in the Gulf region. Technical SEO improvements typically show indexation changes within 1 to 2 weeks, with measurable organic keyword movement compounding over 2 to 4 months. Work is grounded in crawl/indexation audits, Schema.org graph architecture, and Search Console/analytics data tied directly to qualified inquiries — not just ranking positions.",
+      ar: "تقدم أرانطو خدمات التسويق الرقمي وهندسة النمو، بما في ذلك تحسين محركات البحث التقني واستراتيجيات المحتوى وتحسين الحملات المستهدفة للعلامات التجارية B2B في الخليج. تظهر تحسينات SEO التقنية عادة تغيرات في الفهرسة خلال أسبوع إلى أسبوعين، مع تحرك ملحوظ في ترتيب الكلمات المفتاحية يتراكم خلال 2 إلى 4 أشهر. يعتمد العمل على تدقيق الزحف والفهرسة، وبنية بيانات Schema.org المنظمة، وربط بيانات Search Console والتحليلات مباشرة بالاستفسارات المؤهلة — لا مواضع الترتيب فقط.",
     },
     overview: {
       en: [
@@ -435,6 +439,126 @@ export const serviceDetails: ServiceDetail[] = [
     ]
   }
 ];
+
+serviceDetails.push({
+  slug: "custom-software-development",
+  title: {
+    en: "Custom Software Development",
+    ar: "تطوير البرمجيات المخصصة",
+  },
+  subtitle: {
+    en: "Software built for how your business actually runs, not reshaped to fit a template. Full ownership of the schema, the code, and the deployment — from a studio that ships in weeks, not quarters.",
+    ar: "برمجيات مبنية لطريقة عمل منشأتك الفعلية، لا معاد تشكيلها لتناسب قالبًا جاهزًا. ملكية كاملة للمخطط والكود والتشغيل — من استوديو يُسلّم خلال أسابيع لا فصول.",
+  },
+  citablePassage: {
+    en: "Arranto builds custom software — point-of-sale systems, CRM/ERP platforms, e-invoicing engines, and internal operations tools — designed around how a specific business actually works, rather than retrofitted onto commercial off-the-shelf software. Founded in 2017 as Smile Fotilo and rebranded Arranto, the studio is run by one engineer, Ashraf Kamal, who owns every project end to end: schema design, backend logic, interface, deployment, and post-launch support. Delivered work includes PulseKart (pharmacy point-of-sale and inventory on Next.js, Node, and Postgres) and Veloria Vault (a headless Next.js commerce migration), alongside two in-pilot builds — SanadOS (facilities operations on React and Supabase) and FATOORA Lite (ZATCA-compliant e-invoicing with cryptographic stamping). Custom software projects typically run 6 to 14 weeks depending on scope, agreed before code begins.",
+    ar: "تبني أرانطو برمجيات مخصصة — أنظمة نقاط بيع، ومنصات CRM وERP، ومحركات فوترة إلكترونية، وأدوات تشغيل داخلية — مصممة حول طريقة عمل منشأة محددة فعليًا، لا معاد تكييفها فوق برمجيات جاهزة. تأسس الاستوديو عام 2017 باسم Smile Fotilo قبل إعادة تسميته أرانطو، ويديره مهندس واحد، أشرف كمال، يمتلك كل مشروع من البداية للنهاية: تصميم المخطط، ومنطق الخلفية، والواجهة، والتشغيل، والدعم بعد الإطلاق. من الأعمال المُسلّمة: PulseKart (نقاط بيع ومخزون للصيدليات على Next.js وNode وPostgres) وVeloria Vault (ترحيل متجر إلى Next.js بلا واجهة)، إضافة إلى مشروعين قيد التجربة — SanadOS (عمليات مرافق على React وSupabase) وFATOORA Lite (فوترة إلكترونية متوافقة مع زاتكا بختم تشفيري). تستغرق مشاريع البرمجيات المخصصة عادة من 6 إلى 14 أسبوعًا حسب النطاق، متفق عليها قبل بدء الكود.",
+  },
+  overview: {
+    en: [
+      "Off-the-shelf software is built for the average case of a category, then sold to everyone in it. It works until your business does something the template didn't anticipate — a workflow, a compliance requirement, an integration — at which point you're either paying for a bigger plan you don't need or building a workaround on top of software you don't control.",
+      "Custom software development means the schema, the logic, and the interface get designed for what your business specifically does, owned by you outright, with no per-seat pricing, no vendor lock-in, and no feature roadmap decided by someone else's other customers. It costs more upfront than a subscription and takes longer than signing up for a SaaS tool. It's the right call when the workaround has already gotten more expensive than the build would be.",
+    ],
+    ar: [
+      "تُبنى البرمجيات الجاهزة للحالة المتوسطة في فئة معينة، ثم تُباع للجميع فيها. تعمل جيدًا حتى تفعل منشأتك شيئًا لم يتوقعه القالب — مسار عمل، أو متطلب امتثال، أو تكامل معين — عندها إما تدفع مقابل خطة أكبر لا تحتاجها، أو تبني حلاً بديلاً فوق برمجية لا تملكها.",
+      "يعني تطوير البرمجيات المخصصة أن يُصمم المخطط والمنطق والواجهة لما تقوم به منشأتك تحديدًا، وتملكه بالكامل، دون تسعير لكل مستخدم، ودون ارتهان لمزود، ودون خارطة طريق يقررها عملاء آخرون غيرك. تكلفته الأولية أعلى من الاشتراك ووقته أطول من التسجيل في أداة SaaS جاهزة. إنه الخيار الصحيح حين يصبح الحل البديل أغلى بالفعل من البناء نفسه.",
+    ],
+  },
+  features: {
+    en: [
+      { title: "One Engineer, Every Layer", desc: "Schema, backend, interface, and deployment owned by the same person on every project — no handoff between specialists, no context lost." },
+      { title: "You Own the Repository", desc: "Full GitHub repo, database migrations, and deployment scripts transferred at handover. No recurring platform fee owed to Arranto." },
+      { title: "Real Stack, Chosen Per Project", desc: "Postgres for transactional data (PulseKart), Supabase for real-time systems (SanadOS), custom crypto/XML modules where compliance demands it (FATOORA Lite) — the stack follows the problem." },
+      { title: "Validated at Every Boundary", desc: "Zod schema validation on every mutation endpoint, rate limiting on every public POST route, security headers configured by default — not added after an incident." },
+      { title: "Bilingual by Default", desc: "Arabic and English interfaces, RTL layout, and localized content are part of the base build for Gulf-market projects, not a paid add-on." },
+      { title: "Fixed Scope, Fixed Timeline", desc: "6–14 weeks for a typical custom build, agreed in writing before code begins — not an open-ended hourly engagement." },
+    ],
+    ar: [
+      { title: "مهندس واحد، كل طبقة", desc: "المخطط والخلفية والواجهة والتشغيل يمتلكها الشخص نفسه في كل مشروع — دون تسليم بين أخصائيين، ودون فقدان للسياق." },
+      { title: "تملك المستودع بالكامل", desc: "تسليم كامل لمستودع GitHub وترحيلات قاعدة البيانات وسكريبتات التشغيل عند التسليم. دون أي رسوم منصة متكررة لأرانطو." },
+      { title: "تقنيات حقيقية تُختار لكل مشروع", desc: "Postgres للبيانات التبادلية (PulseKart)، وSupabase للأنظمة اللحظية (SanadOS)، ووحدات تشفير وXML مخصصة حين يتطلب الامتثال ذلك (FATOORA Lite) — تتبع التقنية طبيعة المشكلة." },
+      { title: "تحقق عند كل حد", desc: "تحقق Zod من المخطط عند كل نقطة تعديل، وحدود معدل طلبات على كل مسار POST عام، ورؤوس أمان مُهيّأة افتراضيًا — لا تُضاف بعد وقوع حادثة." },
+      { title: "ثنائي اللغة افتراضيًا", desc: "واجهات عربية وإنجليزية، وتخطيط RTL، ومحتوى محلي جزء من البناء الأساسي لمشاريع السوق الخليجي، لا إضافة مدفوعة." },
+      { title: "نطاق وجدول ثابتان", desc: "من 6 إلى 14 أسبوعًا للبناء المخصص المعتاد، متفق عليه كتابيًا قبل بدء الكود — لا تعاقد مفتوح بالساعة." },
+    ],
+  },
+  gulfCompliance: {
+    en: "Custom builds for Gulf-market clients include Arabic/English localization and RTL layout by default, and — where the project requires it, as with FATOORA Lite — direct integration with regional regulatory systems like ZATCA.",
+    ar: "تشمل المشاريع المخصصة لعملاء السوق الخليجي التوطين العربي/الإنجليزي وتخطيط RTL افتراضيًا، وحيث يتطلب المشروع ذلك — كما في FATOORA Lite — تكاملًا مباشرًا مع الأنظمة التنظيمية الإقليمية مثل زاتكا.",
+  },
+  faq: [
+    {
+      q: { en: "How is custom software development different from hiring a full-stack developer?", ar: "ما الفرق بين تطوير البرمجيات المخصصة والتعاقد مع مطوّر شامل؟" },
+      a: { en: "Custom software development is the commercial category — what you're buying. Full-stack development is the technical discipline that delivers it correctly, covering frontend, backend, database, and deployment as one accountable body of work rather than a title on a freelancer's profile.", ar: "تطوير البرمجيات المخصصة هو الفئة التجارية — ما تشتريه. أما التطوير الشامل فهو الانضباط التقني الذي يُنفّذه بشكل صحيح، ويغطي الواجهة والخلفية وقاعدة البيانات والتشغيل كعمل واحد مسؤول عنه طرف واحد، لا مجرد مسمى في ملف مستقل." }
+    },
+    {
+      q: { en: "What does custom software typically cost?", ar: "كم تكلف البرمجيات المخصصة عادة؟" },
+      a: { en: "Scoped per project rather than published as a flat rate — it depends on the number of user roles, integrations, and data complexity. The honest driver of cost is scope, not hours; a fixed price is agreed after scoping, before any code is written.", ar: "يُحدَّد النطاق لكل مشروع بدلًا من نشر سعر ثابت — يعتمد على عدد أدوار المستخدمين والتكاملات وتعقيد البيانات. المحرك الحقيقي للتكلفة هو النطاق لا الساعات؛ يُتفق على سعر ثابت بعد تحديد النطاق وقبل كتابة أي كود." }
+    },
+    {
+      q: { en: "Can you take over a project another developer or agency started?", ar: "هل يمكنكم استكمال مشروع بدأه مطوّر أو وكالة أخرى؟" },
+      a: { en: "Yes, after an assessment of the existing code — what's worth keeping, what needs rebuilding, and why. Inheriting a partially-built system usually needs more architectural judgment than starting clean, not less, so this is scoped as its own first step.", ar: "نعم، بعد تقييم الكود الحالي — ما يستحق الإبقاء عليه، وما يحتاج إعادة بناء، ولماذا. غالبًا ما يتطلب توريث نظام غير مكتمل حكمًا معماريًا أكبر من البدء من الصفر، لذلك يُحدَّد كخطوة أولى مستقلة." }
+    },
+    {
+      q: { en: "Do I own the code after the project ships?", ar: "هل أملك الكود بعد إطلاق المشروع؟" },
+      a: { en: "Yes — 100% of the GitHub repository, database schemas, and deployment scripts transfer at handover, with no recurring fee owed to Arranto and no dependency on a proprietary platform.", ar: "نعم — تُسلَّم 100٪ من مستودع GitHub وقواعد البيانات وسكريبتات التشغيل عند التسليم، دون أي رسوم متكررة لأرانطو ودون ارتباط بمنصة مملوكة لطرف آخر." }
+    },
+    {
+      q: { en: "What happens after launch — is there ongoing support?", ar: "ماذا يحدث بعد الإطلاق — هل يوجد دعم مستمر؟" },
+      a: { en: "You get a direct line to the person who built the system, not a ticket queue or a rotating account manager. Ongoing support is scoped separately once real usage patterns after launch are known.", ar: "تحصل على تواصل مباشر مع من بنى النظام، لا طابور تذاكر أو مدير حساب متغيّر. يُحدَّد الدعم المستمر بشكل منفصل بعد معرفة أنماط الاستخدام الفعلية بعد الإطلاق." }
+    },
+    {
+      q: { en: "Why choose custom development over a SaaS tool that already does most of what I need?", ar: "لماذا اختيار تطوير مخصص بدلاً من أداة SaaS تغطي معظم ما أحتاجه؟" },
+      a: { en: "If a SaaS tool covers what you need today at a price that scales sanely, it's usually the right call — custom software is for the specific gap that tool doesn't cover, not a wholesale replacement for every category of software a business runs.", ar: "إذا كانت أداة SaaS تغطي احتياجك الحالي بسعر يتوسع بشكل معقول، فهي غالبًا الخيار الصحيح — البرمجيات المخصصة مخصصة للفجوة المحددة التي لا تغطيها تلك الأداة، لا بديل شامل لكل فئة برمجية تستخدمها المنشأة." }
+    },
+    {
+      q: { en: "Is custom software development safe for compliance-sensitive work like invoicing or tax reporting?", ar: "هل تطوير البرمجيات المخصصة آمن لأعمال حساسة للامتثال كالفوترة أو التقارير الضريبية؟" },
+      a: { en: "It can be, when the compliance requirements are treated as first-class design constraints from the start — FATOORA Lite's cryptographic stamping and ZATCA clearance workflow is a real example of that, built into the architecture rather than bolted on afterward.", ar: "يمكن أن يكون كذلك، حين تُعامل متطلبات الامتثال كقيود تصميم أساسية من البداية — الختم التشفيري ومسار تخليص زاتكا في FATOORA Lite مثال حقيقي على ذلك، مبني في صميم البنية لا مضافًا لاحقًا." }
+    },
+    {
+      q: { en: "How does this relate to full-stack development?", ar: "كيف يرتبط هذا بالتطوير الشامل؟" },
+      a: { en: "Full-stack development is the discipline that makes custom software actually work end to end — see the full breakdown of what that means when you hire a studio rather than a single contractor.", ar: "التطوير الشامل هو الانضباط الذي يجعل البرمجيات المخصصة تعمل فعليًا من البداية للنهاية — راجع الشرح الكامل لما يعنيه ذلك عند التعاقد مع استوديو لا مقاول واحد." }
+    }
+  ],
+  body: {
+    en: [
+      "### Why \"custom\" instead of off-the-shelf",
+      "Every off-the-shelf tool is a bet that your business looks enough like everyone else's in its category. Sometimes that bet is right — accounting software, email, project trackers, most of what a business runs on doesn't need to be custom, and building it anyway would be a waste. The bet stops paying off at a specific, recognizable moment: when your team is exporting data from one system to manually re-enter it into another, when a \"customization\" from the vendor is actually a workaround with its own new bugs, or when the pricing tier you need exists mainly to fund the tool's other, unrelated features.",
+      "<a href=\"/en/work/pulsekart\">PulseKart</a> exists because generic point-of-sale software treats a pharmacy like a general retailer — it doesn't understand expiry-batch tracking as a first-class concept, so pharmacies were bolting spreadsheets onto POS systems that were never built to talk to them. The custom build isn't more features for their own sake. It's the one feature that mattered, built correctly, instead of worked around badly.",
+      "### What actually gets built",
+      "Four real projects, four different reasons custom made sense.",
+      "<a href=\"/en/work/pulsekart\">PulseKart</a> — point-of-sale and inventory for pharmacies, where a sale, a stock adjustment, and an expiry check are the same transaction, not three separate systems that need reconciling at close of day.",
+      "<a href=\"/en/work/veloria-vault\">Veloria Vault</a> — a storefront migrated to headless Next.js so the site, the ad creatives, and the product content could be managed as one system instead of three loosely-connected tools fighting each other for the source of truth.",
+      "<a href=\"/en/work/sanad-os\">SanadOS</a> — currently in pilot: facilities operations (assets, work orders, maintenance history) as one system of record, replacing a spreadsheet per building, which is exactly the kind of workaround that gets more expensive than a build the longer it runs.",
+      "<a href=\"/en/work/fatoora-lite\">FATOORA Lite</a> — also in pilot: an e-invoicing engine built around Saudi Arabia's ZATCA Phase 2 clearance requirements, where the compliance logic (cryptographic stamping, CCSID onboarding, real-time clearance) has to be architecturally correct from day one, not something a generic accounting package can retrofit.",
+      "### How the engagement actually works",
+      "Scope gets defined before anything gets built: the user roles, the core workflow the system has to improve, and a short list of launch priorities. That scoping conversation is also where \"is this actually worth building custom\" gets a honest answer — sometimes it's a configured off-the-shelf tool, and saying so costs nothing.",
+      "Once scope is fixed, a custom build typically runs 6–14 weeks depending on complexity, agreed in writing before code begins. One person carries the project through architecture, schema design, the interface, and deployment — see the <a href=\"/en/services\">full-stack development breakdown</a> for exactly what \"one person owning every layer\" means in practice and why it changes what gets shipped.",
+      "### What ownership means at the end",
+      "Handover includes deployment access, the full GitHub repository, database migrations, and documentation — not a login to a platform Arranto controls. If the relationship ends after launch, the software keeps running exactly as it did the day before. That's a deliberate design choice, not a courtesy: software a business depends on shouldn't depend on the studio that built it staying in business.",
+      "### When custom software is the wrong call",
+      "Worth stating plainly, since the honest answer sometimes points away from this page: if an off-the-shelf tool already covers the need at a price that scales sanely, that's usually the better call, and a custom build would just be a slower, more expensive way to reach the same result. Custom development earns its cost at the specific point where the workaround around a generic tool has gotten more expensive — in time, in errors, in data nobody trusts — than building the real thing would be."
+    ].join("\n\n"),
+    ar: [
+      "### لماذا \"مخصص\" بدلاً من جاهز",
+      "كل أداة جاهزة هي رهان بأن منشأتك تشبه بما يكفي بقية المنشآت في فئتها. أحيانًا يكون هذا الرهان صحيحًا — برمجيات المحاسبة، والبريد الإلكتروني، وأدوات تتبع المشاريع، معظم ما تعمل عليه المنشأة لا يحتاج أن يكون مخصصًا، وبناؤه رغم ذلك يكون هدرًا. يتوقف الرهان عن النجاح في لحظة محددة وواضحة: حين يُصدّر فريقك بيانات من نظام لإعادة إدخالها يدويًا في آخر، أو حين يكون \"التخصيص\" الذي يقدمه المزود حلاً بديلاً له أخطاؤه الجديدة، أو حين توجد الفئة السعرية التي تحتاجها أساسًا لتمويل ميزات أخرى للأداة لا علاقة لها بك.",
+      "<a href=\"/ar/work/pulsekart\">PulseKart</a> وُجد لأن برمجيات نقاط البيع العامة تتعامل مع الصيدلية كمتجر تجزئة عادي — لا تفهم تتبع دفعات الصلاحية كمفهوم أساسي، لذا كانت الصيدليات تُلحق جداول بيانات بأنظمة نقاط بيع لم تُبنَ أصلًا للتواصل معها. البناء المخصص ليس ميزات إضافية لذاتها. إنه الميزة الوحيدة التي كانت مهمة، مبنية بشكل صحيح، بدلاً من حل بديل سيئ.",
+      "### ما الذي يُبنى فعليًا",
+      "أربعة مشاريع حقيقية، أربعة أسباب مختلفة جعلت التخصيص منطقيًا.",
+      "<a href=\"/ar/work/pulsekart\">PulseKart</a> — نقاط بيع ومخزون للصيدليات، حيث تكون عملية البيع وتعديل المخزون وفحص الصلاحية معاملة واحدة، لا ثلاثة أنظمة منفصلة تحتاج تسوية عند الإغلاق.",
+      "<a href=\"/ar/work/veloria-vault\">Veloria Vault</a> — متجر رُحّل إلى Next.js بلا واجهة ليُدار الموقع والإبداعات الإعلانية والمحتوى المنتجي كنظام واحد بدلاً من ثلاث أدوات متصلة بشكل ضعيف تتنافس على مصدر الحقيقة.",
+      "<a href=\"/ar/work/sanad-os\">SanadOS</a> — قيد التجربة حاليًا: عمليات المرافق (الأصول، أوامر العمل، سجل الصيانة) كنظام سجل موحد، يحل محل جدول بيانات لكل مبنى، وهذا بالضبط نوع الحل البديل الذي يزداد تكلفة كلما طال استمراره.",
+      "<a href=\"/ar/work/fatoora-lite\">FATOORA Lite</a> — قيد التجربة أيضًا: محرك فوترة إلكترونية مبني حول متطلبات المرحلة الثانية لزاتكا في السعودية، حيث يجب أن يكون منطق الامتثال (الختم التشفيري، تسجيل CCSID، التخليص اللحظي) صحيحًا معماريًا منذ اليوم الأول، لا شيئًا تضيفه حزمة محاسبة عامة لاحقًا.",
+      "### كيف يسير التعاقد فعليًا",
+      "يُحدَّد النطاق قبل بناء أي شيء: أدوار المستخدمين، ومسار العمل الأساسي الذي يجب أن يُحسّنه النظام، وقائمة قصيرة بأولويات الإطلاق. هذا النقاش هو أيضًا حيث تُجاب بصدق سؤال \"هل يستحق هذا فعلًا بناءً مخصصًا\" — أحيانًا يكون الجواب أداة جاهزة مُهيّأة، وقول ذلك لا يكلف شيئًا.",
+      "بعد تثبيت النطاق، يستغرق البناء المخصص عادة من 6 إلى 14 أسبوعًا حسب التعقيد، متفق عليه كتابيًا قبل بدء الكود. يتولى شخص واحد المشروع عبر التصميم المعماري وتصميم المخطط والواجهة والتشغيل — راجع <a href=\"/ar/services\">شرح التطوير الشامل</a> لمعرفة ما يعنيه \"شخص واحد يمتلك كل طبقة\" عمليًا ولماذا يغيّر ذلك ما يُسلَّم.",
+      "### ماذا تعني الملكية في النهاية",
+      "يشمل التسليم صلاحيات التشغيل، ومستودع GitHub الكامل، وترحيلات قاعدة البيانات، والتوثيق — لا تسجيل دخول لمنصة تتحكم بها أرانطو. إذا انتهت العلاقة بعد الإطلاق، يستمر النظام بالعمل تمامًا كما كان في اليوم السابق. هذا خيار تصميم مقصود، لا مجاملة: البرمجية التي تعتمد عليها منشأة لا ينبغي أن تعتمد على استمرار الاستوديو الذي بناها في العمل.",
+      "### متى يكون البناء المخصص خيارًا خاطئًا",
+      "يستحق القول بوضوح، لأن الجواب الصادق يشير أحيانًا بعيدًا عن هذه الصفحة: إذا كانت أداة جاهزة تغطي الحاجة بالفعل بسعر يتوسع بشكل معقول، فهذا عادة الخيار الأفضل، وسيكون البناء المخصص مجرد طريقة أبطأ وأغلى للوصول للنتيجة نفسها. يستحق التطوير المخصص تكلفته في اللحظة التي يصبح فيها الحل البديل حول أداة جاهزة أغلى — من حيث الوقت والأخطاء والبيانات التي لا يثق بها أحد — من بناء الشيء الحقيقي."
+    ].join("\n\n"),
+  },
+});
 
 export const getServiceBySlug = (slug: string) =>
   serviceDetails.find((s) => s.slug === slug);

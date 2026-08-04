@@ -1,18 +1,10 @@
 import type { MetadataRoute } from "next";
 import { caseStudies } from "@/content/work";
 import { blogPosts } from "@/content/blog";
+import { serviceDetails } from "@/content/services";
 import { routing } from "@/i18n/routing";
 
 const BASE = "https://arranto.com";
-
-const servicesSlugs = [
-  "ai-automation",
-  "ai-saas-development",
-  "crm-development",
-  "custom-ai-solutions",
-  "digital-marketing",
-  "website-development",
-];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [
@@ -23,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...caseStudies.map((c) => `/work/${c.slug}`),
     "/blog",
     ...blogPosts.map((b) => `/blog/${b.slug}`),
-    ...servicesSlugs.map((s) => `/services/${s}`),
+    ...serviceDetails.map((s) => `/services/${s.slug}`),
     "/support",
     "/tools",
     "/tools/website-audit",
