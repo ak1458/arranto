@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
 import { getPostBySlug, type Locale } from "@/content/blog";
 import { Reveal } from "@/components/Reveal";
+import { Accordion } from "@/components/Accordion";
 import { pageMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
@@ -75,6 +76,14 @@ export default async function BlogPostPage({ params }: Props) {
           </h2>
         );
       }
+      // Sub-section headings become semantic article H3s.
+      if (trimmed.startsWith("#### ")) {
+        return (
+          <h3 key={idx} className="mt-8 mb-4 text-xl font-display font-bold text-white tracking-tight">
+            {trimmed.replace("#### ", "")}
+          </h3>
+        );
+      }
       // Blockquote
       if (trimmed.startsWith("> ")) {
         return (
@@ -140,6 +149,16 @@ export default async function BlogPostPage({ params }: Props) {
           { "@type": "ListItem", position: 3, name: post.title[l], item: `https://arranto.com/${locale}/blog/${slug}` },
         ],
       },
+      ...(post.faq && post.faq.length > 0
+        ? [{
+            "@type": "FAQPage",
+            mainEntity: post.faq.map(({ q, a }) => ({
+              "@type": "Question",
+              name: q[l],
+              acceptedAnswer: { "@type": "Answer", text: a[l] },
+            })),
+          }]
+        : []),
     ],
   };
 
@@ -183,6 +202,17 @@ export default async function BlogPostPage({ params }: Props) {
             {renderArticle(rawArticle)}
           </Reveal>
         </article>
+
+        {post.faq && post.faq.length > 0 && (
+          <div className="mt-16">
+            <Reveal>
+              <Accordion
+                label={l === "ar" ? "الأسئلة الشائعة" : "FAQ"}
+                items={post.faq.map(({ q, a }) => ({ q: q[l], a: a[l] }))}
+              />
+            </Reveal>
+          </div>
+        )}
       </div>
     </div>
   );
