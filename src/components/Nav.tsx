@@ -81,9 +81,10 @@ function flickerSegment(el: HTMLElement, toActive: boolean, reduced: boolean) {
 // Segments
 // ---------------------------------------------------------------------------
 
-type SegmentKey = 'work' | 'about' | 'tools' | 'contact';
+type SegmentKey = 'services' | 'work' | 'about' | 'tools' | 'contact';
 
 const SEGMENT_ORDER: { key: SegmentKey; href: string }[] = [
+  { key: 'services', href: '/services' },
   { key: 'work', href: '/work' },
   { key: 'about', href: '/about' },
   { key: 'tools', href: '/tools' },
@@ -100,6 +101,14 @@ function SegmentIcon({ segment }: { segment: SegmentKey }) {
     className: 'w-6 h-6 pointer-events-none',
   } as const;
   switch (segment) {
+    case 'services':
+      return (
+        <svg {...common}>
+          <path d="M12 2 2 7l10 5 10-5-10-5Z" />
+          <path d="M2 17l10 5 10-5" />
+          <path d="M2 12l10 5 10-5" />
+        </svg>
+      );
     case 'work':
       return (
         <svg {...common}>
@@ -181,7 +190,7 @@ function RadialMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
   const joystickRef = useRef<HTMLButtonElement>(null);
   const topStripRef = useRef<HTMLDivElement>(null);
   const bottomStripRef = useRef<HTMLDivElement>(null);
-  const segmentRefs = useRef<Array<HTMLAnchorElement | null>>([null, null, null, null]);
+  const segmentRefs = useRef<Array<HTMLAnchorElement | null>>([null, null, null, null, null]);
   const audioRefs = useRef<{ open?: HTMLAudioElement; close?: HTMLAudioElement; select?: HTMLAudioElement }>({});
   const reducedMotionRef = useRef(false);
   const dragRef = useRef({ dragging: false });

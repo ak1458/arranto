@@ -44,9 +44,16 @@ export function Hero() {
       const isReduced = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (isReduced) return;
 
-      ScrollTrigger.refresh();
+      // ScrollTrigger.refresh() + create() with pin:true force a synchronous
+      // layout read/write (getBoundingClientRect + spacer insertion) — deferring
+      // one animation frame keeps that cost off the critical first-paint path
+      // (LCP/TBT) without changing any animation timing, phases, or behavior
+      // once scrolling starts.
+      let scrollTrigger: ScrollTrigger | undefined;
+      const rafId = requestAnimationFrame(() => {
+        ScrollTrigger.refresh();
 
-      const scrollTrigger = ScrollTrigger.create({
+        scrollTrigger = ScrollTrigger.create({
         trigger: containerRef.current,
         start: 'top top',
         end: () => `+=${window.innerHeight * 5}px`,
@@ -136,10 +143,12 @@ export function Hero() {
             }
           }
         },
+        });
       });
 
       return () => {
-        scrollTrigger.kill();
+        cancelAnimationFrame(rafId);
+        scrollTrigger?.kill();
       };
     },
     { dependencies: [], scope: containerRef }
