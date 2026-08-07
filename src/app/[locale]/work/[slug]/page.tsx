@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { bySlug, caseStudies, type Locale } from "@/content/work";
+import { bySlug, caseStudies, type Locale, type CaseStudy } from "@/content/work";
 import { githubProjects } from "@/lib/github";
 import { Accordion } from "@/components/Accordion";
 import { Reveal } from "@/components/Reveal";
@@ -17,6 +17,17 @@ const sourceLabel: Record<Locale, string> = {
   en: "Source on GitHub",
   ar: "المصدر على GitHub",
 };
+
+function nanobannerStatus(status: CaseStudy["status"]): string {
+  switch (status) {
+    case "proven":
+      return "PROVEN SYSTEM";
+    case "in-pilot":
+      return "ACTIVE PILOT";
+    default:
+      return "ACTIVE DEVELOPMENT";
+  }
+}
 
 export function generateStaticParams() {
   return caseStudies.map(({ slug }) => ({ slug }));
@@ -52,6 +63,7 @@ export default async function WorkDetail({ params }: Props) {
 
   const cs = bySlug(slug);
   if (cs) {
+    const repo = cs.repo ? (await githubProjects()).find((r) => r.name === cs.repo) : undefined;
     const jsonLd = {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
@@ -115,7 +127,11 @@ export default async function WorkDetail({ params }: Props) {
                     }
                   />
                   <span className="font-mono text-[9px] uppercase tracking-wider text-paper/70">
-                    {cs.status === "proven" ? t("badgeProven") : t("badgePilot")}
+                    {cs.status === "proven"
+                      ? t("badgeProven")
+                      : cs.status === "in-pilot"
+                        ? t("badgePilot")
+                        : t("badgeActiveDev")}
                   </span>
                 </div>
                 {cs.repo && (
@@ -164,8 +180,8 @@ export default async function WorkDetail({ params }: Props) {
                 <div className="flex-1">
                   <NanobannerCard
                     title={cs.title}
-                    category="PRODUCTION ENGINE"
-                    status={cs.status === "proven" ? "PROVEN SYSTEM" : "ACTIVE PILOT"}
+                    category={cs.status === "active-development" ? "STUDIO BUILD" : "PRODUCTION ENGINE"}
+                    status={nanobannerStatus(cs.status)}
                     stack={cs.stack}
                   />
                 </div>
@@ -267,6 +283,45 @@ export default async function WorkDetail({ params }: Props) {
                   </div>
                 </div>
               </Reveal>
+
+              {repo && (
+                <Reveal delay={0.15}>
+                  <div className="card-hover border border-white/10 bg-[#121218] p-6 shadow-xl">
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-muted block mb-4">
+                      {t("repoPanelHeading")}
+                    </span>
+                    <dl className="grid gap-3 font-mono text-xs text-paper/85">
+                      <div className="flex items-center justify-between gap-4">
+                        <dt className="text-paper/60">{t("repoPanelUpdated")}</dt>
+                        <dd>
+                          {new Intl.DateTimeFormat(l === "ar" ? "ar" : "en", { dateStyle: "medium" }).format(
+                            new Date(repo.pushedAt)
+                          )}
+                        </dd>
+                      </div>
+                      {repo.stars > 0 && (
+                        <div className="flex items-center justify-between gap-4">
+                          <dt className="text-paper/60">{t("starsLabel")}</dt>
+                          <dd>&#9733; {repo.stars}</dd>
+                        </div>
+                      )}
+                      <div className="flex items-center justify-between gap-4">
+                        <dt className="text-paper/60">{t("repoPanelLanguage")}</dt>
+                        <dd>{repo.language ?? "—"}</dd>
+                      </div>
+                    </dl>
+                    <a
+                      href={repo.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-5 inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-paper/70 transition-colors duration-300 hover:text-[#d8d9dc]"
+                    >
+                      {sourceLabel[l]}
+                      <span aria-hidden className="rtl:-scale-x-100">↗</span>
+                    </a>
+                  </div>
+                </Reveal>
+              )}
             </div>
           </div>
 

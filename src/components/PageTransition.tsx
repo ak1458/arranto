@@ -4,12 +4,35 @@ import React, { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import gsap from 'gsap';
 
-function getWordForPath(path: string): string {
-  if (path.includes('/work')) return 'WORK WORK WORK WORK WORK';
-  if (path.includes('/about')) return 'ABOUT ABOUT ABOUT ABOUT ABOUT';
-  if (path.includes('/tools')) return 'TOOLS TOOLS TOOLS TOOLS';
-  if (path.includes('/contact')) return 'CONTACT CONTACT CONTACT';
-  return 'ARRANTO ARRANTO ARRANTO';
+const LOCALES = ['en', 'ar'];
+
+// Top-level section a path belongs to — the locale prefix and everything past
+// the first real segment are stripped, so /en/work/pulsekart and /en/work both
+// resolve to 'work'. The transition only fires when this value changes between
+// navigations, not on every route change.
+function getSection(path: string): string {
+  const segments = path.split('/').filter(Boolean);
+  if (segments.length > 0 && LOCALES.includes(segments[0])) segments.shift();
+  return segments[0] || 'home';
+}
+
+function getWordForSection(section: string): string {
+  switch (section) {
+    case 'work':
+      return 'WORK WORK WORK WORK WORK';
+    case 'about':
+      return 'ABOUT ABOUT ABOUT ABOUT ABOUT';
+    case 'tools':
+      return 'TOOLS TOOLS TOOLS TOOLS';
+    case 'contact':
+      return 'CONTACT CONTACT CONTACT';
+    case 'services':
+      return 'SERVICES SERVICES SERVICES';
+    case 'support':
+      return 'SUPPORT SUPPORT SUPPORT';
+    default:
+      return 'ARRANTO ARRANTO ARRANTO';
+  }
 }
 
 export function PageTransition() {
@@ -17,22 +40,31 @@ export function PageTransition() {
   const containerRef = useRef<HTMLDivElement>(null);
   const typeWrapperRef = useRef<HTMLDivElement>(null);
   const isInitialMount = useRef(true);
+  const prevSectionRef = useRef<string | null>(null);
   const [targetWord, setTargetWord] = useState('ARRANTO ARRANTO ARRANTO');
 
   useEffect(() => {
+    const section = getSection(pathname);
+
     // Skip on very first load to avoid blocking initial load
     if (isInitialMount.current) {
       isInitialMount.current = false;
+      prevSectionRef.current = section;
       return;
     }
+
+    // Internal navigation within the same top-level section (a project detail,
+    // a doc page, back to the section index) — no replay, stay instant.
+    if (section === prevSectionRef.current) {
+      return;
+    }
+    prevSectionRef.current = section;
 
     const container = containerRef.current;
     const wrapper = typeWrapperRef.current;
     if (!container || !wrapper) return;
 
-    // Set word based on target path
-    const word = getWordForPath(pathname);
-    setTargetWord(word);
+    setTargetWord(getWordForSection(section));
 
     const lines = Array.from(wrapper.querySelectorAll('.kinetic-line')) as HTMLElement[];
 

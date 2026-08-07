@@ -44,16 +44,21 @@ export function Hero() {
       const isReduced = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (isReduced) return;
 
-      // ScrollTrigger.refresh() + create() with pin:true force a synchronous
-      // layout read/write (getBoundingClientRect + spacer insertion) — deferring
-      // one animation frame keeps that cost off the critical first-paint path
-      // (LCP/TBT) without changing any animation timing, phases, or behavior
-      // once scrolling starts.
-      let scrollTrigger: ScrollTrigger | undefined;
-      const rafId = requestAnimationFrame(() => {
-        ScrollTrigger.refresh();
+      // Must run synchronously here (not deferred to a later frame/rAF): every
+      // other homepage section (WorkGrid's Reveal cards, TickerSection) mounts
+      // in this same layout-effect pass, in DOM order after Hero, and measures
+      // its own ScrollTrigger start/end against the page as it exists at that
+      // moment. Hero's pin adds a ~500vh spacer via pinSpacing — if that spacer
+      // isn't in the DOM yet when a later section measures itself, that
+      // section's start/end get baked in against the shorter, pre-spacer page.
+      // A later global ScrollTrigger.refresh() does not reliably fix an
+      // already-pinned trigger's cached start after the fact (verified: it
+      // stays wrong), so the ordering has to be right from the first measurement
+      // — hence refresh()+create() run inline, before any section below Hero
+      // gets a chance to mount and measure.
+      ScrollTrigger.refresh();
 
-        scrollTrigger = ScrollTrigger.create({
+      const scrollTrigger = ScrollTrigger.create({
         trigger: containerRef.current,
         start: 'top top',
         end: () => `+=${window.innerHeight * 5}px`,
@@ -143,12 +148,10 @@ export function Hero() {
             }
           }
         },
-        });
       });
 
       return () => {
-        cancelAnimationFrame(rafId);
-        scrollTrigger?.kill();
+        scrollTrigger.kill();
       };
     },
     { dependencies: [], scope: containerRef }

@@ -55,6 +55,12 @@ export function WorkGrid({
         {items.map((project, idx) => {
           const indexNumber = (idx + 1).toString().padStart(2, '0');
           const isProven = project.status === 'proven';
+          const badgeLabel =
+            project.status === 'proven'
+              ? t('badgeProven')
+              : project.status === 'in-pilot'
+                ? t('badgePilot')
+                : t('badgeActiveDev');
 
           return (
             <article
@@ -79,7 +85,7 @@ export function WorkGrid({
                         : 'size-1.5 border border-[#d8d9dc] bg-transparent'
                       }
                     />
-                    <span>{isProven ? t('badgeProven') : t('badgePilot')}</span>
+                    <span>{badgeLabel}</span>
                   </div>
                 </div>
 

@@ -1,11 +1,5 @@
-'use client';
-
-import React, { useState } from 'react';
-import { useLocale } from 'next-intl';
 import type { Repo } from '@/lib/github';
-import { caseStudies } from '@/content/work';
-import { NanobannerCard } from '@/components/NanobannerCard';
-import { getRepoDetail } from '@/lib/repo-details';
+import { Link } from '@/i18n/navigation';
 
 type Props = {
   repos: Repo[];
@@ -13,36 +7,11 @@ type Props = {
   heading: string;
 };
 
-// Cross-reference against the real, honest case-study data — a repo that matches
-// a known Arranto build shows its real status; anything else is just a public repo,
-// never a claimed production/pilot status we can't verify.
-function statusFor(repoName: string): string {
-  const match = caseStudies.find((c) => c.repo === repoName);
-  if (!match) return 'OPEN SOURCE';
-  return match.status === 'proven' ? 'PROVEN SYSTEM' : 'ACTIVE PILOT';
-}
-
+// Renders the live GitHub feed as real links into /work/[slug] (the same route's
+// repo-fallback branch already builds a full, honest detail page from real repo
+// data — no separate modal, no invented overview/business-value copy).
 export function WorkPortfolioModal({ repos, eyebrow, heading }: Props) {
-  const [selectedRepo, setSelectedRepo] = useState<Repo | null>(null);
-  const locale = useLocale();
-  const lang = locale === 'ar' ? 'ar' : 'en';
-
-  React.useEffect(() => {
-    if (selectedRepo) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [selectedRepo]);
-
   if (repos.length === 0) return null;
-
-  const repoDetail = selectedRepo
-    ? getRepoDetail(selectedRepo.name, selectedRepo.description, selectedRepo.language, selectedRepo.topics)
-    : null;
 
   return (
     <section className="bg-[#050505] pb-28 border-t border-white/10 pt-20 select-none">
@@ -56,18 +25,17 @@ export function WorkPortfolioModal({ repos, eyebrow, heading }: Props) {
               {heading}
             </h2>
             <p className="mt-2 font-mono text-xs text-[#8e8f94] uppercase tracking-wider">
-              {repos.length} REPOSITORIES // CLICK ANY ARCHITECTURE FOR DETAIL
+              {repos.length} REPOSITORIES
             </p>
           </div>
         </div>
 
-        {/* Responsive Grid of GitHub Repositories */}
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {repos.map((r) => (
-            <div
+            <Link
               key={r.name}
-              onClick={() => setSelectedRepo(r)}
-              className="group cursor-pointer flex flex-col justify-between border border-white/10 bg-[#0a0a0a] p-6 sm:p-7 shadow-xl transition-all duration-300 hover:border-[#d8d9dc] hover:bg-[#111114] active:border-white"
+              href={`/work/${r.name}`}
+              className="group flex flex-col justify-between border border-white/10 bg-[#0a0a0a] p-6 sm:p-7 shadow-xl transition-colors duration-300 hover:border-[#d8d9dc] hover:bg-[#111114]"
             >
               <div>
                 <div className="flex items-start justify-between gap-3">
@@ -75,7 +43,7 @@ export function WorkPortfolioModal({ repos, eyebrow, heading }: Props) {
                     {r.formattedName}
                   </h3>
                   <span className="font-mono text-xs text-[#8e8f94] group-hover:text-white transition-colors">
-                    [INSPECT] &rarr;
+                    &rarr;
                   </span>
                 </div>
                 <p className="mt-3 text-sm font-light leading-relaxed text-[#9494a0] line-clamp-3">
@@ -87,7 +55,7 @@ export function WorkPortfolioModal({ repos, eyebrow, heading }: Props) {
                 <div className="flex items-center gap-2">
                   {r.language && (
                     <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-[#d8d9dc]">
-                    <span className="size-1.5 bg-[#d8d9dc]"/>
+                      <span className="size-1.5 bg-[#d8d9dc]" />
                       {r.language}
                     </span>
                   )}
@@ -98,132 +66,10 @@ export function WorkPortfolioModal({ repos, eyebrow, heading }: Props) {
                   </span>
                 )}
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
-
-      {/* Interactive Nanobanner Architecture Modal (Clean, No Huge Images) */}
-      {selectedRepo && repoDetail && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md p-4 sm:p-6 animate-fade-in"
-          onClick={() => setSelectedRepo(null)}
-        >
-          <div
-            data-lenis-prevent
-            className="relative w-full max-w-3xl max-h-[85vh] overflow-y-auto overscroll-contain border border-white/20 bg-[#0a0a0a] p-6 sm:p-8 text-white shadow-2xl space-y-6"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-start justify-between border-b border-white/10 pb-4">
-              <div>
-                <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#d8d9dc]">
-                  SYSTEM ARCHITECTURE // TECHNICAL BRIEFING
-                </span>
-                <h3 className="mt-1 font-display text-2xl sm:text-3xl font-bold tracking-tight text-white">
-                  {selectedRepo.formattedName}
-                </h3>
-              </div>
-              <button
-                type="button"
-                onClick={() => setSelectedRepo(null)}
-                className="border border-white/20 px-3.5 py-1.5 font-mono text-xs text-[#8e8f94] hover:border-white hover:text-white"
-              >
-                [CLOSE &times;]
-              </button>
-            </div>
-
-            {/* Embedded Nanobanner Card representing the product visually & technically */}
-            <NanobannerCard
-              title={selectedRepo.formattedName}
-              category={selectedRepo.language || 'ENGINEERING ARCHITECTURE'}
-              status={statusFor(selectedRepo.name)}
-              stack={selectedRepo.topics.slice(0, 4)}
-            />
-
-            {/* Comprehensive SEO-Friendly Architectural Overview */}
-            <div className="space-y-6 text-start">
-              <div>
-                <h4 className="font-mono text-xs uppercase tracking-wider text-[#d8d9dc] mb-2">
-                  System Architecture Overview
-                </h4>
-                <p className="text-sm sm:text-base font-light leading-relaxed text-[#d8d9dc]">
-                  {repoDetail.overview[lang]}
-                </p>
-              </div>
-
-              <div>
-                <h4 className="font-mono text-xs uppercase tracking-wider text-[#d8d9dc] mb-2">
-                  Key Technical Capabilities
-                </h4>
-                <ul className="space-y-2 text-sm text-[#9494a0]">
-                  {repoDetail.features[lang].map((f, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
-                      <span className="text-[#d8d9dc] font-mono text-xs mt-0.5">✦</span>
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="border border-white/10 bg-white/[0.03] p-4 rounded-sm">
-                <h4 className="font-mono text-xs uppercase tracking-wider text-[#d8d9dc] mb-1">
-                  Business Value & Operational ROI
-                </h4>
-                <p className="text-xs sm:text-sm text-[#9494a0] leading-relaxed">
-                  {repoDetail.businessValue[lang]}
-                </p>
-              </div>
-
-              <div className="border-t border-white/10 pt-6 flex flex-wrap items-center justify-between gap-4">
-                <div className="flex flex-wrap gap-2">
-                  {selectedRepo.topics.map((t) => (
-                    <span
-                      key={t}
-                      className="border border-white/10 bg-white/[0.04] px-2.5 py-1 font-mono text-xs text-[#9494a0]"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex flex-wrap items-center gap-3">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const repoName = selectedRepo.formattedName;
-                      const promptMsg = lang === 'ar'
-                        ? `أرغب في الاستفسار عن بناء نظام مخصص بناءً على بنية مشروع "${repoName}".`
-                        : `I'm interested in consulting on the technical architecture of ${repoName} (${selectedRepo.language || 'TypeScript'}). Can we build a custom system like this?`;
-                      setSelectedRepo(null);
-                      window.dispatchEvent(
-                        new CustomEvent('arranto:open-chat', {
-                          detail: {
-                            repoName,
-                            prompt: promptMsg,
-                          },
-                        })
-                      );
-                    }}
-                    className="inline-flex items-center gap-2 border border-white bg-white px-5 py-2.5 font-mono text-xs font-bold uppercase tracking-wider text-black transition-colors hover:bg-[#d8d9dc]"
-                  >
-                    Consult on Architecture
-                  </button>
-                  <a
-                    href={selectedRepo.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 border border-white/20 bg-transparent px-5 py-2.5 font-mono text-xs font-bold uppercase tracking-wider text-white transition-colors hover:border-[#d8d9dc] hover:text-[#d8d9dc]"
-                  >
-                    View GitHub &rarr;
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }

@@ -14,6 +14,7 @@ type Publishable = Exclude<Status, "held">;
 const STATUS_LINE: Record<Publishable, string> = {
   proven: "Status: delivered and proven in production.",
   "in-pilot": "Status: in pilot — NOT live, NOT in production, NOT proven yet.",
+  "active-development": "Status: active development — Arranto's own build, NOT a client engagement, NOT yet deployed for external or production use.",
 };
 
 const isPublishable = <T extends { status: Status }>(

@@ -142,14 +142,14 @@ export default async function About({ params }: Props) {
             {whatWeDo.map((service, i) => (
               <article
                 key={service.slug}
-                className="stack-card card-hover group"
+                className="stack-card"
                 style={{ "--stack-top": `${16 + i * 3}vh` } as React.CSSProperties}
               >
                 <div>
                   <span className="font-mono text-xs tracking-[0.2em] uppercase text-[#9494a0]">
                     {(i + 1).toString().padStart(2, "0")} / {service.title[l]}
                   </span>
-                  <h3 className="mt-4 font-display text-2xl sm:text-4xl font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-[#d8d9dc]">
+                  <h3 className="mt-4 font-display text-2xl sm:text-4xl font-bold tracking-tight text-white">
                     {service.title[l]}
                   </h3>
                   <p className="mt-4 text-base leading-relaxed text-[#9494a0]">

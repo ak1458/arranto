@@ -24,9 +24,12 @@ export default async function Home({ params }: Props) {
       <Dock />
       <Hero />
       {/* Brand layer: tiles carry the name and the region-free outcome only. The proof-layer
-          detail (`body`, FAQ) is one click deeper, on /work — MASTER-CONTEXT §1. */}
+          detail (`body`, FAQ) is one click deeper, on /work — MASTER-CONTEXT §1.
+          Homepage stays a short teaser (the original 4 flagship case studies) — the
+          full, growing portfolio (including active-development builds) lives on /work,
+          not stacked onto the homepage where it would bloat first-load weight. */}
       <WorkGrid
-        items={sorted.map((c) => ({
+        items={sorted.slice(0, 4).map((c) => ({
           slug: c.slug,
           title: c.title,
           status: c.status,

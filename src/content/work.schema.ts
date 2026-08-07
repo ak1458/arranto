@@ -11,7 +11,11 @@ export const caseStudySchema = z.object({
     .regex(/^[a-z0-9-]+$/, "slug must be kebab-case"),
   title: z.string().min(1),
   outcome: localized,
-  status: z.enum(["proven", "in-pilot", "held"]),
+  // proven: shipped, live in production. in-pilot: real external pilot users/client.
+  // active-development: the studio's own build, actively worked on, no confirmed
+  // external pilot user — distinct from in-pilot so status badges never imply a
+  // client relationship that doesn't exist yet.
+  status: z.enum(["proven", "in-pilot", "active-development", "held"]),
   stack: z.array(z.string().min(1)).min(1),
   order: z.number().int().positive(),
   body: localized,
