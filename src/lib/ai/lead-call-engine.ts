@@ -55,10 +55,13 @@ export async function triggerLeadCall(payload: LeadCallPayload, locale: "en" | "
     }
   }
 
+  const emailNotified = !("error" in emailResult);
   return {
     ok: true,
-    emailNotified: !("error" in emailResult),
+    emailNotified,
     callDispatched,
-    message: `Lead data collected for ${payload.name}. Founder notified and automated call queued.`,
+    message: `Lead data collected for ${payload.name}. `
+      + (emailNotified ? "Founder notified by email. " : "Founder email notification failed. ")
+      + (callDispatched ? "Automated call queued." : "No automated call was queued (calling isn't configured yet)."),
   };
 }

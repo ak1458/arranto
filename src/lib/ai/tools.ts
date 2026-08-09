@@ -35,10 +35,15 @@ const TOOLS: Tool[] = [
       "Perform a LangChain-style RAG vector search over Arrento's products, case studies, ZATCA/PDPL compliance regulations, and technical knowledge base.",
     schema: z.object({
       query: z.string().min(1).max(500).describe("Semantic query string to search"),
-      topK: z.number().optional().default(3),
+      topK: z.coerce.number().optional().default(3),
     }),
     run: async (args) => {
-      const { query, topK } = z.object({ query: z.string().min(1).max(500), topK: z.number().optional().default(3) }).parse(args);
+      // z.coerce.number(), not z.number(): tool-call arguments arrive as JSON
+      // parsed from the model's own text output, and models frequently emit
+      // numeric-looking fields as strings (e.g. "3") — a bare z.number() was
+      // rejecting those and silently breaking every RAG search the model made
+      // that way (runTool's catch swallows it into a generic tool-failed error).
+      const { query, topK } = z.object({ query: z.string().min(1).max(500), topK: z.coerce.number().optional().default(3) }).parse(args);
       const results = queryKnowledgeBase(query, topK);
       return { query, count: results.length, matches: results };
     },
@@ -198,6 +203,11 @@ const TOOLS: Tool[] = [
       const token = signProposal(data);
       const proposalUrl = `${env.siteUrl}/${ctx.locale}/proposal/${token}`;
       const pdfUrl = `${env.siteUrl}/api/proposal/pdf?t=${encodeURIComponent(token)}`;
+      // The proposal/PDF are generated from the signed token above and don't
+      // depend on the email — always hand them to the visitor even if the
+      // founder-notification email fails, so a transient email outage never
+      // costs the visitor their proposal (it previously did: this returned
+      // the bare email error and discarded proposalUrl/pdfUrl).
       const sent = await sendAdminEmail(`AI Consultation — ${data.name}`, {
         name: data.name,
         email: data.email,
@@ -210,8 +220,16 @@ const TOOLS: Tool[] = [
         locale: ctx.locale,
         proposal_url: proposalUrl,
       });
-      if ("error" in sent) return sent;
-      return { ok: true, proposalUrl, pdfUrl, note: "Proposal generated and the founder was notified. Share both links with the visitor." };
+      const founderNotified = !("error" in sent);
+      return {
+        ok: true,
+        proposalUrl,
+        pdfUrl,
+        founderNotified,
+        note: founderNotified
+          ? "Proposal generated and the founder was notified. Share both links with the visitor."
+          : "Proposal generated, but the founder notification email failed to send — tell the visitor their proposal is ready at the links below, and mention the founder will follow up once he sees it (do not claim he's already been notified).",
+      };
     },
   },
 ];

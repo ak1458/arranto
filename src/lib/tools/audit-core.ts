@@ -22,11 +22,26 @@ function isBlockedHost(host: string): boolean {
   return false;
 }
 
-async function fetchWithTimeout(url: string, ms: number, init?: RequestInit) {
+// Redirects are followed manually (not `redirect: "follow"`) so each hop's
+// host is re-checked through isBlockedHost — a redirect to a private/internal
+// address (e.g. a public URL 302-ing to http://169.254.169.254/) would
+// otherwise bypass the safeTarget() SSRF guard, which only inspects the
+// original user-supplied URL.
+async function fetchWithTimeout(url: string, ms: number, init?: RequestInit, maxRedirects = 5): Promise<Response> {
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), ms);
   try {
-    return await fetch(url, { ...init, signal: ctrl.signal, headers: { "User-Agent": UA, ...(init?.headers || {}) }, redirect: "follow" });
+    let current = url;
+    for (let hop = 0; ; hop++) {
+      const res = await fetch(current, { ...init, signal: ctrl.signal, headers: { "User-Agent": UA, ...(init?.headers || {}) }, redirect: "manual" });
+      if (res.status < 300 || res.status >= 400 || !res.headers.get("location")) return res;
+      if (hop >= maxRedirects) throw new Error("Too many redirects");
+      const next = new URL(res.headers.get("location")!, current);
+      if (!["http:", "https:"].includes(next.protocol) || isBlockedHost(next.hostname)) {
+        throw new Error("Redirect target blocked");
+      }
+      current = next.toString();
+    }
   } finally {
     clearTimeout(t);
   }

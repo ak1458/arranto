@@ -48,7 +48,7 @@ console.log("ok: per-IP daily budget");
 
 // ---- tool registry --------------------------------------------------------
 const schemas = toolSchemas();
-assert.equal(schemas.length, 9, "9 tools registered");
+assert.equal(schemas.length, 11, "11 tools registered");
 for (const s of schemas) {
   assert.ok(s.name && s.description, `tool ${s.name} has metadata`);
   assert.equal(s.parameters.type, "object", `tool ${s.name} params are an object schema`);
@@ -87,8 +87,8 @@ assert.equal(res.text, "Hello");
 assert.equal(streamed, "Hello", "deltas surfaced live");
 assert.equal(res.toolCalls.length, 1);
 assert.deepEqual(res.toolCalls[0], { id: "c1", name: "fetch_url", args: { url: "https://x.com" } });
-assert.equal(capturedBody.model, "openrouter/free", "free-router default model");
-assert.equal(capturedBody.tools.length, 9, "tools forwarded to provider");
+assert.equal(capturedBody.model, "nvidia/nemotron-3-nano-30b-a3b:free", "openrouter-fallback default model");
+assert.equal(capturedBody.tools.length, 11, "tools forwarded to provider");
 assert.equal(capturedBody.tools[0].type, "function");
 console.log("ok: provider request shape + SSE tool-call assembly");
 

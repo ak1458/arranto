@@ -10,18 +10,21 @@ const required = (name: string): string => {
 
 export const env = {
   get openrouterKey() { return required("OPENROUTER_API_KEY"); },
-  // Free-phase default (owner decision 2026-07-16, model pinned 2026-07-16 after
-  // live A/B against tool-calling free models — see MASTER-CONTEXT §7P). The
-  // openrouter/free auto-router was tried first but gave inconsistent quality;
-  // tencent/hy3:free tool-calls correctly and writes clean prose. Swap via
-  // OPENROUTER_MODEL. Rejected: openai/gpt-oss-20b:free (garbled non-Latin
-  // tokens spliced into English output), google/gemma-4-31b-it:free (upstream
-  // 429s on the free Google AI Studio tier).
-  get model() { return process.env.OPENROUTER_MODEL ?? "tencent/hy3:free"; },
+  // This "openrouter" provider branch is a fallback only — production runs
+  // AI_PROVIDER=groq-with-nvidia-fallback (see provider.ts), which is where
+  // the tested primary model lives. tencent/hy3:free (pinned 2026-07-16, see
+  // MASTER-CONTEXT §7P) was deprecated to paid-only by OpenRouter on
+  // 2026-07-21 and 404s now — swapped to another free tool-calling model
+  // 2026-08-09. Rejected previously: openai/gpt-oss-20b:free (garbled
+  // non-Latin tokens spliced into English output), google/gemma-4-31b-it:free
+  // (upstream 429s on the free Google AI Studio tier). Swap via OPENROUTER_MODEL.
+  get model() { return process.env.OPENROUTER_MODEL ?? "nvidia/nemotron-3-nano-30b-a3b:free"; },
   get cronSecret() { return required("CRON_SECRET"); },
   get googleCredentials() { return required("GOOGLE_APPLICATION_CREDENTIALS_JSON"); },
   get ga4PropertyId() { return required("GA4_PROPERTY_ID"); },
   get searchConsoleSiteUrl() { return required("SEARCH_CONSOLE_SITE_URL"); },
   get siteUrl() { return process.env.SITE_URL ?? "https://arranto.com"; },
-  get web3formsKey() { return process.env.WEB3FORMS_KEY; }, // optional
+  get resendKey() { return process.env.RESEND_API_KEY; }, // optional — degrades to "unconfigured" when unset
+  get resendFrom() { return process.env.RESEND_FROM ?? "Arranto <onboarding@resend.dev>"; },
+  get adminEmail() { return process.env.ADMIN_EMAIL ?? "help@arranto.com"; },
 };

@@ -282,30 +282,38 @@ export function getProvider(): Provider {
   if (name === "groq-with-nvidia-fallback") {
     return {
       async complete(messages, opts = {}) {
-        // Fallback Chain Definition
-        const chain: Array<{ provider: Provider; model: string }> = [
+        // Fallback Chain Definition. Per-link timeoutMs is capped short and
+        // summed to stay near opts.timeoutMs (the single-provider budget the
+        // caller expects) — without this, 5 links each waiting up to 50s
+        // (agent.ts's default) means a visitor can wait 4+ minutes before
+        // any response. Groq's free tier (100k tokens/day per model) also
+        // exhausts under light real traffic since the system prompt injects
+        // full site context on every turn (no RAG trimming) — when link 1
+        // is 429'd, this chain is what stands between that and total silence.
+        const chain: Array<{ provider: Provider; model: string; timeoutMs: number }> = [
           // 1. Primary: Groq Llama 3.3 70B
-          { provider: groqProvider, model: "llama-3.3-70b-versatile" },
+          { provider: groqProvider, model: "llama-3.3-70b-versatile", timeoutMs: 12_000 },
           // 2. Fallback 1: NVIDIA Llama 3.1 70B (Expert heavy model)
-          { provider: nvidiaProvider, model: "meta/llama-3.1-70b-instruct" },
+          { provider: nvidiaProvider, model: "meta/llama-3.1-70b-instruct", timeoutMs: 10_000 },
           // 3. Fallback 2: NVIDIA Llama 3.1 8B (Fast open-weight model)
-          { provider: nvidiaProvider, model: "meta/llama-3.1-8b-instruct" },
+          { provider: nvidiaProvider, model: "meta/llama-3.1-8b-instruct", timeoutMs: 10_000 },
           // 4. Fallback 3: NVIDIA Nemotron Mini 4B (Lightweight fast fallback)
-          { provider: nvidiaProvider, model: "nvidia/nemotron-mini-4b-instruct" },
-          // 5. Fallback 4: Groq DeepSeek R1 Distill 70B (DeepSeek's powerful reasoning model)
-          { provider: groqProvider, model: "deepseek-r1-distill-llama-70b" }
+          { provider: nvidiaProvider, model: "nvidia/nemotron-mini-4b-instruct", timeoutMs: 8_000 },
+          // 5. Fallback 4: Groq DeepSeek R1 Distill 70B (reasoning model — slower
+          //    per token, so it gets the largest remaining budget, last resort)
+          { provider: groqProvider, model: "deepseek-r1-distill-llama-70b", timeoutMs: 15_000 },
         ];
 
         let lastError: unknown;
         for (const [index, link] of chain.entries()) {
           try {
-            return await link.provider.complete(messages, { ...opts, model: link.model });
+            return await link.provider.complete(messages, { ...opts, model: link.model, timeoutMs: link.timeoutMs });
           } catch (e) {
             console.warn(`[AI Fallback ${index + 1}/5] ${link.model} failed. Trying next...`, e instanceof Error ? e.message : e);
             lastError = e;
           }
         }
-        
+
         console.error("All AI providers in the fallback chain failed.", lastError);
         throw new Error("Server busy. Please try again later.");
       }
