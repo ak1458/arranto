@@ -69,8 +69,10 @@ User Workflows by Persona
 
 ## 5. Documentation Directory
 
+* **Feature Documentation**: [05-features](./05-features.md)
 * **Business & Operations Manual**: [14-easy-business-setup-guide](./14-easy-business-setup-guide.md)
 * **ZATCA Integration Specification**: [15-zatca-e-invoicing-integration-guide](./15-zatca-e-invoicing-integration-guide.md)
 
 System architecture, functional specs, and production-readiness reports are internal engineering
 documentation — available to prospective enterprise customers and partners on request.
+

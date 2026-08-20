@@ -11,6 +11,7 @@ This folder is the **single source of truth** for what FatooraLite Pro is, how e
 | # | Document | Target Audience & Purpose |
 | :---: | :--- | :--- |
 | **00** | **[Executive Summary & Product Architecture](./00-tldr.md)** | Executive overview of business model, regulatory problem, customer personas, and differentiators. |
+| **05** | **[Feature Documentation & Functional Modules](./05-features.md)** | Deep breakdown of each functional module (Invoices, Customers, Products, ZATCA Integration, RBAC, AI Assistant). |
 | **14** | **[Business Administration & Operations Manual](./14-easy-business-setup-guide.md)** | **Non-Developer & Business Manual**: Step-by-step 5-minute setup guide, National Address rules, ZATCA OTP guide, RBAC, and AI commands. |
 | **15** | **[ZATCA Phase-2 Technical & Integration Guide](./15-zatca-e-invoicing-integration-guide.md)** | **Technical Compliance Spec**: UBL 2.1 XML schema, ECDSA secp256k1 keys, XAdES C14N-11, TLV QR code, and REST API clearance. |
 
