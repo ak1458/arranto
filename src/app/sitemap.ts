@@ -36,18 +36,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date("2026-07-27T00:00:00Z");
   const entries: MetadataRoute.Sitemap = [];
 
-  // Apex root entry
-  entries.push({
-    url: BASE,
-    lastModified: now,
-    alternates: {
-      languages: {
-        en: `${BASE}/en`,
-        ar: `${BASE}/ar`,
-        "x-default": `${BASE}/en`,
-      },
-    },
-  });
+  // No apex-root entry: "/" 307-redirects to "/en" (next-intl locale routing), and
+  // Google's own sitemap guidance says never list a redirecting URL — it was splitting
+  // index/ranking signal between "/" and "/en" for the same page (confirmed via GSC:
+  // both were separately "discovered", diluting the canonical home URL).
 
   // Bidirectional en & ar locale entries for every route
   for (const path of paths) {

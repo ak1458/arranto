@@ -1,4 +1,20 @@
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+import { pageMetadata } from "@/lib/seo";
 import { Link } from '@/i18n/navigation';
+
+type Props = { params: Promise<{ locale: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "meta" });
+  return pageMetadata({
+    title: t("supportTitle"),
+    description: t("supportDescription"),
+    path: "/support",
+    locale,
+  });
+}
 
 export default async function SupportPage() {
   return (

@@ -11,7 +11,9 @@
     "toolsTitle": "Free Tools — Arranto",
     "toolsDescription": "Free, production-ready developer and AI tools. No signup or email gate required.",
     "blogTitle": "Blog — Arranto",
-    "blogDescription": "Insights on AI Automation and SaaS Development."
+    "blogDescription": "Insights on AI Automation and SaaS Development.",
+    "supportTitle": "Support & Documentation — Arranto",
+    "supportDescription": "Setup guides, architecture docs, and ZATCA/SanadOS integration references for Arranto products."
   },
   "nav": {
     "home": "Home",

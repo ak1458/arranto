@@ -56,13 +56,23 @@ const legacyRedirects = Object.entries(LEGACY).flatMap(([from, to]) => [
   { source: `/:locale(en|ar)${from}/:path*`, destination: `/:locale${to}`, statusCode: 301 },
 ]);
 
+// www.arranto.com serves the same app as arranto.com with no canonical redirect between
+// them (confirmed live + via GSC: www turned up as a separately-indexed, lower-ranking
+// duplicate). Force the bare apex as the one canonical host.
+const wwwRedirect = {
+  source: "/:path*",
+  has: [{ type: "host" as const, value: "www.arranto.com" }],
+  destination: "https://arranto.com/:path*",
+  statusCode: 301,
+};
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },
   async redirects() {
-    return legacyRedirects;
+    return [wwwRedirect, ...legacyRedirects];
   },
 };
 
