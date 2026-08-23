@@ -194,9 +194,11 @@ const content: CaseStudy[] = [
         "### Key Benefits",
         "* **Compliance Workflow Support:** Provide a technical foundation for the client's ZATCA review and invoice clearance workflow.",
         "* **Automation:** Reduce manual data entry and associated errors.",
-        "* **Peace of Mind:** Focus on business growth while the system handles the complexities of tax reporting."
+        "* **Peace of Mind:** Focus on business growth while the system handles the complexities of tax reporting.",
+        "### How FATOORA Lite Compares",
+        "The Saudi ZATCA Phase 2 e-invoicing space already has established players: **SowaanERP** and **FatooraOnline** ship as part of a fuller ERP/accounting suite, **Symtrax** and **ROSTAN Technologies** target larger multi-system enterprise integrations, and **Taxilla** and **Silent Infotech** offer broader VAT-automation platforms. FATOORA Lite is not positioned to replace any of them for a business that already needs a full ERP — it's built for the opposite case: a lightweight, API-first clearance layer for a business that wants ZATCA compliance without adopting a new accounting system. That's a narrower promise than \"full compliance suite,\" made honestly because FATOORA Lite is still in pilot: this comparison describes intended positioning, not a completed, head-to-head benchmark."
       ].join("\n\n"),
-      ar: "نظام لتخطيط مسار تخليص الفواتير الإلكترونية وفق متطلبات هيئة الزكاة والضريبة والجمارك (ZATCA). يتيح النظام تصور الربط المباشر والختم التشفيري وإجراءات CCSID ضمن نطاق التجربة. يواجه هذا النوع من التكامل تحديات متأصلة في طبيعته، من أبرزها الاعتماد على واجهة برمجة تطبيقات حكومية تعمل في الوقت الفعلي، ومطابقة بيانات الفواتير المختلفة الشكل القادمة من أنظمة كل عميل، إضافة إلى ضرورة دعم اللغتين العربية والإنجليزية معًا.",
+      ar: "نظام لتخطيط مسار تخليص الفواتير الإلكترونية وفق متطلبات هيئة الزكاة والضريبة والجمارك (ZATCA). يتيح النظام تصور الربط المباشر والختم التشفيري وإجراءات CCSID ضمن نطاق التجربة. يواجه هذا النوع من التكامل تحديات متأصلة في طبيعته، من أبرزها الاعتماد على واجهة برمجة تطبيقات حكومية تعمل في الوقت الفعلي، ومطابقة بيانات الفواتير المختلفة الشكل القادمة من أنظمة كل عميل، إضافة إلى ضرورة دعم اللغتين العربية والإنجليزية معًا.\n\nمقارنة بالسوق: تقدّم SowaanERP وFatooraOnline التخليص كجزء من نظام ERP/محاسبة أشمل، بينما تستهدف Symtrax وROSTAN Technologies تكاملات مؤسسية متعددة الأنظمة، وتقدّم Taxilla وSilent Infotech منصات أتمتة ضريبية أوسع. لا يسعى FATOORA Lite لاستبدال أي منها لمن يحتاج فعليًا نظام ERP كامل — بل يستهدف الحالة المعاكسة: طبقة تخليص خفيفة قائمة على API لمن يريد الامتثال دون تبنّي نظام محاسبة جديد. وبما أن FATOORA Lite لا يزال قيد التجربة، فهذه المقارنة تصف التموضع المقصود لا اختبارًا مكتملًا وجهًا لوجه.",
     },
     faq: [
       {
@@ -247,6 +249,16 @@ const content: CaseStudy[] = [
         a: {
           en: "The business should confirm its ZATCA phase, invoice types, certificate and credential process, ERP responsibilities, testing plan, and who owns ongoing regulatory maintenance. Those decisions belong in the implementation scope.",
           ar: "يجب على المنشأة تأكيد مرحلتها لدى زاتكا وأنواع الفواتير وإجراءات الشهادات وبيانات الاعتماد ومسؤوليات ERP وخطة الاختبار وملكية الصيانة التنظيمية المستمرة. يجب إدراج هذه القرارات في نطاق التنفيذ.",
+        },
+      },
+      {
+        q: {
+          en: "How is FATOORA Lite different from SowaanERP, FatooraOnline, Symtrax, or Taxilla?",
+          ar: "بم يختلف FATOORA Lite عن SowaanERP وFatooraOnline وSymtrax وTaxilla؟",
+        },
+        a: {
+          en: "Those are established ERP-suite or enterprise VAT-automation platforms. FATOORA Lite targets a narrower case: a lightweight, API-first clearance layer for businesses that want ZATCA Phase 2 compliance without switching their existing accounting or ERP system. It's not a claim of superiority — FATOORA Lite is still in pilot, and a business that needs a full ERP replacement is better served by one of those platforms.",
+          ar: "تلك منصات ERP أو أتمتة ضريبية مؤسسية راسخة. يستهدف FATOORA Lite حالة أضيق: طبقة تخليص خفيفة قائمة على API لمن يريد الامتثال لمرحلة زاتكا الثانية دون استبدال نظام المحاسبة أو ERP الحالي. هذا ليس ادعاءً بالتفوق — FATOORA Lite لا يزال قيد التجربة، ومن يحتاج استبدال ERP كاملًا يخدمه إحدى تلك المنصات بشكل أفضل.",
         },
       },
     ],
