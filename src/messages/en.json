@@ -13,7 +13,9 @@
     "blogTitle": "Blog — Arranto",
     "blogDescription": "Insights on AI Automation and SaaS Development.",
     "supportTitle": "Support & Documentation — Arranto",
-    "supportDescription": "Setup guides, architecture docs, and ZATCA/SanadOS integration references for Arranto products."
+    "supportDescription": "Setup guides, architecture docs, and ZATCA/SanadOS integration references for Arranto products.",
+    "careersTitle": "Careers — Business Development Executive | Arranto",
+    "careersDescription": "Join Arranto as a Business Development Executive. Full-time remote, competitive fixed + high-growth performance incentives. Freshers and experienced welcome."
   },
   "nav": {
     "home": "Home",
@@ -311,6 +313,7 @@
     "assistant": "AI Assistant",
     "work": "Work",
     "about": "About",
+    "careers": "Careers",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
     "cookies": "Cookie Policy",

@@ -1,181 +1,101 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 
 /**
- * Arranto Brand Mark - Animated with LangChain-style glowing vector flows.
- * Represents "many inputs -> one point" with pulsing light streams.
+ * Arranto Brand Hero Logo — the iconic metallic geometric symbol with
+ * luxury light sheen reflection, ambient aura, and subtle floating motion.
  */
 export function AnimatedHeroLogo({ className = '' }: { className?: string }) {
-  const cols = [6, 20, 34, 48, 62];
-  const rows = [10, 25, 40, 55, 70];
-  const nodeX = 150;
-  const nodeY = 40;
-
   return (
-    <svg
-      viewBox="0 0 180 80"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
+    <div
+      className={`relative inline-flex items-center justify-center select-none group ${className}`}
       aria-hidden="true"
-      shapeRendering="geometricPrecision"
-      textRendering="geometricPrecision"
-      imageRendering="optimizeQuality"
-      style={{
-        WebkitFontSmoothing: 'antialiased',
-        overflow: 'visible',
-      }}
     >
-      <defs>
-        {/* Intense Red Glow Filter - Large bounds to prevent square clipping */}
-        <filter id="heroGlow" x="-100%" y="-100%" width="300%" height="300%">
-          <feGaussianBlur stdDeviation="3" result="blur1" />
-          <feGaussianBlur stdDeviation="6" result="blur2" />
-          <feMerge>
-            <feMergeNode in="blur2" />
-            <feMergeNode in="blur1" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-
-        <filter id="nodeGlow" x="-100%" y="-100%" width="300%" height="300%">
-          <feGaussianBlur stdDeviation="4" result="blur" />
-          <feMerge>
-            <feMergeNode in="blur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-
-        {/* Gradient for paths: Dark Red to Bright Red */}
-        <linearGradient id="pathGradient" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#8c1c1c" stopOpacity="0.2" />
-          <stop offset="70%" stopColor="#ff3333" stopOpacity="0.8" />
-          <stop offset="100%" stopColor="#ff3333" stopOpacity="1" />
-        </linearGradient>
-
-        <radialGradient id="nodeGradient" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
-          <stop offset="30%" stopColor="#ff3333" stopOpacity="0.9" />
-          <stop offset="100%" stopColor="#030710" stopOpacity="0" />
-        </radialGradient>
-      </defs>
-
       <style>{`
-        @keyframes streamFlow {
-          0% { stroke-dashoffset: 150; }
-          100% { stroke-dashoffset: -150; }
+        @keyframes heroAuraPulse {
+          0%, 100% {
+            opacity: 0.35;
+            transform: scale(0.96);
+          }
+          50% {
+            opacity: 0.65;
+            transform: scale(1.04);
+          }
         }
-        /* Aura pulses in sync with the streams (every 2.5s) */
-        @keyframes nodeAuraPulse {
-          0% { r: 6px; opacity: 0.4; }
-          85% { r: 6px; opacity: 0.4; }
-          95% { r: 16px; opacity: 1; }
-          100% { r: 6px; opacity: 0.4; }
+        @keyframes heroSheen {
+          0% {
+            transform: translateX(-150%) skewX(-25deg);
+            opacity: 0;
+          }
+          15% {
+            opacity: 0.75;
+          }
+          30% {
+            transform: translateX(250%) skewX(-25deg);
+            opacity: 0;
+          }
+          100% {
+            transform: translateX(250%) skewX(-25deg);
+            opacity: 0;
+          }
         }
-        /* Core white dot flashes briefly only when the stream hits it */
-        @keyframes nodeCoreBlink {
-          0% { opacity: 0; transform: scale(0.5); }
-          85% { opacity: 0; transform: scale(0.5); }
-          95% { opacity: 1; transform: scale(1.2); }
-          100% { opacity: 0; transform: scale(0.5); }
+        @keyframes heroFloat {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-5px);
+          }
         }
-        @keyframes dotPulse {
-          0% { opacity: 0.15; transform: scale(0.8); }
-          50% { opacity: 0.6; transform: scale(1.1); }
-          100% { opacity: 0.15; transform: scale(0.8); }
+        .hero-aura {
+          animation: heroAuraPulse 4s ease-in-out infinite;
         }
-        
-        .hero-stream {
-          stroke: url(#pathGradient);
-          stroke-dasharray: 20 130;
-          animation: streamFlow 2.5s linear infinite;
-          filter: url(#heroGlow);
+        .hero-sheen-beam {
+          animation: heroSheen 5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
         }
-        
-        .hero-stream-bg {
-          stroke: #8c1c1c;
-          opacity: 0.15;
+        .hero-float-wrapper {
+          animation: heroFloat 6s ease-in-out infinite;
         }
-
-        .hero-node-aura {
-          animation: nodeAuraPulse 2.5s ease-in-out infinite;
-          transform-origin: ${nodeX}px ${nodeY}px;
-        }
-        
-        .hero-node-core {
-          animation: nodeCoreBlink 2.5s ease-in-out infinite;
-          transform-origin: ${nodeX}px ${nodeY}px;
+        @media (prefers-reduced-motion: reduce) {
+          .hero-aura, .hero-sheen-beam, .hero-float-wrapper {
+            animation: none !important;
+          }
         }
       `}</style>
 
-      {/* Grid of Dots (Inputs) */}
-      {rows.map((y, rowIdx) =>
-        cols.map((x, ci) => (
-          <circle
-            key={`dot-${x}-${y}`}
-            cx={x}
-            cy={y}
-            r={1.2}
-            fill="#ff3333"
+      {/* Ambient silver/platinum backlight aura */}
+      <div
+        className="hero-aura absolute inset-0 -m-6 rounded-full pointer-events-none blur-2xl"
+        style={{
+          background: 'radial-gradient(circle, rgba(216, 217, 220, 0.25) 0%, rgba(255, 255, 255, 0.08) 45%, transparent 75%)',
+        }}
+      />
+
+      {/* Floating container */}
+      <div className="hero-float-wrapper relative flex items-center justify-center">
+        {/* Crisp Symbol Image */}
+        <div className="relative overflow-hidden rounded-lg">
+          <Image
+            src="/brand/arranto-symbol.png"
+            alt="Arranto Symbol"
+            width={915}
+            height={1028}
+            priority
+            className="h-24 sm:h-32 md:h-40 lg:h-48 w-auto object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)] filter transition-transform duration-500 group-hover:scale-105"
+          />
+
+          {/* Light Sheen Reflection Sweep */}
+          <div
+            className="hero-sheen-beam absolute inset-0 pointer-events-none w-1/2 h-full"
             style={{
-              animation: `dotPulse ${2 + (rowIdx + ci) * 0.2}s ease-in-out infinite`,
-              transformOrigin: `${x}px ${y}px`,
+              background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%)',
+              mixBlendMode: 'overlay',
             }}
           />
-        ))
-      )}
-
-      {/* Converging Paths */}
-      {rows.map((y, i) => {
-        const startX = 66;
-        const c1x = 100;
-        const c2x = 128;
-        const d = `M ${startX} ${y} C ${c1x} ${y}, ${c2x} ${nodeY}, ${nodeX - 4} ${nodeY}`;
-        
-        return (
-          <g key={`flow-${y}`}>
-            {/* Background Track */}
-            <path
-              d={d}
-              fill="none"
-              strokeWidth={1.5}
-              strokeLinecap="round"
-              className="hero-stream-bg"
-              vectorEffect="non-scaling-stroke"
-            />
-            {/* Flowing Light Beam */}
-            <path
-              d={d}
-              fill="none"
-              strokeWidth={2.5}
-              strokeLinecap="round"
-              className="hero-stream"
-              vectorEffect="non-scaling-stroke"
-              style={{ animationDelay: `${i * 0.4}s` }}
-            />
-          </g>
-        );
-      })}
-
-      {/* Convergence Node - The Aura/Glow */}
-      <circle
-        cx={nodeX}
-        cy={nodeY}
-        r={14}
-        fill="url(#nodeGradient)"
-        className="hero-node-aura"
-        filter="url(#nodeGlow)"
-      />
-      {/* Convergence Node - The Bright White Core */}
-      <circle
-        cx={nodeX}
-        cy={nodeY}
-        r={4}
-        fill="#ffffff"
-        className="hero-node-core"
-        filter="url(#nodeGlow)"
-      />
-    </svg>
+        </div>
+      </div>
+    </div>
   );
 }

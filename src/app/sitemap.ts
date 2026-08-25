@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { caseStudies } from "@/content/work";
 import { blogPosts } from "@/content/blog";
 import { serviceDetails } from "@/content/services";
+import { jobPostings } from "@/content/careers";
 import { routing } from "@/i18n/routing";
 
 const BASE = "https://arranto.com";
@@ -25,6 +26,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/tools/document-intelligence",
     "/tools/website-factory",
     "/tools/yt-bulk-optimizer",
+    "/careers",
+    ...jobPostings.map((j) => `/careers/${j.slug}`),
     "/contact",
     "/legal/privacy",
     "/legal/terms",

@@ -13,6 +13,7 @@ export function Footer() {
     { href: "/assistant", label: t("footer.assistant") },
     { href: "/work", label: t("footer.work") },
     { href: "/about", label: t("footer.about") },
+    { href: "/careers", label: t("footer.careers") },
     { href: "/contact", label: t("nav.contact") },
   ];
 

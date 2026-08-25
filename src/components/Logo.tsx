@@ -1,162 +1,178 @@
-import { michroma } from "@/lib/fonts";
+import React from "react";
+import Image from "next/image";
 
-type LogoProps = {
-  variant?: "full" | "mark" | "wordmark";
+export type LogoVariant = "full" | "horizontal" | "vertical" | "stacked" | "wordmark" | "mark" | "symbol";
+export type LogoTheme = "dark" | "light";
+export type LogoSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "custom";
+
+export type LogoProps = {
+  variant?: LogoVariant;
+  theme?: LogoTheme;
+  size?: LogoSize;
   className?: string;
   wordmarkClassName?: string;
-  /** Override the node (convergence dot) colour */
-  node?: string;
-  /** Size preset — controls mark height and wordmark text size */
-  size?: "sm" | "md" | "lg" | "xl";
+  node?: string; // backwards compatibility
+  priority?: boolean;
+  alt?: string;
 };
 
-/** Monochrome node — the single convergence point in the mark. */
-const NODE = "#d8d9dc";
+const HORIZONTAL_SIZE_MAP: Record<LogoSize, string> = {
+  xs: "h-5 w-auto",
+  sm: "h-6 w-auto",
+  md: "h-7 w-auto",
+  lg: "h-9 w-auto",
+  xl: "h-12 w-auto",
+  "2xl": "h-16 w-auto",
+  custom: "",
+};
 
-const SIZE_MAP = {
-  sm: { mark: "h-5 w-auto", text: "text-xs" },
-  md: { mark: "h-7 w-auto", text: "text-sm" },
-  lg: { mark: "h-9 w-auto", text: "text-lg" },
-  xl: { mark: "h-12 w-auto", text: "text-2xl" },
+const SYMBOL_SIZE_MAP: Record<LogoSize, string> = {
+  xs: "h-5 w-auto",
+  sm: "h-6 w-auto",
+  md: "h-8 w-auto",
+  lg: "h-12 w-auto",
+  xl: "h-16 w-auto",
+  "2xl": "h-24 w-auto",
+  custom: "",
+};
+
+const WORDMARK_SIZE_MAP: Record<LogoSize, string> = {
+  xs: "h-3.5 w-auto",
+  sm: "h-4.5 w-auto",
+  md: "h-5.5 w-auto",
+  lg: "h-7 w-auto",
+  xl: "h-9 w-auto",
+  "2xl": "h-12 w-auto",
+  custom: "",
+};
+
+const VERTICAL_SIZE_MAP: Record<LogoSize, string> = {
+  xs: "h-16 w-auto",
+  sm: "h-20 w-auto",
+  md: "h-28 w-auto",
+  lg: "h-40 w-auto",
+  xl: "h-56 w-auto",
+  "2xl": "h-72 w-auto",
+  custom: "",
 };
 
 /**
- * Arranto brand mark — a grid of dots converging into a single node:
- * "many inputs → one point / start to running". Dots + curves use
- * `currentColor` (white on dark, ink on light); the node stays platinum.
+ * Arranto Brand Mark — the metallic geometric studio symbol.
  */
-export function LogoMark({ className = "", node = NODE }: { className?: string; node?: string }) {
-  const cols = [6, 20, 34, 48, 62];
-  const rows = [10, 25, 40, 55, 70];
-  const nodeX = 150;
-  const nodeY = 40;
+export function LogoMark({
+  className = "",
+  size = "md",
+  theme = "dark",
+  priority = false,
+}: {
+  className?: string;
+  size?: LogoSize;
+  theme?: LogoTheme;
+  priority?: boolean;
+  node?: string;
+}) {
+  const sizeClass = SYMBOL_SIZE_MAP[size] || SYMBOL_SIZE_MAP.md;
+  const appliedClass = className.includes("h-") ? className : `${sizeClass} ${className}`;
 
   return (
-    <svg
-      viewBox="0 0 168 80"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      aria-hidden="true"
-      shapeRendering="geometricPrecision"
-      textRendering="geometricPrecision"
-      imageRendering="optimizeQuality"
-      style={{ transform: "translateZ(0)", backfaceVisibility: "hidden", WebkitFontSmoothing: "antialiased" }}
-    >
-      <style>{`
-        @keyframes logoDotFade {
-          0% { opacity: 0; transform: translateX(-30px) scale(0.1); }
-          100% { opacity: var(--dot-op); transform: translateX(0) scale(1); }
-        }
-        @keyframes logoPathReveal {
-          0% { opacity: 0; transform: translateX(-15px); }
-          100% { opacity: 0.5; transform: translateX(0); }
-        }
-        @keyframes logoNodePulse {
-          0% { opacity: 0; transform: scale(0.8); }
-          50% { opacity: 1; transform: scale(1.1); }
-          100% { opacity: 1; transform: scale(1); }
-        }
-        .logo-dot {
-          opacity: 0;
-          animation: logoDotFade 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-          transform-origin: center;
-        }
-        .logo-path {
-          opacity: 0;
-          animation: logoPathReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        .logo-node {
-          opacity: 0;
-          animation: logoNodePulse 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-          transform-origin: center;
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .logo-dot { animation: none; opacity: var(--dot-op); }
-          .logo-path { animation: none; opacity: 0.5; }
-          .logo-node { animation: none; opacity: 1; }
-        }
-      `}</style>
-      {rows.map((y, rowIdx) =>
-        cols.map((x, ci) => {
-          const op = 0.35 + ci * 0.14;
-          return (
-            <circle
-              key={`${x}-${y}`}
-              cx={x}
-              cy={y}
-              r={1.6}
-              fill="currentColor"
-              className="logo-dot"
-              style={{
-                "--dot-op": op,
-                animationDelay: ((rowIdx + ci) * 0.05) + "s"
-              } as React.CSSProperties}
-            />
-          );
-        })
-      )}
-      {rows.map((y, i) => {
-        const startX = 66;
-        const c1x = 100;
-        const c2x = 128;
-        return (
-          <path
-            key={`curve-${y}`}
-            d={`M ${startX} ${y} C ${c1x} ${y}, ${c2x} ${nodeY}, ${nodeX - 6} ${nodeY}`}
-            stroke="currentColor"
-            strokeWidth={1.1}
-            strokeLinecap="round"
-            strokeDasharray={i % 2 === 0 ? "0" : "3 4"}
-            vectorEffect="non-scaling-stroke"
-            className="logo-path"
-            style={{ animationDelay: (0.3 + i * 0.1) + "s" }}
-          />
-        );
-      })}
-      <circle cx={nodeX} cy={nodeY} r={7} fill={node} className="logo-node" style={{ animationDelay: "1s" }} />
-    </svg>
+    <Image
+      src="/brand/arranto-symbol.png"
+      alt="Arranto Symbol"
+      width={915}
+      height={1028}
+      priority={priority}
+      className={`object-contain transition-transform duration-300 ${appliedClass}`}
+    />
   );
 }
 
 /**
- * Full lockup: mark + ARRANTO wordmark in Michroma (the logo font).
- * White/current on transparent — drops onto AMOLED background cleanly.
+ * Arranto Wordmark — typographic logotype.
+ */
+export function LogoWordmark({
+  className = "",
+  size = "md",
+  theme = "dark",
+  priority = false,
+}: {
+  className?: string;
+  size?: LogoSize;
+  theme?: LogoTheme;
+  priority?: boolean;
+}) {
+  const sizeClass = WORDMARK_SIZE_MAP[size] || WORDMARK_SIZE_MAP.md;
+  const appliedClass = className.includes("h-") ? className : `${sizeClass} ${className}`;
+  const src = theme === "light" ? "/brand/arranto-wordmark-light.png" : "/brand/arranto-wordmark-dark.png";
+
+  return (
+    <Image
+      src={src}
+      alt="ARRANTO"
+      width={972}
+      height={142}
+      priority={priority}
+      className={`object-contain ${appliedClass}`}
+    />
+  );
+}
+
+/**
+ * Arranto Logo Component — supporting full/horizontal, vertical/stacked, symbol, and wordmark.
  */
 export function Logo({
   variant = "full",
+  theme = "dark",
+  size = "md",
   className = "",
   wordmarkClassName = "",
-  node,
-  size = "md",
+  priority = false,
+  alt = "Arranto — AI Software Studio",
 }: LogoProps) {
-  const s = SIZE_MAP[size];
-
-  if (variant === "mark") {
-    return <LogoMark className={`${s.mark} ${className}`} node={node} />;
+  // 1. Symbol only
+  if (variant === "mark" || variant === "symbol") {
+    return <LogoMark className={className} size={size} theme={theme} priority={priority} />;
   }
 
-  const wordmark = (
-    <span
-      className={`${michroma.className} tracking-[0.28em] leading-none ${s.text} ${wordmarkClassName}`}
-      style={{ fontFeatureSettings: '"kern" 1' }}
-    >
-      ARRANTO
-    </span>
-  );
-
+  // 2. Wordmark only
   if (variant === "wordmark") {
+    return <LogoWordmark className={`${className} ${wordmarkClassName}`} size={size} theme={theme} priority={priority} />;
+  }
+
+  // 3. Vertical / Stacked lockup
+  if (variant === "vertical" || variant === "stacked") {
+    const sizeClass = VERTICAL_SIZE_MAP[size] || VERTICAL_SIZE_MAP.md;
+    const appliedClass = className.includes("h-") ? className : `${sizeClass} ${className}`;
+    const src = theme === "light" ? "/brand/arranto-logo-vertical-light.png" : "/brand/arranto-logo-vertical-dark.png";
+
     return (
-      <span className={`inline-flex items-center text-current ${className}`} aria-label="Arranto">
-        {wordmark}
-      </span>
+      <div className={`inline-flex flex-col items-center justify-center ${className}`} aria-label={alt}>
+        <Image
+          src={src}
+          alt={alt}
+          width={810}
+          height={833}
+          priority={priority}
+          className={`object-contain ${appliedClass}`}
+        />
+      </div>
     );
   }
 
+  // 4. Horizontal / Full lockup (Default)
+  const sizeClass = HORIZONTAL_SIZE_MAP[size] || HORIZONTAL_SIZE_MAP.md;
+  const appliedClass = className.includes("h-") ? className : `${sizeClass} ${className}`;
+  const src = theme === "light" ? "/brand/arranto-logo-horizontal-light.png" : "/brand/arranto-logo-horizontal-dark.png";
+
   return (
-    <span className={`inline-flex items-center gap-2.5 text-current ${className}`} aria-label="Arranto">
-      <LogoMark className={`${s.mark} shrink-0`} node={node} />
-      {wordmark}
-    </span>
+    <div className={`inline-flex items-center ${className}`} aria-label={alt}>
+      <Image
+        src={src}
+        alt={alt}
+        width={895}
+        height={258}
+        priority={priority}
+        className={`object-contain ${appliedClass}`}
+      />
+    </div>
   );
 }
