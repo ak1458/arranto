@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useLocale } from 'next-intl';
+import { trackJobApplication } from '@/lib/track';
 
 export type JobRole = 'aiml-engineer' | 'bde';
 
@@ -107,6 +108,7 @@ export function JobApplicationForm({ initialRole = 'aiml-engineer' }: JobApplica
         throw new Error(data.error || 'Failed to submit application. Please try again.');
       }
 
+      trackJobApplication(roleTitle);
       setStatus('success');
     } catch (err: unknown) {
       setStatus('error');

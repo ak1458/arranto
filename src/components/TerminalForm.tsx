@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
+import { trackContactFormSubmit, trackWhatsAppClick, trackEmailClick } from '@/lib/track';
 
 export function TerminalForm({ initialMessage }: { initialMessage?: string }) {
   const locale = useLocale() as 'en' | 'ar';
@@ -48,6 +49,7 @@ export function TerminalForm({ initialMessage }: { initialMessage?: string }) {
       });
 
       if (res.ok) {
+        trackContactFormSubmit(service, locale);
         setNotice({ text: t('success'), ok: true });
         setName('');
         setEmail('');
@@ -90,7 +92,7 @@ export function TerminalForm({ initialMessage }: { initialMessage?: string }) {
                 {t('methodWhatsapp')}
               </h3>
               <p className="text-sm text-[#8e8f94] font-light mb-2">{t('methodWhatsappBody')}</p>
-              <a href="https://wa.me/919453878422" target="_blank" rel="noopener noreferrer" className="font-mono text-xs text-white hover:underline">
+              <a href="https://wa.me/919453878422" target="_blank" rel="noopener noreferrer" className="font-mono text-xs text-white hover:underline" onClick={() => trackWhatsAppClick('contact_page_sidebar')}>
                 +91 94538 78422 →
               </a>
             </div>

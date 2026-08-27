@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
+import { trackChatStarted } from '@/lib/track';
 
 type Msg =
   | { role: 'user' | 'assistant'; content: string }
@@ -28,6 +29,7 @@ export function Chat() {
   useEffect(() => {
     const onOpen = (e: Event) => {
       setOpen(true);
+      trackChatStarted();
       const customEv = e as CustomEvent<{ prompt?: string }>;
       if (customEv.detail?.prompt) {
         const promptText = customEv.detail.prompt;

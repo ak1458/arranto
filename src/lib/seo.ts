@@ -84,15 +84,20 @@ export function orgJsonLd(locale: string) {
     logo: `${BASE}/icon.svg`,
     inLanguage: l,
     description: ORG_DESCRIPTION[l],
-    founder: { "@type": "Person", name: "Ashraf Kamal", sameAs: "https://github.com/ak1458" },
+    founder: {
+      "@type": "Person",
+      name: "Ashraf Kamal",
+      sameAs: [
+        "https://github.com/ak1458",
+        "https://www.linkedin.com/in/ashrafkamal14/"
+      ]
+    },
     areaServed: ["SA", "AE", "KW", "QA", "OM", "BH", "US", "IN", "GB"],
     knowsAbout: ORG_KNOWS_ABOUT[l],
-
-    // Points at the real Arranto project (the org's own resource) rather than
-    // the founder's personal profiles — those already correctly live on
-    // `founder.sameAs` above. A personal LinkedIn/GitHub profile represents a
-    // Person, not this Organization; duplicating it here was a type mismatch.
-    sameAs: ["https://github.com/ak1458/arranto"],
+    sameAs: [
+      "https://github.com/ak1458/arranto",
+      "https://www.linkedin.com/company/arranto"
+    ],
   };
 }
 

@@ -10,7 +10,8 @@
     "lint:rtl": "node scripts/check-logical-props.mjs",
     "chat:qa": "node scripts/chat-qa.mjs",
     "ai:qa": "node scripts/ai-qa.mjs",
-    "agent:improve": "node scripts/agent-improve.mjs"
+    "agent:improve": "node scripts/agent-improve.mjs",
+    "analytics:fetch": "node scripts/fetch-all-google-data.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
