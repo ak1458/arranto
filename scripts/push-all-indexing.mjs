@@ -34,9 +34,15 @@ async function getToken(scope) {
 
 const urls = [
   // Careers (JobPosting)
+  "https://arranto.com/en/careers/full-stack-engineer",
+  "https://arranto.com/ar/careers/full-stack-engineer",
+  "https://arranto.com/en/careers/performance-marketer",
+  "https://arranto.com/ar/careers/performance-marketer",
+  "https://arranto.com/en/careers/graphic-designer",
+  "https://arranto.com/ar/careers/graphic-designer",
   "https://arranto.com/en/careers/ai-ml-engineer",
-  "https://arranto.com/en/careers/business-development-executive",
   "https://arranto.com/ar/careers/ai-ml-engineer",
+  "https://arranto.com/en/careers/business-development-executive",
   "https://arranto.com/ar/careers/business-development-executive",
   "https://arranto.com/en/careers",
   "https://arranto.com/ar/careers",

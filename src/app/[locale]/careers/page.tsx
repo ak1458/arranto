@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Reveal } from "@/components/Reveal";
 import { pageMetadata } from "@/lib/seo";
-import { jobPostings, Locale } from "@/content/careers";
+import { jobPostings, JobDetail, Locale } from "@/content/careers";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -14,10 +14,39 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: "meta" });
   return pageMetadata({
     title: t("careersTitle") || "Careers & Job Dashboard — Open Roles | Arranto",
-    description: t("careersDescription") || "Explore open remote roles at Arranto: AI/ML Engineer (Machine Learning, Deep Learning, Agents) and Business Development Executive. Full-time remote opportunities.",
+    description: t("careersDescription") || "Explore open remote roles at Arranto: Senior Full-Stack Engineer, Performance Marketing Lead, and Senior Visual Designer. 3+ years experience required. 100% remote.",
     path: "/careers",
     locale,
   });
+}
+
+function renderDeptBadge(key: JobDetail["departmentKey"], label: string) {
+  switch (key) {
+    case "engineering":
+      return (
+        <span className="font-mono text-[11px] uppercase tracking-wider px-2.5 py-1 border text-emerald-400 bg-emerald-500/10 border-emerald-500/20">
+          {label}
+        </span>
+      );
+    case "marketing":
+      return (
+        <span className="font-mono text-[11px] uppercase tracking-wider px-2.5 py-1 border text-amber-400 bg-amber-500/10 border-amber-500/20">
+          {label}
+        </span>
+      );
+    case "design":
+      return (
+        <span className="font-mono text-[11px] uppercase tracking-wider px-2.5 py-1 border text-fuchsia-400 bg-fuchsia-500/10 border-fuchsia-500/20">
+          {label}
+        </span>
+      );
+    default:
+      return (
+        <span className="font-mono text-[11px] uppercase tracking-wider px-2.5 py-1 border text-cyan-400 bg-cyan-500/10 border-cyan-500/20">
+          {label}
+        </span>
+      );
+  }
 }
 
 export default async function CareersDashboardPage({ params }: Props) {
@@ -25,10 +54,13 @@ export default async function CareersDashboardPage({ params }: Props) {
   setRequestLocale(locale);
   const l = (locale === "ar" ? "ar" : "en") as Locale;
 
-  // Schema.org JobPosting structured data for search engines & Google Jobs
+  const activeJobs = jobPostings.filter((job) => job.status === "open");
+  const closedJobs = jobPostings.filter((job) => job.status === "closed");
+
+  // Schema.org JobPosting structured data for active search engine indexing
   const jobPostingsSchema = {
     "@context": "https://schema.org",
-    "@graph": jobPostings.map((job) => ({
+    "@graph": activeJobs.map((job) => ({
       "@type": "JobPosting",
       "title": job.title[l],
       "description": job.summary[l],
@@ -37,7 +69,7 @@ export default async function CareersDashboardPage({ params }: Props) {
         "name": "Arranto",
         "value": job.id
       },
-      "datePosted": "2026-08-25",
+      "datePosted": "2026-09-20",
       "employmentType": "FULL_TIME",
       "hiringOrganization": {
         "@type": "Organization",
@@ -70,7 +102,7 @@ export default async function CareersDashboardPage({ params }: Props) {
           {/* Eyebrow badge */}
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 bg-white/5 border border-white/10 text-[#d8d9dc] text-xs font-mono uppercase tracking-wider mb-6">
             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-            CAREERS // JOB DASHBOARD
+            CAREERS // TALENT DASHBOARD
           </div>
 
           <div className="max-w-4xl">
@@ -78,7 +110,7 @@ export default async function CareersDashboardPage({ params }: Props) {
               Work with Us. Build Systems That Scale.
             </h1>
             <p className="mt-6 text-base sm:text-lg leading-relaxed text-[#9494a0] font-light max-w-3xl">
-              Arranto is a high-performance digital services and AI studio. We engineer custom web applications, autonomous agentic workflows, and scale client revenue. Browse our open positions below.
+              Arranto is a high-performance digital services and engineering studio. We build resilient full-stack applications, scalable growth acquisition engines, and world-class brand identities. Browse our open positions below.
             </p>
           </div>
 
@@ -86,15 +118,17 @@ export default async function CareersDashboardPage({ params }: Props) {
           <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-white/10 pt-8">
             <div className="border border-white/10 bg-[#0a0a0a] p-4">
               <span className="font-mono text-[11px] uppercase tracking-wider text-[#8e8f94] block">Open Roles</span>
-              <span className="mt-1 font-display text-base font-semibold text-white block">2 Positions</span>
+              <span className="mt-1 font-display text-base font-semibold text-white block">
+                {activeJobs.length} Active Positions
+              </span>
             </div>
             <div className="border border-white/10 bg-[#0a0a0a] p-4">
               <span className="font-mono text-[11px] uppercase tracking-wider text-[#8e8f94] block">Work Mode</span>
               <span className="mt-1 font-display text-base font-semibold text-white block">100% Remote</span>
             </div>
             <div className="border border-white/10 bg-[#0a0a0a] p-4">
-              <span className="font-mono text-[11px] uppercase tracking-wider text-[#8e8f94] block">Departments</span>
-              <span className="mt-1 font-display text-base font-semibold text-white block">Engineering & Sales</span>
+              <span className="font-mono text-[11px] uppercase tracking-wider text-[#8e8f94] block">Requirement</span>
+              <span className="mt-1 font-display text-base font-semibold text-white block">3+ Years Exp Min</span>
             </div>
             <div className="border border-white/10 bg-[#0a0a0a] p-4">
               <span className="font-mono text-[11px] uppercase tracking-wider text-[#8e8f94] block">Hiring Pace</span>
@@ -113,90 +147,132 @@ export default async function CareersDashboardPage({ params }: Props) {
                 CURRENT OPENINGS
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold uppercase tracking-tight text-white">
-                Job Dashboard
+                Active Job Dashboard
               </h2>
             </div>
             <div className="flex items-center gap-2 font-mono text-xs text-[#8e8f94]">
               <span className="h-2 w-2 rounded-full bg-emerald-400 inline-block" />
-              <span>Actively accepting applications</span>
+              <span>{activeJobs.length} roles actively accepting applications</span>
             </div>
           </div>
 
-          {/* Job Cards Grid */}
+          {/* Active Job Cards Grid */}
           <div className="grid grid-cols-1 gap-8">
-            {jobPostings.map((job, idx) => {
-              const isEng = job.departmentKey === "engineering";
-              return (
-                <Reveal key={job.slug} delay={0.05 * (idx + 1)}>
-                  <div className="group border border-white/15 bg-[#080808] p-6 sm:p-10 transition-all hover:border-white/40 hover:bg-[#0c0c0c] shadow-2xl">
-                    <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
-                      <div className="flex-1">
-                        {/* Tags */}
-                        <div className="flex flex-wrap items-center gap-2.5 mb-4">
-                          <span
-                            className={`font-mono text-[11px] uppercase tracking-wider px-2.5 py-1 border ${
-                              isEng
-                                ? "text-emerald-400 bg-emerald-500/10 border-emerald-500/20"
-                                : "text-cyan-400 bg-cyan-500/10 border-cyan-500/20"
-                            }`}
-                          >
-                            {job.department[l]}
-                          </span>
-                          <span className="font-mono text-[11px] text-[#9494a0] bg-white/5 px-2.5 py-1 border border-white/10">
-                            {job.location[l]}
-                          </span>
-                          <span className="font-mono text-[11px] text-[#9494a0] bg-white/5 px-2.5 py-1 border border-white/10">
-                            {job.employmentType[l]}
-                          </span>
-                          <span className="font-mono text-[11px] text-[#9494a0] bg-white/5 px-2.5 py-1 border border-white/10">
-                            {job.experience[l]}
-                          </span>
-                        </div>
-
-                        {/* Title */}
-                        <Link href={`/careers/${job.slug}`} className="block">
-                          <h3 className="font-display text-2xl sm:text-3xl font-bold uppercase text-white group-hover:text-[#d8d9dc] transition-colors leading-tight">
-                            {job.title[l]}
-                          </h3>
-                        </Link>
-
-                        {/* Summary */}
-                        <p className="mt-3 text-sm text-[#9494a0] font-light leading-relaxed max-w-3xl">
-                          {job.summary[l]}
-                        </p>
-
-                        {/* Highlighted Bullets */}
-                        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 border-t border-white/5 pt-4">
-                          {job.responsibilities[l][0]?.items.slice(0, 2).map((bullet, bi) => (
-                            <div key={bi} className="flex items-start gap-2 text-xs text-[#d8d9dc] font-light">
-                              <span className={isEng ? "text-emerald-400" : "text-cyan-400"}>▪</span>
-                              <span>{bullet}</span>
-                            </div>
-                          ))}
-                        </div>
+            {activeJobs.map((job, idx) => (
+              <Reveal key={job.slug} delay={0.05 * (idx + 1)}>
+                <div className="group border border-white/15 bg-[#080808] p-6 sm:p-10 transition-all hover:border-white/40 hover:bg-[#0c0c0c] shadow-2xl">
+                  <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
+                    <div className="flex-1">
+                      {/* Tags */}
+                      <div className="flex flex-wrap items-center gap-2.5 mb-4">
+                        {renderDeptBadge(job.departmentKey, job.department[l])}
+                        <span className="font-mono text-[11px] text-[#9494a0] bg-white/5 px-2.5 py-1 border border-white/10">
+                          {job.location[l]}
+                        </span>
+                        <span className="font-mono text-[11px] text-[#9494a0] bg-white/5 px-2.5 py-1 border border-white/10">
+                          {job.employmentType[l]}
+                        </span>
+                        <span className="font-mono text-[11px] text-amber-300 bg-amber-500/10 px-2.5 py-1 border border-amber-500/20">
+                          {job.experience[l]}
+                        </span>
                       </div>
 
-                      {/* Action buttons column */}
-                      <div className="flex flex-row lg:flex-col items-center lg:items-end justify-between lg:justify-start gap-3 shrink-0 pt-4 lg:pt-0 border-t lg:border-t-0 border-white/10">
-                        <Link
-                          href={`/careers/${job.slug}`}
-                          className="inline-flex items-center justify-center gap-2 bg-white text-black px-6 py-3 font-mono text-xs font-semibold uppercase tracking-wider hover:bg-[#d8d9dc] transition-colors"
-                        >
-                          View Details & Apply →
-                        </Link>
-                        <Link
-                          href={`/careers/${job.slug}#apply`}
-                          className="inline-flex items-center justify-center font-mono text-xs text-[#8e8f94] hover:text-white transition-colors"
-                        >
-                          Quick Apply Form ↓
-                        </Link>
+                      {/* Title */}
+                      <Link href={`/careers/${job.slug}`} className="block">
+                        <h3 className="font-display text-2xl sm:text-3xl font-bold uppercase text-white group-hover:text-[#d8d9dc] transition-colors leading-tight">
+                          {job.title[l]}
+                        </h3>
+                      </Link>
+
+                      {/* Summary */}
+                      <p className="mt-3 text-sm text-[#9494a0] font-light leading-relaxed max-w-3xl">
+                        {job.summary[l]}
+                      </p>
+
+                      {/* Highlighted Bullets */}
+                      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 border-t border-white/5 pt-4">
+                        {job.responsibilities[l][0]?.items.slice(0, 2).map((bullet, bi) => (
+                          <div key={bi} className="flex items-start gap-2 text-xs text-[#d8d9dc] font-light">
+                            <span className="text-emerald-400">▪</span>
+                            <span>{bullet}</span>
+                          </div>
+                        ))}
                       </div>
                     </div>
+
+                    {/* Action buttons column */}
+                    <div className="flex flex-row lg:flex-col items-center lg:items-end justify-between lg:justify-start gap-3 shrink-0 pt-4 lg:pt-0 border-t lg:border-t-0 border-white/10">
+                      <Link
+                        href={`/careers/${job.slug}`}
+                        className="inline-flex items-center justify-center gap-2 bg-white text-black px-6 py-3 font-mono text-xs font-semibold uppercase tracking-wider hover:bg-[#d8d9dc] transition-colors"
+                      >
+                        View Details & Apply →
+                      </Link>
+                      <Link
+                        href={`/careers/${job.slug}#apply`}
+                        className="inline-flex items-center justify-center font-mono text-xs text-[#8e8f94] hover:text-white transition-colors"
+                      >
+                        Application Checklist ↓
+                      </Link>
+                    </div>
                   </div>
-                </Reveal>
-              );
-            })}
+                </div>
+              </Reveal>
+            ))}
           </div>
+
+          {/* Closed / Concluded Positions Section */}
+          {closedJobs.length > 0 && (
+            <div className="mt-20 border-t border-white/10 pt-16">
+              <div className="flex items-center justify-between mb-8">
+                <div>
+                  <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#8e8f94] block mb-2">
+                    ARCHIVED POSITIONS
+                  </span>
+                  <h3 className="font-display text-2xl font-bold uppercase text-[#8e8f94]">
+                    Filled / Closed Openings
+                  </h3>
+                </div>
+                <span className="font-mono text-xs text-[#8e8f94]">
+                  {closedJobs.length} Concluded
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 opacity-75">
+                {closedJobs.map((job) => (
+                  <div
+                    key={job.slug}
+                    className="border border-white/10 bg-[#0a0a0a] p-6 flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 bg-amber-500/10 border border-amber-500/20 text-amber-400">
+                          Applications Closed
+                        </span>
+                        <span className="font-mono text-[10px] text-[#8e8f94] bg-white/5 px-2 py-0.5 border border-white/10">
+                          {job.department[l]}
+                        </span>
+                      </div>
+                      <h4 className="font-display text-lg font-bold text-[#d8d9dc]">
+                        {job.title[l]}
+                      </h4>
+                      <p className="mt-2 text-xs text-[#8e8f94] font-light line-clamp-2">
+                        {job.summary[l]}
+                      </p>
+                    </div>
+                    <div className="mt-6 border-t border-white/5 pt-4">
+                      <Link
+                        href={`/careers/${job.slug}`}
+                        className="font-mono text-xs text-[#8e8f94] hover:text-white transition-colors inline-flex items-center gap-1"
+                      >
+                        View Archive Record →
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -233,10 +309,10 @@ export default async function CareersDashboardPage({ params }: Props) {
             <Reveal delay={0.1}>
               <div className="border border-white/10 bg-[#050505] p-6 h-full flex flex-col justify-between">
                 <div>
-                  <span className="font-mono text-xs text-emerald-400 font-semibold">02 // REAL TECH</span>
-                  <h3 className="font-display text-base font-bold text-white mt-2 mb-2">Production AI</h3>
+                  <span className="font-mono text-xs text-emerald-400 font-semibold">02 // STANDARDS</span>
+                  <h3 className="font-display text-base font-bold text-white mt-2 mb-2">High Craft</h3>
                   <p className="text-xs text-[#8e8f94] font-light leading-relaxed">
-                    Work on cutting-edge agentic workflows, PyTorch pipelines, LLMs, and real customer software.
+                    Build production Next.js architectures, high-ROAS growth funnels, and premier brand identities.
                   </p>
                 </div>
               </div>
@@ -245,10 +321,10 @@ export default async function CareersDashboardPage({ params }: Props) {
             <Reveal delay={0.15}>
               <div className="border border-white/10 bg-[#050505] p-6 h-full flex flex-col justify-between">
                 <div>
-                  <span className="font-mono text-xs text-emerald-400 font-semibold">03 // COMPENSATION</span>
-                  <h3 className="font-display text-base font-bold text-white mt-2 mb-2">Meritocratic Upside</h3>
+                  <span className="font-mono text-xs text-emerald-400 font-semibold">03 // UPSIDE</span>
+                  <h3 className="font-display text-base font-bold text-white mt-2 mb-2">Meritocratic Growth</h3>
                   <p className="text-xs text-[#8e8f94] font-light leading-relaxed">
-                    Competitive compensation with performance commissions, incentives, and direct earning scalability.
+                    Competitive compensation benchmarked globally with direct project and revenue performance bonuses.
                   </p>
                 </div>
               </div>
@@ -257,10 +333,10 @@ export default async function CareersDashboardPage({ params }: Props) {
             <Reveal delay={0.2}>
               <div className="border border-white/10 bg-[#050505] p-6 h-full flex flex-col justify-between">
                 <div>
-                  <span className="font-mono text-xs text-emerald-400 font-semibold">04 // ZERO FLUFF</span>
+                  <span className="font-mono text-xs text-emerald-400 font-semibold">04 // ZERO BUREAUCRACY</span>
                   <h3 className="font-display text-base font-bold text-white mt-2 mb-2">Direct & Fast</h3>
                   <p className="text-xs text-[#8e8f94] font-light leading-relaxed">
-                    No layers of middle management. Direct path from engineering ideas and sales pipeline to production.
+                    No layers of middle management. Direct path from engineering ideas, growth initiatives, and design systems to production.
                   </p>
                 </div>
               </div>
@@ -279,10 +355,10 @@ export default async function CareersDashboardPage({ params }: Props) {
             Spontaneous Application
           </h2>
           <p className="mt-3 text-xs sm:text-sm text-[#9494a0] font-light max-w-lg mx-auto mb-6">
-            If you are an exceptional engineer, AI researcher, or business developer, send your CV and portfolio directly to our team:
+            If you have 3+ years of extraordinary craftsmanship in full-stack engineering, performance marketing, or brand design, email your CV and portfolio to:
           </p>
           <a
-            href="mailto:help@arranto.com?subject=Spontaneous%20Job%20Application%20at%20Arranto"
+            href="mailto:help@arranto.com?subject=Spontaneous%20Application%20at%20Arranto"
             className="inline-block font-mono text-sm text-white underline underline-offset-4 hover:text-[#d8d9dc] transition-colors"
           >
             help@arranto.com →
