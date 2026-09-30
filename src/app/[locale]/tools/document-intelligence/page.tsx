@@ -8,8 +8,8 @@ type Props = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   return pageMetadata({
-    title: 'Document Intelligence — Arranto',
-    description: 'Extract summaries, key fields, and action items from raw documents with AI.',
+    title: locale === 'ar' ? 'ذكاء المستندات — أرانتو' : 'Document Intelligence — Arranto',
+    description: locale === 'ar' ? 'استخرج الملخصات والحقول الأساسية والمهام المطلوبة من المستندات الخام بالذكاء الاصطناعي.' : 'Extract summaries, key fields, and action items from raw documents with AI.',
     path: '/tools/document-intelligence',
     locale,
   });

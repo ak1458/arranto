@@ -8,8 +8,8 @@ type Props = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   return pageMetadata({
-    title: 'Content Calendar — Arranto',
-    description: 'Plan a week of social media content with AI-generated captions and hashtags.',
+    title: locale === 'ar' ? 'تقويم المحتوى — أرانتو' : 'Content Calendar — Arranto',
+    description: locale === 'ar' ? 'خطط لأسبوع من محتوى التواصل الاجتماعي مع تعليقات ووسوم مولّدة بالذكاء الاصطناعي.' : 'Plan a week of social media content with AI-generated captions and hashtags.',
     path: '/tools/content-calendar',
     locale,
   });

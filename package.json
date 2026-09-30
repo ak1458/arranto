@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/check-logical-props.mjs && next build",
+    "build": "node scripts/check-logical-props.mjs && node scripts/check-i18n-keys.mjs && next build",
     "start": "next start",
     "lint": "eslint",
     "lint:rtl": "node scripts/check-logical-props.mjs",

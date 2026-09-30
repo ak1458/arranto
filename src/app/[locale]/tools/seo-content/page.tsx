@@ -8,8 +8,8 @@ type Props = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   return pageMetadata({
-    title: 'SEO Content Engine — Arranto',
-    description: 'Generate blog post titles, meta descriptions, outlines, and keywords for your business.',
+    title: locale === 'ar' ? 'محرك محتوى السيو — أرانتو' : 'SEO Content Engine — Arranto',
+    description: locale === 'ar' ? 'أنشئ عناوين مقالات وأوصافًا تعريفية ومخططات وكلمات مفتاحية لنشاطك التجاري.' : 'Generate blog post titles, meta descriptions, outlines, and keywords for your business.',
     path: '/tools/seo-content',
     locale,
   });

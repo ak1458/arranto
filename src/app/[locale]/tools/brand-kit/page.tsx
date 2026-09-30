@@ -8,8 +8,8 @@ type Props = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   return pageMetadata({
-    title: 'AI Brand Kit — Arranto',
-    description: 'Generate a complete brand kit: color palette, voice, taglines, and social bios.',
+    title: locale === 'ar' ? 'مجموعة الهوية بالذكاء الاصطناعي — أرانتو' : 'AI Brand Kit — Arranto',
+    description: locale === 'ar' ? 'أنشئ هوية علامة تجارية كاملة: لوحة ألوان، نبرة صوت، شعارات نصية، ونبذات لحسابات التواصل الاجتماعي.' : 'Generate a complete brand kit: color palette, voice, taglines, and social bios.',
     path: '/tools/brand-kit',
     locale,
   });

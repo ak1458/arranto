@@ -136,11 +136,11 @@ export function Footer() {
         </div>
 
         {/* Contact + WhatsApp */}
-        <div className="col-span-2 md:col-span-1 lg:col-span-1">
+        <div className="col-span-1">
           <h3 className="font-display text-xs uppercase tracking-wider text-white">{t("footer.contactHeading")}</h3>
           <ul className="mt-4 flex flex-col gap-3 text-sm">
             <li>
-              <a href={`mailto:${t("footer.email")}`} className="transition-colors hover:text-white" onClick={() => trackEmailClick('footer')}>
+              <a href={`mailto:${t("footer.email")}`} className="break-all transition-colors hover:text-white" onClick={() => trackEmailClick('footer')}>
                 {t("footer.email")}
               </a>
             </li>
@@ -161,7 +161,7 @@ export function Footer() {
             <li>
               <button
                 onClick={() => { trackChatStarted(); window.dispatchEvent(new Event('arranto:open-chat')); }}
-                className="text-[#d8d9dc] transition-colors hover:text-white text-left"
+                className="text-[#d8d9dc] transition-colors hover:text-white text-start"
               >
                 {t("footer.cta")}
               </button>
@@ -175,7 +175,7 @@ export function Footer() {
         <p>{t("footer.address")}</p>
         <nav
           aria-label={t("footer.legalHeading")}
-          className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2"
+          className="grid w-full grid-cols-2 gap-x-6 gap-y-3 text-center md:flex md:w-auto md:flex-wrap md:items-center md:justify-center md:gap-y-2"
         >
           {legalLinks.map((link) => (
             <Link key={link.href} href={link.href} className="transition-colors hover:text-white">

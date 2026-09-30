@@ -8,8 +8,8 @@ type Props = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   return pageMetadata({
-    title: 'Website Factory — Arranto',
-    description: 'Generate a complete website blueprint from a short business brief.',
+    title: locale === 'ar' ? 'مصنع المواقع — أرانتو' : 'Website Factory — Arranto',
+    description: locale === 'ar' ? 'أنشئ مخططًا كاملًا لموقع إلكتروني من وصف قصير لنشاطك التجاري.' : 'Generate a complete website blueprint from a short business brief.',
     path: '/tools/website-factory',
     locale,
   });

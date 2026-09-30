@@ -8,8 +8,8 @@ type Props = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   return pageMetadata({
-    title: 'Free Website Audit — Arranto',
-    description: 'Get an instant grading on your website SEO, performance, mobile-readiness, and security.',
+    title: locale === 'ar' ? 'فحص مجاني للموقع — أرانتو' : 'Free Website Audit — Arranto',
+    description: locale === 'ar' ? 'احصل على تقييم فوري لموقعك في السيو والأداء والتوافق مع الجوال والأمان.' : 'Get an instant grading on your website SEO, performance, mobile-readiness, and security.',
     path: '/tools/website-audit',
     locale,
   });
