@@ -1,3 +1,5 @@
+import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
+import { SECTION_LABEL } from "@/lib/seo";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Reveal } from "@/components/Reveal";
@@ -48,6 +50,7 @@ export default async function About({ params }: Props) {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white">
+      <BreadcrumbJsonLd locale={locale} trail={[{ name: SECTION_LABEL.about[locale === "ar" ? "ar" : "en"], path: "/about" }]} />
       {/* ── Hero Header with animated stats ── */}
       <header className="relative overflow-hidden border-b border-white/10 px-6 pt-36 pb-20 md:px-12">
         {/* Ambient glow */}

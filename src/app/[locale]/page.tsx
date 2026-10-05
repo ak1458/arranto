@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
-import { Dock } from "@/components/Dock";
 import { Hero } from "@/components/Hero";
 import { WorkGrid } from "@/components/WorkGrid";
 import { TickerSection } from "@/components/TickerSection";
@@ -21,7 +20,6 @@ export default async function Home({ params }: Props) {
 
   return (
     <>
-      <Dock />
       <Hero />
       {/* Brand layer: tiles carry the name and the region-free outcome only. The proof-layer
           detail (`body`, FAQ) is one click deeper, on /work — MASTER-CONTEXT §1.

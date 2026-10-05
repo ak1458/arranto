@@ -169,10 +169,28 @@ export function Chat() {
         aria-label={open ? t('close') : t('launch')}
         className={`fixed bottom-6 end-6 z-50 grid h-12 w-12 sm:h-14 sm:w-14 place-items-center rounded-full border border-white/10 bg-[#0a0a0a] shadow-2xl transition-all duration-300 hover:scale-110 hover:border-white/30 hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] motion-reduce:transition-none`}
       >
-        <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500/20 via-purple-500/20 to-pink-500/20 opacity-70 group-hover:opacity-100 transition-opacity"></div>
-        <span aria-hidden="true" className="relative z-10 font-mono text-xl sm:text-2xl leading-none text-transparent bg-clip-text bg-gradient-to-tr from-gray-300 to-white drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]">
-          {open ? '×' : '✦'}
-        </span>
+        {/* Monochrome platinum glow + chat-bubble glyph. The previous sparkle on a
+            blue/purple/pink gradient read as another vendor's AI logo. */}
+        <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-white/5 via-white/10 to-white/20 opacity-70 transition-opacity"></div>
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.6"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="relative z-10 h-5 w-5 sm:h-6 sm:w-6 text-[#e6e7ea] drop-shadow-[0_0_5px_rgba(255,255,255,0.35)]"
+        >
+          {open ? (
+            <path d="M6 6l12 12M18 6L6 18" />
+          ) : (
+            <>
+              <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.5 4v-4H6.5A2.5 2.5 0 0 1 4 13.5z" />
+              <path d="M8.5 9.5h.01M12 9.5h.01M15.5 9.5h.01" strokeWidth="2.4" />
+            </>
+          )}
+        </svg>
       </button>
 
       {open && (

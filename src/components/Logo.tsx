@@ -81,6 +81,7 @@ export function LogoMark({
       width={915}
       height={1028}
       priority={priority}
+      sizes="96px"
       className={`object-contain transition-transform duration-300 ${appliedClass}`}
     />
   );

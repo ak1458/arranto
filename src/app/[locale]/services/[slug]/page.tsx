@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { serviceMeta } from "@/content/service-meta";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, SECTION_LABEL } from "@/lib/seo";
 import { getServiceBySlug, Locale } from "@/content/services";
 import { ArticleBody } from "@/components/ArticleBody";
 
@@ -24,9 +25,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     });
   }
 
+  const meta = serviceMeta[slug]?.[l];
   return pageMetadata({
-    title: `${serviceDetail.title[l]} | Arranto`,
-    description: serviceDetail.subtitle[l],
+    title: meta?.title ?? `${serviceDetail.title[l]} | ${l === "ar" ? "أرانتو" : "Arranto"}`,
+    description: meta?.description ?? serviceDetail.subtitle[l],
     path: `/services/${slug}`,
     locale,
   });
@@ -75,8 +77,8 @@ export default async function ServicePage({ params }: Props) {
       {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: `https://arranto.com/${locale}` },
-          { "@type": "ListItem", position: 2, name: "Services", item: `https://arranto.com/${locale}/services` },
+          { "@type": "ListItem", position: 1, name: l === "ar" ? "الرئيسية" : "Home", item: `https://arranto.com/${locale}` },
+          { "@type": "ListItem", position: 2, name: SECTION_LABEL.services[l], item: `https://arranto.com/${locale}/services` },
           { "@type": "ListItem", position: 3, name: serviceDetail.title[l], item: `https://arranto.com/${locale}/services/${slug}` },
         ],
       },
@@ -104,7 +106,7 @@ export default async function ServicePage({ params }: Props) {
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 md:px-12">
         <Link
-          href="/#services"
+          href="/services"
           className="group inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-[#8e8f94] transition-colors duration-300 hover:text-white mb-16"
         >
           <span className="transition-transform duration-300 group-hover:-translate-x-1 rtl:group-hover:translate-x-1 rtl:-scale-x-100">
@@ -257,6 +259,16 @@ export default async function ServicePage({ params }: Props) {
               >
                 {">"} {blueprint.cta}
               </Link>
+              {/* Proof one click away: service pages had no links into the case
+                  studies or articles that back them up. */}
+              <div className="mt-6 flex justify-center gap-6 font-mono text-[10px] uppercase tracking-widest">
+                <Link href="/work" className="text-[#8e8f94] hover:text-white">
+                  {locale === "ar" ? "دراسات الحالة ←" : "Case studies →"}
+                </Link>
+                <Link href="/blog" className="text-[#8e8f94] hover:text-white">
+                  {locale === "ar" ? "المدونة ←" : "Blog →"}
+                </Link>
+              </div>
             </div>
           </div>
         </div>

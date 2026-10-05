@@ -1,3 +1,5 @@
+import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
+import { SECTION_LABEL } from "@/lib/seo";
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
@@ -5,7 +7,7 @@ import { notFound } from "next/navigation";
 import { Reveal } from "@/components/Reveal";
 import { JobApplicationForm } from "@/components/JobApplicationForm";
 import { pageMetadata } from "@/lib/seo";
-import { getJobBySlug, jobPostings, Locale } from "@/content/careers";
+import { getJobBySlug, jobPostings, Locale, type JobDetail } from "@/content/careers";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -35,6 +37,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     path: `/careers/${slug}`,
     locale,
   });
+}
+
+const escapeHtml = (t: string) =>
+  t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+function jobDescriptionHtml(job: JobDetail, l: Locale): string {
+  const list = (items: string[]) => `<ul>${items.map((i) => `<li>${escapeHtml(i)}</li>`).join("")}</ul>`;
+  return [
+    `<p>${escapeHtml(job.summary[l])}</p>`,
+    ...job.aboutRole[l].map((para) => `<p>${escapeHtml(para)}</p>`),
+    ...job.responsibilities[l].map((group) => `<h3>${escapeHtml(group.title)}</h3>${list(group.items)}`),
+    `<h3>${l === "ar" ? "المتطلبات" : "Requirements"}</h3>${list(job.requirements[l])}`,
+    `<h3>${l === "ar" ? "ما نقدمه" : "What we offer"}</h3>${list(job.whatWeOffer[l])}`,
+  ].join("");
 }
 
 export default async function JobDetailPage({ params }: Props) {
@@ -82,7 +98,11 @@ export default async function JobDetailPage({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "JobPosting",
     "title": job.title[l],
-    "description": job.summary[l],
+    // Google wants the full posting, not a teaser: build it from the same sections
+    // the page renders (HTML is allowed in JobPosting.description).
+    "description": jobDescriptionHtml(job, l),
+    "url": `https://arranto.com/${l}/careers/${job.slug}`,
+    "directApply": true,
     "identifier": {
       "@type": "PropertyValue",
       "name": "Arranto",
@@ -92,6 +112,7 @@ export default async function JobDetailPage({ params }: Props) {
     "employmentType": "FULL_TIME",
     "hiringOrganization": {
       "@type": "Organization",
+      "@id": "https://arranto.com/#organization",
       "name": "Arranto",
       "sameAs": "https://arranto.com",
       "logo": "https://arranto.com/brand/arranto-symbol.png"
@@ -106,11 +127,15 @@ export default async function JobDetailPage({ params }: Props) {
 
   return (
     <div className="min-h-screen bg-[#050505] pt-12 pb-24 text-white">
-      {/* Schema Injection */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPostingSchema) }}
-      />
+      <BreadcrumbJsonLd locale={locale} trail={[{ name: SECTION_LABEL.careers[l], path: "/careers" }, { name: job.title[l], path: `/careers/${job.slug}` }]} />
+      {/* Schema Injection — closed roles must not advertise a JobPosting (Google
+          treats an expired posting still in markup as a policy violation). */}
+      {!isClosed && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPostingSchema) }}
+        />
+      )}
 
       {/* ── 1. HEADER & BREADCRUMB ── */}
       <section className="relative w-full overflow-hidden pt-12 pb-16 border-b border-white/10">
@@ -229,7 +254,7 @@ export default async function JobDetailPage({ params }: Props) {
                 <div className="border border-white/10 bg-[#0a0a0a] p-6 h-full flex flex-col justify-between">
                   <div>
                     <span className={`font-mono text-xs font-semibold ${deptTextColor}`}>
-                      0{gi + 1} // AREA
+                      0{gi + 1} {"//"} AREA
                     </span>
                     <h3 className="font-display text-lg font-bold text-white mt-3 mb-4">{group.title}</h3>
                     <ul className="space-y-3 text-sm text-[#9494a0] font-light leading-relaxed">
@@ -265,7 +290,7 @@ export default async function JobDetailPage({ params }: Props) {
               <Reveal key={ci} delay={0.05 * (ci + 1)}>
                 <div className="border border-white/10 bg-[#050505] p-6 h-full">
                   <span className="font-mono text-xs uppercase tracking-wider text-[#d8d9dc] block mb-4 font-semibold">
-                    0{ci + 1} // {cat.category}
+                    0{ci + 1} {"//"} {cat.category}
                   </span>
                   <ul className="space-y-2.5 text-xs sm:text-sm text-[#9494a0] font-light leading-relaxed">
                     {cat.items.map((item, ii) => (

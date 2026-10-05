@@ -1,3 +1,5 @@
+import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
+import { SECTION_LABEL } from "@/lib/seo";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { pageMetadata } from "@/lib/seo";
@@ -76,6 +78,7 @@ export default async function ToolsPage({ params }: Props) {
 
   return (
     <div className="relative min-h-screen bg-[#050505] text-paper">
+      <BreadcrumbJsonLd locale={locale} trail={[{ name: SECTION_LABEL.tools[locale === "ar" ? "ar" : "en"], path: "/tools" }]} />
       <div className="relative z-10 mx-auto max-w-6xl px-6 pb-20 pt-36 md:px-12">
         <Reveal>
           <div className="mb-16 text-center">

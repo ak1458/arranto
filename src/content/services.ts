@@ -28,7 +28,7 @@ export const serviceDetails: ServiceDetail[] = [
     },
     citablePassage: {
       en: "AI Automation by Arranto designs and builds autonomous AI agents and automated workflows for businesses in Saudi Arabia, the UAE, and the wider Gulf region, integrating generative AI models with existing ERPs, CRMs, and custom databases to handle tasks such as invoice processing, lead qualification, and data synchronisation. Initial production prototypes typically deliver within 2 to 4 weeks, with full production integration completed within 6 weeks. Each system is built with explicit access controls, Arabic/English support where required, and documented data-handling boundaries — customer data is never used to train public LLMs.",
-      ar: "خدمة أتمتة الذكاء الاصطناعي من أرانطو تصمم وتبني وكلاء الذكاء الاصطناعي المستقلين ومسارات العمل المؤتمتة للشركات في المملكة العربية السعودية والإمارات ودول الخليج، من خلال دمج النماذج التوليدية مع أنظمة ERP وCRM الحالية لمعالجة الفواتير وتأهيل العملاء المحتملين ومزامنة البيانات. تتوفر النماذج الأولية عادة خلال 2 إلى 4 أسابيع، ويكتمل التكامل الإنتاجي الكامل خلال 6 أسابيع. يُبنى كل نظام بصلاحيات وصول محددة ودعم لغوي عند الحاجة وحدود موثقة لمعالجة البيانات — ولا تُستخدم بيانات العميل أبدًا لتدريب نماذج عامة.",
+      ar: "خدمة أتمتة الذكاء الاصطناعي من أرانتو تصمم وتبني وكلاء الذكاء الاصطناعي المستقلين ومسارات العمل المؤتمتة للشركات في المملكة العربية السعودية والإمارات ودول الخليج، من خلال دمج النماذج التوليدية مع أنظمة ERP وCRM الحالية لمعالجة الفواتير وتأهيل العملاء المحتملين ومزامنة البيانات. تتوفر النماذج الأولية عادة خلال 2 إلى 4 أسابيع، ويكتمل التكامل الإنتاجي الكامل خلال 6 أسابيع. يُبنى كل نظام بصلاحيات وصول محددة ودعم لغوي عند الحاجة وحدود موثقة لمعالجة البيانات — ولا تُستخدم بيانات العميل أبدًا لتدريب نماذج عامة.",
     },
     overview: {
       en: [
@@ -36,7 +36,7 @@ export const serviceDetails: ServiceDetail[] = [
         "Whether streamlining B2B order dispatch, automating customer support routing, or processing compliance paperwork, custom AI workflows can run continuously with auditable logs and fallback controls designed around the risk of each action.",
       ],
       ar: [
-        "تعتمد البرمجيات التقليدية على المدخلات اليدوية للربط بين الأدوات المختلفة. تبني أرانطو طبقات أتمتة ذكية تراقب مصادر البيانات وتنقل المحتوى بين الأنظمة القديمة والحديثة بكفاءة عالية.",
+        "تعتمد البرمجيات التقليدية على المدخلات اليدوية للربط بين الأدوات المختلفة. تبني أرانتو طبقات أتمتة ذكية تراقب مصادر البيانات وتنقل المحتوى بين الأنظمة القديمة والحديثة بكفاءة عالية.",
         "سواء كنت تسعى لتسريع معالجة الطلبات، أو أتمتة خدمة العملاء، أو إدارة مستندات الامتثال، تعمل مسارات العمل لدينا على مدار الساعة مع سجلات تدقيق كاملة.",
       ],
     },
@@ -65,7 +65,7 @@ export const serviceDetails: ServiceDetail[] = [
       },
       {
         q: { en: "Does AI automation replace our existing software?", ar: "هل تلغي أتمتة الذكاء الاصطناعي برمجياتنا الحالية؟" },
-        a: { en: "No. Arranto builds middleware that connects your existing ERPs and CRMs, supercharging your current tools rather than forcing a rewrite.", ar: "لا. تبني أرانطو طبقات وسيطة تربط أنظمتك الحالية وتزيد من كفاءتها دون الحاجة لإعادة كتابتها." }
+        a: { en: "No. Arranto builds middleware that connects your existing ERPs and CRMs, supercharging your current tools rather than forcing a rewrite.", ar: "لا. تبني أرانتو طبقات وسيطة تربط أنظمتك الحالية وتزيد من كفاءتها دون الحاجة لإعادة كتابتها." }
       },
       {
         q: { en: "Which business processes are a good fit for AI automation?", ar: "ما هي العمليات المناسبة لأتمتة الذكاء الاصطناعي؟" },
@@ -97,7 +97,7 @@ export const serviceDetails: ServiceDetail[] = [
     },
     citablePassage: {
       en: "Custom AI SaaS Development by Arranto transforms proprietary business workflows into scalable, multi-tenant software-as-a-service products, engineered with Next.js, TypeScript, and serverless vector search architecture. Builds include tenant onboarding, RBAC permissions, Arabic/English interfaces, and native integration with five regional payment gateways — HyperPay, Tap, Moyasar, Mada, and Stripe. Every project transfers 100% of the GitHub repository, database schemas, and deployment scripts at handover, with zero recurring platform fee owed to Arranto.",
-      ar: "خدمة تطوير برمجيات AI SaaS المخصصة من أرانطو تحول مسارات العمل الخاصة إلى منتجات برمجية قابلة للتطوير ومتعددة المستأجرين، مبنية على Next.js وTypeScript وبنية بحث متجهي بلا خوادم. تشمل المشاريع تسجيل المستأجرين وصلاحيات الوصول والواجهات المزدوجة وتكاملاً مباشرًا مع خمس بوابات دفع إقليمية — HyperPay وTap وMoyasar ومدى وStripe. يُسلَّم 100٪ من مستودع GitHub وقواعد البيانات وسكريبتات التشغيل عند كل مشروع، دون أي رسوم منصة متكررة لأرانطو.",
+      ar: "خدمة تطوير برمجيات AI SaaS المخصصة من أرانتو تحول مسارات العمل الخاصة إلى منتجات برمجية قابلة للتطوير ومتعددة المستأجرين، مبنية على Next.js وTypeScript وبنية بحث متجهي بلا خوادم. تشمل المشاريع تسجيل المستأجرين وصلاحيات الوصول والواجهات المزدوجة وتكاملاً مباشرًا مع خمس بوابات دفع إقليمية — HyperPay وTap وMoyasar ومدى وStripe. يُسلَّم 100٪ من مستودع GitHub وقواعد البيانات وسكريبتات التشغيل عند كل مشروع، دون أي رسوم منصة متكررة لأرانتو.",
     },
     overview: {
       en: [
@@ -106,7 +106,7 @@ export const serviceDetails: ServiceDetail[] = [
       ],
       ar: [
         "التحول من تقديم الخدمات إلى بناء منتج SaaS تجاري يتطلب بنية متعددة المستأجرين، وأماناً عالياً، وبنية تحتية قابلة للتوسع.",
-        "تتولى أرانطو الدورة الكاملة — من تصميم قواعد البيانات إلى الربط مع نماذج الذكاء الاصطناعي وبوابات الدفع النقدية."
+        "تتولى أرانتو الدورة الكاملة — من تصميم قواعد البيانات إلى الربط مع نماذج الذكاء الاصطناعي وبوابات الدفع النقدية."
       ]
     },
     features: {
@@ -130,7 +130,7 @@ export const serviceDetails: ServiceDetail[] = [
     faq: [
       {
         q: { en: "Do we retain full ownership of the SaaS codebase?", ar: "هل نحتفظ بالملكية الكاملة للكود البرمجي؟" },
-        a: { en: "Yes. Arranto hands over 100% of the GitHub repository, database schemas, and Vercel/AWS deployment pipelines with zero recurring platform fees to us.", ar: "نعم. تسلم أرانطو 100٪ من كود المستودع وقواعد البيانات وسكريبتات التشغيل بدون أي رسوم منصة متكررة." }
+        a: { en: "Yes. Arranto hands over 100% of the GitHub repository, database schemas, and Vercel/AWS deployment pipelines with zero recurring platform fees to us.", ar: "نعم. تسلم أرانتو 100٪ من كود المستودع وقواعد البيانات وسكريبتات التشغيل بدون أي رسوم منصة متكررة." }
       },
       {
         q: { en: "What should be ready before we start building an AI SaaS product?", ar: "ما الذي يجب أن يكون جاهزاً قبل بدء بناء منتج AI SaaS؟" },
@@ -154,7 +154,7 @@ export const serviceDetails: ServiceDetail[] = [
       },
       {
         q: { en: "Do you handle SaaS development for products that aren't AI-first?", ar: "هل تقدمون تطوير برمجيات SaaS للمنتجات التي ليست ذكاء اصطناعي بالدرجة الأولى؟" },
-        a: { en: "Yes. Multi-tenancy, RBAC, regional billing, and code ownership are the same core SaaS-development discipline whether or not the product has an AI layer — AI is Arranto's specialization, not a requirement to start a SaaS build.", ar: "نعم. عزل المستأجرين وإدارة الصلاحيات والفوترة الإقليمية وملكية الكود هي نفس أساسيات تطوير SaaS سواء تضمن المنتج طبقة ذكاء اصطناعي أم لا — الذكاء الاصطناعي تخصص أرانطو، وليس شرطاً لبدء بناء SaaS." }
+        a: { en: "Yes. Multi-tenancy, RBAC, regional billing, and code ownership are the same core SaaS-development discipline whether or not the product has an AI layer — AI is Arranto's specialization, not a requirement to start a SaaS build.", ar: "نعم. عزل المستأجرين وإدارة الصلاحيات والفوترة الإقليمية وملكية الكود هي نفس أساسيات تطوير SaaS سواء تضمن المنتج طبقة ذكاء اصطناعي أم لا — الذكاء الاصطناعي تخصص أرانتو، وليس شرطاً لبدء بناء SaaS." }
       }
     ]
   },
@@ -170,7 +170,7 @@ export const serviceDetails: ServiceDetail[] = [
     },
     citablePassage: {
       en: "Custom Enterprise AI Solutions by Arranto delivers tailored artificial intelligence architectures for enterprises in Saudi Arabia and the Middle East, built around private retrieval-augmented generation (RAG) systems that query approved company documents, legal contracts, and historical records with explicit access, retention, and external-model boundaries. Every AI response links directly back to its exact source document, and enterprise search can unify Google Drive, Notion, Slack, and local SQL servers into one queryable system. Engineered with type-safe TypeScript and Arabic/English workflows where required.",
-      ar: "تقدم أرانطو حلول ذكاء اصطناعي مخصصة للمنشآت في السعودية والشرق الأوسط، مبنية على أنظمة استرجاع معززة (RAG) خاصة تستعلم من المستندات والعقود والسجلات الداخلية المعتمدة مع صلاحيات وصول واحتفاظ وحدود نموذج خارجي محددة بوضوح. تُسنَد كل إجابة مباشرة إلى وثيقة المصدر الدقيقة، ويمكن للبحث الموحد للمنشأة أن يجمع Google Drive وNotion وSlack والسيرفرات المحلية في نظام واحد قابل للاستعلام. مبني بلغة TypeScript الآمنة النوع مع دعم عربي/إنجليزي عند الحاجة.",
+      ar: "تقدم أرانتو حلول ذكاء اصطناعي مخصصة للمنشآت في السعودية والشرق الأوسط، مبنية على أنظمة استرجاع معززة (RAG) خاصة تستعلم من المستندات والعقود والسجلات الداخلية المعتمدة مع صلاحيات وصول واحتفاظ وحدود نموذج خارجي محددة بوضوح. تُسنَد كل إجابة مباشرة إلى وثيقة المصدر الدقيقة، ويمكن للبحث الموحد للمنشأة أن يجمع Google Drive وNotion وSlack والسيرفرات المحلية في نظام واحد قابل للاستعلام. مبني بلغة TypeScript الآمنة النوع مع دعم عربي/إنجليزي عند الحاجة.",
     },
     overview: {
       en: [
@@ -178,7 +178,7 @@ export const serviceDetails: ServiceDetail[] = [
         "From internal knowledge assistants to automated compliance auditors, we build solutions that deliver verified, accurate responses with full source citations."
       ],
       ar: [
-        "تفتقر أدوات الذكاء الاصطناعي العامة إلى السياق الخاص بإجراءات شركتك وقواعد الامتثال. تبني أرانطو أنظمة مخصصة تعتمد حصرياً على بياناتك.",
+        "تفتقر أدوات الذكاء الاصطناعي العامة إلى السياق الخاص بإجراءات شركتك وقواعد الامتثال. تبني أرانتو أنظمة مخصصة تعتمد حصرياً على بياناتك.",
         "من المساعدين الماليين إلى مدققي الامتثال، نبني حلولاً تقدم إجابات موثوقة ومثبتة بالمصادر."
       ]
     },
@@ -227,7 +227,7 @@ export const serviceDetails: ServiceDetail[] = [
       },
       {
         q: { en: "Is this custom enterprise software development, or off-the-shelf AI tools?", ar: "هل هذا تطوير برمجيات مؤسسية مخصصة أم أدوات ذكاء اصطناعي جاهزة؟" },
-        a: { en: "Custom development. Every RAG pipeline, access-control layer, and search integration described here is built and owned by your company — not a configured SaaS wrapper. That's the same custom-software approach Arranto uses for CRM/ERP and full-stack builds, applied to AI-specific infrastructure.", ar: "تطوير مخصص بالكامل. كل نظام RAG وطبقة صلاحيات وتكامل بحث هنا مبني ومملوك لشركتك، وليس أداة SaaS جاهزة. هو نفس نهج البرمجيات المخصصة الذي تتبعه أرانطو في أنظمة CRM/ERP والتطوير الشامل، مطبقاً على بنية الذكاء الاصطناعي." }
+        a: { en: "Custom development. Every RAG pipeline, access-control layer, and search integration described here is built and owned by your company — not a configured SaaS wrapper. That's the same custom-software approach Arranto uses for CRM/ERP and full-stack builds, applied to AI-specific infrastructure.", ar: "تطوير مخصص بالكامل. كل نظام RAG وطبقة صلاحيات وتكامل بحث هنا مبني ومملوك لشركتك، وليس أداة SaaS جاهزة. هو نفس نهج البرمجيات المخصصة الذي تتبعه أرانتو في أنظمة CRM/ERP والتطوير الشامل، مطبقاً على بنية الذكاء الاصطناعي." }
       }
     ]
   },
@@ -243,7 +243,7 @@ export const serviceDetails: ServiceDetail[] = [
     },
     citablePassage: {
       en: "Custom CRM & ERP Development by Arranto builds tailored business operating systems designed around your exact workflows, using Next.js and PostgreSQL rather than forcing companies to alter their processes to fit an off-the-shelf platform. Systems can include invoice workflows, inventory expiry tracking, asset maintenance, and custom API connectors syncing bi-directionally with QuickBooks, Xero, Zoho, and ZATCA e-invoicing compliance portals. PulseKart (pharmacy point-of-sale and expiry tracking) and SanadOS (facilities asset and work-order management) are two systems built on this same approach.",
-      ar: "تبني أرانطو أنظمة إدارة علاقات العملاء (CRM) وتخطيط الموارد (ERP) المخصصة المصممة حول مسارات عملك الحقيقية باستخدام Next.js وPostgreSQL، بدلاً من إجبار الشركات على تغيير عملياتها لتناسب منصة جاهزة. يمكن أن تشمل الأنظمة مسارات الفوترة وتتبع صلاحية المخزون وصيانة الأصول وموصلات API مخصصة تُزامن مع QuickBooks وXero وZoho ومنصات فوترة زاتكا. PulseKart (نقاط بيع وتتبع صلاحية للصيدليات) وSanadOS (إدارة أصول وأوامر عمل للمرافق) نظامان مبنيان بهذا النهج نفسه.",
+      ar: "تبني أرانتو أنظمة إدارة علاقات العملاء (CRM) وتخطيط الموارد (ERP) المخصصة المصممة حول مسارات عملك الحقيقية باستخدام Next.js وPostgreSQL، بدلاً من إجبار الشركات على تغيير عملياتها لتناسب منصة جاهزة. يمكن أن تشمل الأنظمة مسارات الفوترة وتتبع صلاحية المخزون وصيانة الأصول وموصلات API مخصصة تُزامن مع QuickBooks وXero وZoho ومنصات فوترة زاتكا. PulseKart (نقاط بيع وتتبع صلاحية للصيدليات) وSanadOS (إدارة أصول وأوامر عمل للمرافق) نظامان مبنيان بهذا النهج نفسه.",
     },
     overview: {
       en: [
@@ -252,7 +252,7 @@ export const serviceDetails: ServiceDetail[] = [
       ],
       ar: [
         "غالباً ما تكون أنظمة CRM العامة مليئة بخصائص غير مستخدمة بينما تفتقر لآليات العمل اليومية لضمان الإنتاجية.",
-        "تبني أرانطو برمجيات مخصصة تناسب طبيعة عملك — مثل إدارة الصيدليات أو المرافق أو الخدمات اللوجستية."
+        "تبني أرانتو برمجيات مخصصة تناسب طبيعة عملك — مثل إدارة الصيدليات أو المرافق أو الخدمات اللوجستية."
       ]
     },
     features: {
@@ -312,7 +312,7 @@ export const serviceDetails: ServiceDetail[] = [
     },
     citablePassage: {
       en: "High-Performance Website Development by Arranto builds bespoke, conversion-focused web applications and marketing platforms. Using Next.js Server-Side Rendering (SSR), Vanilla CSS design systems, and GSAP micro-animations, Arranto designs around Core Web Vitals, crawlable content, Arabic/English localization, and accurate Schema.org markup. The goal is a fast, understandable website that supports search visibility and qualified inquiries.",
-      ar: "تبني أرانطو مواقع وتطبيقات ويب عالية الأداء تركز على زيادة التحويل والأداء. باستخدام SSR وأنظمة التصميم الحديثة، تحقق مواقعنا نتائج استثنائية في سرعة التحميل وتوافق محركات البحث.",
+      ar: "تبني أرانتو مواقع وتطبيقات ويب عالية الأداء تركز على زيادة التحويل والأداء. باستخدام SSR وأنظمة التصميم الحديثة، تحقق مواقعنا نتائج استثنائية في سرعة التحميل وتوافق محركات البحث.",
     },
     overview: {
       en: [
@@ -320,7 +320,7 @@ export const serviceDetails: ServiceDetail[] = [
         "With server-side rendering, carefully tested page transitions, and attention to Core Web Vitals, your site can provide a faster and clearer experience for visitors and search crawlers."
       ],
       ar: [
-        "الموقع البطيء يضر بسمعة العلامة التجارية ويؤدي لخسارة العملاء. تبني أرانطو واجهات ويب حديثة وسريعة تحول الزوار إلى عملاء فعليين.",
+        "الموقع البطيء يضر بسمعة العلامة التجارية ويؤدي لخسارة العملاء. تبني أرانتو واجهات ويب حديثة وسريعة تحول الزوار إلى عملاء فعليين.",
         "مع العرض المباشر من السيرفر (SSR) وسرعة التنقل، يعمل موقعك كـمحرك نمو دائم لأعمالك."
       ]
     },
@@ -381,7 +381,7 @@ export const serviceDetails: ServiceDetail[] = [
     },
     citablePassage: {
       en: "Digital Marketing & Growth Engineering by Arranto provides technical SEO, content strategy, and targeted campaign optimisation for B2B brands in the Gulf region. Technical SEO improvements typically show indexation changes within 1 to 2 weeks, with measurable organic keyword movement compounding over 2 to 4 months. Work is grounded in crawl/indexation audits, Schema.org graph architecture, and Search Console/analytics data tied directly to qualified inquiries — not just ranking positions.",
-      ar: "تقدم أرانطو خدمات التسويق الرقمي وهندسة النمو، بما في ذلك تحسين محركات البحث التقني واستراتيجيات المحتوى وتحسين الحملات المستهدفة للعلامات التجارية B2B في الخليج. تظهر تحسينات SEO التقنية عادة تغيرات في الفهرسة خلال أسبوع إلى أسبوعين، مع تحرك ملحوظ في ترتيب الكلمات المفتاحية يتراكم خلال 2 إلى 4 أشهر. يعتمد العمل على تدقيق الزحف والفهرسة، وبنية بيانات Schema.org المنظمة، وربط بيانات Search Console والتحليلات مباشرة بالاستفسارات المؤهلة — لا مواضع الترتيب فقط.",
+      ar: "تقدم أرانتو خدمات التسويق الرقمي وهندسة النمو، بما في ذلك تحسين محركات البحث التقني واستراتيجيات المحتوى وتحسين الحملات المستهدفة للعلامات التجارية B2B في الخليج. تظهر تحسينات SEO التقنية عادة تغيرات في الفهرسة خلال أسبوع إلى أسبوعين، مع تحرك ملحوظ في ترتيب الكلمات المفتاحية يتراكم خلال 2 إلى 4 أشهر. يعتمد العمل على تدقيق الزحف والفهرسة، وبنية بيانات Schema.org المنظمة، وربط بيانات Search Console والتحليلات مباشرة بالاستفسارات المؤهلة — لا مواضع الترتيب فقط.",
     },
     overview: {
       en: [
@@ -389,7 +389,7 @@ export const serviceDetails: ServiceDetail[] = [
         "We build programmatic content pipelines that target long-tail intent queries, establishing your brand as the dominant authority in your industry."
       ],
       ar: [
-        "يعتمد التسويق التقليدي على التخمين. تبني أرانطو محركات نمو مدعومة بتحليلات دقيقة وتهيئة متقدمة لمحركات البحث.",
+        "يعتمد التسويق التقليدي على التخمين. تبني أرانتو محركات نمو مدعومة بتحليلات دقيقة وتهيئة متقدمة لمحركات البحث.",
         "نبني مسارات محتوى تستهدف الكلمات المفتاحية الدقيقة لترسيخ مكانة علامتك التجارية."
       ]
     },
@@ -452,7 +452,7 @@ serviceDetails.push({
   },
   citablePassage: {
     en: "Arranto builds custom software — point-of-sale systems, CRM/ERP platforms, e-invoicing engines, and internal operations tools — designed around how a specific business actually works, rather than retrofitted onto commercial off-the-shelf software. Founded in 2017 as Smile Fotilo and rebranded Arranto, the studio is run by one engineer, Ashraf Kamal, who owns every project end to end: schema design, backend logic, interface, deployment, and post-launch support. Delivered work includes PulseKart (pharmacy point-of-sale and inventory on Next.js, Node, and Postgres) and Veloria Vault (a headless Next.js commerce migration), alongside two in-pilot builds — SanadOS (facilities operations on React and Supabase) and FATOORA Lite (ZATCA-compliant e-invoicing with cryptographic stamping). Custom software projects typically run 6 to 14 weeks depending on scope, agreed before code begins.",
-    ar: "تبني أرانطو برمجيات مخصصة — أنظمة نقاط بيع، ومنصات CRM وERP، ومحركات فوترة إلكترونية، وأدوات تشغيل داخلية — مصممة حول طريقة عمل منشأة محددة فعليًا، لا معاد تكييفها فوق برمجيات جاهزة. تأسس الاستوديو عام 2017 باسم Smile Fotilo قبل إعادة تسميته أرانطو، ويديره مهندس واحد، أشرف كمال، يمتلك كل مشروع من البداية للنهاية: تصميم المخطط، ومنطق الخلفية، والواجهة، والتشغيل، والدعم بعد الإطلاق. من الأعمال المُسلّمة: PulseKart (نقاط بيع ومخزون للصيدليات على Next.js وNode وPostgres) وVeloria Vault (ترحيل متجر إلى Next.js بلا واجهة)، إضافة إلى مشروعين قيد التجربة — SanadOS (عمليات مرافق على React وSupabase) وFATOORA Lite (فوترة إلكترونية متوافقة مع زاتكا بختم تشفيري). تستغرق مشاريع البرمجيات المخصصة عادة من 6 إلى 14 أسبوعًا حسب النطاق، متفق عليها قبل بدء الكود.",
+    ar: "تبني أرانتو برمجيات مخصصة — أنظمة نقاط بيع، ومنصات CRM وERP، ومحركات فوترة إلكترونية، وأدوات تشغيل داخلية — مصممة حول طريقة عمل منشأة محددة فعليًا، لا معاد تكييفها فوق برمجيات جاهزة. تأسس الاستوديو عام 2017 باسم Smile Fotilo قبل إعادة تسميته أرانتو، ويديره مهندس واحد، أشرف كمال، يمتلك كل مشروع من البداية للنهاية: تصميم المخطط، ومنطق الخلفية، والواجهة، والتشغيل، والدعم بعد الإطلاق. من الأعمال المُسلّمة: PulseKart (نقاط بيع ومخزون للصيدليات على Next.js وNode وPostgres) وVeloria Vault (ترحيل متجر إلى Next.js بلا واجهة)، إضافة إلى مشروعين قيد التجربة — SanadOS (عمليات مرافق على React وSupabase) وFATOORA Lite (فوترة إلكترونية متوافقة مع زاتكا بختم تشفيري). تستغرق مشاريع البرمجيات المخصصة عادة من 6 إلى 14 أسبوعًا حسب النطاق، متفق عليها قبل بدء الكود.",
   },
   overview: {
     en: [
@@ -475,7 +475,7 @@ serviceDetails.push({
     ],
     ar: [
       { title: "مهندس واحد، كل طبقة", desc: "المخطط والخلفية والواجهة والتشغيل يمتلكها الشخص نفسه في كل مشروع — دون تسليم بين أخصائيين، ودون فقدان للسياق." },
-      { title: "تملك المستودع بالكامل", desc: "تسليم كامل لمستودع GitHub وترحيلات قاعدة البيانات وسكريبتات التشغيل عند التسليم. دون أي رسوم منصة متكررة لأرانطو." },
+      { title: "تملك المستودع بالكامل", desc: "تسليم كامل لمستودع GitHub وترحيلات قاعدة البيانات وسكريبتات التشغيل عند التسليم. دون أي رسوم منصة متكررة لأرانتو." },
       { title: "تقنيات حقيقية تُختار لكل مشروع", desc: "Postgres للبيانات التبادلية (PulseKart)، وSupabase للأنظمة اللحظية (SanadOS)، ووحدات تشفير وXML مخصصة حين يتطلب الامتثال ذلك (FATOORA Lite) — تتبع التقنية طبيعة المشكلة." },
       { title: "تحقق عند كل حد", desc: "تحقق Zod من المخطط عند كل نقطة تعديل، وحدود معدل طلبات على كل مسار POST عام، ورؤوس أمان مُهيّأة افتراضيًا — لا تُضاف بعد وقوع حادثة." },
       { title: "ثنائي اللغة افتراضيًا", desc: "واجهات عربية وإنجليزية، وتخطيط RTL، ومحتوى محلي جزء من البناء الأساسي لمشاريع السوق الخليجي، لا إضافة مدفوعة." },
@@ -501,7 +501,7 @@ serviceDetails.push({
     },
     {
       q: { en: "Do I own the code after the project ships?", ar: "هل أملك الكود بعد إطلاق المشروع؟" },
-      a: { en: "Yes — 100% of the GitHub repository, database schemas, and deployment scripts transfer at handover, with no recurring fee owed to Arranto and no dependency on a proprietary platform.", ar: "نعم — تُسلَّم 100٪ من مستودع GitHub وقواعد البيانات وسكريبتات التشغيل عند التسليم، دون أي رسوم متكررة لأرانطو ودون ارتباط بمنصة مملوكة لطرف آخر." }
+      a: { en: "Yes — 100% of the GitHub repository, database schemas, and deployment scripts transfer at handover, with no recurring fee owed to Arranto and no dependency on a proprietary platform.", ar: "نعم — تُسلَّم 100٪ من مستودع GitHub وقواعد البيانات وسكريبتات التشغيل عند التسليم، دون أي رسوم متكررة لأرانتو ودون ارتباط بمنصة مملوكة لطرف آخر." }
     },
     {
       q: { en: "What happens after launch — is there ongoing support?", ar: "ماذا يحدث بعد الإطلاق — هل يوجد دعم مستمر؟" },
@@ -553,11 +553,83 @@ serviceDetails.push({
       "يُحدَّد النطاق قبل بناء أي شيء: أدوار المستخدمين، ومسار العمل الأساسي الذي يجب أن يُحسّنه النظام، وقائمة قصيرة بأولويات الإطلاق. هذا النقاش هو أيضًا حيث تُجاب بصدق سؤال \"هل يستحق هذا فعلًا بناءً مخصصًا\" — أحيانًا يكون الجواب أداة جاهزة مُهيّأة، وقول ذلك لا يكلف شيئًا.",
       "بعد تثبيت النطاق، يستغرق البناء المخصص عادة من 6 إلى 14 أسبوعًا حسب التعقيد، متفق عليه كتابيًا قبل بدء الكود. يتولى شخص واحد المشروع عبر التصميم المعماري وتصميم المخطط والواجهة والتشغيل — راجع <a href=\"/ar/services\">شرح التطوير الشامل</a> لمعرفة ما يعنيه \"شخص واحد يمتلك كل طبقة\" عمليًا ولماذا يغيّر ذلك ما يُسلَّم.",
       "### ماذا تعني الملكية في النهاية",
-      "يشمل التسليم صلاحيات التشغيل، ومستودع GitHub الكامل، وترحيلات قاعدة البيانات، والتوثيق — لا تسجيل دخول لمنصة تتحكم بها أرانطو. إذا انتهت العلاقة بعد الإطلاق، يستمر النظام بالعمل تمامًا كما كان في اليوم السابق. هذا خيار تصميم مقصود، لا مجاملة: البرمجية التي تعتمد عليها منشأة لا ينبغي أن تعتمد على استمرار الاستوديو الذي بناها في العمل.",
+      "يشمل التسليم صلاحيات التشغيل، ومستودع GitHub الكامل، وترحيلات قاعدة البيانات، والتوثيق — لا تسجيل دخول لمنصة تتحكم بها أرانتو. إذا انتهت العلاقة بعد الإطلاق، يستمر النظام بالعمل تمامًا كما كان في اليوم السابق. هذا خيار تصميم مقصود، لا مجاملة: البرمجية التي تعتمد عليها منشأة لا ينبغي أن تعتمد على استمرار الاستوديو الذي بناها في العمل.",
       "### متى يكون البناء المخصص خيارًا خاطئًا",
       "يستحق القول بوضوح، لأن الجواب الصادق يشير أحيانًا بعيدًا عن هذه الصفحة: إذا كانت أداة جاهزة تغطي الحاجة بالفعل بسعر يتوسع بشكل معقول، فهذا عادة الخيار الأفضل، وسيكون البناء المخصص مجرد طريقة أبطأ وأغلى للوصول للنتيجة نفسها. يستحق التطوير المخصص تكلفته في اللحظة التي يصبح فيها الحل البديل حول أداة جاهزة أغلى — من حيث الوقت والأخطاء والبيانات التي لا يثق بها أحد — من بناء الشيء الحقيقي."
     ].join("\n\n"),
   },
+});
+
+// Dedicated page for the studio's Gulf compliance work (SXO audit, 2026-10-05: the
+// ZATCA capability only existed inside the FATOORA Lite case study). Every claim
+// here comes from that case study; FATOORA Lite is in pilot and is described so.
+serviceDetails.push({
+  slug: "zatca-e-invoicing",
+  title: {
+    en: "ZATCA E-Invoicing Integration (Phase 2)",
+    ar: "تكامل الفوترة الإلكترونية مع هيئة الزكاة والضريبة والجمارك (المرحلة الثانية)",
+  },
+  subtitle: {
+    en: "Connect your invoicing or ERP to Saudi ZATCA Phase 2: compliant XML, cryptographic stamping, CCSID onboarding and real-time clearance.",
+    ar: "اربط نظام الفوترة أو تخطيط الموارد لديك بالمرحلة الثانية من فاتورة: XML متوافق، وختم تشفيري، وتسجيل CCSID، وتخليص فوري.",
+  },
+  citablePassage: {
+    en: "Arranto builds ZATCA Phase 2 e-invoicing integrations for businesses in Saudi Arabia: generating compliant XML invoices, applying the required cryptographic stamp, handling CCSID onboarding, and clearing B2B invoices in real time through the ZATCA API. The work draws on FATOORA Lite, the studio's own clearance engine, which is currently in pilot. The integration supports a business's compliance workflow; it does not replace its own tax and regulatory review.",
+    ar: "تبني أرانتو تكاملات الفوترة الإلكترونية للمرحلة الثانية من فاتورة للشركات في المملكة العربية السعودية: إنشاء فواتير XML متوافقة، وتطبيق الختم التشفيري المطلوب، وإدارة تسجيل CCSID، وتخليص فواتير B2B فوريًا عبر واجهة هيئة الزكاة والضريبة والجمارك. يستند العمل إلى FATOORA Lite، محرك التخليص الخاص بالاستوديو، وهو حاليًا قيد التجربة. يدعم التكامل مسار الامتثال لدى المنشأة ولا يغني عن مراجعتها الضريبية والتنظيمية.",
+  },
+  overview: {
+    en: [
+      "ZATCA Phase 2 requires businesses to digitally sign, cryptographically stamp, and clear B2B invoices in real time through the ZATCA API. Many ERPs and accounting tools lack the native cryptographic and XML capabilities to do this, which is where an integration layer is needed.",
+      "Arranto builds that layer: either connecting an existing ERP or billing system to ZATCA as middleware, or adding compliant invoicing to a custom system the studio builds. Because clearance depends on a live government API, the integration is designed for latency, timeouts and upstream availability rather than assuming a constant connection.",
+    ],
+    ar: [
+      "تتطلب المرحلة الثانية من فاتورة أن توقّع المنشآت فواتير B2B رقميًا وتختمها تشفيريًا وتخلّصها فوريًا عبر واجهة هيئة الزكاة والضريبة والجمارك. كثير من أنظمة تخطيط الموارد وبرامج المحاسبة تفتقر إلى قدرات التشفير وXML اللازمة لذلك، وهنا تأتي الحاجة إلى طبقة تكامل.",
+      "تبني أرانتو هذه الطبقة: إما بربط نظام تخطيط موارد أو فوترة قائم بالهيئة كبرمجية وسيطة، أو بإضافة فوترة متوافقة إلى نظام مخصص يبنيه الاستوديو. ولأن التخليص يعتمد على واجهة حكومية مباشرة، يُصمَّم التكامل للتعامل مع زمن الاستجابة وانتهاء المهلة وتوفر الخدمة بدل افتراض اتصال دائم.",
+    ],
+  },
+  features: {
+    en: [
+      { title: "Real-time clearance workflow", desc: "Invoice submission and clearance through the ZATCA API, with status and error tracking." },
+      { title: "Cryptographic stamping", desc: "Automated generation of compliant XML with the required cryptographic stamps." },
+      { title: "CCSID onboarding", desc: "A guided process for obtaining and managing Cryptographic Stamp Identifiers." },
+      { title: "ERP middleware", desc: "Connects an existing ERP or billing system to ZATCA without replacing it." },
+      { title: "Monitoring dashboard", desc: "One place to watch invoice status, rejections and errors." },
+    ],
+    ar: [
+      { title: "مسار تخليص فوري", desc: "إرسال الفواتير وتخليصها عبر واجهة الهيئة مع تتبع الحالة والأخطاء." },
+      { title: "ختم تشفيري", desc: "إنشاء آلي لملفات XML متوافقة مع الأختام التشفيرية المطلوبة." },
+      { title: "تسجيل CCSID", desc: "مسار موجّه للحصول على معرّفات الختم التشفيري وإدارتها." },
+      { title: "برمجية وسيطة لأنظمة تخطيط الموارد", desc: "تربط نظام تخطيط الموارد أو الفوترة القائم بالهيئة دون استبداله." },
+      { title: "لوحة متابعة", desc: "مكان واحد لمتابعة حالة الفواتير والرفض والأخطاء." },
+    ],
+  },
+  gulfCompliance: {
+    en: "Built around Saudi ZATCA Phase 2 (Fatoora) e-invoicing workflows. The integration supports your compliance process; your own tax and regulatory review still applies.",
+    ar: "مبني حول مسارات الفوترة الإلكترونية للمرحلة الثانية من فاتورة. يدعم التكامل مسار الامتثال لديك، وتبقى مراجعتك الضريبية والتنظيمية ضرورية.",
+  },
+  faq: [
+    {
+      q: { en: "Is FATOORA Lite live in production?", ar: "هل FATOORA Lite يعمل في بيئة الإنتاج؟" },
+      a: {
+        en: "Not yet. FATOORA Lite, the studio's ZATCA clearance engine, is in pilot. Integration work for clients is scoped and tested against your own systems and ZATCA's environments.",
+        ar: "ليس بعد. FATOORA Lite، محرك التخليص الخاص بالاستوديو، قيد التجربة. يُحدَّد نطاق أعمال التكامل للعملاء ويُختبر على أنظمتهم وبيئات الهيئة.",
+      },
+    },
+    {
+      q: { en: "Can you connect our existing ERP instead of replacing it?", ar: "هل يمكنكم ربط نظام تخطيط الموارد الحالي بدل استبداله؟" },
+      a: {
+        en: "Yes. Middleware that connects an existing ERP to ZATCA is one of the target use cases, alongside SME invoicing and B2B e-commerce clearance.",
+        ar: "نعم. البرمجية الوسيطة التي تربط نظام تخطيط الموارد الحالي بالهيئة من حالات الاستخدام المستهدفة، إلى جانب فوترة المنشآت الصغيرة والمتوسطة وتخليص التجارة الإلكترونية بين الشركات.",
+      },
+    },
+    {
+      q: { en: "Does this make our business ZATCA compliant?", ar: "هل يجعل هذا منشأتنا ممتثلة لمتطلبات الهيئة؟" },
+      a: {
+        en: "It provides the technical foundation for invoice generation, stamping and clearance. Compliance also depends on your own registration, data and review, which software alone cannot replace.",
+        ar: "يوفر الأساس التقني لإنشاء الفواتير وختمها وتخليصها. ويعتمد الامتثال أيضًا على تسجيلك وبياناتك ومراجعتك، وهي أمور لا تغني عنها البرمجيات وحدها.",
+      },
+    },
+  ],
 });
 
 export const getServiceBySlug = (slug: string) =>

@@ -43,7 +43,7 @@ const L = {
     investment: "This document outlines scope and approach. Investment is discussed directly with the founder — no automated pricing.",
     types: { "ai-automation": "AI Automation", "ai-product": "AI Product Development", saas: "SaaS Development" },
     overviewBody: (t: string, who: string) =>
-      `${who} is exploring an engagement with Arranto — a founder-led software studio (est. 2017, 20+ delivered projects, 118 verified Google reviews) — for ${t}. This proposal summarizes what was discussed with the studio assistant.`,
+      `${who} is exploring an engagement with Arranto — a founder-led software studio (est. 2017, 20+ delivered projects, 118 verified Google reviews earned as Smile Fotilo) — for ${t}. This proposal summarizes what was discussed with the studio assistant.`,
     footer: "Arranto — founder-led software studio · est. 2017 · arranto.com · help@arranto.com",
   },
   // Arabic PDF strings are deliberately Latin-free (except the LTR-only footer
@@ -67,7 +67,7 @@ const L = {
     investment: "يوضح هذا المستند النطاق والمنهجية — تُناقش التكلفة مباشرة مع المؤسس، لا تسعير آلي",
     types: { "ai-automation": "أتمتة الذكاء الاصطناعي", "ai-product": "تطوير منتجات الذكاء الاصطناعي", saas: "تطوير المنصات السحابية" },
     overviewBody: (t: string, who: string) =>
-      `يستكشف ${who} مشروع ${t} مع أرانتو، استوديو برمجيات يقوده مؤسسه — تأسس 2017، أكثر من 20 مشروعًا مُسلّمًا، 118 تقييمًا موثّقًا على جوجل. يلخص هذا العرض ما نوقش مع مساعد الاستوديو`,
+      `يستكشف ${who} مشروع ${t} مع أرانتو، استوديو برمجيات يقوده مؤسسه — تأسس 2017، أكثر من 20 مشروعًا مُسلّمًا، 118 تقييمًا موثّقًا على جوجل باسمنا السابق Smile Fotilo. يلخص هذا العرض ما نوقش مع مساعد الاستوديو`,
     footer: "أرانتو · استوديو برمجيات يقوده مؤسسه · تأسس 2017",
   },
 } as const;

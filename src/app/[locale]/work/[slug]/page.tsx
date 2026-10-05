@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { bySlug, caseStudies, type Locale, type CaseStudy } from "@/content/work";
@@ -17,6 +17,13 @@ const sourceLabel: Record<Locale, string> = {
   en: "Source on GitHub",
   ar: "المصدر على GitHub",
 };
+
+// A GitHub repo that backs a case study (pulsekart-web-nextjs -> pulsekart) used to
+// render its own thin, self-canonical page that competed with the case study in
+// search. Send it to the case study instead.
+function caseStudyForRepo(slug: string) {
+  return caseStudies.find((c) => c.repo === slug && c.slug !== slug);
+}
 
 function nanobannerStatus(status: CaseStudy["status"]): string {
   switch (status) {
@@ -45,14 +52,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     });
   }
 
+  const mapped = caseStudyForRepo(slug);
+  if (mapped) permanentRedirect(`/${locale}/work/${mapped.slug}`);
+
   const repo = (await githubProjects()).find((r) => r.name === slug);
   if (!repo) return {};
-  return pageMetadata({
-    title: `${repo.formattedName} — Arranto`,
-    description: repo.description,
-    path: `/work/${slug}`,
-    locale,
-  });
+  return {
+    ...pageMetadata({
+      title: `${repo.formattedName} — Arranto`,
+      description: repo.description,
+      path: `/work/${slug}`,
+      locale,
+    }),
+    // Repo mirrors are thin pages; keep them browsable from /work but out of the
+    // index so the case studies own the work queries.
+    robots: { index: false, follow: true },
+  };
 }
 
 export default async function WorkDetail({ params }: Props) {
@@ -108,6 +123,12 @@ export default async function WorkDetail({ params }: Props) {
             >
               <span aria-hidden className="transition-transform duration-300 group-hover:-translate-x-1 rtl:group-hover:translate-x-1 rtl:-scale-x-100">←</span>
               {t("heading")}
+            </Link>
+            <Link
+              href="/services"
+              className="ms-6 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted hover:text-paper"
+            >
+              {l === "ar" ? "الخدمات" : "Services"}
             </Link>
           </Reveal>
 
@@ -345,6 +366,9 @@ export default async function WorkDetail({ params }: Props) {
       </div>
     );
   }
+
+  const mapped = caseStudyForRepo(slug);
+  if (mapped) permanentRedirect(`/${locale}/work/${mapped.slug}`);
 
   const repo = (await githubProjects()).find((r) => r.name === slug);
   if (!repo) notFound();

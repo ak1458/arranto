@@ -13,6 +13,19 @@
   --font-arabic: var(--font-tajawal), 'Tajawal', system-ui, sans-serif;
 }
 
+/* Arabic pages: Tajawal (Arabic subset only) claims Arabic glyphs; Latin text falls
+   through to the usual Inter/Fraunces/JetBrains faces. Before this, Arabic rendered
+   in whatever the OS fallback was. */
+/* The literal 'Tajawal' (not var(--font-tajawal)) on purpose: the variable also
+   carries next/font's Arial-based "Tajawal Fallback" face, which has Latin glyphs
+   and would swallow all Latin text. If a build ever renames the face, the stack
+   simply falls through to today's behaviour. */
+[dir="rtl"] {
+  --font-sans: 'Tajawal', var(--font-inter), system-ui, sans-serif;
+  --font-display: 'Tajawal', var(--font-fraunces), Georgia, serif;
+  --font-mono: 'Tajawal', var(--font-jbmono), ui-monospace, Menlo, monospace;
+}
+
 :root {
   /* True AMOLED black — page background only; surfaces below sit a hair
      above it for depth, per Rolls-Royce/Apple-dark-mode "no hue accent"

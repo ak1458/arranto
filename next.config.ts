@@ -56,6 +56,22 @@ const legacyRedirects = Object.entries(LEGACY).flatMap(([from, to]) => [
   { source: `/:locale(en|ar)${from}/:path*`, destination: `/:locale${to}`, statusCode: 301 },
 ]);
 
+// Retired service slugs Google still has on file (GSC URL Inspection, 2026-10-05):
+// point them at the live service that replaced them instead of a 404.
+const RETIRED_SERVICES: Record<string, string> = {
+  "saas-mvp-development": "ai-saas-development",
+};
+const retiredServiceRedirects = Object.entries(RETIRED_SERVICES).flatMap(([from, to]) => [
+  { source: `/services/${from}`, destination: `/services/${to}`, statusCode: 301 },
+  { source: `/:locale(en|ar)/services/${from}`, destination: `/:locale/services/${to}`, statusCode: 301 },
+]);
+
+// "/" always lands on English with a permanent redirect, so search engines merge
+// the root's signals into /en (GSC had 602 impressions split onto "/"). Runs before
+// the proxy, so it applies to every client, agents included (they follow it and get
+// /en's Markdown).
+const rootRedirect = { source: "/", destination: "/en", statusCode: 301 };
+
 // www.arranto.com serves the same app as arranto.com with no canonical redirect between
 // them (confirmed live + via GSC: www turned up as a separately-indexed, lower-ranking
 // duplicate). Force the bare apex as the one canonical host.
@@ -72,7 +88,7 @@ const nextConfig: NextConfig = {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },
   async redirects() {
-    return [wwwRedirect, ...legacyRedirects];
+    return [wwwRedirect, rootRedirect, ...legacyRedirects, ...retiredServiceRedirects];
   },
 };
 

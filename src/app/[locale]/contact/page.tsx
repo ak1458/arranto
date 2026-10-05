@@ -1,12 +1,15 @@
+import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
+import { SECTION_LABEL } from "@/lib/seo";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { EmbeddedChat } from "@/components/EmbeddedChat";
 import { Reveal } from "@/components/Reveal";
 import { pageMetadata } from "@/lib/seo";
+import { getServiceBySlug } from "@/content/services";
 
 type Props = {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ message?: string }>;
+  searchParams: Promise<{ message?: string; service?: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -22,13 +25,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function Contact({ params, searchParams }: Props) {
   const { locale } = await params;
-  const { message } = await searchParams;
+  const { message, service } = await searchParams;
+  // Service pages link here as /contact?service=<slug>; carry that context into
+  // the chat input (prefilled, not sent) instead of dropping it.
+  const svc = service ? getServiceBySlug(service) : undefined;
+  const prefill =
+    message ??
+    (svc
+      ? locale === "ar"
+        ? `أرغب في مناقشة مشروع ضمن خدمة: ${svc.title.ar}.`
+        : `I'd like to discuss a project for: ${svc.title.en}.`
+      : undefined);
   setRequestLocale(locale);
   const t = await getTranslations("contact");
   const steps = t.raw("next") as string[];
 
   return (
     <div className="min-h-screen bg-[#050505] pt-12 pb-24 text-white">
+      <BreadcrumbJsonLd locale={locale} trail={[{ name: SECTION_LABEL.contact[locale === "ar" ? "ar" : "en"], path: "/contact" }]} />
       <section className="relative w-full overflow-hidden pt-12 pb-16">
         <div className="absolute top-1/3 start-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 bg-[#d8d9dc]/5 blur-[140px] pointer-events-none"/>
 
@@ -41,7 +55,7 @@ export default async function Contact({ params, searchParams }: Props) {
               {t("heading")}
             </h1>
             <p className="mt-6 text-base leading-relaxed text-[#8e8f94] max-w-2xl font-light">
-              We've replaced traditional forms with our proactive AI Assistant. It will gather your requirements, answer your questions, and can even draft a full proposal. Start chatting below.
+              We&apos;ve replaced traditional forms with our proactive AI Assistant. It will gather your requirements, answer your questions, and can even draft a full proposal. Start chatting below.
             </p>
           </div>
 
@@ -88,7 +102,7 @@ export default async function Contact({ params, searchParams }: Props) {
 
             {/* Embedded Chat */}
             <div className="lg:col-span-8 relative">
-              <EmbeddedChat initialMessage={message} />
+              <EmbeddedChat initialMessage={prefill} />
             </div>
           </div>
         </div>

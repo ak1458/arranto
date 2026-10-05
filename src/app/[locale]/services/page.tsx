@@ -11,9 +11,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const isArabic = locale === "ar";
 
   return pageMetadata({
-    title: isArabic ? "خدمات البرمجيات والذكاء الاصطناعي | أرانطو" : "AI, SaaS & Custom Software Services | Arranto",
+    title: isArabic ? "خدمات البرمجيات والذكاء الاصطناعي | أرانتو" : "AI, SaaS & Custom Software Services | Arranto",
     description: isArabic
-      ? "خدمات أرانطو لبناء أتمتة الذكاء الاصطناعي ومنصات SaaS وأنظمة الأعمال والمواقع وحلول النمو المخصصة."
+      ? "خدمات أرانتو لبناء أتمتة الذكاء الاصطناعي ومنصات SaaS وأنظمة الأعمال والمواقع وحلول النمو المخصصة."
       : "Explore Arranto services for AI automation, custom AI solutions, SaaS products, CRM systems, high-performance websites, and measurable growth.",
     path: "/services",
     locale,
@@ -31,9 +31,9 @@ export default async function ServicesPage({ params }: Props) {
     "@graph": [
       {
         "@type": "CollectionPage",
-        name: isArabic ? "خدمات أرانطو" : "Arranto Services",
+        name: isArabic ? "خدمات أرانتو" : "Arranto Services",
         description: isArabic
-          ? "خدمات تطوير البرمجيات والذكاء الاصطناعي المخصصة من أرانطو."
+          ? "خدمات تطوير البرمجيات والذكاء الاصطناعي المخصصة من أرانتو."
           : "Arranto's custom software, AI, SaaS, CRM, website, and growth services.",
         url: `https://arranto.com/${l}/services`,
         mainEntity: {
@@ -63,7 +63,7 @@ export default async function ServicesPage({ params }: Props) {
       <header className="px-6 pb-16 md:px-12 border-b border-white/10">
         <div className="mx-auto max-w-6xl">
           <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#d8d9dc]">
-            {isArabic ? "أرانطو // الخدمات" : "ARRANTO // SERVICES"}
+            {isArabic ? "أرانتو // الخدمات" : "ARRANTO // SERVICES"}
           </span>
           <h1 className="mt-4 max-w-4xl font-display text-[clamp(2.5rem,6vw,5rem)] font-extrabold tracking-tight">
             {isArabic ? "نبني الأنظمة التي يحتاجها عملك" : "Software built around how your business works."}

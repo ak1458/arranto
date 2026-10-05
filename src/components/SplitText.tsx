@@ -91,14 +91,14 @@ export const SplitText = forwardRef<HTMLHeadingElement, SplitTextProps>(
     // SSR Fallback (rendered before JS loads in browser)
     if (lines.length === 0) {
       return (
-        <h3 ref={containerRef} className={className}>
+        <h2 ref={containerRef} className={className}>
           {children}
-        </h3>
+        </h2>
       );
     }
 
     return (
-      <h3 ref={containerRef} className={className}>
+      <h2 ref={containerRef} className={className}>
         {lines.map((lineWords, lineIdx) => (
           <span key={lineIdx} className={lineClassName}>
             <span
@@ -109,7 +109,7 @@ export const SplitText = forwardRef<HTMLHeadingElement, SplitTextProps>(
             </span>
           </span>
         ))}
-      </h3>
+      </h2>
     );
   }
 );

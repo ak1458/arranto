@@ -1,6 +1,7 @@
 import { sorted, type Status } from "@/content/work";
 import { serviceDetails } from "@/content/services";
 import { blogPosts } from "@/content/blog";
+import { ORG_DESCRIPTION } from "@/lib/seo";
 
 // The chatbot's entire knowledge base, built from the same content the pages
 // render — status claims always come from the `status` field, never hand-typed.
@@ -26,7 +27,12 @@ export function siteContext(): string {
     .filter(isPublishable)
     .map((c) => {
       const faq = c.faq.map((f) => `Q: ${f.q.en}\nA: ${f.a.en}`).join("\n");
-      return `### ${c.title}\n${STATUS_LINE[c.status]}\nOutcome: ${c.outcome.en}\n${c.body.en}\nStack: ${c.stack.join(", ")}\n${faq}`;
+      // The one-line body alone was too thin to cite; add the opening of the long
+      // article (headings stripped) so answers can quote real detail.
+      const article = c.article
+        ? `\n${c.article.en.replace(/\\n/g, "\n").replace(/^#+ .*$/gm, "").replace(/\s+/g, " ").trim().slice(0, 700)}…`
+        : "";
+      return `### ${c.title}\n${STATUS_LINE[c.status]}\nOutcome: ${c.outcome.en}\n${c.body.en}${article}\nStack: ${c.stack.join(", ")}\n${faq}`;
     })
     .join("\n\n");
 
@@ -42,7 +48,7 @@ export function siteContext(): string {
     .join("\n\n");
 
   return `## Studio
-Arranto is an AI software company building enterprise AI platforms, custom software solutions, localized compliance technology (ZATCA / PDPL), and developer tools.
+Arranto: ${ORG_DESCRIPTION.en} It also builds localized compliance technology (ZATCA / PDPL) and developer tools.
 Pages: / (home), /work (case studies), /about (the studio and founder), /services, /blog, /contact.
 Free tools live on this site at /tools.
 

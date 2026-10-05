@@ -83,6 +83,9 @@ export function AnimatedHeroLogo({ className = '' }: { className?: string }) {
             width={915}
             height={1028}
             priority
+            // Rendered at most h-48 (192px tall, ~171px wide); without sizes the
+            // browser fetched the 1920w variant on phones.
+            sizes="172px"
             className="h-24 sm:h-32 md:h-40 lg:h-48 w-auto object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.8)] filter transition-transform duration-500 group-hover:scale-105"
           />
 

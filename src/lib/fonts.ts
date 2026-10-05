@@ -33,14 +33,21 @@ export const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jbmono",
   display: "swap",
+  // Small labels only; not worth competing with first paint on every page.
+  preload: false,
 });
 
 // Arabic — geometric, premium, pairs with the Latin system. Applied on [dir=rtl].
+// Arabic subset only (its files carry an Arabic unicode-range), so on RTL pages it
+// can sit first in the stack and claim Arabic glyphs while Latin text falls through
+// to Inter/Fraunces (see [dir="rtl"] in globals.css).
 export const tajawal = Tajawal({
-  subsets: ["arabic", "latin"],
+  subsets: ["arabic"],
   weight: ["400", "500", "700"],
   variable: "--font-tajawal",
   display: "swap",
+  // Only /ar pages need it; preloading it on English pages cost ~100 KB up front.
+  preload: false,
 });
 
 export const fontVariables = [

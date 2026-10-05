@@ -311,7 +311,7 @@ export default function WebsiteFactoryPage() {
             <div className="bg-[#121218] border border-white/10 p-6 text-center">
                 <h3 className="text-lg font-bold mb-2">Ready to Build This Website?</h3>
                 <p className="text-[#9494a0] text-sm mb-4">
-                  Our team can turn this blueprint into a live, high-converting website in 2-3 weeks.
+                  Our team can turn this blueprint into a live, high-converting website in 3–5 weeks.
                 </p>
                 <Link
                   href="/#contact"

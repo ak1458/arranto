@@ -1,3 +1,5 @@
+import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
+import { SECTION_LABEL } from "@/lib/seo";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
@@ -51,6 +53,7 @@ export default async function WorkPage({ params }: Props) {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white">
+      <BreadcrumbJsonLd locale={locale} trail={[{ name: SECTION_LABEL.work[locale === "ar" ? "ar" : "en"], path: "/work" }]} />
       <header className="px-6 pt-36 pb-16 md:px-12 border-b border-white/10">
         <div className="mx-auto max-w-6xl">
           <Reveal>

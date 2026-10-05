@@ -57,33 +57,17 @@ export default async function CareersDashboardPage({ params }: Props) {
   const activeJobs = jobPostings.filter((job) => job.status === "open");
   const closedJobs = jobPostings.filter((job) => job.status === "closed");
 
-  // Schema.org JobPosting structured data for active search engine indexing
+  // A listing page must not carry JobPosting markup (Google: only the job's own
+  // detail page may). Describe the dashboard as a list pointing at those pages.
   const jobPostingsSchema = {
     "@context": "https://schema.org",
-    "@graph": activeJobs.map((job) => ({
-      "@type": "JobPosting",
-      "title": job.title[l],
-      "description": job.summary[l],
-      "identifier": {
-        "@type": "PropertyValue",
-        "name": "Arranto",
-        "value": job.id
-      },
-      "datePosted": "2026-09-20",
-      "employmentType": "FULL_TIME",
-      "hiringOrganization": {
-        "@type": "Organization",
-        "name": "Arranto",
-        "sameAs": "https://arranto.com",
-        "logo": "https://arranto.com/brand/arranto-symbol.png"
-      },
-      "jobLocationType": "TELECOMMUTE",
-      "applicantLocationRequirements": {
-        "@type": "Country",
-        "name": "Worldwide"
-      },
-      "industry": job.department[l]
-    }))
+    "@type": "ItemList",
+    itemListElement: activeJobs.map((job, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: job.title[l],
+      url: `https://arranto.com/${l}/careers/${job.slug}`,
+    })),
   };
 
   return (
@@ -110,7 +94,7 @@ export default async function CareersDashboardPage({ params }: Props) {
               Work with Us. Build Systems That Scale.
             </h1>
             <p className="mt-6 text-base sm:text-lg leading-relaxed text-[#9494a0] font-light max-w-3xl">
-              Arranto is a high-performance digital services and engineering studio. We build resilient full-stack applications, scalable growth acquisition engines, and world-class brand identities. Browse our open positions below.
+              Arranto is a high-performance digital services and engineering studio. We build resilient full-stack applications, scalable growth acquisition engines, and world-class brand identities. {activeJobs.length > 0 ? "Browse our open positions below." : "We are not hiring right now; past roles are listed below for reference."}
             </p>
           </div>
 
@@ -132,7 +116,7 @@ export default async function CareersDashboardPage({ params }: Props) {
             </div>
             <div className="border border-white/10 bg-[#0a0a0a] p-4">
               <span className="font-mono text-[11px] uppercase tracking-wider text-[#8e8f94] block">Hiring Pace</span>
-              <span className="mt-1 font-display text-base font-semibold text-white block">Immediate</span>
+              <span className="mt-1 font-display text-base font-semibold text-white block">{activeJobs.length > 0 ? "Immediate" : "Paused"}</span>
             </div>
           </div>
         </div>
@@ -151,10 +135,23 @@ export default async function CareersDashboardPage({ params }: Props) {
               </h2>
             </div>
             <div className="flex items-center gap-2 font-mono text-xs text-[#8e8f94]">
-              <span className="h-2 w-2 rounded-full bg-emerald-400 inline-block" />
-              <span>{activeJobs.length} roles actively accepting applications</span>
+              <span className={`h-2 w-2 rounded-full inline-block ${activeJobs.length > 0 ? "bg-emerald-400" : "bg-[#8e8f94]"}`} />
+              <span>
+                {activeJobs.length > 0
+                  ? `${activeJobs.length} roles actively accepting applications`
+                  : "Not hiring right now"}
+              </span>
             </div>
           </div>
+
+          {activeJobs.length === 0 && (
+            <div className="border border-white/15 bg-[#080808] p-6 sm:p-10">
+              <p className="font-display text-xl sm:text-2xl font-bold text-white">No open roles at the moment.</p>
+              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#9494a0]">
+                Arranto is not hiring right now. New openings will be posted on this page when they open.
+              </p>
+            </div>
+          )}
 
           {/* Active Job Cards Grid */}
           <div className="grid grid-cols-1 gap-8">

@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Logo } from "@/components/Logo";
+import { SERVICE_PAGE_SLUGS } from "@/content/service-slugs";
 import { trackWhatsAppClick, trackEmailClick, trackChatStarted } from "@/lib/track";
 
 const WA_NUMBER = "919453878422";
@@ -28,7 +29,9 @@ export function Footer() {
   ];
 
   const servicesMap = t.raw('servicesList') as Record<string, { title: string; slug: string }>;
-  const serviceLinks = Object.values(servicesMap || {}).map(s => ({
+  // servicesList also feeds the contact form's service picker, which includes
+  // offerings with no page of their own — only link the ones that exist.
+  const serviceLinks = Object.values(servicesMap || {}).filter(s => SERVICE_PAGE_SLUGS.has(s.slug)).map(s => ({
     href: `/services/${s.slug}`,
     label: s.title
   }));
@@ -125,7 +128,7 @@ export function Footer() {
         <div className="col-span-1">
           <h3 className="font-display text-xs uppercase tracking-wider text-white">{t("footer.processesHeading")}</h3>
           <ul className="mt-4 flex flex-col gap-3 text-sm">
-            {serviceLinks.slice(0, 6).map((link) => (
+            {serviceLinks.slice(0, 7).map((link) => (
               <li key={link.href}>
                 <Link href={link.href} className="transition-colors hover:text-white text-[#9494a0]/80">
                   {link.label}

@@ -36,7 +36,7 @@ export const jobPostings: JobDetail[] = [
   {
     slug: "full-stack-engineer",
     id: "ARRANTO-ENG-02",
-    status: "open",
+    status: "closed",
     title: {
       en: "Senior Full-Stack Engineer – Modern Web Systems, Next.js & Cloud Architecture",
       ar: "مهندس برمجيات متكامل أول (Senior Full-Stack) – تطبيقات الويب الحديثة والحوسبة السحابية",
@@ -284,7 +284,7 @@ export const jobPostings: JobDetail[] = [
   {
     slug: "performance-marketer",
     id: "ARRANTO-MKT-01",
-    status: "open",
+    status: "closed",
     title: {
       en: "Performance Marketing Lead – Paid Acquisition, Funnel Economics & ROAS Scaling",
       ar: "قائد تسويق الأداء والنمو – الحملات الممولة واقتصاديات التحويل",
@@ -529,7 +529,7 @@ export const jobPostings: JobDetail[] = [
   {
     slug: "graphic-designer",
     id: "ARRANTO-DES-01",
-    status: "open",
+    status: "closed",
     title: {
       en: "Senior Visual & Brand Designer – Design Systems, Digital Interfaces & Brand Identity",
       ar: "مصمم هوية بصرية وواجهات أول – أنظمة التصميم والهوية الرقمية",

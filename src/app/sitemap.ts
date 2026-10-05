@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...caseStudies.map((c) => `/work/${c.slug}`),
     "/blog",
     ...blogPosts.map((b) => `/blog/${b.slug}`),
+    "/services",
     ...serviceDetails.map((s) => `/services/${s.slug}`),
     "/support",
     "/tools",
@@ -27,7 +28,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/tools/website-factory",
     "/tools/yt-bulk-optimizer",
     "/careers",
-    ...jobPostings.map((j) => `/careers/${j.slug}`),
+    // Closed roles stay reachable but are not advertised for crawling.
+    ...jobPostings.filter((j) => j.status === "open").map((j) => `/careers/${j.slug}`),
     "/contact",
     "/legal/privacy",
     "/legal/terms",
@@ -35,8 +37,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/legal/disclaimer",
   ];
 
-  // Fix build date for a stable lastmod
-  const now = new Date("2026-07-27T00:00:00Z");
+  // No lastmod: a single hardcoded date on every URL told crawlers nothing had
+  // changed since July. Omitting it is better than a wrong value; add per-page
+  // dates here once content carries an `updated` field.
   const entries: MetadataRoute.Sitemap = [];
 
   // No apex-root entry: "/" 307-redirects to "/en" (next-intl locale routing), and
@@ -49,7 +52,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const locale of routing.locales) {
       entries.push({
         url: `${BASE}/${locale}${path}`,
-        lastModified: now,
         alternates: {
           languages: {
             en: `${BASE}/en${path}`,

@@ -1,3 +1,5 @@
+import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
+import { SECTION_LABEL } from "@/lib/seo";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
@@ -26,6 +28,7 @@ export default async function BlogIndexPage({ params }: Props) {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white py-32">
+      <BreadcrumbJsonLd locale={locale} trail={[{ name: SECTION_LABEL.blog[locale === "ar" ? "ar" : "en"], path: "/blog" }]} />
       <div className="absolute top-0 start-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 bg-[#d8d9dc]/5 blur-[140px] pointer-events-none"/>
       
       <header className="px-6 pb-16 md:px-12 border-b border-white/10 relative z-10">

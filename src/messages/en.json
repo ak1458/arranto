@@ -1,21 +1,21 @@
 {
   "meta": {
-    "title": "Arranto — Software Studio",
-    "description": "Start to running. Nothing left undone. Software studio, est. 2017.",
-    "workTitle": "Work — Arranto",
-    "workDescription": "20+ delivered projects across enterprise SaaS, compliance engines, and business tools.",
-    "studioTitle": "About — Arranto",
-    "studioDescription": "Founded 2017. Still one person.",
-    "contactTitle": "Contact — Arranto",
-    "contactDescription": "Tell me what you're building. Messages are read and answered by the founder within one business day.",
+    "title": "Arranto | Custom Software, SaaS & AI Automation Studio",
+    "description": "Founder-led software studio, est. 2017. Custom business software, SaaS products, AI automation and websites in English and Arabic. One engineer owns each project.",
+    "workTitle": "Case Studies: Software Built and Shipped | Arranto",
+    "workDescription": "Real systems with honest status labels: proven, in pilot, or in development. Billing, operations and compliance software, including PulseKart and FATOORA Lite.",
+    "studioTitle": "About Arranto: Founder-Led Software Studio Since 2017",
+    "studioDescription": "Founded in 2017 by Ashraf Kamal and still one person; formerly Smile Fotilo. How the studio works and why one engineer owns every project from scope to production.",
+    "contactTitle": "Contact Arranto: Talk to the Founder About Your Project",
+    "contactDescription": "Tell me what you are building. Every message is read and answered by the founder within one business day, or email help@arranto.com.",
     "toolsTitle": "Free Tools — Arranto",
     "toolsDescription": "Free, production-ready developer and AI tools. No signup or email gate required.",
-    "blogTitle": "Blog — Arranto",
-    "blogDescription": "Insights on AI Automation and SaaS Development.",
+    "blogTitle": "Blog: AI Automation, SaaS & Custom Software | Arranto",
+    "blogDescription": "Practical articles on AI automation, SaaS development and custom business software, written by the founder of Arranto.",
     "supportTitle": "Support & Documentation — Arranto",
     "supportDescription": "Setup guides, architecture docs, and ZATCA/SanadOS integration references for Arranto products.",
-    "careersTitle": "Careers & Job Dashboard — Open Roles | Arranto",
-    "careersDescription": "Explore open remote positions at Arranto: Senior Full-Stack Engineer, Performance Marketing Lead, and Senior Visual Designer. 3+ years experience required."
+    "careersTitle": "Careers at Arranto | Arranto",
+    "careersDescription": "Careers at Arranto: no open roles right now. Past remote positions in engineering, marketing and design are listed for reference."
   },
   "nav": {
     "home": "Home",
@@ -39,16 +39,16 @@
     "ctaWork": "Work",
     "ctaContact": "Contact",
     "col1Title": "Projects",
-    "col1Text": "20+ delivered projects. 7 active builds in development. Software that businesses run their day on — billing, operations, compliance.",
+    "col1Text": "20+ delivered projects. 3 active builds in development. Software that businesses run their day on — billing, operations, compliance.",
     "col2Title": "Studio",
-    "col2Text": "Founded 2017. Still one person. 20+ delivered projects, 118 five-star reviews, and a direct path from idea to production.",
+    "col2Text": "Founded 2017. Still one person. 20+ delivered projects, 118 five-star Google reviews earned as Smile Fotilo (the studio's former name), and a direct path from idea to production.",
     "outro": "ARRANTO STUDIO — ENGINEERING HIGH-PERFORMANCE WEB ARCHITECTURES & AGENTIC SYSTEMS."
   },
   "home": {
     "workEyebrow": "Work",
     "workHeading": "Work",
     "allWork": "See the work →",
-    "workLine": "20+ delivered projects. 7 active builds in development.",
+    "workLine": "20+ delivered projects. 3 active builds in development.",
     "studioEyebrow": "About",
     "studioHeading": "About",
     "studioBody": "Founded 2017. Still one person.",
@@ -61,7 +61,7 @@
     "heading": "Work",
     "indexHeading": "Systems, not sites.",
     "indexIntro": "Each system is software a business runs its day on — billing, maintenance, invoice clearance. Status is labelled honestly: proven means live in production, in pilot means built and being tested with a real client, active development means the studio's own build in progress with no external pilot yet.",
-    "subline": "20+ delivered projects. 7 active builds in development.",
+    "subline": "20+ delivered projects. 3 active builds in development.",
     "details": "Details",
     "contact": "Contact",
     "status": {
@@ -72,7 +72,7 @@
     "stat1Label": "Delivered Projects",
     "stat1Value": "20+",
     "stat2Label": "Active Projects",
-    "stat2Value": "7",
+    "stat2Value": "3",
     "stat3Label": "Founder Built",
     "stat3Value": "100%",
     "moreComing": "More systems shipping soon.",
@@ -103,7 +103,7 @@
     "eyebrow": "About",
     "heading": "The studio is one person.",
     "storyHeading": "Our Journey & Evolution",
-    "body1": "Arranto wasn’t born in a boardroom; it was forged in the trenches of digital transformation. Our journey began in 2017, helping local businesses transition to the digital space. We built foundational web architectures, optimized local operations, and delivered results that earned us 118+ verified five-star reviews.",
+    "body1": "Arranto, formerly Smile Fotilo, was founded by Ashraf Kamal in 2017. It wasn’t born in a boardroom; it was forged in the trenches of digital transformation, helping local businesses move into the digital space. We built foundational web architectures, optimized local operations, and delivered results that earned 118+ verified five-star Google reviews under that former name.",
     "body2": "However, as our clients scaled, their problems became more complex. Traditional web platforms and legacy CMS systems could no longer keep up with the demands of modern data, compliance, and automation.",
     "body3": "We realized that the future of business isn't just about having a website—it's about having self-sustaining digital systems. That realization led to the evolution of our team and the birth of Arranto.",
     "body4": "Today, we operate as a highly specialized, AI-augmented product studio. We leverage cutting-edge tech stacks (React, TypeScript, Native Apps) and artificial intelligence to engineer custom SaaS products, enterprise compliance systems (like ZATCA and Sanad), and robust business automations for clients across the US, Europe, and the Middle East.",
@@ -120,7 +120,7 @@
       },
       {
         "v": "118+",
-        "k": "Verified 5-Star Reviews"
+        "k": "5-Star Google Reviews (as Smile Fotilo)"
       }
     ],
     "principlesHeading": "What that means for a project",
@@ -188,10 +188,6 @@
       {
         "q": "Do you offer maintenance and support after launch?",
         "a": "Yes. Every project includes a 30-day hypercare period, followed by an optional long-term maintenance agreement tailored to your system."
-      },
-      {
-        "q": "How long does a typical build take?",
-        "a": "Most core systems are delivered within 4 to 8 weeks, depending on the complexity of the integrations and data pipelines required."
       }
     ]
   },
@@ -664,7 +660,7 @@
     "title": "Project Proposal",
     "preparedFor": "Prepared for",
     "overview": "Overview",
-    "overviewBody": "{who} is exploring an engagement with Arranto — a founder-led software studio (est. 2017, 20+ delivered projects, 118 verified Google reviews) — for {type}. This proposal summarizes what was discussed with the studio assistant.",
+    "overviewBody": "{who} is exploring an engagement with Arranto — a founder-led software studio (est. 2017, 20+ delivered projects, 118 verified Google reviews earned as Smile Fotilo) — for {type}. This proposal summarizes what was discussed with the studio assistant.",
     "goals": "Goals",
     "scope": "Proposed scope",
     "timeline": "Indicative timeline",
@@ -791,6 +787,10 @@
     "compliance-solutions": {
       "title": "Compliance Solutions",
       "slug": "compliance-solutions"
+    },
+    "zatca-e-invoicing": {
+      "title": "ZATCA E-Invoicing",
+      "slug": "zatca-e-invoicing"
     },
     "custom-project": {
       "title": "Custom Project",

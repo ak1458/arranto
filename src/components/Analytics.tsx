@@ -15,16 +15,18 @@ export function Analytics() {
   const init = [
     `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}`,
     `gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'granted'});`,
-    gtm
-      ? `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtm}');`
-      : "",
+    gtm ? `dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});` : "",
     ga ? `gtag('js',new Date());gtag('config','${ga}');` : "",
   ].join("");
 
   return (
     <>
+      {/* The inline stub queues every gtag()/dataLayer call immediately, so nothing
+          is lost by fetching the ~290 KB of Google scripts only once the page has
+          loaded and gone idle — they were competing with first paint on mobile. */}
       <Script id="analytics-init" strategy="afterInteractive">{init}</Script>
-      {ga && <Script src={`https://www.googletagmanager.com/gtag/js?id=${ga}`} strategy="afterInteractive" />}
+      {ga && <Script src={`https://www.googletagmanager.com/gtag/js?id=${ga}`} strategy="lazyOnload" />}
+      {gtm && <Script src={`https://www.googletagmanager.com/gtm.js?id=${gtm}`} strategy="lazyOnload" />}
     </>
   );
 }
