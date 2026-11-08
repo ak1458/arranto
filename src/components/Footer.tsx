@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { Logo } from "@/components/Logo";
 import { SERVICE_PAGE_SLUGS } from "@/content/service-slugs";
@@ -89,6 +90,22 @@ export function Footer() {
               </svg>
             </a>
           </div>
+          <a
+            href="https://www.google.com/preferences/source?q=arranto.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t("footer.googlePreferredSource")}
+            className="w-fit max-w-full rounded-lg transition-opacity hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+          >
+            <Image
+              src="/images/google-preferred-source-dark.png"
+              alt={t("footer.googlePreferredSource")}
+              width={676}
+              height={213}
+              className="h-auto w-[220px] max-w-full lg:w-full"
+              unoptimized
+            />
+          </a>
         </div>
 
         {/* Studio links */}
@@ -128,7 +145,7 @@ export function Footer() {
         <div className="col-span-1">
           <h3 className="font-display text-xs uppercase tracking-wider text-white">{t("footer.processesHeading")}</h3>
           <ul className="mt-4 flex flex-col gap-3 text-sm">
-            {serviceLinks.slice(0, 7).map((link) => (
+            {serviceLinks.map((link) => (
               <li key={link.href}>
                 <Link href={link.href} className="transition-colors hover:text-white text-[#9494a0]/80">
                   {link.label}

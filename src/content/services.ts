@@ -1,3 +1,5 @@
+import { mobileService } from "./mobile-service";
+
 export type Locale = "en" | "ar";
 
 export type ServiceDetail = {
@@ -16,6 +18,7 @@ export type ServiceDetail = {
 };
 
 export const serviceDetails: ServiceDetail[] = [
+  mobileService,
   {
     slug: "ai-automation",
     title: {

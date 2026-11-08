@@ -7,6 +7,7 @@ export const SERVICE_PAGE_SLUGS = new Set([
   "custom-ai-solutions",
   "crm-development",
   "website-development",
+  "mobile-app-development",
   "digital-marketing",
   "custom-software-development",
   "zatca-e-invoicing",

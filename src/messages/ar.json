@@ -316,7 +316,8 @@
     "disclaimer": "إخلاء المسؤولية",
     "email": "help@arranto.com",
     "rights": "جميع الحقوق محفوظة.",
-    "processesHeading": "أدلة الخدمات"
+    "processesHeading": "أدلة الخدمات",
+    "googlePreferredSource": "أضف أرانتو كمصدر مفضّل على Google (يفتح في علامة تبويب جديدة)"
   },
   "legal": {
     "lastUpdated": "آخر تحديث: 13 يوليو 2026",
@@ -795,6 +796,14 @@
     "custom-project": {
       "title": "مشروع مخصص",
       "slug": "custom-project"
+    },
+    "mobile": {
+      "title": "تطوير تطبيقات الجوال",
+      "slug": "mobile-app-development"
+    },
+    "customSoftware": {
+      "title": "تطوير برمجيات مخصصة",
+      "slug": "custom-software-development"
     }
   },
   "blueprint": {

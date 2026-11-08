@@ -13,6 +13,38 @@ const jsonLd = (body) =>
     return [d, ...(d["@graph"] ?? [])].flat();
   });
 
+test("preferred source badge links to Arranto on Google in both languages", async () => {
+  for (const locale of ["en", "ar"]) {
+    const body = await (await get(`/${locale}`)).text();
+    const footer = body.match(/<footer\b[\s\S]*?<\/footer>/)?.[0];
+    assert.ok(footer, `${locale}: footer present`);
+    assert.match(footer, /href="https:\/\/www\.google\.com\/preferences\/source\?q=arranto\.com"[^>]*target="_blank"[^>]*rel="noopener noreferrer"/);
+    assert.match(footer, /src="\/images\/google-preferred-source-dark\.png"/);
+  }
+  const image = await get('/images/google-preferred-source-dark.png');
+  assert.equal(image.status, 200);
+  assert.match(image.headers.get('content-type'), /image\/png/);
+});
+
+test("restored mobile services are discoverable, indexable and use reciprocal canonical locales", async () => {
+  const xml = await (await get('/sitemap.xml')).text();
+  for (const locale of ['en', 'ar']) {
+    const path = `/${locale}/services/mobile-app-development`;
+    assert.ok(xml.includes(`<loc>https://arranto.com${path}</loc>`), `${path}: included in sitemap`);
+    const res = await get(path, { redirect: 'manual' });
+    assert.equal(res.status, 200, path);
+    assert.doesNotMatch(res.headers.get('x-robots-tag') ?? '', /noindex/i);
+    const body = await res.text();
+    assert.ok(body.includes(`<link rel="canonical" href="https://arranto.com${path}"`), path);
+    assert.doesNotMatch(body, /<meta name="robots" content="[^"]*noindex/i);
+    for (const partner of ['en', 'ar']) {
+      assert.ok(body.includes(`hrefLang="${partner}" href="https://arranto.com/${partner}/services/mobile-app-development"`));
+    }
+    const home = await (await get(`/${locale}`)).text();
+    assert.ok(home.match(/<footer\b[\s\S]*?<\/footer>/)?.[0].includes(`href="${path}"`), `${path}: linked in footer`);
+  }
+});
+
 test("every footer service link resolves (no 404s sitewide)", async () => {
   const body = await (await get("/en")).text();
   const links = [...new Set([...body.matchAll(/href="(\/en\/services\/[^"#?]+)"/g)].map((m) => m[1]))];

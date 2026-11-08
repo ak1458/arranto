@@ -6,6 +6,10 @@ import type { Locale } from "./services";
 // these only replace the <title>/meta description, which were the long marketing
 // headline and subtitle (one ran to 193 characters and was truncated).
 export const serviceMeta: Record<string, Record<Locale, { title: string; description: string }>> = {
+  'mobile-app-development': {
+    en: { title: 'Mobile App Development for iOS & Android | Arranto', description: 'Mobile apps scoped around your users: platform planning, APIs, device testing and release handover. Discuss your iOS or Android project with the founder.' },
+    ar: { title: 'تطوير تطبيقات الجوال لنظامي iOS وAndroid | أرانتو', description: 'تطبيقات جوال حسب احتياجات المستخدم: تخطيط المنصة وواجهات API واختبار الأجهزة وتسليم الإصدار. ناقش مشروعك مباشرة مع المؤسس.' },
+  },
   "website-development": {
     en: {
       title: "Web Development Services: Fast, SEO-Ready Websites | Arranto",

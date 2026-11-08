@@ -316,7 +316,8 @@
     "disclaimer": "Disclaimer",
     "email": "help@arranto.com",
     "rights": "All rights reserved.",
-    "processesHeading": "Service Guides"
+    "processesHeading": "Service Guides",
+    "googlePreferredSource": "Add Arranto as a preferred source on Google (opens in a new tab)"
   },
   "legal": {
     "lastUpdated": "Last updated: 13 July 2026",
@@ -795,6 +796,14 @@
     "custom-project": {
       "title": "Custom Project",
       "slug": "custom-project"
+    },
+    "mobile": {
+      "title": "Mobile App Development",
+      "slug": "mobile-app-development"
+    },
+    "customSoftware": {
+      "title": "Custom Software Development",
+      "slug": "custom-software-development"
     }
   },
   "blueprint": {
