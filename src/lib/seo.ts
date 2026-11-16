@@ -73,13 +73,12 @@ export function pageMetadata(opts: {
 }
 
 export const ORG_DESCRIPTION: Record<"en" | "ar", string> = {
-  // Brand layer: no region or product names (MASTER-CONTEXT §1). This description is
-  // emitted on every page, home included, so naming the Gulf here would make a regional
-  // shop of a global studio — the exact thing the three-layer rule exists to prevent.
-  // Regions stay as areaServed country codes (coverage data, not identity prose), and
-  // regulation-specific expertise stays in the proof layer, on /work.
-  en: "Founder-led software studio. Websites, custom software, SaaS, AI automation and integrations.",
-  ar: "استوديو برمجيات بقيادة مؤسس واحد. مواقع، برمجيات مخصصة، أنظمة SaaS، وأتمتة وتكاملات الذكاء الاصطناعي.",
+  // Owner decision 2026-11-16: India-first. The description now names the home base
+  // (matching the Smile Fotilo Google Business Profile: Greater Noida, Uttar Pradesh) so
+  // LLM and local answers ("website developer near me / in <city>") can place the studio.
+  // It still names no Gulf region — regulation-specific expertise stays on /work.
+  en: "Website, mobile app and custom software development studio based in Greater Noida, Uttar Pradesh, India (formerly Smile Fotilo). Founder-led since 2017, working with businesses across India and abroad.",
+  ar: "استوديو لتطوير المواقع وتطبيقات الجوال والبرمجيات المخصصة، مقره غريتر نويدا، أوتار براديش، الهند (سمايل فوتيلو سابقاً). يقوده مؤسسه منذ 2017 ويعمل مع شركات في الهند وخارجها.",
 };
 
 /** The studio's public contact details — the same email and number shown on the
@@ -93,7 +92,9 @@ const ORG_KNOWS_ABOUT: Record<"en" | "ar", string[]> = {
   en: [
     "web development",
     "custom software development",
+    "mobile app development",
     "SaaS development",
+    "CRM and ERP development",
     "AI automation",
     "AI integration",
     "business systems",
@@ -101,6 +102,7 @@ const ORG_KNOWS_ABOUT: Record<"en" | "ar", string[]> = {
   ar: [
     "تطوير الويب",
     "تطوير البرمجيات المخصصة",
+    "تطوير تطبيقات الجوال",
     "تطوير أنظمة SaaS",
     "أتمتة الذكاء الاصطناعي",
     "تكامل الذكاء الاصطناعي",
@@ -115,7 +117,9 @@ export function orgJsonLd(locale: string) {
   const l = locale === "ar" ? "ar" : "en";
   return {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    // ProfessionalService (a LocalBusiness subtype) lets local and AI answers treat the
+    // studio as a service provider with a place and service area, not only a brand.
+    "@type": ["Organization", "ProfessionalService"],
     // Stable entity id: lets search/AI systems merge every page's Organization and
     // the WebSite publisher into one "Arranto" entity tied to the apex domain.
     "@id": `${BASE}/#organization`,
@@ -141,30 +145,44 @@ export function orgJsonLd(locale: string) {
       name: "Ashraf Kamal",
       sameAs: [
         "https://github.com/ak1458",
-        "https://www.linkedin.com/in/ashrafkamal14/"
+        "https://www.linkedin.com/in/ashrafkamal14/",
+        "https://contra.com/ashraf_kamal"
       ]
     },
     // contactPoint + address let AI/search systems verify the business and answer
-    // "how do I contact Arranto" directly. The studio is remote-first with no public
-    // street address, so the PostalAddress states only the country (that of the
-    // published +91 business line) rather than inventing a street.
+    // "how do I contact Arranto" directly. No public street address (owner decision), so
+    // the PostalAddress stops at locality — the same city as the Smile Fotilo Google
+    // Business Profile, which keeps NAP consistent across the two names.
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
       email: CONTACT.email,
       telephone: CONTACT.phone,
-      availableLanguage: ["English", "Arabic"],
+      availableLanguage: ["English", "Hindi", "Arabic"],
       url: `${BASE}/${l}/contact`,
     },
     address: {
       "@type": "PostalAddress",
+      addressLocality: "Greater Noida",
+      addressRegion: "Uttar Pradesh",
       addressCountry: "IN",
     },
-    areaServed: ["SA", "AE", "KW", "QA", "OM", "BH", "US", "IN", "GB"],
+    // India first (owner decision 2026-11-16): named cities where the studio takes local
+    // clients, then the country, then the international markets.
+    areaServed: [
+      ...["Greater Noida", "Noida", "Delhi", "Lucknow", "Ayodhya", "Gonda"].map((name) => ({ "@type": "City", name })),
+      { "@type": "State", name: "Uttar Pradesh" },
+      { "@type": "Country", name: "India" },
+      ...["Saudi Arabia", "United Arab Emirates", "Kuwait", "Qatar", "Oman", "Bahrain", "United States", "United Kingdom"].map((name) => ({ "@type": "Country", name })),
+    ],
     knowsAbout: ORG_KNOWS_ABOUT[l],
     sameAs: [
       "https://github.com/ak1458/arranto",
-      "https://www.linkedin.com/company/arranto"
+      "https://www.linkedin.com/company/arranto",
+      "https://clutch.co/profile/arranto",
+      // The former name's site stays live (owner decision); linking it ties its
+      // ranking history and the Smile Fotilo reviews to this entity.
+      "https://smilefotilo.com/"
     ],
   };
 }

@@ -92,7 +92,7 @@ test("Organization JSON-LD has contactPoint and address", async () => {
   const body = await (await fetch(`${BASE}/en`, { headers: html })).text();
   const blocks = [...body.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)]
     .flatMap((m) => [JSON.parse(m[1])].flat());
-  const org = blocks.find((b) => b["@type"] === "Organization");
+  const org = blocks.find((b) => [].concat(b["@type"]).includes("Organization"));
   assert.ok(org, "Organization JSON-LD present");
   assert.equal(org.contactPoint["@type"], "ContactPoint");
   assert.ok(org.contactPoint.email && org.contactPoint.contactType);

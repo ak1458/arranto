@@ -75,6 +75,13 @@ const rootRedirect = { source: "/", destination: "/en", statusCode: 301 };
 // www.arranto.com serves the same app as arranto.com with no canonical redirect between
 // them (confirmed live + via GSC: www turned up as a separately-indexed, lower-ranking
 // duplicate). Force the bare apex as the one canonical host.
+// www root goes straight to /en (one hop instead of www → / → /en).
+const wwwRootRedirect = {
+  source: "/",
+  has: [{ type: "host" as const, value: "www.arranto.com" }],
+  destination: "https://arranto.com/en",
+  statusCode: 301,
+};
 const wwwRedirect = {
   source: "/:path*",
   has: [{ type: "host" as const, value: "www.arranto.com" }],
@@ -88,7 +95,7 @@ const nextConfig: NextConfig = {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },
   async redirects() {
-    return [wwwRedirect, rootRedirect, ...legacyRedirects, ...retiredServiceRedirects];
+    return [wwwRootRedirect, wwwRedirect, rootRedirect, ...legacyRedirects, ...retiredServiceRedirects];
   },
 };
 

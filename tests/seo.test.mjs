@@ -108,7 +108,7 @@ test("robots.txt keeps /api/ disallowed for named AI crawlers", async () => {
 test("homepage title names the services and Organization uses a raster logo", async () => {
   const body = await (await get("/en")).text();
   assert.match(body, /<title>Arranto \| Custom Software, SaaS &amp; AI Automation Studio<\/title>/);
-  const org = jsonLd(body).find((b) => b["@type"] === "Organization");
+  const org = jsonLd(body).find((b) => [].concat(b["@type"]).includes("Organization"));
   assert.match(org.logo.url, /\.png$/);
   assert.equal(org.inLanguage, undefined);
 });

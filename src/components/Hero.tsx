@@ -178,10 +178,12 @@ export function Hero() {
           <div className="w-full max-w-xl mx-auto mb-6 sm:mb-8 text-white">
             <AnimatedHeroLogo className="h-16 sm:h-24 md:h-32 lg:h-40 w-auto mx-auto" />
           </div>
-          <p className="font-mono text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#8e8f94] mb-4 sm:mb-6">
-            {t('fragment')}
-          </p>
+          {/* The eyebrow is part of the H1 so the page's main heading says what the studio
+              does and where (SEO/GEO audit 2026-11-16); it looks exactly as before. */}
           <h1 className="font-display text-[clamp(1.8rem,4.5vw,4.5rem)] font-bold uppercase tracking-tight text-white leading-tight">
+            <span className="block font-mono text-[10px] sm:text-xs font-semibold tracking-wider text-[#8e8f94] mb-4 sm:mb-6 leading-normal">
+              {t('fragment')}
+            </span>
             {t('line1')}
           </h1>
         </div>

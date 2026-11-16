@@ -14,7 +14,9 @@
     "chat:qa": "node scripts/chat-qa.mjs",
     "ai:qa": "node scripts/ai-qa.mjs",
     "agent:improve": "node scripts/agent-improve.mjs",
-    "analytics:fetch": "node scripts/fetch-all-google-data.mjs"
+    "analytics:fetch": "node scripts/fetch-all-google-data.mjs",
+    "seo:indexnow": "node scripts/indexnow-submit.mjs",
+    "seo:bing": "node scripts/bing-submit.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

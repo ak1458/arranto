@@ -72,7 +72,7 @@ export default async function ServicePage({ params }: Props) {
             url: "https://github.com/ak1458",
           },
         },
-        areaServed: ["SA", "AE", "KW", "QA", "OM", "BH", "US", "IN"],
+        areaServed: ["IN", "SA", "AE", "KW", "QA", "OM", "BH", "US", "GB"],
       },
       {
         "@type": "BreadcrumbList",

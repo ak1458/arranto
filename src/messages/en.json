@@ -35,7 +35,7 @@
     "line1": "Start to running.",
     "line2Pre": "Nothing left ",
     "line2Em": "undone.",
-    "fragment": "Est. 2017",
+    "fragment": "Website, App & Software Development · Greater Noida, India · Est. 2017",
     "ctaWork": "Work",
     "ctaContact": "Contact",
     "col1Title": "Projects",
@@ -54,7 +54,14 @@
     "studioBody": "Founded 2017. Still one person.",
     "studioCta": "About →",
     "contactHeading": "Tell me what you're building.",
-    "contactCta": "Contact →"
+    "contactCta": "Contact →",
+    "answerHeading": "Website, app and software development in Greater Noida and across India",
+    "answerBody": "Arranto is a website, mobile app and custom software development studio based in Greater Noida, Uttar Pradesh. Engineer Ashraf Kamal founded it in 2017 under the name Smile Fotilo, and the studio has delivered more than 20 projects since, earning 118 five-star Google reviews under that former name. Arranto builds business websites, Android and iOS apps, CRM and ERP systems, billing, inventory and point-of-sale software, SaaS products and AI automation for small and mid-sized businesses. Every project is scoped and priced in writing before work begins, and the founder builds it personally instead of passing it to a junior team. That means one accountable engineer from the first call to launch and support. Arranto works in English, Hindi and Arabic, and builds right-to-left Arabic interfaces.",
+    "answerArea": "Arranto works with businesses in Greater Noida, Noida, Delhi NCR, Lucknow, Ayodhya and Gonda, with companies elsewhere in India, and with clients in the Gulf, the United States and the United Kingdom.",
+    "answerServices": "Services",
+    "answerWork": "Case studies",
+    "answerArticles": "Articles",
+    "answerAbout": "About the studio and its founder"
   },
   "work": {
     "eyebrow": "Case Studies",
@@ -292,7 +299,7 @@
     ]
   },
   "footer": {
-    "address": "Arranto. Est. 2017.",
+    "address": "Arranto (formerly Smile Fotilo) · Greater Noida, Uttar Pradesh, India · Est. 2017",
     "blurb": "Founder-led software studio. Websites, custom software, and AI systems — built by one engineer, start to running.",
     "studioHeading": "Studio",
     "resourcesHeading": "Resources",
@@ -317,7 +324,8 @@
     "email": "help@arranto.com",
     "rights": "All rights reserved.",
     "processesHeading": "Service Guides",
-    "googlePreferredSource": "Add Arranto as a preferred source on Google (opens in a new tab)"
+    "googlePreferredSource": "Add Arranto as a preferred source on Google (opens in a new tab)",
+    "blog": "Blog"
   },
   "legal": {
     "lastUpdated": "Last updated: 13 July 2026",
